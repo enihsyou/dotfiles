@@ -1,4 +1,3 @@
-alias dotmate='mate ~/.dotfiles'
-alias dotcd='cd ~/.dotfiles'
-
 alias reload!='. ~/.zshrc'
+
+alias cls='clear' # Good 'ol Clear Screen command
