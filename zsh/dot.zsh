@@ -68,7 +68,7 @@ POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="╭"
 POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="╰%F{cyan}\uF460%F{073}\uF460%F{109}\uF460%f "
 
 #POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context ssh root_indicator dir_writable dir )
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(public_ip root_indicator context disk_usage load ram newline history dir_writable dir vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(root_indicator context history dir_writable dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time background_jobs status time ssh)
 
 POWERLEVEL9K_VCS_CLEAN_BACKGROUND="green"
@@ -219,6 +219,7 @@ zplug "plugins/golang", from:oh-my-zsh, if:"which go"
 zplug "plugins/nmap",   from:oh-my-zsh, if:"which nmap"
 zplug "plugins/sudo",   from:oh-my-zsh, if:"which sudo"
 zplug "plugins/tmux",   from:oh-my-zsh, if:"which tmux"
+zplug "plugins/zsh-wakatime", from:oh-my-zsh
 
 # Supports oh-my-zsh plugins and the like
 if [[ $OSTYPE = (linux)* ]]; then
@@ -513,4 +514,4 @@ fi
 #ZLE_RPROMPT_INDENT=0
 
 # vim: ft=zsh
-export DISPLAY:localhost:0
+export DISPLAY=localhost:0

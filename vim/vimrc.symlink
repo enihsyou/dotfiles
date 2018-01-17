@@ -10,3 +10,8 @@ try
 source ~/.vim_runtime/my_configs.vim
 catch
 endtry
+set co=120
+set nu
+set gfn=FantasqueSansMono\ Nerd\ Font\ Mono\ 15
+set langmenu=cn
+
