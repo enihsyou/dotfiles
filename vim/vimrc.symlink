@@ -13,5 +13,6 @@ endtry
 set co=120
 set nu
 set gfn=FantasqueSansMono\ Nerd\ Font\ Mono\ 15
-set langmenu=zh_CN.UTF-8
+set langmenu=zh_cn.utf-8
+set lsp=-2
 
