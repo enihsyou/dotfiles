@@ -1,4 +1,3 @@
-syntax on
 set runtimepath+=~/.vim_runtime
 
 source ~/.vim_runtime/vimrcs/basic.vim
@@ -10,6 +9,7 @@ try
 source ~/.vim_runtime/my_configs.vim
 catch
 endtry
+
 set co=120
 set nu
 set gfn=FantasqueSansMono\ Nerd\ Font\ Mono\ 15

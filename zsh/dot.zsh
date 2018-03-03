@@ -514,4 +514,4 @@ fi
 #ZLE_RPROMPT_INDENT=0
 
 # vim: ft=zsh
-#export DISPLAY=localhost:0
+export DISPLAY=localhost:0
