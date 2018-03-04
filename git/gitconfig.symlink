@@ -35,3 +35,7 @@
 [http]
 [credential]
 	helper = wincred
+[http]
+	proxy = http://localhost:10800
+[https]
+	proxy = http://localhost:10800
