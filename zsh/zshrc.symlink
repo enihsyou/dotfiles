@@ -2,7 +2,7 @@
 export ZSH=$HOME/.dotfiles
 
 # your project folder that we can `c [tab]` to
-export PROJECTS=~/Code
+export PROJECTS=~/IntelliJProjects
 
 # Stash your environment variables in ~/.localrc. This means they'll stay out
 # of your main dotfiles repository (which may be public, like this one), but
@@ -51,10 +51,6 @@ zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/enihsyou/.sdkman"
-[[ -s "/home/enihsyou/.sdkman/bin/sdkman-init.sh" ]] && source "/home/enihsyou/.sdkman/bin/sdkman-init.sh"
 
 #alias for cnpm
 alias cnpm="npm --registry=https://registry.npm.taobao.org \
