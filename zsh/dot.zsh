@@ -206,7 +206,6 @@ zplug "seebi/dircolors-solarized", ignore:"*", as:plugin
 zplug "plugins/colored-man-pages", from:oh-my-zsh
 #zplug "plugins/extract", from:oh-my-zsh
 zplug "plugins/fancy-ctrl-z", from:oh-my-zsh
-#zplug "plugins/git", from:oh-my-zsh, if:"which git"
 #zplug "plugins/globalias", from:oh-my-zsh
 #zplug "plugins/gpg-agent", from:oh-my-zsh, if:"which gpg-agent"
 #zplug "plugins/httpie", from:oh-my-zsh, if:"which httpie"
@@ -214,7 +213,7 @@ zplug "plugins/fancy-ctrl-z", from:oh-my-zsh
 #zplug "plugins/vi-mode", from:oh-my-zsh
 
 zplug "plugins/git",    from:oh-my-zsh, if:"which git"
-zplug "plugins/go",     from:oh-my-zsh, if:"which go"
+#zplug "plugins/go",     from:oh-my-zsh, if:"which go"
 zplug "plugins/golang", from:oh-my-zsh, if:"which go"
 zplug "plugins/nmap",   from:oh-my-zsh, if:"which nmap"
 zplug "plugins/sudo",   from:oh-my-zsh, if:"which sudo"
@@ -515,4 +514,4 @@ fi
 #ZLE_RPROMPT_INDENT=0
 
 # vim: ft=zsh
-export DISPLAY=localhost:0
+

@@ -1,5 +1,6 @@
 export LSCOLORS="exfxcxdxbxegedabagacad"
 export CLICOLOR=true
+export DISPLAY=localhost:0
 
 fpath=($ZSH/functions $fpath)
 
