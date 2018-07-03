@@ -1,4 +1,10 @@
-# Check zsh installed
-`command -v zsh` || sudo apt install zsh
+# Install zsh
+! exist zsh &&
+install_prompt "Will install zsh." && 
+sudo apt install zsh
 
-[ -d "$HOME/.oh-my-zsh/" ] || sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+# If oh-my-zsh not exist download it.
+! -d "$HOME/.oh-my-zsh/" &&
+install_prompt "Will install oh-my-zsh." &&
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
