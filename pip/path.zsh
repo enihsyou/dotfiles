@@ -1,10 +1,5 @@
-if (( $+commands[pip3] ))
-then
-   export PATH="$HOME/.local/bin:$PATH"
-fi
+exist pip3 &&
+export PATH="$HOME/.local/bin:$PATH"
 
-
-if (( $+commands[cheat]))
-then
-    export CHEATCOLORS=true
-fi
+exist cheat &&
+export CHEATCOLORS=true

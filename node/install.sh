@@ -1,4 +1,3 @@
-if test ! $(which spoof)
-then
-  sudo npm install spoof -g
-fi
+! exist tldr &&
+install_prompt "Install 'tldr'?" &&
+yarn global install tldr
