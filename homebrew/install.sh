@@ -10,6 +10,12 @@ if test ! $(which brew)
 then
   echo "  Installing Homebrew for you."
 
+  if test ! $(which ruby)
+  then
+    echo "  No ruby, skip install."
+    exit 0
+  fi
+
   # Install the correct homebrew for each OS type
   if test "$(uname)" = "Darwin"
   then
