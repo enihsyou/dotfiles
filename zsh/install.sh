@@ -1,3 +1,7 @@
+# Install powerlevel9k theme
+git submodule init
+git submodule update
+
 # Install zsh
 ! exist zsh &&
 install_prompt "Will install zsh." && 
