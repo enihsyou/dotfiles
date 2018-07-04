@@ -1,4 +1,3 @@
-if test ! $(which tmux)
-then
-    sudo apt install tmux
-fi
+! exist tmux &&
+install_prompt "Will install tmux." &&
+sudo apt install tmux
