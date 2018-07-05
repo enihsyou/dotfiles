@@ -7,6 +7,9 @@ export ZSHDOT=~/.dotfiles
 # your project folder that we can `c [tab]` to
 export PROJECTS=~/IntelliJProjects
 
+# set locale to chinese
+export LANG="zh_CN.UTF-8"
+
 # directories to be ignored in source process
 directory_ignored=(zsh/oh-my-zsh functions)
 

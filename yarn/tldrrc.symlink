@@ -6,13 +6,6 @@
       "exampleDescription": "green",
       "exampleCode": "cyan",
       "exampleToken": "dim"
-    },
-    "myOwnCoolTheme": {
-      "commandName": "bold, red",
-      "mainDescription": "underline",
-      "exampleDescription": "yellow",
-      "exampleCode": "underline, green",
-      "exampleToken": ""
     }
   },
   "theme": "ocean"
