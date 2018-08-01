@@ -1,3 +1,35 @@
+### Windows template
+# Windows thumbnail cache files
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
+
+# Windows shortcuts
+*.lnk
+
+### macOS template
+# General
 .DS_Store
+.AppleDouble
+.LSOverride
 *~
 *.swp
+
+# Thumbnails
+._*
+
+### Node template
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Bower dependency directory (https://bower.io/)
+bower_components
+
+# Dependency directories
+node_modules/
+
+# Jetbrains
+.idea/
