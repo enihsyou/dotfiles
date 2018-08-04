@@ -4,7 +4,7 @@ git submodule update
 
 # Install zsh
 ! exist zsh &&
-install_prompt "Will install zsh." && 
+install_prompt "Will install zsh." &&
 sudo apt install zsh
 
 # If oh-my-zsh not exist download it.
@@ -12,3 +12,7 @@ sudo apt install zsh
 install_prompt "Will install oh-my-zsh." &&
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
+# If jq not exist, instann it.
+! exist jq &&
+install_prompt "Will install jq." &&
+sudo apt install jq

@@ -10,7 +10,7 @@ POWERLEVEL9K_RPROMPT_ON_NEWLINE=false
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
 POWERLEVEL9K_MULTILINE_NEWLINE_PROMPT_PREFIX=""
 POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%K{black}%F{green} \uf155%f%F{black} %k\ue0b0%f "
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=false
 
 # Prompt elements
 if [[ "${TERM}" =~ "tmux" || "${TERM}" =~ "screen" ]]; then
@@ -19,7 +19,7 @@ if [[ "${TERM}" =~ "tmux" || "${TERM}" =~ "screen" ]]; then
     # Segment list for right prompt
     POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=( command_execution_time status )
 else
-    POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=( ssh root_indicator user battery dir_writable dir vcs newline load ram swap virtualenv rbenv rvm )
+    POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=( ssh root_indicator user battery dir_writable dir vcs )
     POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=( status command_execution_time background_jobs history time )
 fi
 POWERLEVEL9K_RAM_ELEMENTS="Both"
@@ -99,3 +99,6 @@ POWERLEVEL9K_DISK_USAGE_ONLY_WARNING=true
 
 # Ram
 POWERLEVEL9K_RAM_ELEMENTS="Both"
+
+# Remove right padding
+#ZLE_RPROMPT_INDENT=0
