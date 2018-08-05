@@ -13,13 +13,13 @@
         diff = auto
         status = auto
         branch = auto
-	ui = true
+    	ui = true
 [core]
         excludesfile = ~/.gitignore
         editor = vim
-	autocrlf = input
-	filemode = true
-	pager = diff-so-fancy | less --tabs=4 -RFX
+    	autocrlf = input
+	    filemode = true
+    	pager = diff-so-fancy | less --tabs=4 -RFX
 [apply]
         whitespace = nowarn
 [mergetool]
@@ -34,12 +34,13 @@
         #
         # Setting to git 2.0 default to suppress warning message
         default = simple
-[http]
+
 [credential]
 	helper = store
 [http]
-	proxy = http://localhost:10800
+	proxy = socks5://localhost:10800
 [https]
-	proxy = http://localhost:10800
+	proxy = socks5://localhost:10800
 [user]
 	signingkey = 0E30C569
+

@@ -9,12 +9,3 @@ try
 source ~/.vim_runtime/my_configs.vim
 catch
 endtry
-
-set co=120
-set nu
-set gfn=FantasqueSansMono\ Nerd\ Font\ Mono\ 15
-set lsp=-2
-" set language to english
-set langmenu=zh_CN.UTF-8
-language message zh_CN.UTF-8
-
