@@ -1,0 +1,16 @@
+
+# Use this proxy
+--proxy socks5://127.0.0.1:10800
+
+# Always write subtitle file
+--write-sub
+--write-auto-sub
+--all-subs
+
+# Verbosity options
+--console-title
+
+--embed-subs
+--embed-thumbnail
+--add-metadata
+

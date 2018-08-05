@@ -19,7 +19,7 @@ if [[ "${TERM}" =~ "tmux" || "${TERM}" =~ "screen" ]]; then
     # Segment list for right prompt
     POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=( command_execution_time status )
 else
-    POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=( ssh root_indicator user battery dir_writable dir vcs newline load ram swap virtualenv rbenv rvm )
+    POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=( ssh root_indicator user dir_writable dir vcs )
     POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=( status command_execution_time background_jobs history time )
 fi
 POWERLEVEL9K_RAM_ELEMENTS="Both"
