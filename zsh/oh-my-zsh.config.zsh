@@ -61,7 +61,7 @@ plugins=(
   colored-man-pages colorize command-not-found cp extract
   npm nvm yarn node
   pip python
-  screen tmux sudo
+  screen sudo osx
   dirhistory
   powerlevel9k zsh-syntax-highlighting zsh-autosuggestions
 )
