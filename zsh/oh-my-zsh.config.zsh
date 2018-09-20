@@ -58,9 +58,9 @@ ZSH_CUSTOM=$ZSHDOT/zsh/oh-my-zsh
 plugins=(
   git git-extras git-flow
   encode64 gradle httpie jsontools urltools
-  colored-man-pages colorize command-not-found cp extract
+  colored-man-pages colorize cp extract
   npm nvm yarn node
-  pip python
+  pip python docker
   screen sudo osx
   dirhistory
   powerlevel9k zsh-syntax-highlighting zsh-autosuggestions

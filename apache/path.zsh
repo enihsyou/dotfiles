@@ -1,0 +1,12 @@
+export APACHE_HOME=~/Apache
+export HADOOP_HOME=$APACHE_HOME/hadoop
+export HIVE_HOME=$APACHE_HOME/hive
+export HBASE_HOME=$APACHE_HOME/hbase
+export KAFKA_HOME=$APACHE_HOME/kafka
+export FLUME_HOME=$APACHE_HOME/flume
+export SPARK_HOME=$APACHE_HOME/spark
+export ZOOKEEPER_HOME=$APACHE_HOME/zookeeper
+
+export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
+
+export PATH=$HADOOP_HOME/bin:$HIVE_HOME/bin:$HBASE_HOME/bin:$KAFKA_HOME/bin:$FLUME_HOME/bin:$SPARK_HOME/bin:$ZOOKEEPER_HOME/bin:$PATH
