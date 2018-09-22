@@ -63,3 +63,9 @@ do
 done
 
 unset config_files
+export JAVA_HOME=/usr/lib/jvm/default-java
+export APACHE_HOME=~/Apache
+export HADOOP_HOME=${APACHE_HOME}/hadoop
+export SPARK_HOME=${APACHE_HOME}/spark
+export HIVE_HOME=${APACHE_HOME}/hive
+export PATH=${HADOOP_HOME}/bin:$SPARK_HOME/bin:$HIVE_HOME/bin:$PATH
