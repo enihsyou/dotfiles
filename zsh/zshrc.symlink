@@ -22,7 +22,11 @@ then
 fi
 
 # load dotfile functions
-# fpath=($ZSHDOT/functions $fpath)
+fpath=(
+  $ZSHDOT/functions
+  /usr/local/share/zsh/site-functions
+  $fpath
+)
 # autoload -U $ZSHDOT/functions/*(:t)
 
 # load helper functions
