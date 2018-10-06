@@ -60,7 +60,10 @@
 				<dict>
 					<key>COMMAND_STRING</key>
 					<string>diskutil erasevolume HFS+ 'RAM' `hdiutil attach -nomount ram://4194304`
-mkdir -p /Volumes/RAM/Cache/Chrome</string>
+cd /Volumes/RAM/
+mkdir -p Cache/Chrome
+mkdir -p Compile/Hypers
+mkdir -p Temp</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
 					<key>inputMethod</key>
@@ -170,8 +173,6 @@ mkdir -p /Volumes/RAM/Cache/Chrome</string>
 						<string>4</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>

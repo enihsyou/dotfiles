@@ -63,7 +63,7 @@ plugins=(
   pip python docker
   screen sudo osx
   dirhistory
-  powerlevel9k zsh-syntax-highlighting zsh-autosuggestions
+  powerlevel9k zsh-syntax-highlighting zsh-autosuggestions zsh-completions
 )
 
 source $ZSH/oh-my-zsh.sh

@@ -1,8 +1,8 @@
 sudo service ssh start
 sudo service nginx start
 sudo service php7.0-fpm start
-sudo service mysql start
-sudo service postgresql start
+#sudo service mysql start
+#sudo service postgresql start
 #sudo mongod &
 #sudo service redis-server start
 sudo mount -t drvfs '\\ENIHSYOU_NAS\Storage' /mnt/m

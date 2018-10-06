@@ -7,3 +7,6 @@
 [submodule "zsh/oh-my-zsh/plugins/zsh-autosuggestions"]
 	path = zsh/oh-my-zsh/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule "zsh/oh-my-zsh/plugins/zsh-completions"]
+	path = zsh/oh-my-zsh/plugins/zsh-completions
+	url = https://github.com/zsh-users/zsh-completions
