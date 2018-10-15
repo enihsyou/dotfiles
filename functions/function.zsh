@@ -1,5 +1,5 @@
 function install_prompt() {
-    read -q "?$1 Continue (Y/n)?" 
+    read -q "?$1 Continue (Y/n)?"
 }
 
 # Check the Existence of a Command in Bash and Zsh
