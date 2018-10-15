@@ -56,24 +56,19 @@ ZSH_CUSTOM=$ZSHDOT/zsh/oh-my-zsh
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git git-extras git-flow
-  encode64 gradle httpie jsontools urltools
-  colored-man-pages colorize cp extract
-  npm nvm yarn node
+  git #git-extras git-flow
+  encode64 gradle httpie urltools
+  colored-man-pages colorize extract
+  npm yarn node
   pip python docker
-  screen sudo osx
+  screen sudo
   dirhistory
-  powerlevel9k zsh-syntax-highlighting zsh-autosuggestions zsh-completions
+  powerlevel9k zsh-syntax-highlighting zsh-autosuggestions #zsh-completions
 )
-
-source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -82,11 +77,8 @@ source $ZSH/oh-my-zsh.sh
 #   export EDITOR='mvim'
 # fi
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
 # ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
+export SSH_KEY_PATH="~/.ssh/enihsyou"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -96,3 +88,5 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+source $ZSH/oh-my-zsh.sh

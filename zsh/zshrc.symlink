@@ -4,14 +4,8 @@ export ZSH=~/.oh-my-zsh
 # shortcut to this dotfiles path is $ZSHDOT
 export ZSHDOT=~/.dotfiles
 
-# your project folder that we can `c [tab]` to
-export PROJECTS=~/IntelliJProjects
-
 # set locale to chinese
 export LANG="zh_CN.UTF-8"
-
-# directories to be ignored in source process
-directory_ignored=(zsh/oh-my-zsh functions)
 
 # Stash your environment variables in ~/.localrc. This means they'll stay out
 # of your main dotfiles repository (which may be public, like this one), but
@@ -22,50 +16,27 @@ then
 fi
 
 # load dotfile functions
+# 提前source zsh-completions，提高启动速度
 fpath=(
   $ZSHDOT/functions
-  /usr/local/share/zsh/site-functions
+  $ZSHDOT/zsh/oh-my-zsh/plugins/zsh-completions/src
   $fpath
 )
-# autoload -U $ZSHDOT/functions/*(:t)
 
 # load helper functions
 source $ZSHDOT/functions/*.zsh
 
 # all of our zsh files
-typeset -U config_files
-config_files=($ZSHDOT/**/*.zsh)
-
-# filter out ignored folder
-for file in $directory_ignored
-do
-  pattern="$ZSHDOT/${file}/*"
-  config_files=(${config_files:#$~pattern})
-done
+config_files=(
+  $ZSHDOT/apache/*.zsh
+  $ZSHDOT/zsh/*.zsh
+)
 
 # load the path files
-for file in ${(M)config_files:#*/path.zsh}
+# here will also load oh-my-zsh file
+for file in ${config_files}
 do
   source $file
 done
-
-# load everything but the path and completion files
-# here will also load oh-my-zsh file, and leverage fpath
-for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
-do
-  source $file
-done
-
-# initialize autocomplete here, otherwise functions won't be loaded
-autoload -U compinit
-compinit
-
-# load every completion after autocomplete loads
-for file in ${(M)config_files:#*/completion.zsh}
-do
-  source $file
-done
-
-unset config_files
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

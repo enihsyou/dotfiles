@@ -1,7 +1,7 @@
 # sup yarn
 # https://yarnpkg.com
-exist yarnpkg &&
-export PATH="$PATH:`yarnpkg global bin`"
+#exist yarnpkg &&
+#export PATH="$PATH:`yarnpkg global bin`"
 
-exist pip3 &&
-export PATH="$PATH:$HOME/.local/bin"
+#exist pip3 &&
+#export PATH="$PATH:$HOME/.local/bin"
