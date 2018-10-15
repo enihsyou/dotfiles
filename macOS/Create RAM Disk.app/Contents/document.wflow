@@ -59,11 +59,16 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>COMMAND_STRING</key>
-					<string>diskutil erasevolume HFS+ 'RAM' `hdiutil attach -nomount ram://4194304`
-cd /Volumes/RAM/
+					<string>SIZE=2048
+DISKNAME=RAM
+DISK_ID=`hdiutil attach -nomount ram://$(( ${SIZE} * 1024 * 1024 / 512 ))`
+diskutil partitionDisk $DISK_ID GPT APFS "$DISKNAME" 0
+
+cd /Volumes/$DISKNAME
 mkdir -p Cache/Chrome
 mkdir -p Compile/Hypers
-mkdir -p Temp</string>
+mkdir -p Temp
+</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
 					<key>inputMethod</key>
@@ -176,7 +181,7 @@ mkdir -p Temp</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>309.000000:252.000000</string>
+				<string>309.000000:338.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>

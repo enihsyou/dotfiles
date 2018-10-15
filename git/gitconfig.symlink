@@ -1,35 +1,57 @@
 # Local/private config goes in the include
 [include]
-        path = ~/.gitconfig.local
+  path = ~/.gitconfig.local
+
 [hub]
-        protocol = https
+  protocol = https
+
 [alias]
-        co = checkout
-        promote = !$ZSHDOT/bin/git-promote
-        wtf     = !$ZSHDOT/bin/git-wtf
-        rank-contributors = !$ZSHDOT/bin/git-rank-contributors
-        count   = !git shortlog -sn
+  s = status
+  co = checkout
+  promote = !$ZSHDOT/bin/git-promote
+  wtf     = !$ZSHDOT/bin/git-wtf
+  rank-contributors = !$ZSHDOT/bin/git-rank-contributors
+  count   = !git shortlog -sn
+
 [color]
-        diff = auto
-        status = auto
-        branch = auto
-        ui = true
+  diff = auto
+  status = auto
+  branch = auto
+  ui = true
+# Diff-so-fancy settings
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
+[color "diff"]
+  meta = yellow
+  frag = magenta bold
+  commit = yellow bold
+  old = red bold
+  new = green bold
+  whitespace = red reverse
+
 [core]
-        excludesfile = ~/.gitignore
-        editor = vim
-        autocrlf = input
-        filemode = true
-[apply]
-        whitespace = nowarn
-[mergetool]
-        keepBackup = false
+  excludesfile = ~/.gitignore
+  editor = vim
+  autocrlf = input
+  filemode = true
+  pager = diff-so-fancy | less --tabs=4 -RFX
+
 [difftool]
-        prompt = false
-[help]
-        autocorrect = 1
+  prompt = false
+
 [push]
-        # See `git help config` (search for push.default)
-        # for more information on different options of the below setting.
-        #
-        # Setting to git 2.0 default to suppress warning message
-        default = simple
+  # See `git help config` (search for push.default)
+  # for more information on different options of the below setting.
+  #
+  # Setting to git 2.0 default to suppress warning message
+  default = simple
+
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+
