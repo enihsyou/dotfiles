@@ -124,3 +124,5 @@ source $ZSHDOT/functions/*.zsh
 
 export DISPLAY=localhost:0
 export PATH="$HOME/bin:$HOME/.local/bin:$HOME/.yarn/bin:$PATH"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
