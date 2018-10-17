@@ -26,6 +26,9 @@ fpath=(
 # load helper functions
 source $ZSHDOT/functions/*.zsh
 
+# load oh-my-zsh file
+source $ZSHDOT/zsh/oh-my-zsh.config.zsh
+
 # all of our zsh files
 config_files=(
   $ZSHDOT/apache/*.zsh
@@ -33,8 +36,7 @@ config_files=(
 )
 
 # load the path files
-# here will also load oh-my-zsh file
-for file in ${config_files}
+for file in ${config_files:#*/oh-my-zsh.config.zsh}
 do
   source $file
 done

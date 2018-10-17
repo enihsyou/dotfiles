@@ -16,3 +16,5 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 ! exist jq &&
 install_prompt "Will install jq." &&
 sudo apt install jq
+
+# install exa
