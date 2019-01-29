@@ -2,3 +2,9 @@
 host=localhost
 user=enihsyou
 password=enihsyou
+
+[mysqld]
+local-infile
+
+[mysql]
+loose-local-infile=1

@@ -61,9 +61,10 @@ plugins=(
   colored-man-pages colorize extract
   npm yarn node
   pip python docker
-  screen sudo
+  screen sudo autojump
   dirhistory
-  powerlevel9k zsh-syntax-highlighting zsh-autosuggestions #zsh-completions
+  powerlevel9k
+  zsh-syntax-highlighting zsh-autosuggestions #zsh-completions it has been sourced before source this script
 )
 
 # User configuration

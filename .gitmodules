@@ -10,3 +10,6 @@
 [submodule "zsh/oh-my-zsh/plugins/zsh-completions"]
 	path = zsh/oh-my-zsh/plugins/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions
+[submodule "tmux"]
+	path = tmux
+	url = https://github.com/gpakosz/.tmux.git
