@@ -33,6 +33,7 @@ source $ZSHDOT/zsh/oh-my-zsh.config.zsh
 
 # all of our zsh files
 config_files=(
+  $ZSHDOT/brew/*.zsh
   $ZSHDOT/apache/*.zsh
   $ZSHDOT/zsh/*.zsh
 )
