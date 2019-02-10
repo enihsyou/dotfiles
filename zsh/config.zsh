@@ -1,29 +1,44 @@
+# References http://zsh.sourceforge.net/Doc/Release/Options.html
+
 export CLICOLOR=true
 
+setopt PROMPT_SUBST
+setopt IGNORE_EOF
+# Scripts and Functions https://github.com/Neal/dotfiles/blob/master/zsh/setopt.zsh
+setopt MULTIOS            # perform implicit tees or cats when multiple redirections are attempted
+setopt LOCAL_OPTIONS      # allow functions to have local options
+setopt LOCAL_TRAPS        # allow functions to have local traps
+
+# Jobs https://github.com/mattjj/my-oh-my-zsh/blob/master/environment.zsh
+setopt LONG_LIST_JOBS     # List jobs in the long format by default.
+setopt AUTO_RESUME        # Attempt to resume existing job before creating a new process.
+setopt NOTIFY             # Report status of background jobs immediately.
+setopt NO_BG_NICE         # Don't run all background jobs at a lower priority.
+setopt NO_HUP             # Don't kill jobs on shell exit.
+# unsetopt CHECK_JOBS       # Don't report on jobs when shell exit.
+
+# History https://github.com/mattjj/my-oh-my-zsh/blob/master/history.zsh
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
+setopt APPEND_HISTORY            # Allow multiple terminal sessions to all append to one zsh command history
+setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
+setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
+setopt SHARE_HISTORY             # Share history between all sessions.
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
+setopt HIST_IGNORE_DUPS          # Don't record an entry that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS      # Delete old recorded entry if new entry is a duplicate.
+setopt HIST_IGNORE_SPACE         # Don't record an entry starting with a space.
+setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history file.
+setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
+setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
+setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
-setopt NO_BG_NICE # don't nice background tasks
-setopt NO_HUP
-setopt NO_LIST_BEEP
-setopt LOCAL_OPTIONS # allow functions to have local options
-setopt LOCAL_TRAPS # allow functions to have local traps
-setopt HIST_VERIFY
-setopt SHARE_HISTORY # share history between sessions ???
-setopt EXTENDED_HISTORY # add timestamps to history
-setopt PROMPT_SUBST
-setopt COMPLETE_IN_WORD
-setopt IGNORE_EOF
-
-setopt APPEND_HISTORY # adds history
-setopt INC_APPEND_HISTORY SHARE_HISTORY  # adds history incrementally and share it across sessions
-setopt HIST_IGNORE_ALL_DUPS  # don't record dupes in history
-setopt HIST_REDUCE_BLANKS
-
-# don't expand aliases _before_ completion has finished
-#   like: git comm-[tab]
-setopt complete_aliases
+# Completion https://github.com/Neal/dotfiles/blob/master/zsh/setopt.zsh
+setopt ALWAYS_TO_END             # When completing from the middle of a word, move the cursor to the end of the word
+setopt AUTO_MENU                 # show completion menu on successive tab press. needs unsetop menu_complete to work
+setopt AUTO_NAME_DIRS            # any parameter that is set to the absolute name of a directory immediately becomes a name for that directory
+setopt COMPLETE_IN_WORD          # if unset the cursor is set to the end of the word if completion is started
 
 bindkey '^[^[[D' backward-word
 bindkey '^[^[[C' forward-word
