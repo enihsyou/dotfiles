@@ -20,11 +20,11 @@ diskutil partitionDisk $DISK_ID GPT APFS "$DISKNAME" 0
 # Backup location
 IMAGE_LOCATION=${3-"/Users/enihsyou/Library/RAM.dmg"}
 if [ -e $IMAGE_LOCATION ]; then
-asr imagescan --source $IMAGE_LOCATION --nostream
-asr restore --source $IMAGE_LOCATION --target $BASE --erase --noprompt
+    # asr imagescan --source $IMAGE_LOCATION --nostream
+    asr restore --source $IMAGE_LOCATION --target $BASE --erase --noverify --noprompt
 else
-cd $BASE
-mkdir -p Cache/{Chrome,Firefox}
-mkdir -p Compile/Hypers
-mkdir -p Temp/{logs,HDFS/{namenode,datanode}}
+    cd $BASE
+    mkdir -p Cache/{Chrome,Firefox}
+    mkdir -p Compile
+    mkdir -p Temp/logs
 fi
