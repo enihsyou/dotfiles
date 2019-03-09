@@ -5,6 +5,7 @@
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="spaceship-prompt/spaceship"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -63,7 +64,8 @@ plugins=(
   pip python docker
   screen sudo autojump
   dirhistory
-  powerlevel9k
+  # powerlevel9k
+  spaceship-prompt
   zsh-syntax-highlighting zsh-autosuggestions #zsh-completions it has been sourced before source this script
 )
 
