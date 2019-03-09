@@ -20,7 +20,7 @@ if [[ "${TERM}" =~ "tmux" || "${TERM}" =~ "screen" ]]; then
     POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=( command_execution_time status )
 else
     POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=( os_icon ssh root_indicator dir_writable dir vcs )
-    POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=( status command_execution_time background_jobs time )
+    POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=( status command_execution_time background_jobs )
 fi
 POWERLEVEL9K_RAM_ELEMENTS="Both"
 

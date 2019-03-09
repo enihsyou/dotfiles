@@ -58,7 +58,7 @@ ZSH_CUSTOM=$ZSHDOT/zsh/oh-my-zsh
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git #git-extras git-flow
-  encode64 gradle httpie urltools
+  gradle httpie
   colored-man-pages colorize extract
   npm yarn node
   pip python docker
