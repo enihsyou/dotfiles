@@ -10,6 +10,7 @@ alias la@="la --extended"
 alias l="ls --oneline"
 
 alias ss="env HTTP_PROXY=\"http://localhost:10801\" HTTPS_PROXY=\"http://localhost:10801\" NO_PROXY=\"localhost,127.0.0.1,master,*.hypers.com,10.*\""
+alias sshypers="env HTTP_PROXY=\"socks5://10.0.7.80:1080\" HTTPS_PROXY=\"socks5://10.0.7.80:1080\" NO_PROXY=\"localhost,127.0.0.1,master,*.hypers.com,10.*\""
 alias revoke_proxy="unset HTTP_PROXY;unset HTTPS_PROXY"
 
 alias java8="env JAVA_HOME=$(/usr/libexec/java_home -v1.8)"
