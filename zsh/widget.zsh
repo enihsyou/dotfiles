@@ -80,6 +80,3 @@ bind-git-helper() {
 }
 bind-git-helper f b t h m
 unset -f bind-git-helper
-
-# The fuck
-eval "$(thefuck --alias)"
