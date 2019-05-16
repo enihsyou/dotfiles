@@ -3,7 +3,7 @@
 export CLICOLOR=true
 
 setopt PROMPT_SUBST
-setopt IGNORE_EOF
+#setopt IGNORE_EOF
 # Scripts and Functions https://github.com/Neal/dotfiles/blob/master/zsh/setopt.zsh
 setopt MULTIOS            # perform implicit tees or cats when multiple redirections are attempted
 setopt LOCAL_OPTIONS      # allow functions to have local options

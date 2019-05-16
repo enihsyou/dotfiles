@@ -35,6 +35,8 @@ source $ZSHDOT/zsh/oh-my-zsh.config.zsh
 config_files=(
   $ZSHDOT/brew/*.zsh
   $ZSHDOT/apache/*.zsh
+  $ZSHDOT/pip/*.zsh
+  $ZSHDOT/kerberos/*.zsh
   $ZSHDOT/zsh/*.zsh
 )
 

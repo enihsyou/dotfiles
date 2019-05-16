@@ -1,5 +1,5 @@
 alias lessjson="jq -C . | less -R"
-alias finder="open ${1-`PWD`}"
+alias finder="open \"\${1-\`PWD\`}\""
 
 alias ls="exa --classify --time-style=iso"
 alias ll="ls --long --header"
@@ -17,3 +17,5 @@ alias java8="env JAVA_HOME=$(/usr/libexec/java_home -v1.8)"
 alias java11="env JAVA_HOME=$(/usr/libexec/java_home -v11)"
 
 alias node8="env PATH=\"/usr/local/opt/node@8/bin:$PATH\""
+
+alias dk='docker'
