@@ -2,14 +2,11 @@
 host=localhost
 user=enihsyou
 password=enihsyou
+local-infile=on
 
 [mysqld]
-local-infile
-max_connections=16
+max_connections=32
 key_buffer_size=32M
 tmp_table_size=16M
 thread_stack=128k
 interactive_timeout=360
-
-[mysql]
-loose-local-infile=1
