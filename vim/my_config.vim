@@ -1,4 +1,3 @@
-set co=120
 set nu
 set gfn=FantasqueSansMono\ Nerd\ Font\ 13
 set lsp=-4

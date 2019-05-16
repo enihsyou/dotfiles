@@ -8,6 +8,7 @@ source ~/.vim_runtime/vimrcs/extended.vim
 try
 source ~/.vim_runtime/my_configs.vim
 catch
+echo 'error read config file'
 endtry
 
 set rtp+=/usr/local/opt/fzf
