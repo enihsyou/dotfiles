@@ -41,6 +41,9 @@ config_files=(
 # load the path files
 for file in ${config_files:#*/oh-my-zsh.config.zsh}
 do
+  if [[ $file == */_*.zsh ]]; then 
+    continue
+  fi
   source $file
 done
 
