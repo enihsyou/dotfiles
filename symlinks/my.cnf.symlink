@@ -2,7 +2,6 @@
 host=localhost
 user=enihsyou
 password=enihsyou
-local-infile=on
 
 [mysqld]
 max_connections=32

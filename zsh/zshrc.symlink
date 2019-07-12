@@ -32,25 +32,32 @@ source $ZSHDOT/functions/*.zsh
 source $ZSHDOT/zsh/oh-my-zsh.config.zsh
 
 # all of our zsh files
+setopt NO_NOMATCH
 config_files=(
   $ZSHDOT/brew/*.zsh
   $ZSHDOT/apache/*.zsh
   $ZSHDOT/pip/*.zsh
-  $ZSHDOT/kerberos/*.zsh
+#  $ZSHDOT/kerberos/*.zsh
+  $ZSHDOT/ruby/*.zsh
   $ZSHDOT/zsh/*.zsh
+
+  # 程序注入的环境变量
+  $ZSHDOT/vars/*.zsh
 )
+setopt NOMATCH
 
 # load the path files
-for file in ${config_files:#*/oh-my-zsh.config.zsh}
+for file in ${config_files}
 do
-  if [[ $file == */_*.zsh ]]; then 
+  if [[ $file == */_*.zsh ]]; then
+    continue
+  elif [[ $file == */oh-my-zsh.config.zsh ]]; then
     continue
   fi
-  source $file
+  [ -f $file ]  && source $file
 done
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
-export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh

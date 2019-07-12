@@ -1,4 +1,6 @@
 git/gitconfig.local.symlink
+vars/
+!vars/README.md
 
 ### macOS template
 # General

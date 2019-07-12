@@ -5,6 +5,12 @@ SPACESHIP_PROMPT_ORDER=(
   dir           # Current directory section
   host          # Hostname section
   git           # Git section (git_branch + git_status)
+  package       # Package version
+  node          # Node.js section
+  ruby          # Ruby section
+  docker        # Docker section
+  venv          # virtualenv section
+  pyenv         # Pyenv section
   exec_time
   jobs          # Background jobs indicator
   exit_code     # Exit code section
@@ -19,8 +25,8 @@ SPACESHIP_PROMPT_SEPARATE_LINE=true
 # Char
 # SPACESHIP_CHAR_SYMBOL='\uf155' # nf-fa-dollar
 SPACESHIP_CHAR_SUFFIX=' '
-# SPACESHIP_CHAR_SYMBOL_ROOT='\uf292' # nf-fa-hashtag
-# SPACESHIP_CHAR_SYMBOL_SECONDARY='➜ '
+# SPACESHIP_CHAR_SYMBOL_ROOT='\uf292 ' # nf-fa-hashtag
+SPACESHIP_CHAR_SYMBOL_ROOT='#' # nf-fa-hashtag
 
 # Time
 SPACESHIP_TIME_SHOW=true
@@ -37,6 +43,9 @@ SPACESHIP_GIT_SYMBOL='\uf09b '
 
 # Git branch
 SPACESHIP_GIT_BRANCH_PREFIX='\ue725 '
+
+# Docker
+SPACESHIP_DOCKER_VERBOSE=true
 
 # Execution time
 SPACESHIP_EXEC_TIME_ELAPSED=1
