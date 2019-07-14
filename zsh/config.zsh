@@ -1,3 +1,4 @@
+# ZSH config
 # References http://zsh.sourceforge.net/Doc/Release/Options.html
 
 export CLICOLOR=true
