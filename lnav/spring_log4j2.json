@@ -1,0 +1,76 @@
+{
+    "spring_log4j2": {
+        "title": "Spring Log4j2 Log",
+        "description": "Spring default Log4j2 log format.",
+        "url": "http://en.wikipedia.org/wiki/Common_Log_Format",
+        "multiline": false,
+        "regex": {
+            "spring-default": {
+                "pattern": "(?<timestamp>[\\d-]+ [\\d:,.]+)\\s+(?<level>\\w+) (?<pid>\\d+) --- \\[\\s*(?<thread>.+?)\\] (?<fqcn>.+?)\\s+: (?<body>.*)"
+            },
+            "spring-compact": {
+                "pattern": "(?:\\x1b.+m)?(?<timestamp>[\\d-]+ [\\d:,.]+) (?<level>\\w+) \\[\\s*(?<thread>.+?)\\] \\s*(?<fqcn>.+?) -(?:\\x1b.*?m)? (?<body>.*)"
+            }
+        },
+        "timestamp-field": "timestamp",
+        "timestamp-format": [
+            "%Y-%m-%d %H:%M:%S,%L",
+            "%Y-%m-%d %H:%M:%S.%L",
+            "%Y-%m-%d %H:%M:%S",
+            "%m-%d %H:%M:%S,%L",
+            "%m-%d %H:%M:%S.%L",
+            "%m-%d %H:%M:%S"
+        ],
+        "level-field": "level",
+        "body-field": "body",
+        "module-field": "fqcn",
+        "level": {
+            "error": "E(RROR)?",
+            "warning": "W(ARN)?",
+            "info": "I(NFO)?",
+            "debug": "D(EBUG)?",
+            "trace": "T(RACE)?"
+        },
+        "value": {
+            "pid": {
+                "kind": "integer",
+                "hidden": true
+            },
+            "thread": {
+                "kind": "string",
+                "hidden": true
+                // "rewriter": ";select regexp_replace(:thread, ' ', '')"
+            },
+            "fqcn": {
+                "kind": "string",
+                "identifier": true
+            },
+            "body": {
+                "kind": "string"
+            }
+        },
+        "highlights": {},
+        "sample": [
+            {
+                "line": "2019-10-13 23:56:57.880 TRACE 89088 --- [           main] o.s.c.e.PropertySourcesPropertyResolver  : Searching for key 'spring.mbeanDomain' in PropertySource ''",
+                "level": "trace"
+            },
+            {
+                "line": "2019-10-13 23:56:57.886  INFO 89088 --- [           main] com.enihsyou.playground.ApplicationKt    : Started ApplicationKt in 0.905 seconds (JVM running for 1.48)",
+                "level": "info"
+            },
+            {
+                "line": "10-11 09:25:45,012 I [      main] .n.d.p.DiscoveryJerseyProvider - Using XML decoding codec XStreamXml",
+                "level": "info"
+            },
+            {
+                "line": "\u001b[32m10-29 08:51:27,021 I [      main]            c.h.s.w.Application -\u001b[m The following profiles are active: docker,prd",
+                "level": "info"
+            },
+            {
+                "line": "11-01 06:07:23,903 W [080-exec-5] .a.j.DataSourceHealthIndicator - DataSource health check failed",
+                "level": "warning"
+            }
+        ]
+    }
+}

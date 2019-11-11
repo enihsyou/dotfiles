@@ -78,11 +78,11 @@ plugins=(
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='code'
+  export EDITOR='vim'
 fi
 
 # ssh
-export SSH_KEY_PATH="~/.ssh/enihsyou"
+export SSH_KEY_PATH="$HOME/.ssh/enihsyou"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
