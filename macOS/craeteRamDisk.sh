@@ -29,7 +29,7 @@ elif [ -e "$IMAGE_LOCATION" ]; then
     asr restore --source "$IMAGE_LOCATION" --target "$BASE" --erase --noverify --noprompt
 else
     cd "$BASE" || exit 1
-    mkdir -p Cache/{Chrome,Firefox}
+    mkdir -p Cache/{Chrome,IDEA,PHP}
     mkdir -p Compile
     mkdir -p Temp/logs
 fi
