@@ -4,8 +4,8 @@ user=enihsyou
 password=enihsyou
 
 [mysqld]
-max_connections=32
+max_connections=24
 key_buffer_size=32M
 tmp_table_size=16M
-thread_stack=128k
+thread_stack=160k
 interactive_timeout=360

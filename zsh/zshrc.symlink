@@ -1,3 +1,4 @@
+# zmodload zsh/zprof, to profile startup time
 export TERM="xterm-256color"
 
 # Path to your oh-my-zsh installation.
@@ -21,7 +22,7 @@ fi
 # 提前source zsh-completions，提高启动速度
 fpath=(
   $ZSHDOT/functions
-  $ZSHDOT/zsh/oh-my-zsh/plugins/zsh-completions/src
+  /usr/local/share/zsh-completions # managed by brew
   $fpath
 )
 
@@ -36,6 +37,7 @@ config_files=(
   $ZSHDOT/brew/*.zsh
   $ZSHDOT/apache/*.zsh
   $ZSHDOT/pip/*.zsh
+  $ZSHDOT/git/*.zsh
 #  $ZSHDOT/kerberos/*.zsh
   $ZSHDOT/ruby/*.zsh
   $ZSHDOT/zsh/*.zsh
@@ -56,12 +58,19 @@ do
   [ -f $file ]  && source $file
 done
 
+# load iTerm shell integration
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
+# load zsh auto suggestions plugin
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# load zsh syntax highlighting plugin
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# load broot initinalization script, after `broot --install`
+source ~/Library/Preferences/org.dystroy.broot/launcher/bash/br
+# load fzf initinalization script
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
-export PATH="$PATH:~/.local/bin"
-
 # make last command's exit code 0, related with spaceship-prompt's exit_code section
 echo >/dev/null
+# zprof, to profile startup time
+

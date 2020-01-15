@@ -26,7 +26,7 @@ ZSH_THEME="spaceship-prompt/spaceship"
 DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+# export UPDATE_ZSH_DAYS=1
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -67,7 +67,9 @@ plugins=(
   dirhistory
   # powerlevel9k
   spaceship-prompt
-  zsh-syntax-highlighting zsh-autosuggestions #zsh-completions it has been sourced before source this script
+  # zsh-syntax-highlighting, it has been moved out, managed by brew ever since.
+  # zsh-autosuggestions, it has been moved out, managed by brew ever since.
+  # zsh-completions it has been sourced before source this script and managed by brew.
 )
 
 # User configuration

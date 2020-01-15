@@ -126,3 +126,5 @@ source $ZSHDOT/bash/exports.sh
 export PATH="$HOME/bin:$HOME/.local/bin:$HOME/.yarn/bin:$PATH"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+source /Users/enihsyou/Library/Preferences/org.dystroy.broot/launcher/bash/br
