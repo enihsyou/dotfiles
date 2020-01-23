@@ -41,6 +41,7 @@ config_files=(
 #  $ZSHDOT/kerberos/*.zsh
   $ZSHDOT/ruby/*.zsh
   $ZSHDOT/zsh/*.zsh
+  $ZSHDOT/yarn/*.zsh
 
   # 程序注入的环境变量
   $ZSHDOT/vars/*.zsh
@@ -51,11 +52,13 @@ setopt NOMATCH
 for file in ${config_files}
 do
   if [[ $file == */_*.zsh ]]; then
+    # 跳过以 '_' 开头的文件，这些会被函数延迟加载
     continue
   elif [[ $file == */oh-my-zsh.config.zsh ]]; then
+    # 跳过已经被提前载入的文件
     continue
   fi
-  [ -f $file ]  && source $file
+  [ -f $file ] && source $file
 done
 
 # load iTerm shell integration
