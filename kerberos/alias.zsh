@@ -1,1 +1,1 @@
-alias enable_kerberos="source ~/.dotfiles/kerberos/_export.zsh"
+alias enable_kerberos="source $ZSHDOT/kerberos/_export.zsh"

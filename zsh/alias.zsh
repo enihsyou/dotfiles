@@ -27,7 +27,11 @@ linuxSpecific() {
 }
 
 darwinSpecific() {
+    # Java home of default version
+    alias java="env JAVA_HOME=$(/usr/libexec/java_home)"
+    # Java home of Java 8
     alias java8="env JAVA_HOME=$(/usr/libexec/java_home -v1.8)"
+    # Java home of Java 11
     alias java11="env JAVA_HOME=$(/usr/libexec/java_home -v11)"
 }
 
