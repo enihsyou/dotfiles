@@ -21,22 +21,3 @@ alias ss_revoke="unset HTTP_PROXY;unset HTTPS_PROXY;unset NO_PROXY"
 alias node8="env PATH=\"/usr/local/opt/node@8/bin:$PATH\""
 
 alias dk='docker'
-
-linuxSpecific() {
-    echo
-}
-
-darwinSpecific() {
-    # Java home of default version
-    alias java="env JAVA_HOME=$(/usr/libexec/java_home)"
-    # Java home of Java 8
-    alias java8="env JAVA_HOME=$(/usr/libexec/java_home -v1.8)"
-    # Java home of Java 11
-    alias java11="env JAVA_HOME=$(/usr/libexec/java_home -v11)"
-}
-
-case $(uname) in
-    Linux*)  linuxSpecific;;
-    Darwin*) darwinSpecific;;
-    *) echo "Unsupported OS type" >&2
-esac
