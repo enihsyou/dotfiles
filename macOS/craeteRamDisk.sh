@@ -45,7 +45,7 @@ else
     fi
 
     cd "$BASE" || exit 1
-    mkdir -p Cache/{Chrome,IDEA,PHP,Maven}
+    mkdir -p Cache/{Chrome,IDEA,PHP,Maven,Shell}
     # mkdir -p Compile
     # mkdir -p Temp/logs
 fi

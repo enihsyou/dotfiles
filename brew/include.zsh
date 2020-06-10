@@ -52,5 +52,5 @@ LDFLAGS="$(build_array_zsh 0 -L)"
 CPPFLAGS="$(build_array_zsh 1 -I)"
 #echo $LDFLAGS
 #echo $CPPFLAGS
-export LDFLAGS
-export CPPFLAGS
+#export LDFLAGS
+#export CPPFLAGS
