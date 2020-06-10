@@ -1,7 +1,9 @@
 # shellcheck disable=SC2139
 
+script_identifier="$0"
+
 linuxSpecific() {
-	echo "TODO: implement $0 in java/exports.sh"
+    echo "TODO: implement $0 in $script_identifier"
 }
 
 darwinSpecific() {
@@ -19,5 +21,5 @@ darwinSpecific() {
 case $(uname) in
 	Linux*) linuxSpecific ;;
 	Darwin*) darwinSpecific ;;
-	*) echo "Unsupported OS type" >&2 ;;
+	*) echo "Unsupported OS type in $script_identifier" >&2
 esac
