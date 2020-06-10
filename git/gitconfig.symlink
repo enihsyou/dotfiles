@@ -60,7 +60,7 @@
 [user]
 	name = Ryoka Kujo
 	email = s1131234@gmail.com
-	signingkey = B64697EDF5748AD399C86C24496810A30E30C569
+	signingkey = A6C3CC6D2438F762
 
 [commit]
 	gpgsign = true

@@ -20,8 +20,8 @@ setopt NO_HUP             # Don't kill jobs on shell exit.
 
 # History https://github.com/mattjj/my-oh-my-zsh/blob/master/history.zsh
 HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=100000
+SAVEHIST=100000
 setopt APPEND_HISTORY            # Allow multiple terminal sessions to all append to one zsh command history
 setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
 setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.

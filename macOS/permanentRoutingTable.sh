@@ -3,7 +3,8 @@
 # 然后相应修改列表元素
 services=(
 	"Wi-Fi"
-	"USB 10/100/1000 LAN"
+    "Ethernet"
+#	"USB 10/100/1000 LAN"
 )
 
 # 为这些子网添加路由信息
@@ -23,7 +24,7 @@ USE_LOCATION=
 # 子网掩码
 subnet_mask=255.255.0.0
 # 目标路由
-target_route=10.0.0.1
+target_route=10.0.4.1
 # 使用位置(macOS Location)，系统默认是Automatic
 location=Hypers
 

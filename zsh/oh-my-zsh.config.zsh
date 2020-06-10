@@ -59,11 +59,11 @@ ZSH_CUSTOM=$ZSHDOT/zsh/oh-my-zsh
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git #git-extras git-flow
-  gradle httpie
-  colored-man-pages colorize extract
+  gradle httpie cp
+  colored-man-pages extract
   npm yarn node
   pip python docker
-  screen sudo autojump
+  sudo autojump
   dirhistory
   # powerlevel9k
   spaceship-prompt
@@ -78,7 +78,7 @@ plugins=(
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
+  export EDITOR='code'
 else
   export EDITOR='vim'
 fi

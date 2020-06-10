@@ -21,13 +21,13 @@ fi
 # load dotfile functions
 # 提前source zsh-completions，提高启动速度
 fpath=(
-  $ZSHDOT/functions
+  # $ZSHDOT/functions
   /usr/local/share/zsh-completions # managed by brew
   $fpath
 )
 
 # load helper functions
-source $ZSHDOT/functions/*.zsh
+# source $ZSHDOT/functions/*.zsh
 # load oh-my-zsh file
 source $ZSHDOT/zsh/oh-my-zsh.config.zsh
 
@@ -73,6 +73,7 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/Library/Preferences/org.dystroy.broot/launcher/bash/br
 # load fzf initinalization script
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# load autojump initinalization script
 # [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
 # make last command's exit code 0, related with spaceship-prompt's exit_code section

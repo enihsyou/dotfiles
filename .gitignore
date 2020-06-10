@@ -46,3 +46,7 @@ Temporary Items
 
 # Jetbrains
 .idea/
+
+# aria2 certs
+/aria2/aria2.pem.crt
+/aria2/aria2.p12
