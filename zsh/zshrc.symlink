@@ -70,7 +70,7 @@ source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # load zsh syntax highlighting plugin
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # load broot initinalization script, after `broot --install`
-#source ~/Library/Preferences/org.dystroy.broot/launcher/bash/br
+# source ~/Library/Preferences/org.dystroy.broot/launcher/bash/br
 # load fzf initinalization script
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # load autojump initinalization script

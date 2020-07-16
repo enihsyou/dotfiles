@@ -4,7 +4,7 @@
 if [[ "$ITERM_PROFILE" == "Default" ]]; then
 	export BAT_THEME="Nord"
 else
-	export BAT_THEME="OneHalfDark"
+	export BAT_THEME="Nord"
 fi
 export BAT_PAGER="less -SR"
 
