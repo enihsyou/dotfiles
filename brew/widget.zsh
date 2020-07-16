@@ -2,7 +2,7 @@
 
 # bat
 if [[ "$ITERM_PROFILE" == "Default" ]]; then
-	export BAT_THEME="GitHub"
+	export BAT_THEME="Nord"
 else
 	export BAT_THEME="OneHalfDark"
 fi
