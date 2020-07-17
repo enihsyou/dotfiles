@@ -14,6 +14,3 @@ export PATH="/usr/local/opt/python@3.8/bin:$PATH"
 export NODEJS_HOME="/usr/local/opt/node"
 # export brew installed yarn home
 export YARN_HOME="/usr/local/opt/yarn"
-
-# export rbenv
-eval "$(rbenv init -)"
