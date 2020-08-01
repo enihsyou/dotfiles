@@ -4,6 +4,7 @@
 if (( $+commands[nali] )); then
 	# loading 'nali-cli' alias
 	alias dig='nali-dig'
+	# alias ping='nali-ping'
 	alias nslookup='nali-nslookup'
 	alias traceroute='nali-traceroute'
 fi

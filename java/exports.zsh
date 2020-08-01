@@ -8,9 +8,9 @@ linuxSpecific() {
 
 darwinSpecific() {
 	# Java home of Java 8
-	alias java8="env JAVA_HOME=$(/usr/libexec/java_home -v1.8)"
+	alias java8='env JAVA_HOME=$(/usr/libexec/java_home -v1.8)'
 	# Java home of Java 11
-	alias java11="env JAVA_HOME=$(/usr/libexec/java_home -v11)"
+	alias java11='env JAVA_HOME=$(/usr/libexec/java_home -v11)'
 
 	# this export is for GraalVM components,
 	# until GraalVM will be provided by HomeBrew.
