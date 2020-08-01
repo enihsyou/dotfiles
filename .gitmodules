@@ -1,6 +1,0 @@
-[submodule "zsh/oh-my-zsh/themes/powerlevel9k"]
-	path = zsh/oh-my-zsh/themes/powerlevel9k
-	url = https://github.com/bhilburn/powerlevel9k.git
-[submodule "zsh/oh-my-zsh/themes/spaceship-prompt"]
-	path = zsh/oh-my-zsh/themes/spaceship-prompt
-	url = https://github.com/denysdovhan/spaceship-prompt.git
