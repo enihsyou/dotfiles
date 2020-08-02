@@ -46,14 +46,14 @@ There's a few special files in the hierarchy.
   but still keep those autoloaded files in your home directory. These get
   symlinked in when you run `script/bootstrap`.
 
-## install
+## How to Install
 
-Run this:
 
-```sh
-git clone https://github.com/enihsyou/dotfiles.git ~/.dotfiles
+[dotbot] makes things easier, and by easier I mean three commands.
+```shell script
+git clone https://github.com/enihsyou/dotfiles.git ~/.dotfiles 
 cd ~/.dotfiles
-script/bootstrap
+./install
 ```
 
 This will symlink the appropriate files in `.dotfiles` to your home directory.
@@ -66,6 +66,8 @@ which sets up a few paths that'll be different on your particular machine.
 defaults, and so on. Tweak this script, and occasionally run `dot` from
 time to time to keep your environment fresh and up-to-date. You can find
 this script in `bin/`.
+
+[dotbot]: https://github.com/anishathalye/dotbot
 
 ## bugs
 

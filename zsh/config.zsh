@@ -7,6 +7,8 @@ setopt PROMPT_SUBST
 #setopt IGNORE_EOF
 # Scripts and Functions https://github.com/Neal/dotfiles/blob/master/zsh/setopt.zsh
 setopt MULTIOS            # perform implicit tees or cats when multiple redirections are attempted
+# preceding option would interferences with antibody - spaceship-prompt.
+# if that happens, comment out LOCAL_OPTIONS
 setopt LOCAL_OPTIONS      # allow functions to have local options
 setopt LOCAL_TRAPS        # allow functions to have local traps
 

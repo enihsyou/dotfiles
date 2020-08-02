@@ -1,0 +1,55 @@
+
+###########################################################
+# Packages
+# nicoulaj's moar completion files for zsh
+zsh-users/zsh-completions
+zsh-users/zsh-autosuggestions
+
+###########################################################
+# Oh-My-Zsh stuff
+robbyrussell/oh-my-zsh path:lib/completion.zsh
+robbyrussell/oh-my-zsh path:lib/clipboard.zsh
+robbyrussell/oh-my-zsh path:plugins/brew
+robbyrussell/oh-my-zsh path:plugins/git
+robbyrussell/oh-my-zsh path:plugins/gradle
+robbyrussell/oh-my-zsh path:plugins/httpie
+robbyrussell/oh-my-zsh path:plugins/cp
+robbyrussell/oh-my-zsh path:plugins/colored-man-pages
+robbyrussell/oh-my-zsh path:plugins/colorize
+robbyrussell/oh-my-zsh path:plugins/extract
+robbyrussell/oh-my-zsh path:plugins/npm
+robbyrussell/oh-my-zsh path:plugins/yarn
+robbyrussell/oh-my-zsh path:plugins/node
+robbyrussell/oh-my-zsh path:plugins/pip
+robbyrussell/oh-my-zsh path:plugins/python
+robbyrussell/oh-my-zsh path:plugins/docker
+robbyrussell/oh-my-zsh path:plugins/sudo
+robbyrussell/oh-my-zsh path:plugins/autojump
+
+###########################################################
+# Plugins
+
+# https://github.com/reegnz/jq-zsh-plugin
+reegnz/jq-zsh-plugin
+
+# https://github.com/MichaelAquilina/zsh-you-should-use
+MichaelAquilina/zsh-you-should-use
+
+###########################################################
+# Theme
+
+denysdovhan/spaceship-prompt
+
+# Syntax highlighting bundle.
+zsh-users/zsh-syntax-highlighting
+# ZSH port of Fish shell's history search feature.
+zsh-users/zsh-history-substring-search
+
+###########################################################
+# Post configuration
+~/.dotfiles/ruby/
+~/.dotfiles/pip/
+~/.dotfiles/java/
+~/.dotfiles/brew/
+~/.dotfiles/zsh/
+~/.dotfiles/zsh/themes/spaceship-prompt/

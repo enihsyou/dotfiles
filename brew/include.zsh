@@ -48,8 +48,8 @@ function build_array_zsh() {
 #  echo "${(pj:$sep:)output}"
 }
 
-LDFLAGS="$(build_array_zsh 0 -L)"
-CPPFLAGS="$(build_array_zsh 1 -I)"
+# LDFLAGS="$(build_array_zsh 0 -L)"
+# CPPFLAGS="$(build_array_zsh 1 -I)"
 #echo $LDFLAGS
 #echo $CPPFLAGS
 #export LDFLAGS

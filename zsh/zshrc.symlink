@@ -1,11 +1,15 @@
-# zmodload zsh/zprof, to profile startup time
+# to profile zsh startup time, uncomment preceding command,
+# and also the last command in the file.
+# zmodload zsh/zprof
+
+###########################################################
+# Pre configuration
+
+# Enable 256bit color
 export TERM="xterm-256color"
 
-# Path to your oh-my-zsh installation.
-export ZSH=~/.oh-my-zsh
-
-# shortcut to this dotfiles path is $ZSHDOT
-export ZSHDOT=~/.dotfiles
+# Path shortcut to this dotfiles path is $DOTFILES
+export DOTFILES=~/.dotfiles
 
 # set locale to chinese
 export LANG="zh_CN.UTF-8"
@@ -13,70 +17,40 @@ export LANG="zh_CN.UTF-8"
 # Stash your environment variables in ~/.localrc. This means they'll stay out
 # of your main dotfiles repository (which may be public, like this one), but
 # you'll have access to them in your scripts.
-if [[ -a ~/.localrc ]]
-then
+if [[ -a ~/.localrc ]]; then
   source ~/.localrc
 fi
 
-# load dotfile functions
-# 提前source zsh-completions，提高启动速度
-fpath=(
-  # $ZSHDOT/functions
-  /usr/local/share/zsh-completions # managed by brew
-  $fpath
-)
+# Loads antibody
+# source <(antibody init)
 
-# load helper functions
-# source $ZSHDOT/functions/*.zsh
-# load oh-my-zsh file
-source $ZSHDOT/zsh/oh-my-zsh.config.zsh
+# Speed up zsh compinit by only checking cache once a day.
+# https://gist.github.com/ctechols/ca1035271ad134841284
+# Some relevant information from zsh manpages:
+# -D ........... disables .zcompudump file
+# -d ........... used to set an alternative name to .zcompdump
+# -i ........... accept insecure files
+# -C ........... ignore checking at all
+autoload -Uz compinit
+if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+	# update the timestamp on compdump file
+    compinit;
+else
+	# omit the check for new functions since we updated today
+    compinit -C;
+fi;
 
-# all of our zsh files
-setopt NO_NOMATCH
-config_files=(
-  $ZSHDOT/brew/*.zsh
-  $ZSHDOT/apache/*.zsh
-  $ZSHDOT/pip/*.zsh
-  $ZSHDOT/git/*.zsh
-  $ZSHDOT/java/*.zsh
-#  $ZSHDOT/kerberos/*.zsh
-  $ZSHDOT/ruby/*.zsh
-  $ZSHDOT/zsh/*.zsh
-  $ZSHDOT/yarn/*.zsh
-  $ZSHDOT/go/*.zsh
+# Load antibody bundles
+# antibody bundle < $DOTFILES/zsh/zsh_plugins.txt
+source $HOME/.zsh_plugins.sh
 
-  # 程序注入的环境变量
-  $ZSHDOT/vars/*.zsh
-)
-setopt NOMATCH
+# to profile zsh startup time, uncomment preceding command
+# and also the first command in the file.
+# zprof
 
-# load the path files
-for file in ${config_files}
-do
-  if [[ $file == */_*.zsh ]]; then
-    # 跳过以 '_' 开头的文件，这些会被函数延迟加载
-    continue
-  elif [[ $file == */oh-my-zsh.config.zsh ]]; then
-    # 跳过已经被提前载入的文件
-    continue
-  fi
-  [ -f $file ] && source $file
-done
 
-# load iTerm shell integration
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-# load zsh auto suggestions plugin
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-# load zsh syntax highlighting plugin
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# load broot initinalization script, after `broot --install`
-# source ~/Library/Preferences/org.dystroy.broot/launcher/bash/br
 # load fzf initinalization script
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# load autojump initinalization script
-# [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
 # make last command's exit code 0, related with spaceship-prompt's exit_code section
-echo >/dev/null
-# zprof, to profile startup time
-
+# echo >/dev/null
