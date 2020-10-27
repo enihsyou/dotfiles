@@ -33,7 +33,7 @@ robbyrussell/oh-my-zsh path:plugins/autojump
 reegnz/jq-zsh-plugin
 
 # https://github.com/MichaelAquilina/zsh-you-should-use
-MichaelAquilina/zsh-you-should-use
+#MichaelAquilina/zsh-you-should-use
 
 ###########################################################
 # Theme
@@ -43,7 +43,7 @@ denysdovhan/spaceship-prompt
 # Syntax highlighting bundle.
 zsh-users/zsh-syntax-highlighting
 # ZSH port of Fish shell's history search feature.
-zsh-users/zsh-history-substring-search
+#zsh-users/zsh-history-substring-search
 
 ###########################################################
 # Post configuration

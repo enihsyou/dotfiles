@@ -1,6 +1,18 @@
+
+###########################################################
 # to profile zsh startup time, uncomment preceding command,
 # and also the last command in the file.
-# zmodload zsh/zprof
+#zmodload zsh/zprof
+#zmodload zsh/datetime
+#setopt PROMPT_SUBST
+#PS4='+$EPOCHREALTIME %N:%i> '
+
+#logfile=$(mktemp zsh_profile.7Pw1Ny0G)
+#echo "Logging to $logfile"
+#exec 3>&2 2>$logfile
+#setopt XTRACE
+# speed up
+export ZSH_DISABLE_COMPFIX="true"
 
 ###########################################################
 # Pre configuration
@@ -21,7 +33,7 @@ if [[ -a ~/.localrc ]]; then
   source ~/.localrc
 fi
 
-# Loads antibody
+# Loads antibody dynamically
 # source <(antibody init)
 
 # Speed up zsh compinit by only checking cache once a day.
@@ -31,22 +43,30 @@ fi
 # -d ........... used to set an alternative name to .zcompdump
 # -i ........... accept insecure files
 # -C ........... ignore checking at all
+# EXTENDED_GLOB option is required,
+# see https://stackoverflow.com/a/41508466/5277711
+setopt extendedglob
 autoload -Uz compinit
-if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
 	# update the timestamp on compdump file
-    compinit;
+  echo -e "\e[94m[\e[0m Regenerate Completions \e[94m]\e[0m"
+  compinit
 else
 	# omit the check for new functions since we updated today
-    compinit -C;
+  compinit -C
 fi;
+unsetopt extendedglob
 
-# Load antibody bundles
-# antibody bundle < $DOTFILES/zsh/zsh_plugins.txt
+# Loads antibody bundles statically
+# use command below to generate static plugin file, and uncomment line with source.
+# antibody bundle < $DOTFILES/zsh/zsh_plugins.txt > $HOME/.zsh_plugins.sh
 source $HOME/.zsh_plugins.sh
 
 # to profile zsh startup time, uncomment preceding command
 # and also the first command in the file.
-# zprof
+#zprof
+#unsetopt XTRACE
+#exec 2>&3 3>&-
 
 
 # load fzf initinalization script
