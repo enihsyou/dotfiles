@@ -7,5 +7,5 @@ password=enihsyou
 max_connections=24
 key_buffer_size=32M
 tmp_table_size=16M
-thread_stack=160k
+thread_stack=256k
 interactive_timeout=360
