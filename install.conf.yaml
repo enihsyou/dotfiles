@@ -1,14 +1,18 @@
+# dotbot configuration
+
 - defaults:
     link:
       create: true
       relink: true
     shell:
       stdout: true
+      quiet: true
 
 - link:
     ~/.zshrc: zsh/zshrc.symlink
     ~/.bashrc: bash/bashrc.symlink
     ~/.vimrc: vim/vimrc.symlink
+    ~/.gitconfig: git/gitconfig.symlink
 
 - create:
     - ~/.local/bin
