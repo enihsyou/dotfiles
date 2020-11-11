@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 
 ###########################################################
 # to profile zsh startup time, uncomment preceding command,
@@ -67,10 +68,6 @@ source $HOME/.zsh_plugins.sh
 #zprof
 #unsetopt XTRACE
 #exec 2>&3 3>&-
-
-
-# load fzf initinalization script
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # make last command's exit code 0, related with spaceship-prompt's exit_code section
 # echo >/dev/null

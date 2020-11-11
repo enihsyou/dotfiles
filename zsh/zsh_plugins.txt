@@ -25,6 +25,7 @@ robbyrussell/oh-my-zsh path:plugins/python
 robbyrussell/oh-my-zsh path:plugins/docker
 robbyrussell/oh-my-zsh path:plugins/sudo
 robbyrussell/oh-my-zsh path:plugins/autojump
+robbyrussell/oh-my-zsh path:plugins/pyenv
 
 ###########################################################
 # Plugins
