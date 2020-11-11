@@ -8,10 +8,12 @@ SPACESHIP_PROMPT_ORDER=(
   package       # Package version
   node          # Node.js section
   ruby          # Ruby section
+  golang        # Go section
   docker        # Docker section
   venv          # virtualenv section
   pyenv         # Pyenv section
-  exec_time
+  kubectl       # Kubectl context section
+  exec_time     # Execution time
   jobs          # Background jobs indicator
   exit_code     # Exit code section
   line_sep      # Line break
