@@ -18,5 +18,27 @@
     - ~/.local/bin
 
 - shell:
-  - command: '[ $(uname) = Darwin ] && brew install antibody'
-    description: Install antibody on macOS
+  - command: |-
+      if ! command -v brew &> /dev/null; then
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+      fi
+    description: Install homebrew
+
+  - command: |-
+      if ! command -v zsh &> /dev/null; then
+        brew install antibody
+        antibody bundle < ${DOTFILES:-$HOME/.dotfiles}/zsh/zsh_plugins.txt > $HOME/.zsh_plugins.sh
+        source ~/.zshrc
+      fi
+    description: Install antibody
+
+  - command: |-
+      if ! [ -f ~/.vim_runtime/vimrcs/basic.vim ]; then
+        git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
+        sh ~/.vim_runtime/install_awesome_vimrc.sh
+      fi
+    description: Install awesome vimrcs
+
+  - command: |-
+      brew install git-delta jq exa tldr bat autojump
+    description: Install brew formulae
