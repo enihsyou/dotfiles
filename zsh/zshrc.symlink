@@ -49,11 +49,13 @@ fi
 setopt extendedglob
 autoload -Uz compinit
 if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
-	# update the timestamp on compdump file
+  # update the timestamp on compdump file
   echo -e "\e[94m[\e[0m Regenerate Completions \e[94m]\e[0m"
   compinit
+  # update last modify timestamp.
+  touch ~/.zcompdump
 else
-	# omit the check for new functions since we updated today
+  # omit the check for new functions since we updated today
   compinit -C
 fi;
 unsetopt extendedglob

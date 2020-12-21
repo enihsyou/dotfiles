@@ -51,7 +51,7 @@ There's a few special files in the hierarchy.
 
 [dotbot] makes things easier, and by easier I mean three commands.
 ```shell script
-git clone https://github.com/enihsyou/dotfiles.git ~/.dotfiles 
+git clone https://github.com/enihsyou/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 ./install
 ```
@@ -68,6 +68,12 @@ time to time to keep your environment fresh and up-to-date. You can find
 this script in `bin/`.
 
 [dotbot]: https://github.com/anishathalye/dotbot
+
+## Critical Enverionment Variables
+
+Export these variable in `~/.localrc` to better guide scripts.
+
+1. `HOST_SITE` A name indicate where the host located.
 
 ## bugs
 

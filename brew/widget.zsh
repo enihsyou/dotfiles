@@ -1,9 +1,11 @@
 # configuration setup file for brew installed programs.
 
 # bat
-if [[ "$ITERM_PROFILE" == "Default" ]]; then
-	export BAT_THEME="Nord"
-else
+if [[ "$TERM_PROGRAM" == "Apple_Terminal" ]]; then
+	export BAT_THEME="ansi-light"
+elif [[ "$TERM_PROGRAM" == "vscode" ]]; then
+	export BAT_THEME="ansi-light"
+elif [[ "$ITERM_PROFILE" == "Default" ]]; then
 	export BAT_THEME="Nord"
 fi
 export BAT_PAGER="less -SR"

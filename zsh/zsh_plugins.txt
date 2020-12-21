@@ -12,20 +12,17 @@ robbyrussell/oh-my-zsh path:lib/clipboard.zsh
 robbyrussell/oh-my-zsh path:plugins/brew
 robbyrussell/oh-my-zsh path:plugins/git
 robbyrussell/oh-my-zsh path:plugins/gradle
-robbyrussell/oh-my-zsh path:plugins/httpie
 robbyrussell/oh-my-zsh path:plugins/cp
 robbyrussell/oh-my-zsh path:plugins/colored-man-pages
-robbyrussell/oh-my-zsh path:plugins/colorize
 robbyrussell/oh-my-zsh path:plugins/extract
-robbyrussell/oh-my-zsh path:plugins/npm
-robbyrussell/oh-my-zsh path:plugins/yarn
-robbyrussell/oh-my-zsh path:plugins/node
 robbyrussell/oh-my-zsh path:plugins/pip
-robbyrussell/oh-my-zsh path:plugins/python
+robbyrussell/oh-my-zsh path:plugins/pyenv
 robbyrussell/oh-my-zsh path:plugins/docker
 robbyrussell/oh-my-zsh path:plugins/sudo
 robbyrussell/oh-my-zsh path:plugins/autojump
-robbyrussell/oh-my-zsh path:plugins/pyenv
+robbyrussell/oh-my-zsh path:plugins/redis-cli
+robbyrussell/oh-my-zsh path:plugins/shell-proxy
+robbyrussell/oh-my-zsh path:plugins/zsh-interactive-cd
 
 ###########################################################
 # Plugins
@@ -51,6 +48,7 @@ zsh-users/zsh-syntax-highlighting
 ~/.dotfiles/ruby/
 ~/.dotfiles/pip/
 ~/.dotfiles/java/
+~/.dotfiles/go/
 ~/.dotfiles/brew/
 ~/.dotfiles/zsh/
 ~/.dotfiles/zsh/themes/spaceship-prompt/

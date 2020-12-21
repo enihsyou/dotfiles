@@ -13,6 +13,7 @@
     ~/.bashrc: bash/bashrc.symlink
     ~/.vimrc: vim/vimrc.symlink
     ~/.gitconfig: git/gitconfig.symlink
+    ~/.config/proxy: zsh/shell-proxy.conf
 
 - create:
     - ~/.local/bin

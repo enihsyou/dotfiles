@@ -40,6 +40,7 @@
 
 [delta]
     features = line-numbers decorations
+    syntax-theme = GitHub
 
 [difftool]
   prompt = false

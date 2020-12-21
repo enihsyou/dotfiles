@@ -7,18 +7,3 @@ listening() {
         echo "Usage: listening [pattern]"
     fi
 }
-
-proxy() {
-    local PROXY_SERVER="http://bj-rd-proxy.byted.org:3128"
-    if [[ "$1" == "on" ]]; then
-        export https_proxy="$PROXY_SERVER"
-        export http_proxy="$PROXY_SERVER"
-        export no_proxy="*.byted.org"
-        echo "Proxy On"
-    else
-        unset https_proxy
-        unset http_proxy
-        unset no_proxy
-        echo "Proxy Off"
-    fi
-}
