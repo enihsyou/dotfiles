@@ -1,3 +1,5 @@
+# define custom functions which can be used in shell(specifically zsh) runtime.
+
 listening() {
     if [ $# -eq 0 ]; then
         lsof -iTCP -sTCP:LISTEN -n -P

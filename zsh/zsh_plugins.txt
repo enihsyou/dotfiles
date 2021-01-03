@@ -16,7 +16,6 @@ robbyrussell/oh-my-zsh path:plugins/cp
 robbyrussell/oh-my-zsh path:plugins/colored-man-pages
 robbyrussell/oh-my-zsh path:plugins/extract
 robbyrussell/oh-my-zsh path:plugins/pip
-robbyrussell/oh-my-zsh path:plugins/pyenv
 robbyrussell/oh-my-zsh path:plugins/docker
 robbyrussell/oh-my-zsh path:plugins/sudo
 robbyrussell/oh-my-zsh path:plugins/autojump
@@ -51,4 +50,5 @@ zsh-users/zsh-syntax-highlighting
 ~/.dotfiles/go/
 ~/.dotfiles/brew/
 ~/.dotfiles/zsh/
+~/.dotfiles/zsh/plugins
 ~/.dotfiles/zsh/themes/spaceship-prompt/

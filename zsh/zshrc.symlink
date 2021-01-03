@@ -1,31 +1,37 @@
 #!/usr/bin/env zsh
+# zsh interactive environment setup script.
 
 ###########################################################
-# to profile zsh startup time, uncomment preceding command,
-# and also the last command in the file.
-#zmodload zsh/zprof
-#zmodload zsh/datetime
-#setopt PROMPT_SUBST
-#PS4='+$EPOCHREALTIME %N:%i> '
+# to profile zsh startup time, set PROF_MODE env variable,
+# 0          - means no profile will be applied.
+# 1 or zprof - means profile with zsh/zprof module
+# 2 or trace - means dump execution trace with XTRACE opt.
+case ${PROF_MODE:-0} in
+0)
+	__prof_func() { return ; } ;;
+1|"zprof")
+	zmodload zsh/zprof
+	__prof_func() { zprof ; } ;;
+2|"trace")
+	zmodload zsh/datetime
+	setopt PROMPT_SUBST
+	PS4='+$EPOCHREALTIME %N:%i> '
 
-#logfile=$(mktemp zsh_profile.7Pw1Ny0G)
-#echo "Logging to $logfile"
-#exec 3>&2 2>$logfile
-#setopt XTRACE
-# speed up
+	logfile=$(mktemp zsh_profile)
+	echo "Logging to $logfile"
+	exec 3>&2 2>$logfile
+	setopt XTRACE
+	__prof_func() { unsetopt XTRACE; exec 2>&3 3>&- ; } ;;
+esac
+
+# explict disable compaudit check in order to boot startup time.
 export ZSH_DISABLE_COMPFIX="true"
 
 ###########################################################
 # Pre configuration
 
-# Enable 256bit color
-export TERM="xterm-256color"
-
 # Path shortcut to this dotfiles path is $DOTFILES
 export DOTFILES=~/.dotfiles
-
-# set locale to chinese
-export LANG="zh_CN.UTF-8"
 
 # Stash your environment variables in ~/.localrc. This means they'll stay out
 # of your main dotfiles repository (which may be public, like this one), but
@@ -38,38 +44,55 @@ fi
 # source <(antibody init)
 
 # Speed up zsh compinit by only checking cache once a day.
+# On slow systems, checking the cached .zcompdump file to see if it must be
+# regenerated adds a noticable delay to zsh startup.  This little hack restricts
+# it to once a day.  It should be pasted into your own completion file.
+#
+# The globbing is a little complicated here:
+# - '#q' is an explicit glob qualifier that makes globbing work within zsh's [[ ]] construct.
+# - 'N' makes the glob pattern evaluate to nothing when it doesn't match (rather than throw a globbing error)
+# - '.' matches "regular files"
+# - 'mh+24' matches files (or directories or whatever) that are older than 24 hours.
 # https://gist.github.com/ctechols/ca1035271ad134841284
-# Some relevant information from zsh manpages:
+# Some relevant information from zsh manpages for 'compinit':
 # -D ........... disables .zcompudump file
 # -d ........... used to set an alternative name to .zcompdump
 # -i ........... accept insecure files
 # -C ........... ignore checking at all
 # EXTENDED_GLOB option is required,
 # see https://stackoverflow.com/a/41508466/5277711
-setopt extendedglob
+# see http://zsh.sourceforge.net/Doc/Release/Expansion.html#Glob-Qualifiers
 autoload -Uz compinit
-if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
-  # update the timestamp on compdump file
-  echo -e "\e[94m[\e[0m Regenerate Completions \e[94m]\e[0m"
+# shellcheck disable=SC1123,SC1072,SC1073,SC1089,SC1083
+() {
+if [[ $# -gt 0 ]]; then
+	zcompdump=${ZDOTDIR:-$HOME}/.zcompdump
+	# update the timestamp on compdump fileA
+	echo -e "\e[94m[\e[0m Regenerate 'compinit' Completions \e[94m]\e[0m"
   compinit
-  # update last modify timestamp.
-  touch ~/.zcompdump
+  compdump -d "$zcompdump"
+  # Compile zcompdump, if modified, to increase startup speed.
+  if [[ -s "$zcompdump" && (! -s "${zcompdump}.zwc" || "$zcompdump" -nt "${zcompdump}.zwc") ]]; then
+  	echo 'compile'
+    zcompile "$zcompdump"
+  fi
 else
   # omit the check for new functions since we updated today
   compinit -C
-fi;
-unsetopt extendedglob
+fi
+} ${ZDOTDIR:-$HOME}/.zcompdump(N.mh+24)
 
 # Loads antibody bundles statically
 # use command below to generate static plugin file, and uncomment line with source.
 # antibody bundle < $DOTFILES/zsh/zsh_plugins.txt > $HOME/.zsh_plugins.sh
 source $HOME/.zsh_plugins.sh
 
-# to profile zsh startup time, uncomment preceding command
-# and also the first command in the file.
-#zprof
-#unsetopt XTRACE
-#exec 2>&3 3>&-
+# profile zsh startup time
+__prof_func
+unset -f __prof_func
 
 # make last command's exit code 0, related with spaceship-prompt's exit_code section
+# but it seems that non-zero exit code comes from command above (not related with
+# code at current version, that was fixed), replace '[ checks ] && function'
+# with if statement will resolve this problem and no longer need this hack.
 # echo >/dev/null
