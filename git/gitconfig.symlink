@@ -38,9 +38,17 @@
   quotepath = false
   safecrlf = warn
 
+# Delta settings https://github.com/dandavison/delta
 [delta]
     features = line-numbers decorations
     syntax-theme = GitHub
+  #plus-color = "#012800"
+  #minus-color = "#340001"
+  syntax-theme = OneHalfDark
+  line-numbers = true
+[interactive]
+  diffFilter = delta --color-only
+
 
 [difftool]
   prompt = false

@@ -5,20 +5,40 @@
       create: true
       relink: true
     shell:
-      stdout: true
-      quiet: true
+      stdout: true # show output from stdout
+      stderr: true # show error output from stderr
+      quiet: true  # display command description rather than statement itself.
 
 - link:
     ~/.zshrc: zsh/zshrc.symlink
     ~/.bashrc: bash/bashrc.symlink
     ~/.vimrc: vim/vimrc.symlink
     ~/.gitconfig: git/gitconfig.symlink
+    ~/.gitignore: git/gitignore.symlink
     ~/.config/proxy: zsh/shell-proxy.conf
 
 - create:
     - ~/.local/bin
 
 - shell:
+  - command: |-
+      if $(uname) != "Darwin"; then
+        return
+      fi
+
+      if ! [ -f ~/.bash_sessions_disable ]; then
+        touch ~/.bash_sessions_disable
+      fi
+
+      if ! grep --quiet --no-messages "SHELL_SESSIONS_DISABLE=1" ~/.zshenv; then
+        cat <<- EOF >> ~/.zshenv # please preserve tab when editing
+      # Disable session save/restore mechanism
+      # https://stackoverflow.com/questions/32418438/how-can-i-disable-bash-sessions-in-os-x-el-capitan
+      SHELL_SESSIONS_DISABLE=1
+      EOF
+      fi
+    description: Disable session save/restore mechanism
+
   - command: |-
       if ! command -v brew &> /dev/null; then
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
@@ -41,5 +61,9 @@
     description: Install awesome vimrcs
 
   - command: |-
-      brew install git-delta jq exa tldr bat autojump
-    description: Install brew formulae
+      brew install tldr exa bat autojump
+    description: Install must have brew formulae
+
+  - command: |-
+      brew install jq hexyl mycli lnav aria2 httpie git-delta ag fzf
+    description: Install optional brew formulae
