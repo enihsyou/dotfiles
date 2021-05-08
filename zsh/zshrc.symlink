@@ -73,7 +73,6 @@ if [[ $# -gt 0 ]]; then
   compdump -d "$zcompdump"
   # Compile zcompdump, if modified, to increase startup speed.
   if [[ -s "$zcompdump" && (! -s "${zcompdump}.zwc" || "$zcompdump" -nt "${zcompdump}.zwc") ]]; then
-  	echo 'compile'
     zcompile "$zcompdump"
   fi
 else

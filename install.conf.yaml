@@ -15,7 +15,7 @@
     ~/.vimrc: vim/vimrc.symlink
     ~/.gitconfig: git/gitconfig.symlink
     ~/.gitignore: git/gitignore.symlink
-    ~/.config/proxy: zsh/shell-proxy.conf
+    ~/.config/proxy: zsh/shell-proxy
 
 - create:
     - ~/.local/bin

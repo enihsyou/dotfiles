@@ -1,4 +1,8 @@
 # https://denysdovhan.com/spaceship-prompt/docs/Options.html
+# shellcheck disable=SC2034
+
+# manually set root folder, fix later.
+#SPACESHIP_ROOT=/Users/enihsyou/GitHub/spaceship-prompt
 
 SPACESHIP_PROMPT_ORDER=(
   user          # Username section
@@ -13,6 +17,7 @@ SPACESHIP_PROMPT_ORDER=(
   venv          # virtualenv section
   pyenv         # Pyenv section
   kubectl       # Kubectl context section
+#  proxy         # My proxy plugin
   exec_time     # Execution time
   jobs          # Background jobs indicator
   exit_code     # Exit code section

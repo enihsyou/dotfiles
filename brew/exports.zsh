@@ -3,17 +3,21 @@
 
 export HOMEBREW_BAT=1
 export HOMEBREW_CURLRC=1
+export HOMEBREW_CURL_RETRIES=0
 #export HOMEBREW_VERBOSE=1
 #export HOMEBREW_VERBOSE_USING_DOTS=1
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_AUTO_UPDATE=1
-export HOMEBREW_CLEANUP_MAX_AGE_DAYS=45
+export HOMEBREW_CLEANUP_MAX_AGE_DAYS=21
+export HOMEBREW_CLEANUP_PERIODIC_FULL_DAYS=10
 export HOMEBREW_DISPLAY_INSTALL_TIMES=1
 export HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK=1
-export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles
-export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
-export HOMEBREW_BREW_GIT_REMOTE=https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
-export HOMEBREW_CORE_GIT_REMOTE=https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git
+
+if [[ "$(uname -s)" == "Linux" ]]; then BREW_TYPE="linuxbrew"; else BREW_TYPE="homebrew"; fi
+export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
+export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/${BREW_TYPE}-core.git"
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/${BREW_TYPE}-bottles"
+unset BREW_TYPE
 
 if [ "$(uname)" = Darwin ]; then
 # export brew linked binary

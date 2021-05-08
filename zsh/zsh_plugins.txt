@@ -27,7 +27,7 @@ robbyrussell/oh-my-zsh path:plugins/zsh-interactive-cd
 # Plugins
 
 # https://github.com/reegnz/jq-zsh-plugin
-reegnz/jq-zsh-plugin
+#reegnz/jq-zsh-plugin
 
 # https://github.com/MichaelAquilina/zsh-you-should-use
 #MichaelAquilina/zsh-you-should-use

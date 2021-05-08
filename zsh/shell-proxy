@@ -8,4 +8,6 @@ if [[ "$HOST_SITE" == "bytedance" ]]; then
   echo "http://bj-rd-proxy.byted.org:3128"
 elif [[ -n "$PROXY_SOCKS" ]]; then
   echo "socks5://localhost:10800"
+else
+  echo "no proxy applied" >&2
 fi
