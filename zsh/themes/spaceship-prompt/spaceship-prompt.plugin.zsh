@@ -22,6 +22,7 @@ SPACESHIP_PROMPT_ORDER=(
   jobs          # Background jobs indicator
   exit_code     # Exit code section
   line_sep      # Line break
+  time          # Time stamps section
   char          # Prompt character
 )
 
@@ -31,12 +32,13 @@ SPACESHIP_PROMPT_SEPARATE_LINE=true
 
 # Char
 # SPACESHIP_CHAR_SYMBOL='\uf155' # nf-fa-dollar
-SPACESHIP_CHAR_SUFFIX=' '
+SPACESHIP_CHAR_SUFFIX=''
 # SPACESHIP_CHAR_SYMBOL_ROOT='\uf292 ' # nf-fa-hashtag
 SPACESHIP_CHAR_SYMBOL_ROOT='#' # nf-fa-hashtag
 
 # Time
 SPACESHIP_TIME_SHOW=true
+SPACESHIP_TIME_PREFIX=''
 
 # User
 SPACESHIP_USER_SHOW=needed
@@ -47,6 +49,7 @@ SPACESHIP_DIR_LOCK_SYMBOL='\uf023'
 
 # Git
 SPACESHIP_GIT_SYMBOL='\uf09b '
+SPACESHIP_GIT_STATUS_SHOW=false
 
 # Git branch
 SPACESHIP_GIT_BRANCH_PREFIX='\ue725 '
