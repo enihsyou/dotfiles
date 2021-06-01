@@ -42,3 +42,6 @@ elif [[ $color_profile == "nord" ]]; then
 fi
 # Groovy
 #export GROOVY_HOME=/usr/local/opt/groovy/libexe
+
+# some cleanup
+unset color_profile

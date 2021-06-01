@@ -1,33 +1,23 @@
-
 [hub]
   protocol = https
 
 [alias]
-  s = status
-  co = checkout
   promote = !$ZSHDOT/bin/git-promote
   wtf     = !$ZSHDOT/bin/git-wtf
   rank-contributors = !$ZSHDOT/bin/git-rank-contributors
   count   = !git shortlog -sn
 
+[pager]
+  diff   = delta
+  log    = delta
+  reflog = delta
+  show   = delta
+
 [color]
-  diff = auto
+  diff   = auto
   status = auto
   branch = auto
-  ui = true
-# Diff-so-fancy settings
-[color "diff-highlight"]
-  oldNormal = red bold
-  oldHighlight = red bold 52
-  newNormal = green bold
-  newHighlight = green bold 22
-[color "diff"]
-  meta = yellow
-  frag = magenta bold
-  commit = yellow bold
-  old = red bold
-  new = green bold
-  whitespace = red reverse
+  ui     = auto
 
 [core]
   excludesfile = ~/.gitignore
@@ -40,18 +30,11 @@
 
 # Delta settings https://github.com/dandavison/delta
 [delta]
-    features = line-numbers decorations
-    syntax-theme = GitHub
-  #plus-color = "#012800"
-  #minus-color = "#340001"
-  syntax-theme = OneHalfDark
+  syntax-theme = GitHub
   line-numbers = true
+  navigate = true
 [interactive]
   diffFilter = delta --color-only
-
-
-[difftool]
-  prompt = false
 
 [push]
   # See `git help config` (search for push.default)
@@ -79,3 +62,8 @@
 [pull]
 	ff = only
 	rebase = true
+
+[diff]
+  # detect moved blocks of code and style them differently 
+  # from the usual removed/added lines
+  colorMoved = default
