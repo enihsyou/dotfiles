@@ -12,12 +12,12 @@ elif [[ "$TERMINAL_EMULATOR" == "JetBrains-JediTerm" ]]; then
 fi
 
 # bat
-if [[ $color_profile == "light" ]]; then
-	export BAT_THEME="ansi-light"
-elif [[ $color_profile == "nord" ]]; then
-	export BAT_THEME="Nord"
-fi
-export BAT_PAGER="less -SR"
+#if [[ $color_profile == "light" ]]; then
+#	export BAT_THEME="ansi-light"
+#elif [[ $color_profile == "nord" ]]; then
+#	export BAT_THEME="Nord"
+#fi
+#export BAT_PAGER="less -SR"
 
 # cheat
 # https://github.com/chrisallenlane/cheat#enabling-syntax-highlighting
@@ -42,6 +42,23 @@ elif [[ $color_profile == "nord" ]]; then
 fi
 # Groovy
 #export GROOVY_HOME=/usr/local/opt/groovy/libexe
+
+##### nvm (node version manager) #####
+# placeholder nvm shell function
+# On first use, it will set nvm up properly which will replace the `nvm`
+# shell function with the real one
+# take from web-cache of: https://peterlyons.com/problog/2018/01/zsh-lazy-loading
+function nvm() {
+  unset -f nvm
+  export NVM_DIR="$HOME/.nvm"
+  if [ -s "/usr/local/opt/nvm/nvm.sh" ]; then
+    source "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+  fi
+  if [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ]; then 
+    source "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+  fi
+  nvm "$@" # invoke the real nvm function now
+}
 
 # some cleanup
 unset color_profile

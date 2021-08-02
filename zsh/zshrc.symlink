@@ -6,6 +6,7 @@
 # 0          - means no profile will be applied.
 # 1 or zprof - means profile with zsh/zprof module
 # 2 or trace - means dump execution trace with XTRACE opt.
+# usage: PROF_MODE=1 zsh -i -c exit
 case ${PROF_MODE:-0} in
 0)
 	__prof_func() { return ; } ;;
@@ -85,6 +86,10 @@ fi
 # use command below to generate static plugin file, and uncomment line with source.
 # antibody bundle < $DOTFILES/zsh/zsh_plugins.txt > $HOME/.zsh_plugins.sh
 source $HOME/.zsh_plugins.sh
+
+# remove duplicate PATH entry by zsh feature
+# defines in functions.zsh
+path_dedup
 
 # profile zsh startup time
 __prof_func

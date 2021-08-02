@@ -13,15 +13,16 @@ export HOMEBREW_CLEANUP_PERIODIC_FULL_DAYS=10
 export HOMEBREW_DISPLAY_INSTALL_TIMES=1
 export HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK=1
 
-if [[ "$(uname -s)" == "Linux" ]]; then BREW_TYPE="linuxbrew"; else BREW_TYPE="homebrew"; fi
-export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
-export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/${BREW_TYPE}-core.git"
-export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/${BREW_TYPE}-bottles/bottles"
-unset BREW_TYPE
+# disable tuna mirror, credit: https://www.tinkol.com/372
+#if [[ "$(uname -s)" == "Linux" ]]; then BREW_TYPE="linuxbrew"; else BREW_TYPE="homebrew"; fi
+#export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
+#export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/${BREW_TYPE}-core.git"
+#export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/${BREW_TYPE}-bottles/bottles"
+#unset BREW_TYPE
 
 if [ "$(uname)" = Darwin ]; then
 # export brew linked binary
-export PATH="/usr/local/sbin:$PATH:~/.local/bin"
+export PATH="/usr/local/sbin:$PATH:$HOME/.local/bin"
 
 # export brew installed nodejs home
 export NODEJS_HOME="/usr/local/opt/node"

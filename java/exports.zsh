@@ -1,9 +1,12 @@
 # shellcheck disable=SC2139
 
+exit 0
+# 缺少维护，暂时禁用
+
 script_identifier="$0"
 
 linuxSpecific() {
-    echo "TODO: implement $0 in $script_identifier"
+	unset -f linuxSpecific
 }
 
 darwinSpecific() {
@@ -16,6 +19,7 @@ darwinSpecific() {
 	# until GraalVM will be provided by HomeBrew.
 	# export PATH="$PATH:$(/usr/libexec/java_home -v11)/bin"
 	# export LLVM_TOOLCHAIN=$(lli --print-toolchain-path)
+	unset -f darwinSpecific
 }
 
 case $(uname) in
