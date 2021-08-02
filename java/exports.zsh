@@ -1,6 +1,6 @@
 # shellcheck disable=SC2139
 
-exit 0
+return
 # 缺少维护，暂时禁用
 
 script_identifier="$0"

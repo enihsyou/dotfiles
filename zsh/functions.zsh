@@ -21,9 +21,10 @@ function path_add() {
 
 # remove duplicate PATH entries
 # credit: https://unix.stackexchange.com/a/325729
+# shellcheck disable=SC2034
 function path_dedup() {
     # The lower-case version of PATH is an array parameter
     # bound to the scalar upper-case parameter
     # https://www.zsh.org/mla/users/2015/msg00178.html
-    typeset -U path
+    typeset -gU path
 }
