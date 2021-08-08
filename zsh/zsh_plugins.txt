@@ -49,6 +49,7 @@ zsh-users/zsh-syntax-highlighting
 ~/.dotfiles/java/
 ~/.dotfiles/go/
 ~/.dotfiles/brew/
+~/.dotfiles/ssh/
 ~/.dotfiles/zsh/
 ~/.dotfiles/zsh/plugins
 ~/.dotfiles/zsh/themes/spaceship-prompt/
