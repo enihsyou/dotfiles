@@ -15,7 +15,7 @@ fi
 
 if [[ $FOUND_PYENV -ne 1 ]]; then
     pyenvdirs=("$HOME/.pyenv" "/usr/local/pyenv" "/opt/pyenv" "/usr/local/opt/pyenv")
-    for dir in $pyenvdirs; do
+    for dir in "${pyenvdirs[@]}"; do
         if [[ -d $dir/bin ]]; then
             export PATH="$PATH:$dir/bin"
             FOUND_PYENV=1

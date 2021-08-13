@@ -51,12 +51,16 @@ fi
 function nvm() {
   unset -f nvm
   export NVM_DIR="$HOME/.nvm"
-  if [ -s "/usr/local/opt/nvm/nvm.sh" ]; then
-    source "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-  fi
-  if [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ]; then 
-    source "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-  fi
+  nvm_dirs=(
+    "/usr/local/opt/nvm/nvm.sh"
+    "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
+    "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"
+    "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm"
+  )
+  for dir in "${nvm_dirs[@]}"; do
+  	# shellcheck source=/dev/null
+  	[ -s "$dir" ] && source "$dir"
+  done
   nvm "$@" # invoke the real nvm function now
 }
 
