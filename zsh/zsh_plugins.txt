@@ -50,6 +50,7 @@ zsh-users/zsh-syntax-highlighting
 ~/.dotfiles/go/
 ~/.dotfiles/brew/
 ~/.dotfiles/ssh/
+~/.dotfiles/jetbrains/
 ~/.dotfiles/zsh/
 ~/.dotfiles/zsh/plugins
 ~/.dotfiles/zsh/themes/spaceship-prompt/

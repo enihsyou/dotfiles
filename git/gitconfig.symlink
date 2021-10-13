@@ -20,7 +20,7 @@
   ui     = auto
 
 [core]
-  excludesfile = ~/.gitignore
+	excludesfile = ~/.gitignore
   autocrlf = input
   filemode = true
   pager = delta
@@ -66,3 +66,9 @@
   # detect moved blocks of code and style them differently 
   # from the usual removed/added lines
   colorMoved = default
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

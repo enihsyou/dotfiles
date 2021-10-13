@@ -2,7 +2,7 @@
 # https://docs.brew.sh/Manpage#environment
 
 export HOMEBREW_BAT=1
-export HOMEBREW_CURLRC=1
+#export HOMEBREW_CURLRC=1
 export HOMEBREW_CURL_RETRIES=1
 #export HOMEBREW_VERBOSE=1
 #export HOMEBREW_VERBOSE_USING_DOTS=1
