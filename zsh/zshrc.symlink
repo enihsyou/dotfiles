@@ -82,6 +82,11 @@ else
 fi
 } ${ZDOTDIR:-$HOME}/.zcompdump(N.mh+24)
 
+# instead add 'robbyrussell/oh-my-zsh path:lib/theme-and-appearance.zsh'
+# to zsh_plugin.txt, we manually load colors here. 
+# otherwise 'colored-man-pages' plugin won't work for some unknown reason.
+autoload -U colors && colors
+
 # Loads antibody bundles statically
 # use command below to generate static plugin file, and uncomment line with source.
 # antibody bundle < $DOTFILES/zsh/zsh_plugins.txt > $HOME/.zsh_plugins.sh
