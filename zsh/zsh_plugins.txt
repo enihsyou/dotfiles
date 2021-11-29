@@ -8,6 +8,7 @@ zsh-users/zsh-autosuggestions
 ###########################################################
 # Oh-My-Zsh stuff
 robbyrussell/oh-my-zsh path:lib/completion.zsh
+robbyrussell/oh-my-zsh path:lib/key-bindings.zsh
 #robbyrussell/oh-my-zsh path:lib/clipboard.zsh
 robbyrussell/oh-my-zsh path:plugins/brew
 robbyrussell/oh-my-zsh path:plugins/git
