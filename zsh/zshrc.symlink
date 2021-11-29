@@ -34,13 +34,6 @@ export ZSH_DISABLE_COMPFIX="true"
 # Path shortcut to this dotfiles path is $DOTFILES
 export DOTFILES=~/.dotfiles
 
-# Stash your environment variables in ~/.localrc. This means they'll stay out
-# of your main dotfiles repository (which may be public, like this one), but
-# you'll have access to them in your scripts.
-if [[ -a ~/.localrc ]]; then
-  source ~/.localrc
-fi
-
 # Loads antibody dynamically
 # source <(antibody init)
 
@@ -91,6 +84,13 @@ autoload -U colors && colors
 # use command below to generate static plugin file, and uncomment line with source.
 # antibody bundle < $DOTFILES/zsh/zsh_plugins.txt > $HOME/.zsh_plugins.sh
 source $HOME/.zsh_plugins.sh
+
+# Stash your environment variables in ~/.localrc. This means they'll stay out
+# of your main dotfiles repository (which may be public, like this one), but
+# you'll have access to them in your scripts.
+if [[ -a ~/.localrc ]]; then
+  source ~/.localrc
+fi
 
 # remove duplicate PATH entry by zsh feature
 # defines in functions.zsh
