@@ -30,6 +30,7 @@
 # Delta settings https://github.com/dandavison/delta
 [delta]
   syntax-theme = GitHub
+  #syntax-theme = ansi
   line-numbers = true
   navigate = true
 [interactive]

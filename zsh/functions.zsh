@@ -1,5 +1,7 @@
 # define custom functions which can be used in shell(specifically zsh) runtime.
 
+# print TCP listening
+# https://stackoverflow.com/a/30029855/5277711
 listening() {
     if [ $# -eq 0 ]; then
         lsof -iTCP -sTCP:LISTEN -n -P

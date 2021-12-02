@@ -21,8 +21,8 @@ export HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK=1
 #unset BREW_TYPE
 
 if [ "$(uname)" = Darwin ]; then
-# export brew linked binary
-export PATH="/usr/local/sbin:$PATH:$HOME/.local/bin"
+# export brew linked binary, but local bin take precedence
+export PATH="$HOME/.local/bin:/usr/local/sbin:$PATH"
 
 # export brew installed nodejs home
 export NODEJS_HOME="/usr/local/opt/node"
