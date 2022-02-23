@@ -10,25 +10,47 @@ SPACESHIP_PROMPT_ORDER=(
   dir           # Current directory section
   host          # Hostname section
   git           # Git section (git_branch + git_status)
-#  package       # Package version
-#  node          # Node.js section
-#  ruby          # Ruby section
+  # hg            # Mercurial section (hg_branch  + hg_status)
+  # package       # Package version
+  # gradle        # Gradle section
+  # maven         # Maven section
+  # node          # Node.js section
+  # ruby          # Ruby section
+  # elixir        # Elixir section
+  # xcode         # Xcode section
+  # swift         # Swift section
   golang        # Go section
-#  docker        # Docker section
+  # php           # PHP section
+  # rust          # Rust section
+  # haskell       # Haskell Stack section
+  # julia         # Julia section
+  # docker        # Docker section
+  # aws           # Amazon Web Services section
+  # gcloud        # Google Cloud Platform section
   venv          # virtualenv section
-#  pyenv         # Pyenv section
-#  kubectl       # Kubectl context section
-#  proxy         # My proxy plugin
-  exec_time     # Execution time
-  jobs          # Background jobs indicator
+  # conda         # conda virtualenv section
+  # pyenv         # Pyenv section
+  # dotnet        # .NET section
+  # ember         # Ember.js section
+  # kubectl       # Kubectl context section
+  # terraform     # Terraform workspace section
+  # ibmcloud      # IBM Cloud section
+  # battery       # Battery level and status
+  # vi_mode       # Vi-mode indicator
+  # proxy         # My proxy plugin
+  # exec_time     # Execution time
+  exec_time_ms  # Execution time in millisecond
   exit_code     # Exit code section
   line_sep      # Line break
   char          # Prompt character
 )
 
+SPACESHIP_RPROMPT_ORDER=(
+  jobs          # Background jobs indicator
+)
+
 # Prompt
 SPACESHIP_PROMPT_ADD_NEWLINE=false
-SPACESHIP_PROMPT_SEPARATE_LINE=true
 
 # Char
 # SPACESHIP_CHAR_SYMBOL='\uf155' # nf-fa-dollar
@@ -59,6 +81,9 @@ SPACESHIP_DOCKER_VERBOSE=true
 
 # Execution time
 SPACESHIP_EXEC_TIME_ELAPSED=1
+SPACESHIP_EXEC_TIME_MS_ELAPSED=1
+SPACESHIP_EXEC_TIME_SHOW=false
+SPACESHIP_EXEC_TIME_MS_SHOW=true
 
 # Jobs
 SPACESHIP_JOBS_AMOUNT_PREFIX=' '

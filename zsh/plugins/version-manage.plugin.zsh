@@ -22,6 +22,11 @@ function nvm() {
 }
 
 # gvm
+# this script also override GIT_SSH_COMMAND environment in order to re-enable
+# the ControlMaster ssh config. because this setting means to speed up ssh,
+# it's annoying Secretive prompts each time when 'go get' access my private key,
+# I take the consequence, see what 'go get' have done to ControlMaster at 
+# https://github.com/golang/go/blob/ecf6b52b7f4ba6e8c98f25adf9e83773fe908829/src/cmd/go/internal/get/get.go#L155
 function gvm() {
   unset -f gvm
   gvm_dirs=(
@@ -31,6 +36,7 @@ function gvm() {
   	# shellcheck source=/dev/null
   	[ -s "$dir" ] && source "$dir"
   done
+  export GIT_SSH_COMMAND='ssh -o BatchMode=yes'
   gvm "$@" # invoke the real gvm function now
 }
 
