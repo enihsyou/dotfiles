@@ -47,10 +47,7 @@ zsh-users/zsh-syntax-highlighting
 
 ###########################################################
 # Post configuration
-~/.dotfiles/ruby/
 ~/.dotfiles/python/
-~/.dotfiles/java/
-~/.dotfiles/go/
 ~/.dotfiles/brew/
 ~/.dotfiles/ssh/
 ~/.dotfiles/jetbrains/

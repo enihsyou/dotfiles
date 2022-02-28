@@ -6,6 +6,18 @@
 # This plugin loads pyenv into the current shell and provides prompt info via
 # the 'pyenv_prompt_info' function. Also loads pyenv-virtualenv if available.
 
+# lazy load
+pyenv() {
+    echo "🚨 pyenv not loaded! Loading now..."
+    unset -f pyenv # replace with actual target
+    eval "$(pyenv init - --no-rehash zsh)"
+    if (( $+commands[pyenv-virtualenv-init] )); then
+        eval "$(pyenv virtualenv-init - zsh)"
+    fi
+    pyenv "$@"
+}
+return # prefer simpler method
+
 # Load pyenv only if command not already available
 if command -v pyenv &> /dev/null && [[ "$(uname -r)" != *icrosoft* ]]; then
     FOUND_PYENV=1
