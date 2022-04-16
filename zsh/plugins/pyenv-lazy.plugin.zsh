@@ -10,6 +10,7 @@
 pyenv() {
     echo "🚨 pyenv not loaded! Loading now..."
     unset -f pyenv # replace with actual target
+    eval "$(pyenv init --path)"
     eval "$(pyenv init - --no-rehash zsh)"
     if (( $+commands[pyenv-virtualenv-init] )); then
         eval "$(pyenv virtualenv-init - zsh)"

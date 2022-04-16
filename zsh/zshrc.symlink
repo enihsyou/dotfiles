@@ -28,6 +28,12 @@ esac
 # explict disable compaudit check in order to boot startup time.
 export ZSH_DISABLE_COMPFIX="true"
 
+# command put in ~/.localrc will be sourced before compinit
+# suitable for such as 'fig'
+if [[ -a ~/.localrc0 ]]; then
+	source ~/.localrc0
+fi
+
 ###########################################################
 # Pre configuration
 
@@ -63,15 +69,15 @@ if [[ $# -gt 0 ]]; then
 	zcompdump=${ZDOTDIR:-$HOME}/.zcompdump
 	# update the timestamp on compdump fileA
 	echo -e "\e[94m[\e[0m Regenerate 'compinit' Completions \e[94m]\e[0m"
-  compinit
-  compdump -d "$zcompdump"
-  # Compile zcompdump, if modified, to increase startup speed.
-  if [[ -s "$zcompdump" && (! -s "${zcompdump}.zwc" || "$zcompdump" -nt "${zcompdump}.zwc") ]]; then
-    zcompile "$zcompdump"
-  fi
+	compinit
+	compdump -d "$zcompdump"
+	# Compile zcompdump, if modified, to increase startup speed.
+	if [[ -s "$zcompdump" && (! -s "${zcompdump}.zwc" || "$zcompdump" -nt "${zcompdump}.zwc") ]]; then
+		zcompile "$zcompdump"
+	fi
 else
-  # omit the check for new functions since we updated today
-  compinit -C
+	# omit the check for new functions since we updated today
+	compinit -C
 fi
 } ${ZDOTDIR:-$HOME}/.zcompdump(N.mh+24)
 
@@ -89,7 +95,7 @@ source $HOME/.zsh_plugins.sh
 # of your main dotfiles repository (which may be public, like this one), but
 # you'll have access to them in your scripts.
 if [[ -a ~/.localrc ]]; then
-  source ~/.localrc
+	source ~/.localrc
 fi
 
 # remove duplicate PATH entry by zsh feature
