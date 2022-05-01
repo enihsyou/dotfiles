@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+###!/usr/bin/env zsh
 # zsh interactive environment setup script.
 
 ###########################################################
@@ -111,3 +111,4 @@ unset -f __prof_func
 # code at current version, that was fixed), replace '[ checks ] && function'
 # with if statement will resolve this problem and no longer need this hack.
 # echo >/dev/null
+
