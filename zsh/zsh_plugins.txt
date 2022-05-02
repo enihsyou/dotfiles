@@ -50,6 +50,7 @@ zsh-users/zsh-syntax-highlighting
 ~/.dotfiles/python/
 ~/.dotfiles/brew/
 ~/.dotfiles/ssh/
+~/.dotfiles/kitty/
 ~/.dotfiles/jetbrains/
 ~/.dotfiles/zsh/
 ~/.dotfiles/zsh/plugins

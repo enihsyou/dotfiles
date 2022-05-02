@@ -1,7 +1,7 @@
 # ZSH config
 # References http://zsh.sourceforge.net/Doc/Release/Options.html
 
-export CLICOLOR=true
+#export CLICOLOR=true
 
 setopt PROMPT_SUBST
 #setopt IGNORE_EOF

@@ -50,3 +50,6 @@ Temporary Items
 # aria2 certs
 /aria2/aria2.pem.crt
 /aria2/aria2.p12
+
+kitty/venv
+kitty/macos-launch-services-cmdline
