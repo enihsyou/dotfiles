@@ -18,17 +18,7 @@ alias l="ls --oneline"
 
 # fd
 if ! is_system_appearence_dark; then
-	# export BAT_THEME="GitHub"
 	alias fd="LS_COLORS="$(vivid generate ayu)" fd"
-fi
-
-# bat
-if ! is_system_appearence_dark; then
-	# export BAT_THEME="GitHub"
-	alias bat="BAT_THEME='GitHub' bat"
-else
-	# export BAT_THEME="Visual Studio Dark+"
-	alias bat="BAT_THEME='Visual Studio Dark+' bat"
 fi
 
 # duf

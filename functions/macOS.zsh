@@ -12,3 +12,9 @@ function is_system_appearence_dark() {
 		return 1
 	fi
 }
+
+function refresh_system_appearence() {
+	for funcfile in $DOTFILES/functions/system-appearence.d/*.zsh; do
+		source "$funcfile"
+	done
+}

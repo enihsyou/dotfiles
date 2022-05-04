@@ -20,7 +20,7 @@
   ui     = auto
 
 [core]
-	excludesfile = ~/.gitignore
+  excludesfile = ~/.gitignore
   autocrlf = input
   filemode = true
   pager = delta
@@ -29,9 +29,8 @@
 
 # Delta settings https://github.com/dandavison/delta
 [delta]
-  syntax-theme = GitHub
-  #syntax-theme = ansi
   line-numbers = true
+  side-by-side = true
   navigate = true
 [interactive]
   diffFilter = delta --color-only
@@ -44,29 +43,30 @@
   default = simple
 
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
 
 [commit]
-	gpgsign = true
+  gpgsign = true
 [gpg]
-	program = /usr/local/bin/gpg
+  program = /usr/local/bin/gpg
 [cola]
-	spellcheck = false
+  spellcheck = false
 
 # Local/private config goes in the include
 [include]
   path = ~/.gitconfig.local
 [pull]
-	ff = only
-	rebase = true
+  ff = only
+  rebase = true
 
 [diff]
   # detect moved blocks of code and style them differently 
   # from the usual removed/added lines
   colorMoved = default
+  conflictstyle = diff3
 [difftool "sourcetree"]
   cmd = opendiff \"$LOCAL\" \"$REMOTE\"
   path = 

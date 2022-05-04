@@ -12,3 +12,6 @@ set mouse=a
 set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 
 nnoremap <esc><esc> :noh<return><esc>
+
+set nu
+
