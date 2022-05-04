@@ -1,8 +1,6 @@
 # ZSH config
 # References http://zsh.sourceforge.net/Doc/Release/Options.html
 
-#export CLICOLOR=true
-
 setopt PROMPT_SUBST
 #setopt IGNORE_EOF
 # Scripts and Functions https://github.com/Neal/dotfiles/blob/master/zsh/setopt.zsh

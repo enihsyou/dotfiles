@@ -1,4 +1,4 @@
-###!/usr/bin/env zsh
+#!/usr/bin/env zsh
 # zsh interactive environment setup script.
 
 ###########################################################
@@ -27,12 +27,6 @@ esac
 
 # explict disable compaudit check in order to boot startup time.
 export ZSH_DISABLE_COMPFIX="true"
-
-# command put in ~/.localrc will be sourced before compinit
-# suitable for such as 'fig'
-if [[ -a ~/.localrc0 ]]; then
-	source ~/.localrc0
-fi
 
 ###########################################################
 # Pre configuration
@@ -85,6 +79,11 @@ fi
 # to zsh_plugin.txt, we manually load colors here. 
 # otherwise 'colored-man-pages' plugin won't work for some unknown reason.
 autoload -U colors && colors
+
+# Loads functions will be used in 
+for funcfile in $DOTFILES/functions/*.zsh; do
+	source "$funcfile"
+done
 
 # Loads antibody bundles statically
 # use command below to generate static plugin file, and uncomment line with source.

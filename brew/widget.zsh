@@ -1,5 +1,5 @@
 # configuration setup file for brew installed programs.
-
+# TODO move to brew/alias.zsh
 color_profile=''
 if [[ "$TERM_PROGRAM" == "Apple_Terminal" ]]; then
 	color_profile='light'
@@ -10,14 +10,6 @@ elif [[ "$ITERM_PROFILE" == "Default" ]]; then
 elif [[ "$TERMINAL_EMULATOR" == "JetBrains-JediTerm" ]]; then
 	color_profile=''
 fi
-
-# bat
-#if [[ $color_profile == "light" ]]; then
-#	export BAT_THEME="ansi-light"
-#elif [[ $color_profile == "nord" ]]; then
-#	export BAT_THEME="Nord"
-#fi
-#export BAT_PAGER="less -SR"
 
 # cheat
 # https://github.com/chrisallenlane/cheat#enabling-syntax-highlighting

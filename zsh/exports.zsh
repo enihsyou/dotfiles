@@ -2,6 +2,7 @@
 
 # Enable 256bit color
 #export TERM="xterm-256color"
+export CLICOLOR=true
 
 # set locale to chinese
 #export LANG="zh_CN.UTF-8"
@@ -19,4 +20,5 @@ export ZDOTDIR=~
 export SSH_KEY_PATH="$HOME/.ssh/id_rsa"
 
 # explict disable compaudit check in order to boot startup time.
-export ZSH_DISABLE_COMPFIX=true
+# this have moved to .zshrc
+#export ZSH_DISABLE_COMPFIX=true
