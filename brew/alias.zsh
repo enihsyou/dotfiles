@@ -29,3 +29,6 @@ alias du="dust"
 
 # dog
 alias dig="dog"
+
+# tldr
+alias tldr="tldr --theme base16"
