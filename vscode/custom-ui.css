@@ -1,0 +1,7 @@
+
+/* vscode/src/vs/workbench/contrib/terminal/browser/media/terminal.css */
+.monaco-workbench .editor-instance .xterm,
+.monaco-workbench .pane-body.integrated-terminal .xterm {
+    bottom: unset;
+    top: 0;
+}
