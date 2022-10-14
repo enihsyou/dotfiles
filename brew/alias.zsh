@@ -33,7 +33,19 @@ alias df="duf"
 alias du="dust"
 
 # dog
-alias dig="dog"
+#alias dig="dog"
 
 # tldr
 alias tldr="tldr --theme base16"
+
+# kitty
+#if [[ "$TERM" == "xterm-kitty" ]]; then
+#    alias ssh="kitty +kitten ssh"
+#fi
+
+# bat
+alias bathelp='bat --plain --language=help'
+help() {
+    "$@" --help 2>&1 | bathelp
+}
+
