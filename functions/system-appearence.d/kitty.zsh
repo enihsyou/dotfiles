@@ -14,7 +14,7 @@ link_kitty_launch_cmdline() {
 			;;
 	esac
 	if [ ! "$link" -ef "$want" ]; then
-		(cd "$base" && gln --symbolic --force --verbose "$want" "$(basename "$link")")
+		(cd "$base" && gln --symbolic --force --verbose "$want" "$link")
 		kitty @ set-colors --configured --all "$file"
 	fi
 }

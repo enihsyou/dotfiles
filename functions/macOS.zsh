@@ -14,7 +14,7 @@ function is_system_appearence_dark() {
 }
 
 function refresh_system_appearence() {
-	for funcfile in $DOTFILES/functions/system-appearence.d/*.zsh; do
+	for funcfile in "$DOTFILES"/functions/system-appearence.d/*.zsh; do
 		source "$funcfile"
 	done
 }
