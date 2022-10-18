@@ -38,8 +38,8 @@ SPACESHIP_PROMPT_ORDER=(
   # battery       # Battery level and status
   # vi_mode       # Vi-mode indicator
   # proxy         # My proxy plugin
-  # exec_time     # Execution time
-  exec_time_ms  # Execution time in millisecond
+  exec_time     # Execution time
+  # exec_time_ms  # Execution time in millisecond
   exit_code     # Exit code section
   line_sep      # Line break
   char          # Prompt character

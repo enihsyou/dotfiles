@@ -38,7 +38,7 @@ reegnz/jq-zsh-plugin
 
 # denysdovhan/spaceship-prompt have change name to spaceship-prompt.
 # add upstream to enihsyou/spaceship-prompt to get exec_time_ms support.
-spaceship-prompt/spaceship-prompt
+#spaceship-prompt/spaceship-prompt
 
 # Syntax highlighting bundle.
 zsh-users/zsh-syntax-highlighting
@@ -50,8 +50,8 @@ zsh-users/zsh-syntax-highlighting
 ~/.dotfiles/python/
 ~/.dotfiles/brew/
 ~/.dotfiles/ssh/
-~/.dotfiles/kitty/
+~/.dotfiles/cli-app/kitty/
 ~/.dotfiles/jetbrains/
 ~/.dotfiles/zsh/
 ~/.dotfiles/zsh/plugins
-~/.dotfiles/zsh/themes/spaceship-prompt/
+~/.dotfiles/zsh/themes/starship-prompt/
