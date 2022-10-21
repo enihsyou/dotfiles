@@ -51,7 +51,7 @@ Temporary Items
 /aria2/aria2.pem.crt
 /aria2/aria2.p12
 
-cli-app/kitty/venv
-cli-app/kitty/macos-launch-services-cmdline
+gui-app/kitty/venv
+gui-app/kitty/macos-launch-services-cmdline
 
 cli-app/bat/config
