@@ -32,9 +32,7 @@ ignore_submodules = true
 [status]
 disabled = false
 map_symbol = true
-
-[sudo]
-disabled = false
+symbol = "❗️"
 
 [time]
 disabled = false

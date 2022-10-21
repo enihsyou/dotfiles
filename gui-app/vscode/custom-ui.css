@@ -12,6 +12,8 @@
 /* 由 microsoft/vscode#44141 引入的 no-repeat 设置
    让 hint 下划线只有第一个字符短短的一截
    找不到这么设置的原因 (可能从visual studio继承来的吧) */
+/* 暂时禁用
 .monaco-workbench .squiggly-hint {
     background-repeat: repeat-x;
 }
+*/
