@@ -47,3 +47,8 @@ bindkey '^[[5D' beginning-of-line
 bindkey '^[[5C' end-of-line
 bindkey '^[[3~' delete-char
 bindkey '^?' backward-delete-char
+
+# https://stackoverflow.com/a/73241402
+# https://github.com/kovidgoyal/kitty/issues/838#issuecomment-770328902
+bindkey "\e[1;3D" backward-word     # ⌥←
+bindkey "\e[1;3C" forward-word      # ⌥→
