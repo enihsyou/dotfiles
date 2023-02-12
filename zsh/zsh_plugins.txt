@@ -36,10 +36,6 @@ reegnz/jq-zsh-plugin
 ###########################################################
 # Theme
 
-# denysdovhan/spaceship-prompt have change name to spaceship-prompt.
-# add upstream to enihsyou/spaceship-prompt to get exec_time_ms support.
-#spaceship-prompt/spaceship-prompt
-
 # Syntax highlighting bundle.
 zsh-users/zsh-syntax-highlighting
 # ZSH port of Fish shell's history search feature.

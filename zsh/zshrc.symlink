@@ -34,8 +34,9 @@ export ZSH_DISABLE_COMPFIX="true"
 # Path shortcut to this dotfiles path is $DOTFILES
 export DOTFILES=~/.dotfiles
 
-# Loads antibody dynamically
-# source <(antibody init)
+# Loads antidote dynamically
+# source /usr/local/opt/antidote/share/antidote/antidote.zsh
+# antidote load
 
 # Speed up zsh compinit by only checking cache once a day.
 # On slow systems, checking the cached .zcompdump file to see if it must be
@@ -85,10 +86,10 @@ for funcfile in $DOTFILES/functions/*.zsh; do
 	source "$funcfile"
 done
 
-# Loads antibody bundles statically
+# Loads antidote bundles statically
 # use command below to generate static plugin file, and uncomment line with source.
-# antibody bundle < $DOTFILES/zsh/zsh_plugins.txt > $HOME/.zsh_plugins.sh
-source $HOME/.zsh_plugins.sh
+# antidote bundle < $DOTFILES/zsh/zsh_plugins.txt > $HOME/.zsh_plugins.zsh
+source $HOME/.zsh_plugins.zsh
 
 # Stash your environment variables in ~/.localrc. This means they'll stay out
 # of your main dotfiles repository (which may be public, like this one), but
