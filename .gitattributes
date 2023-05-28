@@ -1,0 +1,4 @@
+# 使用前先阅读 .gitconfig 文件的说明
+
+# 过滤 url token
+cli-app/clash/*.yaml filter=token-redaction

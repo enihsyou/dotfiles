@@ -1,0 +1,5 @@
+# remember to call init command before commiting.
+# git config --local include.path ../.gitconfig
+[filter "token-redaction"]
+	clean = "sed -E 's/token=[0-9a-z]+/token=****redacted****/'"
+	smudge = "cat"
