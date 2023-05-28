@@ -3,8 +3,8 @@ language zh_CN.UTF-8
 set langmenu=zh_CN.UTF-8
 
 if has("mac") || has("macunix")
-    set guifont=VictorMono\ Nerd\ Font:h24
-    set guifontwide=Sarasa\ Mono\ SC:h24
+    set guifont=VictorMono\ Nerd\ Font:h14
+    set guifontwide=Sarasa\ Mono\ SC:h14
 endif
 
 set mouse=a
@@ -34,4 +34,7 @@ let &t_ut=''
 "     autocmd!
 "     autocmd BufEnter * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " augroup END
+
+" https://github.com/sonph/onehalf/tree/master/vim
+colorscheme system-appearance
 

@@ -20,6 +20,7 @@ robbyrussell/oh-my-zsh path:plugins/extract
 robbyrussell/oh-my-zsh path:plugins/docker
 robbyrussell/oh-my-zsh path:plugins/sudo
 robbyrussell/oh-my-zsh path:plugins/autojump
+robbyrussell/oh-my-zsh path:plugins/httpie
 #robbyrussell/oh-my-zsh path:plugins/redis-cli
 robbyrussell/oh-my-zsh path:plugins/shell-proxy
 robbyrussell/oh-my-zsh path:plugins/zsh-interactive-cd

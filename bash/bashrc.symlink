@@ -125,5 +125,3 @@ export ZSHDOT=~/.dotfiles
 #source $ZSHDOT/Apache/path.zsh
 source $ZSHDOT/bash/exports.sh
 export PATH="$HOME/bin:$HOME/.local/bin:$HOME/.yarn/bin:$PATH"
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
