@@ -21,6 +21,8 @@
       path: cli-app/starship-prompt/starship.toml
     ~/.config/bat:
       path: cli-app/bat
+    ~/.config/clash/config.yaml:
+      path: cli-app/clash/config.yaml
     ~/.config/kitty:
       if: '[ $(uname) = "Darwin" ]'
       path: gui-app/kitty

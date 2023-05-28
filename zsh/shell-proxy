@@ -4,10 +4,18 @@
 # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/shell-proxy
 # sample usage: PROXY_SOCKS=1 proxy enable
 
-if [[ "$HOST_SITE" == "bytedance" ]]; then
-  echo "http://bj-rd-proxy.byted.org:3128"
-elif [[ -n "$PROXY_SOCKS" ]]; then
-  echo "socks5://localhost:10800"
-else
-  echo "no proxy applied" >&2
-fi
+case "$PROXY_TYPE" in
+  "bytedance")
+    echo "http://bj-rd-proxy.byted.org:3128"
+    ;;
+  "socks5")
+    echo "socks5://localhost:10800"
+    ;;
+  "clash")
+    echo "http://localhost:7890"
+    ;;
+  *)
+    # fallback to plugin default method
+    echo "${SHELLPROXY_URL}"
+    ;;
+esac

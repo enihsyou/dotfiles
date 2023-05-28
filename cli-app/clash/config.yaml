@@ -1,0 +1,195 @@
+---
+#---------------------------------------------------#
+## 配置文件需要放置在 $HOME/.config/clash/*.yaml
+
+## 这份文件是clashX的基础配置文件，请尽量新建配置文件进行修改。
+## ！！！只有这份文件的端口设置会随ClashX启动生效
+
+## 如果您不知道如何操作，请参阅 官方Github文档 https://github.com/Dreamacro/clash/blob/dev/README.md
+
+# macOS 使用前的方便设置
+# 创建网络位置
+# networksetup -createlocation "本地代理" populate
+
+# 切换到 本地代理 并设置上代理端口 设备名称用 -listallnetworkservices 获取
+# networksetup -switchtolocation "本地代理"
+# networksetup -setwebproxy       'Wi-Fi'               127.0.0.1 7890
+# networksetup -setsecurewebproxy 'Wi-Fi'               127.0.0.1 7890
+# networksetup -setwebproxy       'USB 10/100/1000 LAN' 127.0.0.1 7890
+# networksetup -setsecurewebproxy 'USB 10/100/1000 LAN' 127.0.0.1 7890
+
+# 可以快速切换开关
+# networksetup -setwebproxystate       'Wi-Fi' off
+# networksetup -setsecurewebproxystate 'Wi-Fi' off
+# networksetup -setwebproxystate       'USB 10/100/1000 LAN' off
+# networksetup -setsecurewebproxystate 'USB 10/100/1000 LAN' off
+
+# 也可以在网络位置间切换来实现代理开关
+# networksetup -switchtolocation "Automatic"
+# networksetup -switchtolocation "本地代理"
+#---------------------------------------------------#
+
+mixed-port: 7890
+allow-lan: false
+mode: rule
+log-level: info
+external-controller: "127.0.0.1:9090"
+external-ui: /usr/local/var/www/clash-dashboard
+secret: "enihsyou"
+dns:
+  enable: true
+  ipv6: false
+  default-nameserver:
+    - 223.5.5.5
+    - 223.6.6.6
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  use-hosts: true
+  nameserver:
+    - "https://dns.alidns.com/dns-query"
+    - "dhcp://en0"
+  fallback:
+    - "https://doh.dns.sb/dns-query"
+    - "https://dns.cloudflare.com/dns-query"
+    - "tls://8.8.4.4:853"
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    ipcidr: [240.0.0.0/4, 0.0.0.0/32]
+proxy-providers:
+  少数派: # 作为订阅来源 给下面几个 file 提供定时更新
+    type: http
+    url: "https://sspsub.trafficmanager.net/api/v1/client/subscribe?token=cazb4mkfmmo&flag=clash"
+    interval: 3600
+    path: ./少数派.yaml
+  少数派-香港: # 按地区筛选节点
+    type: file
+    path: ./少数派.yaml
+    filter: "香港"
+    health-check: &health-check
+      enable: true
+      interval: 600
+      tolerance: 500
+      url: http://www.gstatic.com/generate_204
+  少数派-新加坡:
+    type: file
+    path: ./少数派.yaml
+    filter: "新加坡"
+    health-check: *health-check
+  少数派-日本:
+    type: file
+    path: ./少数派.yaml
+    filter: "日本"
+    health-check: *health-check
+proxy-groups:
+  - name: "地区"
+    type: select
+    proxies:
+      - "香港"
+      - "新加坡"
+      - "日本"
+  - name: "香港"
+    type: url-test
+    use: [少数派-香港]
+  - name: "新加坡"
+    type: url-test
+    use: [少数派-新加坡]
+  - name: "日本"
+    type: url-test
+    use: [少数派-日本]
+  - name: "GitHub Copilot" # 用于在办公网与家用环境间快速切换
+    type: select
+    proxies: [ "地区", DIRECT ]
+rule-providers: # 需要下载 clash-premium/clash-meta 二进制
+  reject: # 广告域名列表
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt"
+    path: ./ruleset/reject.yaml
+    interval: 86400
+  icloud: # iCloud 域名列表
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/icloud.txt"
+    path: ./ruleset/icloud.yaml
+    interval: 86400
+  apple: # Apple 在中国大陆可直连的域名列表
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/apple.txt"
+    path: ./ruleset/apple.yaml
+    interval: 86400
+  google: # [慎用]Google 在中国大陆可直连的域名列表
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/google.txt"
+    path: ./ruleset/google.yaml
+    interval: 86400
+  proxy: # 代理域名列表
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt"
+    path: ./ruleset/proxy.yaml
+    interval: 86400
+  direct: # 直连域名列表
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt"
+    path: ./ruleset/direct.yaml
+    interval: 86400
+  private: # 私有网络专用域名列表
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt"
+    path: ./ruleset/private.yaml
+    interval: 86400
+  gfw: #GFWList 域名列表
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt"
+    path: ./ruleset/gfw.yaml
+    interval: 86400
+  tld-not-cn: # 非中国大陆使用的顶级域名列表
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/tld-not-cn.txt"
+    path: ./ruleset/tld-not-cn.yaml
+    interval: 86400
+  telegramcidr: # Telegram 使用的 IP 地址列表
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt"
+    path: ./ruleset/telegramcidr.yaml
+    interval: 86400
+  cncidr: # 中国大陆 IP 地址列表
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt"
+    path: ./ruleset/cncidr.yaml
+    interval: 86400
+  lancidr: # 局域网 IP 及保留 IP 地址列表
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/lancidr.txt"
+    path: ./ruleset/lancidr.yaml
+    interval: 86400
+  applications: # 需要直连的常见软件列表
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/applications.txt"
+    path: ./ruleset/applications.yaml
+    interval: 86400
+rules:
+  # 办公网特殊设置
+  - DOMAIN,copilot-proxy.githubusercontent.com,GitHub Copilot
+  # WebUI
+  - DOMAIN,clash.razord.top,DIRECT
+  - DOMAIN,yacd.haishan.me,DIRECT
+  # 黑名单模式
+  - RULE-SET,applications,DIRECT
+  - RULE-SET,private,DIRECT
+  - RULE-SET,reject,REJECT
+  - RULE-SET,tld-not-cn,地区
+  - RULE-SET,gfw,地区
+  - RULE-SET,telegramcidr,地区
+  - MATCH,DIRECT
