@@ -59,7 +59,7 @@ dns:
 proxy-providers:
   少数派: # 作为订阅来源 给下面几个 file 提供定时更新
     type: http
-    url: "https://sspsub.trafficmanager.net/api/v1/client/subscribe?token=cazb4mkfmmo&flag=clash"
+    url: "https://sspsub.trafficmanager.net/api/v1/client/subscribe?token=****redacted****&flag=clash"
     interval: 3600
     path: ./少数派.yaml
   少数派-香港: # 按地区筛选节点
