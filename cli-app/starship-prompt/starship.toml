@@ -1,7 +1,7 @@
 # 设置配置范例，开启编辑器的自动补全
 "$schema" = 'https://starship.rs/config-schema.json'
 
-format = "$time$all$character"
+format = "$time$all$fill$status$line_break$character"
 
 # 在命令之间插入空行
 add_newline = false
@@ -12,15 +12,15 @@ scan_timeout = 25
 # Startship 执行命令的超时时间（单位：毫秒）。
 command_timeout = 300
 
-[character]
-success_symbol = "[➜](bold green)"
-error_symbol = "[➜](bold red)"
-
 [cmd_duration]
 min_time = 100
 show_milliseconds = true
 show_notifications = true
 min_time_to_notify = 15_000
+
+[fill]
+symbol = ' '
+style = ''
 
 [git_branch]
 symbol = " " # nf-oct-git_branch

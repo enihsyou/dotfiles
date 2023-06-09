@@ -19,8 +19,8 @@ robbyrussell/oh-my-zsh path:plugins/extract
 #robbyrussell/oh-my-zsh path:plugins/pip
 robbyrussell/oh-my-zsh path:plugins/docker
 robbyrussell/oh-my-zsh path:plugins/sudo
-robbyrussell/oh-my-zsh path:plugins/autojump
-robbyrussell/oh-my-zsh path:plugins/httpie
+# robbyrussell/oh-my-zsh path:plugins/autojump
+robbyrussell/oh-my-zsh path:plugins/httpie kind:fpath
 #robbyrussell/oh-my-zsh path:plugins/redis-cli
 robbyrussell/oh-my-zsh path:plugins/shell-proxy
 robbyrussell/oh-my-zsh path:plugins/zsh-interactive-cd
@@ -29,7 +29,7 @@ robbyrussell/oh-my-zsh path:plugins/zsh-interactive-cd
 # Plugins
 
 # https://github.com/reegnz/jq-zsh-plugin
-reegnz/jq-zsh-plugin
+# reegnz/jq-zsh-plugin
 
 # https://github.com/MichaelAquilina/zsh-you-should-use
 #MichaelAquilina/zsh-you-should-use
@@ -38,7 +38,8 @@ reegnz/jq-zsh-plugin
 # Theme
 
 # Syntax highlighting bundle.
-zsh-users/zsh-syntax-highlighting
+# zsh-users/zsh-syntax-highlighting
+zdharma-continuum/fast-syntax-highlighting kind:defer
 # ZSH port of Fish shell's history search feature.
 #zsh-users/zsh-history-substring-search
 
@@ -47,7 +48,6 @@ zsh-users/zsh-syntax-highlighting
 ~/.dotfiles/python/
 ~/.dotfiles/brew/
 ~/.dotfiles/ssh/
-~/.dotfiles/cli-app/kitty/
 ~/.dotfiles/jetbrains/
 ~/.dotfiles/zsh/
 ~/.dotfiles/zsh/plugins

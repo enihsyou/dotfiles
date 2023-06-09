@@ -10,12 +10,12 @@
       quiet: true  # display command description rather than statement itself.
 
 - link:
-    # ~/.zshrc: zsh/zshrc.symlink
-    # ~/.bashrc: bash/bashrc.symlink
-    # ~/.vimrc: vim/vimrc.symlink
-    # ~/.gitconfig: git/gitconfig.symlink
-    # ~/.gitignore: git/gitignore.symlink
-    # ~/.config/proxy: zsh/shell-proxy
+    ~/.zshrc: zsh/zshrc.symlink
+    ~/.bashrc: bash/bashrc.symlink
+    ~/.vimrc: vim/vimrc.symlink
+    ~/.gitconfig: git/gitconfig.symlink
+    ~/.gitignore: git/gitignore.symlink
+    ~/.config/proxy: zsh/shell-proxy
 
     ~/.config/starship.toml:
       path: cli-app/starship-prompt/starship.toml
@@ -54,12 +54,13 @@
 
   - command: |-
       return
-      if ! command -v zsh &> /dev/null; then
-        brew install antibody
-        antibody bundle < ${DOTFILES:-$HOME/.dotfiles}/zsh/zsh_plugins.txt > $HOME/.zsh_plugins.sh
+      if ! command -v antidote &> /dev/null; then
+        brew install antidote
+        source $(brew --prefix antidote)/share/antidote/antidote.zsh
+        antidote bundle < ${DOTFILES:-$HOME/.dotfiles}/zsh/zsh_plugins.txt > $HOME/.zsh_plugins.sh
         source ~/.zshrc
       fi
-    description: Install antibody
+    description: Install antidote
 
   - command: |-
       return

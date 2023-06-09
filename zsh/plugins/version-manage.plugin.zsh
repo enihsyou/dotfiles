@@ -6,18 +6,10 @@
 # shell function with the real one
 # take from web-cache of: https://peterlyons.com/problog/2018/01/zsh-lazy-loading
 function nvm() {
+  echo "🚨 nvm not loaded! Loading now..." >&2
   unset -f nvm
   export NVM_DIR="$HOME/.nvm"
-  nvm_dirs=(
-    "/usr/local/opt/nvm/nvm.sh"
-    "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
-    "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"
-    "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm"
-  )
-  for dir in "${nvm_dirs[@]}"; do
-  	# shellcheck source=/dev/null
-  	[ -s "$dir" ] && source "$dir"
-  done
+  [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
   nvm "$@" # invoke the real nvm function now
 }
 
@@ -28,14 +20,10 @@ function nvm() {
 # I take the consequence, see what 'go get' have done to ControlMaster at 
 # https://github.com/golang/go/blob/ecf6b52b7f4ba6e8c98f25adf9e83773fe908829/src/cmd/go/internal/get/get.go#L155
 function gvm() {
+  echo "🚨 gvm not loaded! Loading now..." >&2
   unset -f gvm
-  gvm_dirs=(
-    "$HOME/.gvm/scripts/gvm"
-  )
-  for dir in "${gvm_dirs[@]}"; do
-  	# shellcheck source=/dev/null
-  	[ -s "$dir" ] && source "$dir"
-  done
+  export GVM_DIR="$HOME/.gvm"
+  [ -s "$GVM_DIR/scripts/gvm" ] && source "$GVM_DIR/scripts/gvm"
   export GIT_SSH_COMMAND='ssh -o BatchMode=yes'
   gvm "$@" # invoke the real gvm function now
 }

@@ -2,7 +2,9 @@
 # This plugin loads antidote into the current shell
 
 function antidote() {
-  echo "🚨 antidote not loaded! Loading now..."
+  echo "🚨 antidote not loaded! Loading now..." >&2
   unset -f antidote
-  source /usr/local/opt/antidote/share/antidote/antidote.zsh
+  source "$(brew --prefix antidote)/share/antidote/antidote.zsh"
+
+  antidote "$@" # invoke the real function now
 }
