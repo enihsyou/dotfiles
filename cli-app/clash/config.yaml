@@ -35,7 +35,7 @@ mode: rule
 log-level: info
 external-controller: "127.0.0.1:9090"
 external-ui: /usr/local/var/www/clash-dashboard
-secret: "enihsyou"
+secret: "clash"
 dns:
   enable: true
   ipv6: false
@@ -59,6 +59,8 @@ dns:
 proxy-providers:
   少数派: # 作为订阅来源 给下面几个 file 提供定时更新
     type: http
+    # 首次使用时取消注释并填入 url, 这里作为例子的地址已失效
+    # 在 .gitattributes 里配置了过滤条件，所以不用担心泄露
     url: "https://sspsub.trafficmanager.net/api/v1/client/subscribe?token=****redacted****&flag=clash"
     interval: 3600
     path: ./少数派.yaml
@@ -81,6 +83,11 @@ proxy-providers:
     path: ./少数派.yaml
     filter: "日本"
     health-check: *health-check
+  少数派-美国:
+    type: file
+    path: ./少数派.yaml
+    filter: "美国"
+    health-check: *health-check
 proxy-groups:
   - name: "地区"
     type: select
@@ -88,6 +95,7 @@ proxy-groups:
       - "香港"
       - "新加坡"
       - "日本"
+      - "美国"
   - name: "香港"
     type: url-test
     use: [少数派-香港]
@@ -97,6 +105,9 @@ proxy-groups:
   - name: "日本"
     type: url-test
     use: [少数派-日本]
+  - name: "美国"
+    type: url-test
+    use: [少数派-美国]
   - name: "GitHub Copilot" # 用于在办公网与家用环境间快速切换
     type: select
     proxies: [ "地区", DIRECT ]
@@ -181,15 +192,15 @@ rule-providers: # 需要下载 clash-premium/clash-meta 二进制
     interval: 86400
 rules:
   # 办公网特殊设置
-  - DOMAIN,copilot-proxy.githubusercontent.com,GitHub Copilot
-  # WebUI
-  - DOMAIN,clash.razord.top,DIRECT
-  - DOMAIN,yacd.haishan.me,DIRECT
-  # 黑名单模式
-  - RULE-SET,applications,DIRECT
-  - RULE-SET,private,DIRECT
-  - RULE-SET,reject,REJECT
-  - RULE-SET,tld-not-cn,地区
-  - RULE-SET,gfw,地区
-  - RULE-SET,telegramcidr,地区
+  # - DOMAIN,copilot-proxy.githubusercontent.com,GitHub Copilot
+  # # WebUI
+  # - DOMAIN,clash.razord.top,DIRECT
+  # - DOMAIN,yacd.haishan.me,DIRECT
+  # # 黑名单模式
+  # - RULE-SET,applications,DIRECT
+  # - RULE-SET,private,DIRECT
+  # - RULE-SET,reject,REJECT
+  # - RULE-SET,tld-not-cn,地区
+  # - RULE-SET,gfw,地区
+  # - RULE-SET,telegramcidr,地区
   - MATCH,DIRECT
