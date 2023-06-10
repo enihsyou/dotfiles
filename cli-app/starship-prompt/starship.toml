@@ -12,6 +12,10 @@ scan_timeout = 25
 # Startship 执行命令的超时时间（单位：毫秒）。
 command_timeout = 300
 
+[character]
+success_symbol = "[➜](bold green)"
+error_symbol = "[➜](bold red)"
+
 [cmd_duration]
 min_time = 100
 show_milliseconds = true

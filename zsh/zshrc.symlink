@@ -32,7 +32,7 @@ export ZSH_DISABLE_COMPFIX="true"
 # Pre configuration
 
 # Path shortcut to this dotfiles path is $DOTFILES
-export DOTFILES=~/.dotfiles
+export DOTFILES=$HOME/.dotfiles
 
 # Loads antidote dynamically
 # source /usr/local/opt/antidote/share/antidote/antidote.zsh

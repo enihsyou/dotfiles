@@ -118,7 +118,7 @@ if ! shopt -oq posix; then
 fi
 
 # shortcut to this dotfiles path is $ZSHDOT
-export ZSHDOT=~/.dotfiles
+export ZSHDOT=$HOME/.dotfiles
 
 # load helper functions
 #source $ZSHDOT/functions/*.zsh

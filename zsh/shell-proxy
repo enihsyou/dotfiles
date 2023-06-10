@@ -14,6 +14,9 @@ case "$PROXY_TYPE" in
   "clash")
     echo "http://localhost:7890"
     ;;
+  "router")
+    echo "http://192.168.9.1:3333"
+    ;;
   *)
     # fallback to plugin default method
     echo "${SHELLPROXY_URL}"

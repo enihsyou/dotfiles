@@ -34,7 +34,7 @@ allow-lan: false
 mode: rule
 log-level: info
 external-controller: "127.0.0.1:9090"
-external-ui: /usr/local/var/www/clash-dashboard
+external-ui: /opt/homebrew/var/www/clash-dashboard
 secret: "clash"
 dns:
   enable: true
@@ -64,15 +64,16 @@ proxy-providers:
     url: "https://sspsub.trafficmanager.net/api/v1/client/subscribe?token=****redacted****&flag=clash"
     interval: 3600
     path: ./少数派.yaml
-  少数派-香港: # 按地区筛选节点
-    type: file
-    path: ./少数派.yaml
-    filter: "香港"
     health-check: &health-check
       enable: true
       interval: 600
       tolerance: 500
       url: http://www.gstatic.com/generate_204
+  少数派-香港: # 按地区筛选节点
+    type: file
+    path: ./少数派.yaml
+    filter: "香港"
+    health-check: *health-check
   少数派-新加坡:
     type: file
     path: ./少数派.yaml
@@ -111,6 +112,7 @@ proxy-groups:
   - name: "GitHub Copilot" # 用于在办公网与家用环境间快速切换
     type: select
     proxies: [ "地区", DIRECT ]
+proxies: [] # 兼容文件必须有这个字段的要求
 rule-providers: # 需要下载 clash-premium/clash-meta 二进制
   reject: # 广告域名列表
     type: http
@@ -197,10 +199,10 @@ rules:
   # - DOMAIN,clash.razord.top,DIRECT
   # - DOMAIN,yacd.haishan.me,DIRECT
   # # 黑名单模式
-  # - RULE-SET,applications,DIRECT
-  # - RULE-SET,private,DIRECT
-  # - RULE-SET,reject,REJECT
-  # - RULE-SET,tld-not-cn,地区
-  # - RULE-SET,gfw,地区
-  # - RULE-SET,telegramcidr,地区
+  - RULE-SET,applications,DIRECT
+  - RULE-SET,private,DIRECT
+  - RULE-SET,reject,REJECT
+  - RULE-SET,tld-not-cn,地区
+  - RULE-SET,gfw,地区
+  - RULE-SET,telegramcidr,地区
   - MATCH,DIRECT
