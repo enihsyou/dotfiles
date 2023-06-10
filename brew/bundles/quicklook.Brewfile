@@ -10,6 +10,12 @@
 # 直接在 shell 里执行本文件来安装
 # 列表来自 https://github.com/sindresorhus/quick-look-plugins
 # 其他可用 https://www.quicklookplugins.com
-cask "qlcolorcode"    if OS.mac?
+
+
+# qlcolorcode 在 macOS 10.15 开始已经失效了
+# https://sayzlim.net/qlcolorcode-not-working-catalina/
+# 现在替换成 syntax-highlight
+cask "syntax-highlight", args: { no_quarantine: true } if OS.mac?
+
 cask "qlstephen"      if OS.mac?
 cask "quicklook-json" if OS.mac?
