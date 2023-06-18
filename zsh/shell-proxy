@@ -2,23 +2,11 @@
 # The file path: $HOME/.config/proxy
 # driver program for "Shell Proxy oh-my-zsh plugin"
 # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/shell-proxy
-# sample usage: PROXY_SOCKS=1 proxy enable
+# sample usage: PROXY_TYPE=xxx proxy enable
+# install jq first, then put a json file in ~/.config/proxy.json with the following content:
+# {
+#   "your_proxy_type": "http://your_proxy_url"
+# }
 
-case "$PROXY_TYPE" in
-  "bytedance")
-    echo "http://bj-rd-proxy.byted.org:3128"
-    ;;
-  "socks5")
-    echo "socks5://localhost:10800"
-    ;;
-  "clash")
-    echo "http://localhost:7890"
-    ;;
-  "router")
-    echo "http://192.168.9.1:3333"
-    ;;
-  *)
-    # fallback to plugin default method
-    echo "${SHELLPROXY_URL}"
-    ;;
-esac
+# if no proxy type specified, fallback to default method.
+jq -r '.[$ENV.PROXY_TYPE] // $ENV.SHELLPROXY_URL // ""' ~/.config/proxy.json
