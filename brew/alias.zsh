@@ -36,7 +36,7 @@ alias du="dust"
 #alias dig="dog"
 
 # tldr
-alias tldr="tldr --theme base16"
+#alias tldr="tldr --theme base16"
 
 # kitty
 #if [[ "$TERM" == "xterm-kitty" ]]; then

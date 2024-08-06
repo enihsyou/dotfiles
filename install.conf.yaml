@@ -16,6 +16,8 @@
     ~/.gitconfig: git/gitconfig.symlink
     ~/.gitignore: git/gitignore.symlink
     ~/.config/proxy: zsh/shell-proxy
+    ~/.config/direnv/direnvrc: symlinks/direnvrc.symlink
+    ~/.ripgreprc: symlinks/ripgreprc.symlink
 
     ~/.config/starship.toml:
       path: cli-app/starship-prompt/starship.toml

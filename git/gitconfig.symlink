@@ -26,6 +26,7 @@
   pager = delta
   quotepath = false
   safecrlf = warn
+  sshCommand = ssh -o BatchMode=yes
 
 # Delta settings https://github.com/dandavison/delta
 [delta]
@@ -51,7 +52,7 @@
 [commit]
   gpgsign = true
 [gpg]
-  program = /usr/local/bin/gpg
+  program = /opt/homebrew/bin/gpg
 [cola]
   spellcheck = false
 
@@ -87,3 +88,9 @@
 [difftool "kitty.gui"]
     cmd = kitty kitty +kitten diff $LOCAL $REMOTE
 
+[rebase]
+	autoStash = true
+	autoSquash = true
+[rerere]
+	enabled = true
+	autoUpdate = true

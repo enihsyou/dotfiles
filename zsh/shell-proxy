@@ -9,4 +9,4 @@
 # }
 
 # if no proxy type specified, fallback to default method.
-jq -r '.[$ENV.PROXY_TYPE] // $ENV.SHELLPROXY_URL // ""' ~/.config/proxy.json
+PROXY_TYPE=${PROXY_TYPE:-} jq -r '.[$ENV.PROXY_TYPE] // $ENV.SHELLPROXY_URL // ""' ~/.config/proxy.json

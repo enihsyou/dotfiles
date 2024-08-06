@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# see https://github.com/direnv/direnv/blob/8889cbb26402dbdb9fcbab1a38b6f4fc7d1bb38f/man/direnv-stdlib.1.md
+
+# 我们在 ~/.zsh_plugins.zsh 里为了 completion 启用了 robbyrussell/oh-my-zsh path:plugins/asdf
+# 但是又使用了 direnv, 用来替代 shims 解析以加速命令识别
+# 所以这里要去掉由 $ASDF_DIR/asdf.sh 设置的 shims 路径
+PATH_rm "$HOME/.asdf/shims"

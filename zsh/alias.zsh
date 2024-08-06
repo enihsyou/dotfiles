@@ -18,3 +18,6 @@ alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
+
+# Make "$ some command" work
+alias "$"='command'
