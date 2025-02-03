@@ -4,29 +4,20 @@
   protocol = https
 
 [alias]
-  promote = !$ZSHDOT/bin/git-promote
-  wtf     = !$ZSHDOT/bin/git-wtf
-  rank-contributors = !$ZSHDOT/bin/git-rank-contributors
-  count   = !git shortlog -sn
-
-[pager]
-  diff   = delta
-  log    = delta
-  reflog = delta
-  show   = delta
-
-[color]
-  diff   = auto
-  status = auto
-  branch = auto
-  ui     = auto
+  # 看谁提交数最多
+  count = !git shortlog -sn
 
 [core]
+  # 我们放在 .gitconfig 边上
   excludesfile = ~/.gitignore
+  # 尊重文件自身的换行符，兼容多平台
   autocrlf = input
+  # 也会由 includeIf 来设置
   filemode = true
   pager = delta
+  # 避免路径内的中文乱码
   quotepath = false
+  # 提交时禁止混合换行符
   safecrlf = warn
   sshCommand = ssh -o BatchMode=yes
 
@@ -51,10 +42,13 @@
   process = git-lfs filter-process
   required = true
 
-[commit]
-  gpgsign = true
-[gpg]
-  program = /opt/homebrew/bin/gpg
+# 在 .gitconfig.local 中按需配置
+# [commit]
+#   gpgsign = true
+# [gpg]
+#   program = /opt/homebrew/bin/gpg
+
+# https://github.com/git-cola/git-cola
 [cola]
   spellcheck = false
 
@@ -82,6 +76,9 @@
 [includeIf "gitdir/i:r:/"]
   path = ~/.dotfiles/git/gitconfig-windows.ini
 
+# Linux, macOS, WSL 等平台使用的配置
+[includeIf "gitdir:/"]
+  path = ~/.dotfiles/git/gitconfig-posix.ini
 
 [pull]
   ff = only
@@ -95,6 +92,10 @@
 [difftool "sourcetree"]
   cmd = opendiff \"$LOCAL\" \"$REMOTE\"
   path = 
+
+[merge]
+  # https://dandavison.github.io/delta/merge-conflicts.html
+  conflictStyle = zdiff3
 [mergetool "sourcetree"]
   cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
   trustExitCode = true
