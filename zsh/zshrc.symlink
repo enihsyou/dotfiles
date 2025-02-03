@@ -34,9 +34,16 @@ export ZSH_DISABLE_COMPFIX="true"
 # Path shortcut to this dotfiles path is $DOTFILES
 export DOTFILES=$HOME/.dotfiles
 
+# Set ZSH_CACHE_DIR to the path where cache files should be created
+export ZSH_CACHE_DIR=$HOME/.cache/zsh
+
 # Loads antidote dynamically
 # source /usr/local/opt/antidote/share/antidote/antidote.zsh
 # antidote load
+
+# Add homebrew managed auto-complete functions to fpath before compinit
+# https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
+# FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:${FPATH}"
 
 # Speed up zsh compinit by only checking cache once a day.
 # On slow systems, checking the cached .zcompdump file to see if it must be
@@ -111,4 +118,5 @@ unset -f __prof_func
 # code at current version, that was fixed), replace '[ checks ] && function'
 # with if statement will resolve this problem and no longer need this hack.
 # echo >/dev/null
+# source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
 
