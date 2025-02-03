@@ -15,3 +15,7 @@ cd ~/.dotfiles
 
 - https://github.com/holman/dotfiles/fork
 - https://github.com/anishathalye/dotbot
+
+## Development
+
+- 多数配置假设本项目放在 `~/.dotfiles` 目录下，纯文本的配置文件不一定能访问环境变量，所以最好遵守这个约定
