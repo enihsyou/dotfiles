@@ -1,0 +1,110 @@
+{
+	"$schema": "https://aka.ms/winget-packages.schema.2.0.json",
+	"CreationDate": "2025-03-12T00:57:54.051-00:00",
+	"Sources": [
+		{
+			"Packages": [
+				{
+					"PackageIdentifier": "7zip.7zip"
+				},
+				{
+					"PackageIdentifier": "ClashVergeRev.ClashVergeRev"
+				},
+				{
+					"PackageIdentifier": "Docker.DockerDesktop"
+				},
+				{
+					"PackageIdentifier": "voidtools.Everything.Alpha"
+				},
+				{
+					"PackageIdentifier": "Git.Git"
+				},
+				{
+					"PackageIdentifier": "Daum.PotPlayer"
+				},
+				{
+					"PackageIdentifier": "MacType.MacType"
+				},
+				{
+					"PackageIdentifier": "Microsoft.PowerShell"
+				},
+				{
+					"PackageIdentifier": "Orange-OpenSource.Hurl"
+				},
+				{
+					"PackageIdentifier": "AltSnap.AltSnap"
+				},
+				{
+					"PackageIdentifier": "BurntSushi.ripgrep.MSVC"
+				},
+				{
+					"PackageIdentifier": "Gyan.FFmpeg"
+				},
+				{
+					"PackageIdentifier": "JanDeDobbeleer.OhMyPosh"
+				},
+				{
+					"PackageIdentifier": "Oven-sh.Bun"
+				},
+				{
+					"PackageIdentifier": "Rustlang.Rustup"
+				},
+				{
+					"PackageIdentifier": "Schniz.fnm"
+				},
+				{
+					"PackageIdentifier": "aria2.aria2"
+				},
+				{
+					"PackageIdentifier": "astral-sh.uv"
+				},
+				{
+					"PackageIdentifier": "HTTPie.HTTPie"
+				},
+				{
+					"PackageIdentifier": "dandavison.delta"
+				},
+				{
+					"PackageIdentifier": "ezwinports.make"
+				},
+				{
+					"PackageIdentifier": "jftuga.less"
+				},
+				{
+					"PackageIdentifier": "jqlang.jq"
+				},
+				{
+					"PackageIdentifier": "sharkdp.bat"
+				},
+				{
+					"PackageIdentifier": "sharkdp.fd"
+				},
+				{
+					"PackageIdentifier": "sharkdp.hexyl"
+				},
+				{
+					"PackageIdentifier": "LocalSend.LocalSend"
+				},
+				{
+					"PackageIdentifier": "Armin2208.WindowsAutoNightMode"
+				},
+				{
+					"PackageIdentifier": "Microsoft.VisualStudioCode"
+				},
+				{
+					"PackageIdentifier": "Microsoft.PowerToys"
+				},
+				{
+					"PackageIdentifier": "Microsoft.WindowsTerminal"
+				}
+			],
+			"SourceDetails": {
+				"Argument": "https://mirrors.cernet.edu.cn/winget-source",
+				"Identifier": "Microsoft.Winget.Source_8wekyb3d8bbwe",
+				"Name": "winget",
+				"Type": "Microsoft.PreIndexed.Package"
+			}
+		}
+	],
+	"WinGetVersion": "1.10.340"
+}
