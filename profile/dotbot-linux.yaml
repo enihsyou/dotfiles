@@ -1,16 +1,19 @@
 # dotbot configuration
+# docs: https://github.com/anishathalye/dotbot?tab=readme-ov-file#directives
 
 - defaults:
     link:
-      create: true
-      relink: true
+      create: true # create parent directories if they don't exist
+      relink: true # remove existing symlink before creating new one
     shell:
       stdout: true # show output from stdout
       stderr: true # show error output from stderr
       quiet: true  # display command description rather than statement itself.
 
 - link:
-    ~/.zshrc: zsh/zshrc.symlink
+    ~/.zshrc: 
+      if: '[ `uname` = Darwin ]'
+      path: zsh/zshrc.symlink
     ~/.bashrc: bash/bashrc.symlink
     ~/.vimrc: vim/vimrc.symlink
     ~/.gitconfig: git/gitconfig.symlink

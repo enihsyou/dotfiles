@@ -1,15 +1,61 @@
 #!/usr/bin/env bash
+# Usage:
+#  ./install        # 根据当前操作系统选择配置文件
+#  ./install <yaml> # 使用指定配置文件
 
 set -e
 
-CONFIG="install.conf.yaml"
 DOTBOT_DIR="dotbot"
-
 DOTBOT_BIN="bin/dotbot"
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+CONFIG_PROFILES=()
+
+# 检查参数是否存在对应的配置文件，允许一定程度的简写和猜测，如果存在则添加到配置列表中
+# 参数：
+#   $1 - profile 名称 (例如: "linux", "macos") 或文件路径
+# 返回值：
+#   无返回值，但会修改全局变量 CONFIG_PROFILES
+function add_profile() {
+    local profile_file="$1"
+    if [ -f "${profile_file}" ]; then
+        CONFIG_PROFILES+=("${profile_file}")
+        return
+    fi
+
+    local guessed_file="profile/dotbot-$1.yaml"
+    if [ -f "${guessed_file}" ]; then
+        CONFIG_PROFILES+=("${guessed_file}")
+        return
+    fi
+}
+
+if [ $# -gt 0 ]; then
+    # 有参时使用指定配置文件
+    # 检查参数是否存在对应的配置文件，如果存在则添加到配置列表中
+    for profile in "$@"; do
+        add_profile "${profile}"
+    done
+else
+    # 无参时根据操作系统选择配置文件
+    case "$(uname -s)" in
+        Linux*)  add_profile "linux";;
+        Darwin*) add_profile "macos";;
+    esac
+fi
+
+if [ ${#CONFIG_PROFILES[@]} -eq 0 ]; then
+    echo "No profile file activated, please specify one or check your system." >&2
+    exit 1
+fi
+
+# 初始化 dotbot
 cd "${BASEDIR}"
 git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
 git submodule update --init --recursive "${DOTBOT_DIR}"
 
-"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
+# 依照选定的配置文件运行
+for conf in "${CONFIG_PROFILES[@]}"; do
+    echo "Running dotbot with config: ${conf}"
+    "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${conf}"
+done
