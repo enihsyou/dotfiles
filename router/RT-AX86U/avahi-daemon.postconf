@@ -1,0 +1,13 @@
+#!/bin/sh
+# code: language=bash
+CONFIG=$1
+
+# shellcheck source=/dev/null
+. /koolshare/bin/helper.sh
+
+pc_delete "deny-interfaces" "$CONFIG"
+
+cat <<EOF >> "$CONFIG"
+[reflector]
+enable-reflector=yes
+EOF
