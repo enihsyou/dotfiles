@@ -5,17 +5,12 @@
 alias logme='logger "[enihsyou]:"'
 
 # make router responed to IPv6 ARP query
-ipv6_addr="$(nvram get ipv6_wan_addr)" # 2409:8a1e:6e71:5eb0::1/128
-ipv6_addr="${ipv6_addr%/*}"            # 2409:8a1e:6e71:5eb0::1
-ipv6_hostname="$(nvram get lan_hostname)" # RT-AX86U-CE58
-ipv6_hostname="$ipv6_hostname-IPv6"       # RT-AX86U-CE58-IPv6
-host_line="$ipv6_addr $ipv6_hostname"
-if grep -q "$ipv6_addr" /etc/hosts; then
-  logme "update /etc/hosts"
-  sed -i "s/^$ipv6_addr.*$/$host_line/" /etc/hosts
-else
-  logme "append /etc/hosts"
-  echo "$host_line" >> /etc/hosts
+if [ ! -e /jffs/configs/dnsmasq.conf.add ]; then
+  logme "create /jffs/configs/dnsmasq.conf.add"
+  ipv6_hostname="$(nvram get lan_hostname)" # RT-AX86U-CE58
+  ipv6_hostname="$ipv6_hostname-IPv6"       # RT-AX86U-CE58-IPv6
+  echo "interface-name=$ipv6_hostname,br0/6" >> /jffs/configs/dnsmasq.conf.add
+  service restart_dnsmasq
 fi
 
 # link avahi-daemon.postconf
