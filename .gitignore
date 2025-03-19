@@ -4,10 +4,12 @@
 .vscode/
 
 # aria2 certs
-/aria2/aria2.pem.crt
-/aria2/aria2.p12
+cli-app/aria2/aria2.crt-chain.pem
+cli-app/aria2/aria2.crt.pem
+cli-app/aria2/aria2.key.pem
+cli-app/aria2/aria2.pfx
 # aria2 session is transient
-/aria2/aria2.session
+cli-app/aria2/aria2.session
 
 # symlinks
 gui-app/kitty/venv
