@@ -1,5 +1,13 @@
 # 使用 nssm 安装 aria2 服务
 
+# 函数：检查命令是否可用
+function Test-CommandAvailable {
+    param (
+        [string]$CommandName
+    )
+    return [bool](Get-Command -Name $CommandName -ErrorAction SilentlyContinue)
+}
+
 # 检查管理员权限
 if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
     $prompt_title = "需要管理员权限来安装服务。"
@@ -21,16 +29,14 @@ if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
     )
     # https://gist.github.com/mklement0/f726dee9f0d3d444bf58cb81fda57884
     $psExePath = (Get-Process -Id $PID).Path
-    Start-Process -Verb RunAs -FilePath $psExePath -ArgumentList $arguments
-    exit
-}
 
-# 函数：检查命令是否可用
-function Test-CommandAvailable {
-    param (
-        [string]$CommandName
-    )
-    return [bool](Get-Command -Name $CommandName -ErrorAction SilentlyContinue)
+    # if sudo is available, use sudo
+    if (Test-CommandAvailable 'sudo') {
+        sudo $psExePath $arguments
+    } else {
+        Start-Process -Verb RunAs -FilePath $psExePath -ArgumentList $arguments
+    }
+    exit
 }
 
 # 函数：获取命令的完整路径
@@ -93,7 +99,7 @@ try {
         & $nssmPath stop $serviceName confirm
         Write-Host "正在删除现有服务..."
         & $nssmPath remove $serviceName confirm
-        Write-Host "服务已删除。等待生效..." -ForegroundColor Green
+        Write-Host "已发送指令，等待生效..." -NoNewline
         while ($null -ne (Get-Service -Name $serviceName -ErrorAction SilentlyContinue)) {  
             Write-Host "." -NoNewline
             Start-Sleep -Seconds 1
