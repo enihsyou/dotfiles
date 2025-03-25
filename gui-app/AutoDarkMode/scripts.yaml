@@ -1,0 +1,12 @@
+# place at %USERPROFILE%\AppData\Roaming\AutoDarkMode\scripts.yaml
+Enabled: true
+Component:
+  Scripts:
+  - Name: Visible in Environment Variables
+    Command: cmd
+    ArgsLight: 
+      - "setx 'AUTODARKMODE' 'light'"
+    ArgsDark: 
+      - "setx 'AUTODARKMODE' 'dark'"
+    AllowedSources: 
+      - "Any"

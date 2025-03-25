@@ -15,6 +15,7 @@
     ~/.gitignore: git/gitignore.ini
     ~/.gitconfig-delta: git/gitconfig-delta.ini
     ~/.gitconfig-platform: git/gitconfig-windows.ini
+    ~/AppData/Roaming/AutoDarkMode/scripts.yaml: gui-app/AutoDarkMode/scripts.yaml
 
 # shell on Windows is Command Prompt (cmd), command is executed with subprocess.call(shell=True)
 # thus, command string must stay within the same line, I recommend use ">" for
