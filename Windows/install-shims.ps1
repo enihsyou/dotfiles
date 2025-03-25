@@ -87,7 +87,8 @@ function Convert-ToWindowsPath {
 # 检查并下载 shim_exec.exe
 function Get-ShimExecutable {
     param(
-        [string]$TargetPath
+        [string]$TargetPath,
+        [string]$GitHubRepo
     )
     
     $TargetPath = Convert-ToWindowsPath $TargetPath
@@ -106,7 +107,7 @@ function Get-ShimExecutable {
     }
 
     # 下载
-    $downloadUrl = "https://github.com/jphilbert/shim_executable/releases/latest/download/shim_exec.exe"
+    $downloadUrl = "https://github.com/$GitHubRepo/releases/latest/download/shim_exec.exe"
     Invoke-WebRequest -Uri $downloadUrl -OutFile $TargetPath
     
     Write-Success "shim_exec.exe 下载完成"
@@ -193,8 +194,14 @@ function Install-Shims {
     Test-Config -Config $config
     
     # 检查并下载 shim_exec.exe
+    # 确定 shim_generator_path，如果为空，使用默认值
+    if ($config.shim_generator_path) {
+        $shimRepository = $config.shim_generator_path
+    } else {
+        $shimRepository = "jphilbert/shim_executable"
+    }
     $shimExecPath = Convert-ToWindowsPath (Expand-Variables $config.shim_generator_path)
-    Get-ShimExecutable -TargetPath $shimExecPath
+    Get-ShimExecutable -TargetPath $shimExecPath -GitHubRepo $shimRepository
 
     # 处理每个 shim
     foreach ($shim in $config.shims) {
@@ -206,7 +213,8 @@ function Install-Shims {
             $target = Join-Path $target (Split-Path -Leaf $source)
         }
 
-        Write-Progress "正在创建 shim: $source -> $target"
+        Write-Host
+        Write-Progress "正在创建 shim: $source"
 
         # 创建目标目录
         $targetDir = Split-Path -Parent $target

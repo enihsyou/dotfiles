@@ -1,5 +1,6 @@
 {
   "shim_generator_path": "$HOME/.local/bin/shim_exec.exe",
+  "shim_repository": "enihsyou/shim_exectuable",
   "shims": [
     {
       // hurl from winget
@@ -21,6 +22,10 @@
     {
       // jre from JetBrains
       "source": "$LOCALAPPDATA/Programs/GoLand/jbr/bin/java.exe",
+      "target": "$HOME/.local/bin/"
+    },
+    {
+      "source": "$LOCALAPPDATA/Programs/GoLand/jbr/bin/javac.exe",
       "target": "$HOME/.local/bin/"
     },
     {
