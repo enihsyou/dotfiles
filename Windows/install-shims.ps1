@@ -169,6 +169,90 @@ function Test-Config {
     }
 }
 
+# 创建单个 shim
+function Create-Shim {
+    param(
+        [string]$Source,
+        [string]$Target,
+        [string]$ShimExecPath,
+        [string[]]$Args,
+        [string]$Type
+    )
+    
+    Write-Host
+    Write-Progress "正在创建 shim: $Source"
+
+    # 创建目标目录
+    $targetDir = Split-Path -Parent $Target
+    if (-not (Test-Path $targetDir)) {
+        New-Item -ItemType Directory -Path $targetDir -Force | Out-Null
+    }
+
+    # 构建命令
+    $cmdArgs = @(
+        "--path", $Source,
+        "--output", $Target
+    )
+
+    # 添加可选参数
+    if ($Args) {
+        $cmdArgs += "--command", ($Args -join " ")
+    }
+    if ($Type) {
+        $cmdArgs += "--$($Type.ToLower())"
+    }
+    if ($Debug) {
+        $cmdArgs += "--debug"
+    }
+
+    # 执行命令
+    try {
+        & $ShimExecPath @cmdArgs
+        Write-Success "成功创建 shim: $Target"
+        return $true
+    } catch {
+        Write-Error "创建 shim 失败: $_"
+        return $false
+    }
+}
+
+# 创建符号链接
+function Create-SymbolicLink {
+    param(
+        [string]$Source,
+        [string]$Target
+    )
+        
+    Write-Host
+    Write-Progress "正在创建符号链接: $Source"
+
+    # 创建目标目录
+    $targetDir = Split-Path -Parent $Target
+    if (-not (Test-Path $targetDir)) {
+        New-Item -ItemType Directory -Path $targetDir -Force | Out-Null
+    }
+    
+    # 检查目标是否已存在
+    if (Test-Path $Target) {
+        # 检查是否已经是正确的链接
+        $existingLink = Get-Item $Target
+        if ($existingLink.LinkType -eq "SymbolicLink" -and $existingLink.Target -eq $Source) {
+            Write-Success "现有符号链接正确: $Target"
+            return
+        } else {
+            Write-Info "目标文件之前指向: $($existingLink.Target)"
+        }
+    }
+    
+    # 创建符号链接
+    try {
+        New-Item -ItemType SymbolicLink -Path $Target -Target $Source -Force | Out-Null
+        Write-Success "成功创建符号链接: $Target"
+    } catch {
+        Write-Error "创建符号链接失败: $_"
+    }
+}
+
 # 主函数
 function Install-Shims {
     # 读取配置文件
@@ -195,8 +279,8 @@ function Install-Shims {
     
     # 检查并下载 shim_exec.exe
     # 确定 shim_generator_path，如果为空，使用默认值
-    if ($config.shim_generator_path) {
-        $shimRepository = $config.shim_generator_path
+    if ($config.shim_repository) {
+        $shimRepository = $config.shim_repository
     } else {
         $shimRepository = "jphilbert/shim_executable"
     }
@@ -213,40 +297,20 @@ function Install-Shims {
             $target = Join-Path $target (Split-Path -Leaf $source)
         }
 
-        Write-Host
-        Write-Progress "正在创建 shim: $source"
+        Create-Shim -Source $source -Target $target -ShimExecPath $shimExecPath -Args $shim.args -Type $shim.type
+    }
+    
+    # 处理符号链接
+    foreach ($link in $config.symbolic_links) {
+        $source = Convert-ToWindowsPath (Expand-Variables $link.source)
+        $target = Convert-ToWindowsPath (Expand-Variables $link.target)
 
-        # 创建目标目录
-        $targetDir = Split-Path -Parent $target
-        if (-not (Test-Path $targetDir)) {
-            New-Item -ItemType Directory -Path $targetDir -Force | Out-Null
-        }
-
-        # 构建命令
-        $cmdArgs = @(
-            "--path", $source,
-            "--output", $target
-        )
-
-        # 添加可选参数
-        if ($shim.args) {
-            $cmdArgs += "--command", ($shim.args -join " ")
-        }
-        if ($shim.type) {
-            $cmdArgs += "--$($shim.type.ToLower())"
-        }
-        if ($Debug) {
-            $cmdArgs += "--debug"
+        # 如果目标以斜杠结尾，添加源文件名
+        if ($target.EndsWith("\")) {
+            $target = Join-Path $target (Split-Path -Leaf $source)
         }
 
-        # 执行命令
-        try {
-            & $shimExecPath @cmdArgs
-            Write-Success "成功创建 shim: $target"
-        }
-        catch {
-            Write-Error "创建 shim 失败: $_"
-        }
+        Create-SymbolicLink -Source $source -Target $target
     }
 }
 

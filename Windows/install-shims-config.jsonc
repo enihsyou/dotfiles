@@ -4,32 +4,58 @@
   "shims": [
     {
       // hurl from winget
-      "source": "$LOCALAPPDATA/Programs/hurl/hurl.exe",
+      "source": "$USERPROFILE/AppData/Local/Programs/hurl/hurl.exe",
       "target": "$HOME/.local/bin/"
     },
     {
       // jq from winget
       // since jq is installed as a portable binary, winget will add its installation folder to PATH,
       // which bloats the PATH once more, so we shim it, and another entry from PATH is removed.
-      "source": "$LOCALAPPDATA/Microsoft/WinGet/Packages/jqlang.jq_Microsoft.Winget.Source_8wekyb3d8bbwe/jq.exe",
+      "source": "$USERPROFILE/AppData/Local/Microsoft/WinGet/Packages/jqlang.jq_Microsoft.Winget.Source_8wekyb3d8bbwe/jq.exe",
       "target": "$HOME/.local/bin/"
     },
     {
       // openssl from Git for Windows
-      "source": "$ProgramFiles/Git/mingw64/bin/openssl.exe",
+      // Assume the default installation path
+      "source": "C:/Program Files/Git/mingw64/bin/openssl.exe",
       "target": "$HOME/.local/bin/"
     },
     {
       // jre from JetBrains
-      "source": "$LOCALAPPDATA/Programs/GoLand/jbr/bin/java.exe",
+      "source": "$USERPROFILE/AppData/Local/Programs/GoLand/jbr/bin/java.exe",
       "target": "$HOME/.local/bin/"
     },
     {
-      "source": "$LOCALAPPDATA/Programs/GoLand/jbr/bin/javac.exe",
+      "source": "$USERPROFILE/AppData/Local/Programs/GoLand/jbr/bin/javac.exe",
       "target": "$HOME/.local/bin/"
     },
     {
-      "source": "$LOCALAPPDATA/Programs/GoLand/jbr/bin/javaw.exe",
+      "source": "$USERPROFILE/AppData/Local/Programs/GoLand/jbr/bin/javaw.exe",
+      "target": "$HOME/.local/bin/"
+    },
+    {
+      // node from fnm, since vscode still does not recognize the PATH injected
+      // by powershell profile, so we need to make sure sensible default is set
+      "source": "$USERPROFILE/AppData/Roaming/fnm/aliases/default/node.exe",
+      "target": "$HOME/.local/bin/"
+    },
+    {
+      "source": "$USERPROFILE/AppData/Roaming/fnm/aliases/default/npm.cmd",
+      "target": "$HOME/.local/bin/"
+    },
+    {
+      "source": "$USERPROFILE/AppData/Roaming/fnm/aliases/default/npx.cmd",
+      "target": "$HOME/.local/bin/"
+    }
+  ],
+  "symbolic_links": [
+    {
+      // Helper to locate Visual Studio installations
+      // Some Makefile (like gnu make.git) depends on this to locate the compiler
+      // Assume the default installation path
+      // can't be shimmed, since shim created by my shim_exec requires admin permission to run
+      // possibly a bug to investigate later.
+      "source": "C:/Program Files (x86)/Microsoft Visual Studio/Installer/vswhere.exe",
       "target": "$HOME/.local/bin/"
     }
   ]
