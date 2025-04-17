@@ -1,10 +1,101 @@
-# 本脚本用于在 PowerShell 控制台中创建一个可交互的菜单界面，允许用户选择和执行脚本。
+﻿# 本脚本用于在 PowerShell 控制台中创建一个可交互的菜单界面，允许用户选择和执行脚本。
 # 加载 console-menu 目录下的所有脚本，并以树形结构展示。
+
+# 使用 UTF-8 with BOM 编码保存以同时在 Windows Powershell 5.1 和 PowerShell 7+上运行。
+# https://learn.microsoft.com/en-us/powershell/scripting/dev-cross-plat/vscode/understanding-file-encoding
+
+# Windows Terminal 和 PowerShell 默认支持了 VT100 模拟，所以 Virtual Screen Buffer 模式可以直接使用
+# 但注意这个模式下 Write-Output -ForeGroundColor 是不生效的，得用 ANSI 转义序列
+# https://stackoverflow.com/a/51681675
 
 [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseApprovedVerbs', '', Scope = 'Function')]
 param()
 
 $ErrorActionPreference = "Stop"
+
+# ANSI 转义序列颜色代码
+$esc = [char]0x1b
+$AnsiReset = "$esc[0m"
+$AnsiColors = @{
+    'Black'       = "$esc[30m"
+    'DarkRed'     = "$esc[31m"
+    'DarkGreen'   = "$esc[32m"
+    'DarkYellow'  = "$esc[33m"
+    'DarkBlue'    = "$esc[34m"
+    'DarkMagenta' = "$esc[35m"
+    'DarkCyan'    = "$esc[36m"
+    'DarkGray'    = "$esc[90m"
+    'Gray'        = "$esc[37m"
+    'Red'         = "$esc[91m"
+    'Green'       = "$esc[92m"
+    'Yellow'      = "$esc[93m"
+    'Blue'        = "$esc[94m"
+    'Magenta'     = "$esc[95m"
+    'Cyan'        = "$esc[96m"
+    'White'       = "$esc[97m"
+}
+
+$AnsiBackgrounds = @{
+    'Black'       = "$esc[40m"
+    'DarkRed'     = "$esc[41m"
+    'DarkGreen'   = "$esc[42m"
+    'DarkYellow'  = "$esc[43m"
+    'DarkBlue'    = "$esc[44m"
+    'DarkMagenta' = "$esc[45m"
+    'DarkCyan'    = "$esc[46m"
+    'DarkGray'    = "$esc[100m"
+    'Gray'        = "$esc[47m"
+    'Red'         = "$esc[101m"
+    'Green'       = "$esc[102m"
+    'Yellow'      = "$esc[103m"
+    'Blue'        = "$esc[104m"
+    'Magenta'     = "$esc[105m"
+    'Cyan'        = "$esc[106m"
+    'White'       = "$esc[107m"
+}
+
+function Enter-AltBuffer {
+    Write-Host -NoNewline "$esc[?1049h"
+}
+function Exit-AltBuffer {
+    Write-Host -NoNewline "$esc[?1049l"
+}
+
+function Write-AnsiColor {
+    # 在 Virtual Screen Buffer 模式下 Write-Output -ForeGroundColor 是不生效的
+    # 这里替换成 ANSI 转义序列
+    param (
+        [Parameter(Mandatory = $true, ValueFromPipeline = $true)]
+        [string]$Text,
+
+        [Parameter()]
+        [string]$ForegroundColor = "Gray",
+
+        [Parameter()]
+        [string]$BackgroundColor = $null,
+
+        [Parameter()]
+        [switch]$NoNewline
+    )
+
+    $ansi = ""
+
+    if ($ForegroundColor -ne $null -and $AnsiColors.ContainsKey($ForegroundColor)) {
+        $ansi += $AnsiColors[$ForegroundColor]
+    }
+
+    if ($BackgroundColor -ne $null -and $AnsiBackgrounds.ContainsKey($BackgroundColor)) {
+        $ansi += $AnsiBackgrounds[$BackgroundColor]
+    }
+
+    $ansiText = "$ansi$Text$AnsiReset"
+
+    if ($NoNewline) {
+        Write-Host -NoNewline $ansiText
+    } else {
+        Write-Host $ansiText
+    }
+}
 
 function New-MenuItem {
     param (
@@ -41,7 +132,7 @@ function Import-MenuItems {
     $dirEntries = Get-ChildItem -Path $BasePath -Directory
     foreach ($entry in $dirEntries) {
         $dirMenuItem = New-MenuItem -Title $entry.Name -Parent $Parent
-        
+
         Import-MenuItems -BasePath $entry.FullName -MenuItems $dirMenuItem.Children -Parent $dirMenuItem
         foreach ($child in $dirMenuItem.Children) {
             $child.Parent = $dirMenuItem
@@ -61,7 +152,7 @@ function Set-FlatMenu {
         [System.Collections.ArrayList]$Items,
         [System.Collections.ArrayList]$Flats
     )
-    
+
     foreach ($item in $Items) {
         [void]$Flats.Add($item)
         if ($item.Expanded -and $item.Children.Count -gt 0) {
@@ -74,14 +165,14 @@ function Run-FlatMenu {
     param (
         [System.Collections.ArrayList]$Items
     )
-    
+
     foreach ($item in $Items) {
         if ($item.Checked -and $item.Script -ne "") {
-            Write-Host "执行: $($item.Route -join " / ")" -ForegroundColor Yellow
+            Write-AnsiColor "执行: $($item.Route -join " / ")" -ForegroundColor Yellow
             try {
                 & $item.Script
             } catch {
-                Write-Host "错误: $_" -ForegroundColor Red
+                Write-AnsiColor "错误: $_" -ForegroundColor Red
             }
         }
         Run-FlatMenu -Items $item.Children
@@ -94,7 +185,7 @@ function Update-DirectorySelection {
         [hashtable]$Item,
         [bool]$CheckState
     )
-    
+
     # 更新目录下所有子项的选中状态
     foreach ($child in $Item.Children) {
         $child.Checked = $CheckState
@@ -107,7 +198,7 @@ function Update-DirectorySelectionStatus {
     param (
         [hashtable]$Parent
     )
-    
+
     $allChecked = $true
     foreach ($child in $Parent.Children) {
         if (-not $child.Checked) {
@@ -138,57 +229,58 @@ function Show-Menu {
     $running = $true
 
     [Console]::CursorVisible = $false
+
     while ($running) {
         Clear-Host
 
         # 显示标题
         $sepLine = "─────────────────────────────────────────────────────────────"
-        Write-Host "使用↑↓键导航，←→键展开/折叠，空格键勾选/取消，Enter键确认运行" -ForegroundColor Cyan
-        Write-Host $sepLine -ForegroundColor DarkGray
-        
+        Write-AnsiColor "使用↑↓键导航，←→键展开/折叠，空格键勾选/取消，Enter键确认运行" -ForegroundColor Cyan
+        Write-AnsiColor $sepLine -ForegroundColor DarkGray
+
         # 重新扁平化菜单以反映展开/折叠状态
         $flatMenu.Clear()
         Set-FlatMenu -Items $MenuItems -Flats $flatMenu
         $runButtonIndex = $flatMenu.Count
-        
+
         # 显示菜单项
         for ($i = 0; $i -lt $flatMenu.Count; $i++) {
             $item = $flatMenu[$i]
             $indent = "  " * $item.Route.Count
             $expandChar = ""
-            
+
             # 为有子项的菜单项添加展开/折叠符号
             if ($item.Children.Count -gt 0) {
                 $expandChar = if ($item.Expanded) { "- " } else { "+ " }
             } else {
                 $expandChar = "  "
             }
-            
+
             # 显示勾选状态
             $checkbox = if ($item.Checked) { "[◼] " } else { "[ ] " }
-            
+
             # 高亮当前选中项
             if ($i -eq $selectedIndex) {
                 Write-Host "$indent" -NoNewline
-                Write-Host "$expandChar" -NoNewline -ForegroundColor DarkCyan
-                Write-Host "$checkbox" -NoNewline -ForegroundColor Yellow
-                Write-Host "$($item.Route  -join "/")" -ForegroundColor White -BackgroundColor DarkBlue
+                Write-AnsiColor "$expandChar" -ForegroundColor DarkCyan -NoNewline
+                Write-AnsiColor "$checkbox" -ForegroundColor Yellow -NoNewline
+                Write-AnsiColor "$($item.Route  -join "/")" -ForegroundColor White -BackgroundColor DarkBlue
             } else {
                 $color = if ($item.Checked) { "Green" } else { "Gray" }
-                Write-Host "$indent$expandChar$checkbox$($item.Route -join "/")" -ForegroundColor $color
+                Write-AnsiColor "$indent$expandChar$checkbox$($item.Route -join "/")" -ForegroundColor $color
             }
         }
-        
+
         # 显示运行按钮
-        Write-Host $sepLine -ForegroundColor DarkGray
+        Write-AnsiColor $sepLine -ForegroundColor DarkGray
         if ($selectedIndex -eq $flatMenu.Count) {
-            Write-Host "[ 运行 ]" -ForegroundColor White -BackgroundColor DarkGreen
+            Write-AnsiColor "[ 运行 ]" -ForegroundColor White -BackgroundColor DarkGreen
         } else {
-            Write-Host "[ 运行 ]" -ForegroundColor Green
+            Write-AnsiColor "[ 运行 ]" -ForegroundColor Green
         }
-        
+
         # 处理键盘输入
-        $key = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") 
+        $key = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
         switch ($key.VirtualKeyCode) {
             0x1B { # VK_ESCAPE
                 $running = $false
@@ -213,7 +305,7 @@ function Show-Menu {
                 if ($selectedIndex -lt $runButtonIndex) {
                     $item = $flatMenu[$selectedIndex]
                     $item.Checked = !$item.Checked
-                    
+
                     # 如果是目录，更新所有子项
                     if ($item.Children.Count -gt 0) {
                         Update-DirectorySelection -Item $item -CheckState $item.Checked
@@ -229,12 +321,12 @@ function Show-Menu {
                 if ($selectedIndex -eq $runButtonIndex) {
                     # 执行选中的操作
                     Clear-Host
-                    Write-Host "执行选中的操作..." -ForegroundColor Cyan
-                    Write-Host $sepLine -ForegroundColor DarkGray
-                
+                    Write-AnsiColor "执行选中的操作..." -ForegroundColor Cyan
+                    Write-AnsiColor $sepLine -ForegroundColor DarkGray
+
                     Run-FlatMenu -Items $MenuItems
-                   
-                    Write-Host "按任意键结束..." -ForegroundColor Green
+
+                    Write-AnsiColor "按任意键结束..." -ForegroundColor Green
                     $null = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
                     $running = $false
                 } else {
@@ -246,9 +338,19 @@ function Show-Menu {
     }
 }
 
-# 加载菜单项
-$menuItems = New-Object System.Collections.ArrayList
-Import-MenuItems -BasePath (Join-Path $PSScriptRoot "console-menu") -MenuItems $menuItems
+function Draw-UI {
+    # 加载菜单项
+    $menuItems = New-Object System.Collections.ArrayList
+    Import-MenuItems -BasePath (Join-Path $PSScriptRoot "console-menu") -MenuItems $menuItems
 
-# 运行菜单
-Show-Menu -MenuItems $menuItems
+    # 运行菜单
+    Show-Menu -MenuItems $menuItems
+}
+
+# 主流程
+try {
+    Enter-AltBuffer
+    Draw-UI
+} finally {
+    Exit-AltBuffer
+}
