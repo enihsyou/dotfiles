@@ -5,9 +5,9 @@ alias lessjson="jq -C . | less -R"
 
 # exa
 # https://the.exa.website/docs/colour-themes
-if ! declare -f is_system_appearence_dark > /dev/null; then
+if ! declare -f is_system_appearance_dark > /dev/null; then
 	true
-elif ! is_system_appearence_dark; then
+elif ! is_system_appearance_dark; then
 	alias exa='EXA_COLORS="sn=34:sb=1;32" exa'
 fi
 alias ls="exa --classify --time-style=iso --colour-scale"
@@ -19,9 +19,9 @@ alias la@="la --extended"
 alias l="ls --oneline"
 
 # fd
-if ! declare -f is_system_appearence_dark > /dev/null; then
+if ! declare -f is_system_appearance_dark > /dev/null; then
 	true
-elif ! is_system_appearence_dark; then
+elif ! is_system_appearance_dark; then
 	# cost is negligible, expand when used
 	alias fd='LS_COLORS=$(vivid generate ayu) fd'
 fi

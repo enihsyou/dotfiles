@@ -5,7 +5,7 @@ case $OSTYPE in
 esac
 
 # tell whether is macOS Dark mode is on.
-function is_system_appearence_dark() {
+function is_system_appearance_dark() {
 	if [ "Dark" = "$(defaults read -g AppleInterfaceStyle 2> /dev/null)" ]; then
 		return 0
 	else
@@ -13,8 +13,8 @@ function is_system_appearence_dark() {
 	fi
 }
 
-function refresh_system_appearence() {
-	for funcfile in "$DOTFILES"/functions/system-appearence.d/*.zsh; do
+function refresh_system_appearance() {
+	for funcfile in "$DOTFILES"/functions/system-appearance.d/*.zsh; do
 		source "$funcfile"
 	done
 }

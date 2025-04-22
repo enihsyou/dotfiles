@@ -19,7 +19,7 @@ link_kitty_launch_cmdline() {
 	fi
 }
 
-if is_system_appearence_dark; then
+if is_system_appearance_dark; then
 	link_kitty_launch_cmdline "dark"
 else
 	link_kitty_launch_cmdline "light"
