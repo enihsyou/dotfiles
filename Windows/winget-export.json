@@ -1,110 +1,335 @@
 {
-	"$schema": "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate": "2025-03-12T00:57:54.051-00:00",
-	"Sources": [
+	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
+	"CreationDate" : "2025-04-22T15:46:18.169-00:00",
+	"Sources" :
+	[
 		{
-			"Packages": [
+			"Packages" :
+			[
 				{
-					"PackageIdentifier": "7zip.7zip"
+					"PackageIdentifier" : "7zip.7zip"
 				},
 				{
-					"PackageIdentifier": "ClashVergeRev.ClashVergeRev"
+					"PackageIdentifier" : "ClashVergeRev.ClashVergeRev"
 				},
 				{
-					"PackageIdentifier": "Docker.DockerDesktop"
+					"PackageIdentifier" : "Docker.DockerDesktop"
 				},
 				{
-					"PackageIdentifier": "voidtools.Everything.Alpha"
+					"PackageIdentifier" : "voidtools.Everything.Alpha"
 				},
 				{
-					"PackageIdentifier": "Git.Git"
+					"PackageIdentifier" : "Git.Git"
 				},
 				{
-					"PackageIdentifier": "Daum.PotPlayer"
+					"PackageIdentifier" : "REALiX.HWiNFO"
 				},
 				{
-					"PackageIdentifier": "MacType.MacType"
+					"PackageIdentifier" : "IrfanSkiljan.IrfanView"
 				},
 				{
-					"PackageIdentifier": "Microsoft.PowerShell"
+					"PackageIdentifier" : "Daum.PotPlayer"
 				},
 				{
-					"PackageIdentifier": "Orange-OpenSource.Hurl"
+					"PackageIdentifier" : "Zen-Team.Zen-Browser"
 				},
 				{
-					"PackageIdentifier": "AltSnap.AltSnap"
+					"PackageIdentifier" : "PeterDaveHello.TransmissionRemoteGUI"
 				},
 				{
-					"PackageIdentifier": "BurntSushi.ripgrep.MSVC"
+					"PackageIdentifier" : "version-fox.vfox"
 				},
 				{
-					"PackageIdentifier": "Gyan.FFmpeg"
+					"PackageIdentifier" : "Nefarius.HidHide"
 				},
 				{
-					"PackageIdentifier": "JanDeDobbeleer.OhMyPosh"
+					"PackageIdentifier" : "Microsoft.VCRedist.2010.x64"
 				},
 				{
-					"PackageIdentifier": "Oven-sh.Bun"
+					"PackageIdentifier" : "GitHub.cli"
 				},
 				{
-					"PackageIdentifier": "Rustlang.Rustup"
+					"PackageIdentifier" : "Logitech.GHUB"
 				},
 				{
-					"PackageIdentifier": "Schniz.fnm"
+					"PackageIdentifier" : "Microsoft.VCRedist.2008.x64"
 				},
 				{
-					"PackageIdentifier": "aria2.aria2"
+					"PackageIdentifier" : "MacType.MacType"
 				},
 				{
-					"PackageIdentifier": "astral-sh.uv"
+					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
 				},
 				{
-					"PackageIdentifier": "HTTPie.HTTPie"
+					"PackageIdentifier" : "Microsoft.NetMon"
 				},
 				{
-					"PackageIdentifier": "dandavison.delta"
+					"PackageIdentifier" : "ViGEm.ViGEmBus"
 				},
 				{
-					"PackageIdentifier": "ezwinports.make"
+					"PackageIdentifier" : "Corsair.iCUE.5"
 				},
 				{
-					"PackageIdentifier": "jftuga.less"
+					"PackageIdentifier" : "Microsoft.PowerShell"
 				},
 				{
-					"PackageIdentifier": "jqlang.jq"
+					"PackageIdentifier" : "BandicamCompany.Bandicam"
 				},
 				{
-					"PackageIdentifier": "sharkdp.bat"
+					"PackageIdentifier" : "Orange-OpenSource.Hurl"
 				},
 				{
-					"PackageIdentifier": "sharkdp.fd"
+					"PackageIdentifier" : "Microsoft.Edge"
 				},
 				{
-					"PackageIdentifier": "sharkdp.hexyl"
+					"PackageIdentifier" : "OBSProject.OBSStudio"
 				},
 				{
-					"PackageIdentifier": "LocalSend.LocalSend"
+					"PackageIdentifier" : "Tencent.QQ.NT"
 				},
 				{
-					"PackageIdentifier": "Armin2208.WindowsAutoNightMode"
+					"PackageIdentifier" : "Guru3D.RTSS"
 				},
 				{
-					"PackageIdentifier": "Microsoft.VisualStudioCode"
+					"PackageIdentifier" : "Valve.Steam"
 				},
 				{
-					"PackageIdentifier": "Microsoft.PowerToys"
+					"PackageIdentifier" : "Tencent.WeChat.Universal"
 				},
 				{
-					"PackageIdentifier": "Microsoft.WindowsTerminal"
+					"PackageIdentifier" : "RamenSoftware.Windhawk"
+				},
+				{
+					"PackageIdentifier" : "WiresharkFoundation.Wireshark"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VCRedist.2013.x64"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.6"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.3_1"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.8"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.9"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VCRedist.2013.x86"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.DotNet.AspNetCore.9"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VCRedist.2008.x86"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VCRedist.2010.x86"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.DotNet.SDK.Preview"
+				},
+				{
+					"PackageIdentifier" : "THS.THS.Hevo"
+				},
+				{
+					"PackageIdentifier" : "NetEase.CloudMusic"
+				},
+				{
+					"PackageIdentifier" : "Bitwarden.Bitwarden"
+				},
+				{
+					"PackageIdentifier" : "AgileBits.1Password"
+				},
+				{
+					"PackageIdentifier" : "agalwood.Motrix"
+				},
+				{
+					"PackageIdentifier" : "ResponsivelyApp.ResponsivelyApp"
+				},
+				{
+					"PackageIdentifier" : "PicGo.PicGo.Beta"
+				},
+				{
+					"PackageIdentifier" : "AltSnap.AltSnap"
+				},
+				{
+					"PackageIdentifier" : "BurntSushi.ripgrep.MSVC"
+				},
+				{
+					"PackageIdentifier" : "JetBrains.DataGrip"
+				},
+				{
+					"PackageIdentifier" : "FiloSottile.mkcert"
+				},
+				{
+					"PackageIdentifier" : "Gyan.FFmpeg"
+				},
+				{
+					"PackageIdentifier" : "Hugo.Hugo.Extended"
+				},
+				{
+					"PackageIdentifier" : "JernejSimoncic.Wget"
+				},
+				{
+					"PackageIdentifier" : "NSSM.NSSM"
+				},
+				{
+					"PackageIdentifier" : "Oven-sh.Bun"
+				},
+				{
+					"PackageIdentifier" : "RubyMetric.chsrc"
+				},
+				{
+					"PackageIdentifier" : "Rustlang.Rustup"
+				},
+				{
+					"PackageIdentifier" : "JetBrains.Toolbox"
+				},
+				{
+					"PackageIdentifier" : "UPX.UPX"
+				},
+				{
+					"PackageIdentifier" : "UweSieber.UsbTreeView"
+				},
+				{
+					"PackageIdentifier" : "WinMerge.WinMerge"
+				},
+				{
+					"PackageIdentifier" : "ebkr.r2modman"
+				},
+				{
+					"PackageIdentifier" : "aria2.aria2"
+				},
+				{
+					"PackageIdentifier" : "astral-sh.uv"
+				},
+				{
+					"PackageIdentifier" : "Balena.Etcher"
+				},
+				{
+					"PackageIdentifier" : "Obsidian.Obsidian"
+				},
+				{
+					"PackageIdentifier" : "HTTPie.HTTPie"
+				},
+				{
+					"PackageIdentifier" : "dandavison.delta"
+				},
+				{
+					"PackageIdentifier" : "dprint.dprint"
+				},
+				{
+					"PackageIdentifier" : "ezwinports.make"
+				},
+				{
+					"PackageIdentifier" : "Comfy.ComfyUI-Desktop"
+				},
+				{
+					"PackageIdentifier" : "jftuga.less"
+				},
+				{
+					"PackageIdentifier" : "jqlang.jq"
+				},
+				{
+					"PackageIdentifier" : "nektos.act"
+				},
+				{
+					"PackageIdentifier" : "pnpm.pnpm"
+				},
+				{
+					"PackageIdentifier" : "sharkdp.bat"
+				},
+				{
+					"PackageIdentifier" : "sharkdp.fd"
+				},
+				{
+					"PackageIdentifier" : "sharkdp.hexyl"
+				},
+				{
+					"PackageIdentifier" : "sharkdp.hyperfine"
+				},
+				{
+					"PackageIdentifier" : "w4po.ExplorerTabUtility"
+				},
+				{
+					"PackageIdentifier" : "wagoodman.dive"
+				},
+				{
+					"PackageIdentifier" : "WinSCP.WinSCP"
+				},
+				{
+					"PackageIdentifier" : "yt-dlp.yt-dlp"
+				},
+				{
+					"PackageIdentifier" : "LocalSend.LocalSend"
+				},
+				{
+					"PackageIdentifier" : "ParadoxInteractive.ParadoxLauncher"
+				},
+				{
+					"PackageIdentifier" : "Ollama.Ollama"
+				},
+				{
+					"PackageIdentifier" : "Armin2208.WindowsAutoNightMode"
+				},
+				{
+					"PackageIdentifier" : "mulaRahul.Keyviz"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VisualStudioCode"
+				},
+				{
+					"PackageIdentifier" : "Anysphere.Cursor"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.PowerToys"
+				},
+				{
+					"PackageIdentifier" : "Canonical.Ubuntu"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.AppInstaller"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.UI.Xaml.2.7"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.UI.Xaml.2.8"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VCLibs.Desktop.14"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.WinDbg"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.WindowsTerminal"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.WSL"
+				},
+				{
+					"PackageIdentifier" : "XK72.Charles"
 				}
 			],
-			"SourceDetails": {
-				"Argument": "https://mirrors.cernet.edu.cn/winget-source",
-				"Identifier": "Microsoft.Winget.Source_8wekyb3d8bbwe",
-				"Name": "winget",
-				"Type": "Microsoft.PreIndexed.Package"
+			"SourceDetails" :
+			{
+				"Argument" : "https://mirrors.cernet.edu.cn/winget-source",
+				"Identifier" : "Microsoft.Winget.Source_8wekyb3d8bbwe",
+				"Name" : "winget",
+				"Type" : "Microsoft.PreIndexed.Package"
 			}
 		}
 	],
-	"WinGetVersion": "1.10.340"
+	"WinGetVersion" : "1.10.340"
 }

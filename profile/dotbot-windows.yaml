@@ -27,4 +27,5 @@
         copy "git\gitconfig-local.example.ini" "%USERPROFILE%\.gitconfig.local"
       )
   - description: Run the initial setup script for Windows
+    # powershell is Windows PowerShell 5.x, not pwsh for initinalization reasons
     command: powershell -ExecutionPolicy Bypass -File Windows/initial-setup.ps1

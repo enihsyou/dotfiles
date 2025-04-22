@@ -1,4 +1,5 @@
-﻿# Install from Windows Package Manager
+﻿Write-Output "Install from Windows Package Manager"
+
 if (Get-Command winget -ErrorAction SilentlyContinue) {
     winget import --import-file winget-export.json --no-upgrade --ignore-unavailable --accept-package-agreements
 } else {

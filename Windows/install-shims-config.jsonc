@@ -1,10 +1,32 @@
 {
   "shim_generator_path": "$HOME/.local/bin/shim_exec.exe",
   "shim_repository": "enihsyou/shim_exectuable",
+  // 前有 cmd 不支持 shell hook，只认系统环境变量
+  // 后有 vscode 不加载 pwsh PROFILE，不能在运行时修改 PATH
+  // 所以需要提前为开发工具设置一个默认版本，这部分已经从各个工具版本管理器交给 vfox shims 目录了
+  // 这里列出的是其他想要添加到 PATH 的工具
   "shims": [
     {
       // hurl from winget
+      // 从系统级别的环境变量降级到这里
       "source": "$USERPROFILE/AppData/Local/Programs/hurl/hurl.exe",
+      "target": "$HOME/.local/bin/"
+    },
+    {
+      // msys2 的 make 编译时启用了 --enable-nls，支持本地化
+      "source": "C:/msys64/usr/bin/make.exe",
+      "target": "$HOME/.local/bin/"
+    },
+    {
+      // vfox from winget
+      // 从系统级别的环境变量降级到这里
+      "source": "C:/Program Files/vfox/vfox.exe",
+      "target": "$HOME/.local/bin/"
+    },
+    {
+      // GitHub CLI from winget
+      // 从系统级别的环境变量降级到这里
+      "source": "C:/Program Files/GitHub CLI/gh.exe",
       "target": "$HOME/.local/bin/"
     },
     {
@@ -18,33 +40,6 @@
       // openssl from Git for Windows
       // Assume the default installation path
       "source": "C:/Program Files/Git/mingw64/bin/openssl.exe",
-      "target": "$HOME/.local/bin/"
-    },
-    {
-      // jre from JetBrains
-      "source": "$USERPROFILE/AppData/Local/Programs/GoLand/jbr/bin/java.exe",
-      "target": "$HOME/.local/bin/"
-    },
-    {
-      "source": "$USERPROFILE/AppData/Local/Programs/GoLand/jbr/bin/javac.exe",
-      "target": "$HOME/.local/bin/"
-    },
-    {
-      "source": "$USERPROFILE/AppData/Local/Programs/GoLand/jbr/bin/javaw.exe",
-      "target": "$HOME/.local/bin/"
-    },
-    {
-      // node from fnm, since vscode still does not recognize the PATH injected
-      // by powershell profile, so we need to make sure sensible default is set
-      "source": "$USERPROFILE/AppData/Roaming/fnm/aliases/default/node.exe",
-      "target": "$HOME/.local/bin/"
-    },
-    {
-      "source": "$USERPROFILE/AppData/Roaming/fnm/aliases/default/npm.cmd",
-      "target": "$HOME/.local/bin/"
-    },
-    {
-      "source": "$USERPROFILE/AppData/Roaming/fnm/aliases/default/npx.cmd",
       "target": "$HOME/.local/bin/"
     }
   ],

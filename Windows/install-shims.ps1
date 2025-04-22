@@ -1,4 +1,4 @@
-# 根据 shims-list.json 的指令使用 jphibert/shim_exetuable 在特定目录部署 shims
+﻿# 根据 shims-list.json 的指令使用 jphibert/shim_exetuable 在特定目录部署 shims
 
 param(
     [switch]$Debug,
@@ -90,16 +90,16 @@ function Get-ShimExecutable {
         [string]$TargetPath,
         [string]$GitHubRepo
     )
-    
+
     $TargetPath = Convert-ToWindowsPath $TargetPath
-    
+
     if (Test-Path $TargetPath) {
         Write-Success "shim_exec.exe 已存在"
         return
     }
 
     Write-Progress "正在下载 shim_exec.exe..."
-    
+
     # 创建目标目录
     $targetDir = Split-Path -Parent $TargetPath
     if (-not (Test-Path $targetDir)) {
@@ -109,7 +109,7 @@ function Get-ShimExecutable {
     # 下载
     $downloadUrl = "https://github.com/$GitHubRepo/releases/latest/download/shim_exec.exe"
     Invoke-WebRequest -Uri $downloadUrl -OutFile $TargetPath
-    
+
     Write-Success "shim_exec.exe 下载完成"
 }
 
@@ -122,7 +122,7 @@ function Expand-Variables {
     $pattern = '\$([a-zA-Z0-9_]+)'
     $result = $string
     $founds = [regex]::Matches($string, $pattern)
-    
+
     foreach ($found in $founds) {
         $varName = $found.Groups[1].Value
         if ($varName -eq "HOME") {
@@ -137,7 +137,7 @@ function Expand-Variables {
         Write-Error "未找到变量: $varName"
         exit 1
     }
-    
+
     return $result
 }
 
@@ -146,7 +146,7 @@ function Test-Config {
     param(
         [object]$Config
     )
-    
+
     # 检查必要字段
     $requiredFields = @('shim_generator_path')
     foreach ($field in $requiredFields) {
@@ -178,7 +178,7 @@ function Create-Shim {
         [string[]]$Args,
         [string]$Type
     )
-    
+
     Write-Host
     Write-Progress "正在创建 shim: $Source"
 
@@ -222,7 +222,7 @@ function Create-SymbolicLink {
         [string]$Source,
         [string]$Target
     )
-        
+
     Write-Host
     Write-Progress "正在创建符号链接: $Source"
 
@@ -231,7 +231,7 @@ function Create-SymbolicLink {
     if (-not (Test-Path $targetDir)) {
         New-Item -ItemType Directory -Path $targetDir -Force | Out-Null
     }
-    
+
     # 检查目标是否已存在
     if (Test-Path $Target) {
         # 检查是否已经是正确的链接
@@ -243,7 +243,7 @@ function Create-SymbolicLink {
             Write-Info "目标文件之前指向: $($existingLink.Target)"
         }
     }
-    
+
     # 创建符号链接
     try {
         New-Item -ItemType SymbolicLink -Path $Target -Target $Source -Force | Out-Null
@@ -257,7 +257,7 @@ function Create-SymbolicLink {
 function Install-Shims {
     # 读取配置文件
     $supportConfigFiles = @(
-        'install-shims-config.json', 
+        'install-shims-config.json',
         'install-shims-config.jsonc'
     )
     foreach ($configFile in $supportConfigFiles) {
@@ -276,7 +276,7 @@ function Install-Shims {
 
     # 验证配置
     Test-Config -Config $config
-    
+
     # 检查并下载 shim_exec.exe
     # 确定 shim_generator_path，如果为空，使用默认值
     if ($config.shim_repository) {
@@ -299,7 +299,7 @@ function Install-Shims {
 
         Create-Shim -Source $source -Target $target -ShimExecPath $shimExecPath -Args $shim.args -Type $shim.type
     }
-    
+
     # 处理符号链接
     foreach ($link in $config.symbolic_links) {
         $source = Convert-ToWindowsPath (Expand-Variables $link.source)

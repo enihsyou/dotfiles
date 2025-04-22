@@ -1,6 +1,8 @@
-# Usage:
+﻿# Usage:
 #  .\install.ps1        # 根据当前操作系统选择配置文件
 #  .\install.ps1 <yaml> # 使用指定配置文件
+
+# 代码核心来自 https://github.com/anishathalye/dotbot/blob/master/tools/git-submodule/install.ps1
 
 $DOTBOT_DIR = "dotbot"
 $DOTBOT_BIN = "bin/dotbot"
@@ -32,11 +34,10 @@ Function Add-Profile {
 
 if ($Args.Count -gt 0) {
     # 有参时使用指定配置文件
-    foreach ($profile in $Args) { 
-        Add-Profile $profile 
+    foreach ($profile in $Args) {
+        Add-Profile $profile
     }
-}
-else {
+} else {
     # 无参时根据操作系统选择配置文件
 
     # the IsWindows/IsMacOs/IsLinux variables are not present in powershell 5 and lower
@@ -50,10 +51,10 @@ if ($CONFIG_PROFILES.Length -eq 0) {
     exit 1
 }
 
-# Python redirects to Microsoft Store in Windows 10 when not installed
 $PYTHON = $null
 foreach ($py in @("python", "python3")) {
-    if (Get-Command $py -ErrorAction SilentlyContinue) {
+    # Python redirects to Microsoft Store in Windows 10 when not installed
+    if (& $py -V) {
         $PYTHON = $py
         break
     }
