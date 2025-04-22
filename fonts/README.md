@@ -11,3 +11,7 @@ https://github.com/ryanoasis/nerd-fonts/releases
 4. rebuild font cache with `fc-cache -f -v`
 
 5. confirm install by running `fc-list | grep "Fantasque"`
+
+## My Favorite Fonts
+
+- [JetBrains Maple Mono](https://github.com/SpaceTimee/Fusion-JetBrainsMapleMono)

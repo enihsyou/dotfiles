@@ -11,7 +11,7 @@
       quiet: true  # display command description rather than statement itself.
 
 - link:
-    ~/.zshrc: 
+    ~/.zshrc:
       if: '[ `uname` = Darwin ]'
       path: zsh/zshrc.symlink
     ~/.bashrc: bash/bashrc.symlink
@@ -19,8 +19,8 @@
     ~/.gitconfig: git/gitconfig.symlink
     ~/.gitignore: git/gitignore.symlink
     ~/.config/proxy: zsh/shell-proxy
-    ~/.config/direnv/direnvrc: symlinks/direnvrc.symlink
-    ~/.ripgreprc: symlinks/ripgreprc.symlink
+    ~/.config/direnv/direnvrc: symlinks/direnvrc
+    ~/.ripgreprc: symlinks/ripgreprc
 
     ~/.config/starship.toml:
       path: cli-app/starship-prompt/starship.toml
