@@ -11,10 +11,10 @@
       quiet: true  # display command description rather than statement itself.
 
 - link:
-    ~/.gitconfig: git/gitconfig.ini
-    ~/.gitignore: git/gitignore.ini
-    ~/.gitconfig-delta: git/gitconfig-delta.ini
-    ~/.gitconfig-platform: git/gitconfig-windows.ini
+    ~/.gitconfig: cli-app/git/gitconfig.ini
+    ~/.gitignore: cli-app/git/gitignore.ini
+    ~/.gitconfig-delta: cli-app/git/gitconfig-delta.ini
+    ~/.gitconfig-platform: cli-app/git/gitconfig-windows.ini
     ~/AppData/Roaming/AutoDarkMode/scripts.yaml: gui-app/AutoDarkMode/scripts.yaml
 
 # shell on Windows is Command Prompt (cmd), command is executed with subprocess.call(shell=True)
@@ -24,7 +24,7 @@
   - description: Copy gitconfig-local.example.ini to ~/.gitconfig.local
     command:
       IF NOT EXIST "%USERPROFILE%\.gitconfig.local" (
-        copy "git\gitconfig-local.example.ini" "%USERPROFILE%\.gitconfig.local"
+        copy "cli-app\git\gitconfig-local.example.ini" "%USERPROFILE%\.gitconfig.local"
       )
   - description: Run the initial setup script for Windows
     # powershell is Windows PowerShell 5.x, not pwsh for initinalization reasons
