@@ -27,8 +27,11 @@ indent_size = 2                  # 社区习惯
 [*.{html,xml,svg}]
 indent_size = 2                  # 常遇很长的行
 
-[*.json{,5,c,l}]
+[{*json,*.json{5,c,l}}]
 indent_size = 2                  # 数据文件适当扩大内容显示范围
 
 [*.{md,markdown}]
 trim_trailing_whitespace = false # 保留行尾空白用于换行
+
+[gui-app/MacType/enihsyou.ini]
+charset = utf-16le

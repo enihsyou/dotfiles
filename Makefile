@@ -2,11 +2,9 @@
 
 # [Windows only]
 # 手动对比并从导出内容中删除不需要的内容，以更新 winget-export.json
-Windows/winget-export.json: Windows/winget-export.temp.json
-	code --diff $< $@
-	del $<
-Windows/winget-export.temp.json:
+Windows/winget-export.json:
 	winget export --source winget --output $@
+.PHONY: Windows/winget-export.json
 
 cli-app/aria2/aria2.pfx:
 	mkcert -key-file cli-app/aria2/aria2.key.pem -cert-file cli-app/aria2/aria2.crt.pem enihsyou.synology.me localhost 127.0.0.1 ::1

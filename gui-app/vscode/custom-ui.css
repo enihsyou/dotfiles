@@ -22,7 +22,7 @@
 /* vscode/src/vs/workbench/browser/media/style.css */
 /* 修改UI字体, Maple Mono 比较圆润可爱
    但要应用起来比较麻烦，早年的 Custom UI 插件已经失效，2024 最新方法是
-   https://github.com/subframe7536/vscode-custom-ui-style 
+   https://github.com/subframe7536/vscode-custom-ui-style
    配合 Window Zoom Level >= 2.0 在 Windows LoDPI 屏幕上使用较好 */
 /* 已移动到插件 settings.json 中, 所以这段不再需要了
    "custom-ui-style.font.monospace": "Maple Mono NF CN"
@@ -32,3 +32,14 @@
     font-family: "Segoe WPC", "Segoe UI", "Maple Mono NF CN", "Microsoft YaHei", sans-serif;
 }
 */
+
+/* 调试菜单的弹出框里文字居然没有设置字体 */
+/*noinspection CssUnresolvedCustomProperty*/
+.debug-var-hover-pre {
+    font-family: var(--monaco-monospace-font), monospace;
+}
+
+/* 补充 Custom UI Style 字体设置 */
+.windows, .mac, .linux {
+    font-feature-settings: "'ss05'";
+}

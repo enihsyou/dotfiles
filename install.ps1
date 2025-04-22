@@ -34,8 +34,8 @@ Function Add-Profile {
 
 if ($Args.Count -gt 0) {
     # 有参时使用指定配置文件
-    foreach ($profile in $Args) {
-        Add-Profile $profile
+    foreach ($pArg in $Args) {
+        Add-Profile $pArg
     }
 } else {
     # 无参时根据操作系统选择配置文件
