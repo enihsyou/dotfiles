@@ -33,5 +33,7 @@ indent_size = 2                  # 数据文件适当扩大内容显示范围
 [*.{md,markdown}]
 trim_trailing_whitespace = false # 保留行尾空白用于换行
 
-[gui-app/MacType/enihsyou.ini]
+[*.reg]
+# https://gist.github.com/SalviaSage/8eba542dc27eea3379a1f7dad3f729a0
 charset = utf-16le
+end_of_line = crlf

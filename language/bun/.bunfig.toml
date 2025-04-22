@@ -1,0 +1,7 @@
+[install]
+# set default registry as a string
+registry = "https://registry.npmmirror.com"
+
+[install.cache]
+# the directory to use for the cache
+dir = "G:/AppData/bun/install/cache"
