@@ -32,10 +32,6 @@ powershell -ExecutionPolicy Bypass -File install.ps1
 - 多数配置假设本项目放在 `~/.dotfiles` 目录下，纯文本的配置文件不一定能访问环境变量，所以最好遵守这个约定
 - 一些文件由 `Makefile` 生成，并加入手动编辑
 
-## 特别魔法
-
-- TODO
-
 ## 背景信息
 
 对 dotfiles 管理工具我有一些要求：
@@ -51,7 +47,7 @@ powershell -ExecutionPolicy Bypass -File install.ps1
 > 还了解到有 [chezmoi][3] 这个工具，但它的目录布局我很不喜欢，
 > 它提供的额外功能如加密、动态模板、安装钩子我用不上；
 > 反而功能清单里模板、终端补全、文件初始化完全是它软件设计带来的复杂性。
-> althrough it brings flexibility and reusability but scarified readability and matainability
+> 尽管它带来了灵活性和可重用性，但牺牲了可读性和可维护性
 
 [1]: https://dotfiles.github.io/utilities/
 [2]: https://github.com/anishathalye/dotbot
