@@ -14,3 +14,6 @@ $env:HF_ENDPOINT = "https://hf-mirror.com"
 # https://github.com/Schniz/fnm/issues/696#issuecomment-2768555244
 # 因为切换到 vfox，所以禁用了
 #$env:XDG_RUNTIME_DIR = "$env:TEMP"
+
+# https://yazi-rs.github.io/docs/installation/#windows
+$env:YAZI_FILE_ONE = "C:\Program Files\Git\usr\bin\file.exe"

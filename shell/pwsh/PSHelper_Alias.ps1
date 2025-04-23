@@ -28,6 +28,7 @@ Function ucrt64 { & msys2_launcher -Shell ucrt64 @args }
 Function clang64 { & msys2_launcher -Shell clang64 @args }
 
 # some linux like alias
+# which 和 touch 在 x-cmd 中有更好的实现，如果 source 了它会覆盖掉这里
 Set-Alias -Name which -Value which_GetCommand_SourceOnly
 Set-Alias -Name touch -Value New-Item
 Set-Alias -Name help -Value help_ShowWindow

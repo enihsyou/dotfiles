@@ -9,6 +9,8 @@
 # 添加 --print 参数直达最终要执行的表达式，让 proxy 能工作
 # Invoke-Expression $(oh-my-posh init pwsh --config "$HOME\.config\oh-my-posh\enihsyou.omp.toml" --print | Out-String)
 # 现在替换成精简版的初始化脚本
+# 下面的值被 PSHelper_OhMyPosh.ps1 直接引用
+$env:POSH_THEME = "$HOME\.config\oh-my-posh\enihsyou.omp.toml"
 . $env:DOTFILES\shell\pwsh\PSHelper_OhMyPosh.ps1
 
 # 初始化 vfox
@@ -30,20 +32,11 @@
 #     Remove-Variable -Name OutputEncoding -ErrorAction Ignore
 # }
 
-$AsyncProfile = {
-    . $env:DOTFILES\shell\pwsh\PSHelper_Alias.ps1
-    . $env:DOTFILES\shell\pwsh\PSHelper_Completion.ps1
-    . $env:DOTFILES\shell\pwsh\PSHelper_PSReadLine.ps1
-
-    # #f45873b3-b655-43a6-b217-97c00aa0db58 PowerToys CommandNotFound module
-    Import-Module -Name Microsoft.WinGet.CommandNotFound
-    # #f45873b3-b655-43a6-b217-97c00aa0db58
-}
-
 # 使用异步加载模块的方式来加速启动
 # https://github.com/fsackur/ProfileAsync
+$AsyncProfile = { . "$env:DOTFILES\shell\pwsh\PSHelper_InteractiveAsync.ps1" }
 if (Import-Module ProfileAsync -PassThru -ea Ignore) {
-    Import-ProfileAsync $AsyncProfile
+    Import-ProfileAsync -Delay 200 $AsyncProfile
 } else {
     . $AsyncProfile
 }

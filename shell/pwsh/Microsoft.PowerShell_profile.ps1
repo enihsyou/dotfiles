@@ -1,5 +1,6 @@
 ﻿# 给 Windows Terminal 写的 PowerShell 配置文件
 # 适合 PowerShell 7.0 以上版本
+# filepath: $([Environment]::GetFolderPath('MyDocuments'))\PowerShell\Microsoft.PowerShell_profile.ps1
 
 # 关于如何优化，这里贴一些文章
 # 只在交互式终端中加载 oh-my-posh 等重模块，同时教你使用 PSProfiler 来分析瓶颈点
@@ -41,9 +42,6 @@ function prompt {
     if ($script:_pwshInteractive) {
         return
     }
-    # 被 PSHelper_OhMyPosh.ps1 直接引用，加速加载过程
-    $env:POSH_THEME = "$HOME\.config\oh-my-posh\enihsyou.omp.toml"
-    $script:_ompExecutable = "$HOME\AppData\Local\Programs\oh-my-posh\bin\oh-my-posh.exe"
     $script:_pwshInteractive = $true
 
     # 初始化交互终端用到的模块

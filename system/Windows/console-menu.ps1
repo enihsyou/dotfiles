@@ -235,7 +235,7 @@ function Show-Menu {
 
         # 显示标题
         $sepLine = "─────────────────────────────────────────────────────────────"
-        Write-AnsiColor "使用↑↓键导航，←→键展开/折叠，空格键勾选/取消，Enter键确认运行" -ForegroundColor Cyan
+        Write-AnsiColor "使用方向键导航，空格键选择，回车键确认，Esc键退出" -ForegroundColor Cyan
         Write-AnsiColor $sepLine -ForegroundColor DarkGray
 
         # 重新扁平化菜单以反映展开/折叠状态
@@ -264,10 +264,10 @@ function Show-Menu {
                 Write-Host "$indent" -NoNewline
                 Write-AnsiColor "$expandChar" -ForegroundColor DarkCyan -NoNewline
                 Write-AnsiColor "$checkbox" -ForegroundColor Yellow -NoNewline
-                Write-AnsiColor "$($item.Route  -join "/")" -ForegroundColor White -BackgroundColor DarkBlue
+                Write-AnsiColor "$($item.Title  -join "/")" -ForegroundColor White -BackgroundColor DarkBlue
             } else {
                 $color = if ($item.Checked) { "Green" } else { "Gray" }
-                Write-AnsiColor "$indent$expandChar$checkbox$($item.Route -join "/")" -ForegroundColor $color
+                Write-AnsiColor "$indent$expandChar$checkbox$($item.Title -join "/")" -ForegroundColor $color
             }
         }
 
@@ -321,13 +321,13 @@ function Show-Menu {
                 if ($selectedIndex -eq $runButtonIndex) {
                     # 执行选中的操作
                     Clear-Host
+                    Exit-AltBuffer
                     Write-AnsiColor "执行选中的操作..." -ForegroundColor Cyan
                     Write-AnsiColor $sepLine -ForegroundColor DarkGray
 
                     Run-FlatMenu -Items $MenuItems
 
-                    Write-AnsiColor "按任意键结束..." -ForegroundColor Green
-                    $null = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+                    Write-AnsiColor "执行已全部完成..." -ForegroundColor Green
                     $running = $false
                 } else {
                     # 跳转到运行按钮
@@ -352,5 +352,6 @@ try {
     Enter-AltBuffer
     Draw-UI
 } finally {
+    # 确保未执行动作也会退出 Virtual Screen Buffer 模式
     Exit-AltBuffer
 }

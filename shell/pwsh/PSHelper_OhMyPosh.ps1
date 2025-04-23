@@ -27,8 +27,8 @@ $global:_ompFTCSMarks = $false
 $global:_ompPoshGit = $false
 $global:_ompAzure = $false
 # [enihsyou] 替换为运行时计算
-# 最后选择由外部负责填充 $global:_ompExecutable，节约 6ms
-# $global:_ompExecutable = (Get-Command oh-my-posh).Source
+# 如果选择由外部负责填充 $global:_ompExecutable，能节约 6ms
+$global:_ompExecutable = (Get-Command oh-my-posh).Source
 
 New-Module -Name "oh-my-posh-core" -ScriptBlock {
     # Check `ConstrainedLanguage` mode.
