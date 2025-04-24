@@ -1,0 +1,10 @@
+python-downloads = "manual"
+python-install-mirror = "https://mirror.nju.edu.cn/github-release/indygreg/python-build-standalone/"
+cache-dir = "G:/AppData/uv/cache"
+
+[[index]]
+url = "https://mirrors.cernet.edu.cn/pypi/web/simple"
+default = true
+
+[[index]]
+url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"

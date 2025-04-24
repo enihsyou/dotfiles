@@ -3,10 +3,21 @@ Enabled: true
 Component:
   Scripts:
   - Name: Visible in Environment Variables
-    Command: cmd
-    ArgsLight: 
-      - "setx 'AUTODARKMODE' 'light'"
-    ArgsDark: 
-      - "setx 'AUTODARKMODE' 'dark'"
-    AllowedSources: 
+    Command: powershell
+    ArgsLight:
+      - "[Environment]::SetEnvironmentVariable('AUTODARKMODE', 'light', 'User')"
+    ArgsDark:
+      - "[Environment]::SetEnvironmentVariable('AUTODARKMODE', 'dark', 'User')"
+    AllowedSources:
+      - "Any"
+
+  - Name: bat the command line
+    Command: pwsh # 换用 powershell 的话需要管理员权限才能创建符号链接
+    ArgsLight:
+      - "-c"
+      - "New-Item -ItemType SymbolicLink -Path $HOME/AppData/Roaming/bat/config -Target $env:DOTFILES/cli-app/bat/config-light.cfg -Force"
+    ArgsDark:
+      - "-c"
+      - "New-Item -ItemType SymbolicLink -Path $HOME/AppData/Roaming/bat/config -Target $env:DOTFILES/cli-app/bat/config-dark.cfg -Force"
+    AllowedSources:
       - "Any"

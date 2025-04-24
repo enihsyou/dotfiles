@@ -4,7 +4,6 @@
 
 Set-PSReadLineOption -EditMode Emacs
 Set-PSReadLineOption -HistorySearchCursorMovesToEnd
-Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineOption -ViModeIndicator Prompt
 Set-PSReadLineKeyHandler -Chord UpArrow -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Chord DownArrow -Function HistorySearchForward

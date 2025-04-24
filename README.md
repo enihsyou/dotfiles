@@ -43,12 +43,12 @@ I have some requirements for dotfiles management tools:
 
 The initial version was forked from [holman/dotfiles][4]. After comparing [various][1] implementations in the open-source community, I currently use [dotbot][2] as the dotfiles management tool.
 
-> I also learned about [chezmoi][3], but I dislike its directory layout. 
-> Its additional features like encryption, dynamic templates, and install hooks are unnecessary for me. 
+> I also learned about [chezmoi][3], but I dislike its directory layout.
+> Its additional features like encryption, dynamic templates, and install hooks are unnecessary for me.
 > Instead, features like templates, terminal completion, and file initialization add complexity due to its software design.
 > Although it brings flexibility and reusability, it sacrifices readability and maintainability.
 
 [1]: https://dotfiles.github.io/utilities/
 [2]: https://github.com/anishathalye/dotbot
-[3]: https://github.com/chezmoi/chezmoi
+[3]: https://github.com/twpayne/chezmoi
 [4]: https://github.com/holman/dotfiles

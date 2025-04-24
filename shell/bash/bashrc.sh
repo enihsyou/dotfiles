@@ -117,11 +117,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# shortcut to this dotfiles path is $ZSHDOT
-export ZSHDOT=$HOME/.dotfiles
+# shortcut to this dotfiles path is $DOTFILES
+export DOTFILES="$HOME/.dotfiles"
 
-# load helper functions
-#source $ZSHDOT/functions/*.zsh
-#source $ZSHDOT/Apache/path.zsh
-source $ZSHDOT/bash/exports.sh
-export PATH="$HOME/bin:$HOME/.local/bin:$HOME/.yarn/bin:$PATH"
+[ ! -f "$HOME/.x-cmd.root/X" ] || . "$HOME/.x-cmd.root/X" # boot up x-cmd.

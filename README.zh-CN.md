@@ -51,5 +51,5 @@ powershell -ExecutionPolicy Bypass -File install.ps1
 
 [1]: https://dotfiles.github.io/utilities/
 [2]: https://github.com/anishathalye/dotbot
-[3]: https://github.com/chezmoi/chezmoi
+[3]: https://github.com/twpayne/chezmoi
 [4]: https://github.com/holman/dotfiles

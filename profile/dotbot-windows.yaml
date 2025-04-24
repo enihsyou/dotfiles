@@ -5,16 +5,31 @@
     link:
       create: true # create parent directories if they don't exist
       relink: true # remove existing symlink before creating new one
+      # force: true # uncomment when needed
     shell:
       stdout: true # show output from stdout
       stderr: true # show error output from stderr
       quiet: true  # display command description rather than statement itself.
 
 - link:
+    ~/.bashrc: shell/bash/bashrc.sh
+    # pwsh 配置文件因为需要读取变量，放在 initial-setup.ps1 中执行
+
+    ~/.npmrc: language/npm/npmrc-windows.ini
+    ~/.bunfig.toml: language/bun/bunfig-windows.toml
+    ~/AppData/Roaming/go/env: language/go/windows.env
+    ~/AppData/Roaming/uv/uv.toml: language/uv/uv-windows.toml
+    ~/AppData/Roaming/pip/pip.ini: language/pip/pip-windows.ini
+    ~/AppData/Roaming/NuGet/nuget.config: language/nuget/nuget-windows.config
+
+    ~/.editorconfig: .editorconfig
+
     ~/.gitconfig: cli-app/git/gitconfig.ini
     ~/.gitignore: cli-app/git/gitignore.ini
     ~/.gitconfig-delta: cli-app/git/gitconfig-delta.ini
     ~/.gitconfig-platform: cli-app/git/gitconfig-windows.ini
+    ~/AppData/Roaming/bat/config: cli-app/bat/config-dark.cfg
+
     ~/AppData/Roaming/AutoDarkMode/scripts.yaml: gui-app/AutoDarkMode/scripts.yaml
 
 # shell on Windows is Command Prompt (cmd), command is executed with subprocess.call(shell=True)
@@ -23,9 +38,9 @@
 - shell:
   - description: Copy gitconfig-local.example.ini to ~/.gitconfig.local
     command:
-      IF NOT EXIST "%USERPROFILE%\.gitconfig.local" (
-        copy "cli-app\git\gitconfig-local.example.ini" "%USERPROFILE%\.gitconfig.local"
+      IF NOT EXIST "%USERPROFILE%\.gitconfig-local" (
+        copy "cli-app\git\gitconfig-local.example.ini" "%USERPROFILE%\.gitconfig-local"
       )
   - description: Run the initial setup script for Windows
     # powershell is Windows PowerShell 5.x, not pwsh for initinalization reasons
-    command: powershell -ExecutionPolicy Bypass -File Windows/initial-setup.ps1
+    command: powershell -ExecutionPolicy Bypass -File system/Windows/initial-setup.ps1
