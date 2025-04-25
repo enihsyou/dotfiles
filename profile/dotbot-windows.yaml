@@ -12,7 +12,7 @@
       quiet: true  # display command description rather than statement itself.
 
 - link:
-    ~/.bashrc: shell/bash/bashrc.sh
+    ~/.bashrc: shell/bash/bashrc-msys2.sh
     # pwsh 配置文件因为需要读取变量，放在 initial-setup.ps1 中执行
 
     ~/.npmrc: language/npm/npmrc-windows.ini
