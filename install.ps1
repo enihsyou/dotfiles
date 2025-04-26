@@ -67,7 +67,7 @@ if (-not $PYTHON) {
 # 初始化 dotbot
 Set-Location $BASEDIR
 git -C $DOTBOT_DIR submodule sync --quiet --recursive
-git submodule update --init --recursive $DOTBOT_DIR
+git submodule update --init --remote --recursive $DOTBOT_DIR
 
 # 依照选定的配置文件运行
 foreach ($conf in $CONFIG_PROFILES) {
