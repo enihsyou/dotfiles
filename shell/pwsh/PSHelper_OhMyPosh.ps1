@@ -1,4 +1,5 @@
 ﻿# 这个文件是 Oh-My-Posh 25.10.1 的 PowerShell 版本的初始化脚本
+# 通过这个命令生成: oh-my-posh init pwsh --print
 # 但是注释掉影响启动速度的部分，并且替换模板变量为环境变量
 # 带有 # [enihsyou] 相关的行是我修改的
 
@@ -295,7 +296,8 @@ New-Module -Name "oh-my-posh-core" -ScriptBlock {
 
         $output = Get-PoshPrompt $script:PromptType
         # make sure PSReadLine knows if we have a multiline prompt
-        Set-PSReadLineOption -ExtraPromptLineCount (($output | Measure-Object -Line).Lines - 1)
+        # [enihsyou] 暂未发现不执行会有什么问题，节约 2ms
+        # Set-PSReadLineOption -ExtraPromptLineCount (($output | Measure-Object -Line).Lines - 1)
 
         # The output can be multi-line, joining them ensures proper rendering.
         $output = $output -join "`n"

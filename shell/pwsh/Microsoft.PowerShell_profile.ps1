@@ -37,17 +37,12 @@ $env:DOTFILES = "$HOME\.dotfiles"
 #------------------------------- Setup Interactive OPEN -------------------------------
 # 这些是获取一个交互式终端最基础的设置，必须在 global session state 中执行
 
-$script:_pwshInteractive = $false
-function prompt {
-    if ($script:_pwshInteractive) {
-        return
-    }
-    $script:_pwshInteractive = $true
-
+# PowerShell 会在 Interactive Session 中自动提前加载 PSReadLine 模块
+# 只要自己不再加载一遍，就可以根据模块情况来确定是可交互终端
+# 相比修改 global:prompt , 与 VSCode shell integration 兼容性更好
+# 判断条件部分归功于 https://github.com/MatejKafka/PowerShellProfile
+if ([runspace]::DefaultRunspace.InitialSessionState.Modules) {
     # 初始化交互终端用到的模块
     . $env:DOTFILES\shell\pwsh\PSHelper_Interactive.ps1
-
-    # 调用由 oh-my-posh 重写的函数
-    prompt
 }
 #------------------------------- Setup Interactive DONE -------------------------------

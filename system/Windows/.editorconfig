@@ -1,0 +1,3 @@
+[*.bat]
+charset = gb18030
+end_of_line = crlf
