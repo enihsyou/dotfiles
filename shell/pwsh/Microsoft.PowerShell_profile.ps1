@@ -21,14 +21,22 @@ if ($env:ACT -eq 'true') {
 }
 #------------------------------- Setup Early Exit DONE -------------------------------
 
+
 #------------------------------- Setup Runtime OPEN -------------------------------
 # 这些是所有会话都需要的设置
 
 # 个人配置保存在这个目录，脚本以这为基础
 $env:DOTFILES = "$HOME\.dotfiles"
 
+# 去掉由 WindowsPowerShell 在系统环境变量种加入的模块路径，pwsh7 用不上这些，节约 16ms
+$Env:PSModulePath=@(
+    $Env:PSModulePath -split ';' |
+    Where-Object { $_ -notmatch 'WindowsPowerShell' }
+) -Join ';'
+
 # 设置终端字符集
-. $env:DOTFILES\shell\pwsh\PSHelper_Encoding.ps1
+# 文件目前没内容，注释掉少加载一个文件节约 2ms
+#. $env:DOTFILES\shell\pwsh\PSHelper_Encoding.ps1
 # 注入环境变量
 . $env:DOTFILES\shell\pwsh\PSHelper_Environment.ps1
 #------------------------------- Setup Runtime DONE -------------------------------

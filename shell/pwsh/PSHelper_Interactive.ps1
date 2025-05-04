@@ -34,9 +34,7 @@ $env:POSH_THEME = "$HOME\.config\oh-my-posh\enihsyou.omp.toml"
 
 # 使用异步加载模块的方式来加速启动
 # https://github.com/fsackur/ProfileAsync
-$AsyncProfile = { . "$env:DOTFILES\shell\pwsh\PSHelper_InteractiveAsync.ps1" }
-if (Import-Module ProfileAsync -PassThru -ea Ignore) {
-    Import-ProfileAsync -Delay 200 $AsyncProfile
-} else {
-    . $AsyncProfile
+Import-Module $env:DOTFILES\shell\pwsh\Modules\ProfileAsync.psm1
+Import-ProfileAsync -Delay 200 {
+    . "$env:DOTFILES\shell\pwsh\PSHelper_InteractiveAsync.ps1"
 }
