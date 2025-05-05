@@ -19,6 +19,7 @@ function New-BoundPowerShell
 
     # A runspace to run our code asynchronously; pass in $Host to support Write-Host
     $Runspace = [runspacefactory]::CreateRunspace($Host)
+    $Runspace.Name = "ProfileAsync"
     $Powershell = [powershell]::Create($Runspace)
     $Runspace.Open()
 
@@ -221,6 +222,10 @@ function Import-ProfileAsync
                 $Msg = "VERBOSE: Asynchronous execution $($State.ToLower())"
                 $Msg | Write-Host -ForegroundColor Yellow
             }
+
+            # cleanup resource, so Get-Runspace won't display my creature
+            $Powershell.Runspace.Dispose()
+            $Powershell.Dispose()
         }
     }
 }
