@@ -148,10 +148,10 @@ function Import-ProfileAsync
     $Powershell = New-BoundPowerShell
 
     # https://seeminglyscience.github.io/powershell/2017/09/30/invocation-operators-states-and-scopes
-    $GlobalState = [psmoduleinfo]::new($false)
-    $GlobalState.SessionState = $ExecutionContext.SessionState
+    # $GlobalState = [psmoduleinfo]::new($false)
+    # $GlobalState.SessionState = $ExecutionContext.SessionState
 
-    $Powershell.Runspace.SessionStateProxy.PSVariable.Set('GlobalState', $GlobalState)
+    # $Powershell.Runspace.SessionStateProxy.PSVariable.Set('GlobalState', $GlobalState)
     $Powershell.Runspace.SessionStateProxy.PSVariable.Set('ScriptBlock', $ScriptBlock)
     $Powershell.Runspace.SessionStateProxy.PSVariable.Set('Delay', $Delay)
 
@@ -164,6 +164,13 @@ function Import-ProfileAsync
 
         # Runspace init is unsafe. Stack traces point to PSReadLine; not sure
         Start-Sleep -Milliseconds $Delay
+
+        . $ScriptBlock
+        # [enihsyou] 这段是把 $ScriptBlock 当作参数传给 {} 并在 $GlobalState 中执行
+        # 这里不再需要 . $GlobalState 了? 自测直接 . $ScriptBlock 就能用
+        # 似乎 New-BoundPowerShell 中的魔法已经设置好了 $ExecutionContext
+        # 注释掉初始化 $GlobalState 的代码能节约 3ms
+        return
 
         . $GlobalState {. $args[0]} $ScriptBlock
     }
