@@ -1,5 +1,9 @@
 # bun user config
 # filepath: ~/.bunfig.toml
+#:schema https://json.schemastore.org/bunfig.json
+
+# disable telemetry
+telemetry = false
 
 [install]
 # set default registry as a string
