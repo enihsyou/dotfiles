@@ -44,6 +44,9 @@ Set-Alias -Name brew -Value winget -Description "Alias to winget, for macOS user
 # 删除默认指向 Where-Object 的别名，转而调用 where.exe
 Remove-Alias -Name where -Force -ErrorAction Ignore
 
+# rg with vscode hyperlink format
+function rgv { rg --hyperlink-format=vscode @args }
+
 function x-cmd {
     . "$HOME\.x-cmd.root\local\data\pwsh\_index.ps1"
 }

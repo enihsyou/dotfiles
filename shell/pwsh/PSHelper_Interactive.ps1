@@ -33,8 +33,22 @@ $env:POSH_THEME = "$HOME\.config\oh-my-posh\enihsyou.omp.toml"
 # }
 
 # 使用异步加载模块的方式来加速启动
-# https://github.com/fsackur/ProfileAsync
-Import-Module $env:DOTFILES\shell\pwsh\Modules\ProfileAsync.psm1
-Import-ProfileAsync -Delay 200 {
+$local:__asyncScript = {
     . "$env:DOTFILES\shell\pwsh\PSHelper_InteractiveAsync.ps1"
 }
+
+if ($env:VSCODE_INJECTION) {
+    # VSCode shell integration 脚本会重写 PSConsoleHostReadLine
+    # 其实其他任何重写了这个函数都会导致 ProfileAsync 执行在
+    # 非 Global Scope 中。目前遇到这问题只有放弃异步加载
+    . $__asyncScript
+} else {
+    # 如果遇到 cmdlet not found 的错误，并且调大 Delay 也没有用
+    # 比如如果不加载 oh-my-posh, 会提示 Get-Location 找不到
+    # 那就在 Async 之前 Import-Module / 调用 cmdlet 来触发模块加载
+    # 似乎因为在异步流程中向 ExecutionContext 加载的模块无法读取到
+    # https://github.com/fsackur/ProfileAsync
+    Import-Module $env:DOTFILES\shell\pwsh\Modules\ProfileAsync.psm1
+    Import-ProfileAsync -Delay 200 $__asyncScript
+}
+Remove-Variable -Name __asyncScript
