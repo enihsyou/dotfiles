@@ -29,6 +29,7 @@ if ($env:ACT -eq 'true') {
 $env:DOTFILES = "$HOME\.dotfiles"
 
 # 去掉由 WindowsPowerShell 在系统环境变量种加入的模块路径，pwsh7 用不上这些，节约 16ms
+# 但如果还会运行 WindowsPowerShell 则需要保留
 $Env:PSModulePath=@(
     $Env:PSModulePath -split ';' |
     Where-Object { $_ -notmatch 'WindowsPowerShell' }
