@@ -3,14 +3,15 @@
 # jq
 alias lessjson="jq -C . | less -R"
 
-# exa
+# exa (current eza)
 # https://the.exa.website/docs/colour-themes
+# https://github.com/eza-community/eza?tab=readme-ov-file#custom-themes
 if ! declare -f is_system_appearence_dark > /dev/null; then
 	true
 elif ! is_system_appearence_dark; then
-	alias exa='EXA_COLORS="sn=34:sb=1;32" exa'
+	alias eza='EXA_COLORS="sn=34:sb=1;32" eza'
 fi
-alias ls="exa --classify --time-style=iso --colour-scale"
+alias ls="eza --classify --time-style=iso --colour-scale"
 alias ll="ls --long --header"
 alias lt="ls --tree"
 alias la="ll --all --group"

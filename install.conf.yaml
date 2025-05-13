@@ -55,11 +55,16 @@
     description: Install homebrew
 
   - command: |-
-      return
+      if ! command -v starship &> /dev/null; then
+        brew install starship
+      fi
+    description: Install starship prompt
+
+  - command: |-
       if ! command -v antidote &> /dev/null; then
         brew install antidote
         source $(brew --prefix antidote)/share/antidote/antidote.zsh
-        antidote bundle < ${DOTFILES:-$HOME/.dotfiles}/zsh/zsh_plugins.txt > $HOME/.zsh_plugins.sh
+        antidote bundle < ${DOTFILES:-$HOME/.dotfiles}/zsh/zsh_plugins.txt > $HOME/.zsh_plugins.zsh
         source ~/.zshrc
       fi
     description: Install antidote
@@ -73,11 +78,9 @@
     description: Install awesome vimrcs
 
   - command: |-
-      return
-      brew install tldr exa bat autojump
+      brew install tldr eza bat autojump
     description: Install must have brew formulae
 
   - command: |-
-      return
       brew install jq hexyl mycli lnav httpie git-delta
     description: Install optional brew formulae
