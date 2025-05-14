@@ -38,6 +38,10 @@ Set-Alias -Name open -Value explorer
 Set-Alias -Name np -Value pnpm
 Function nx { & pnpm dlx @args }
 
+# bun alias
+# winget install bun 不会把 bunx.exe 添加到 PATH 中
+Function bunx { bun x @args }
+
 # Since I always forget I am on Windows not macOS.
 Set-Alias -Name brew -Value winget -Description "Alias to winget, for macOS users"
 
