@@ -53,3 +53,14 @@ powershell -ExecutionPolicy Bypass -File install.ps1
 [2]: https://github.com/anishathalye/dotbot
 [3]: https://github.com/twpayne/chezmoi
 [4]: https://github.com/holman/dotfiles
+
+## 关于 Git 子模块
+
+很容易注意到仓库里的 `dotbot` 目录其实是个 Git 子模块，这是使用该工具必须的前置条件。
+这里列出一些对子模块常见的操作命令，其实都是 `install` 脚本里的内容。
+
+```shell
+# 在 Git status 提示子模块存在变化时执行
+git -C dotbot submodule sync --quiet --recursive
+git submodule update --init --remote --recursive dotbot
+```

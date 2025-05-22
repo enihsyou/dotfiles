@@ -52,3 +52,14 @@ The initial version was forked from [holman/dotfiles][4]. After comparing [vario
 [2]: https://github.com/anishathalye/dotbot
 [3]: https://github.com/twpayne/chezmoi
 [4]: https://github.com/holman/dotfiles
+
+## About Git Submodules
+
+You may notice that the `dotbot` directory in the repository is actually a Git submodule, which is a prerequisite for using this tool.
+Here are some common commands for submodules, which are also included in the `install` script.
+
+```shell
+# Run when Git status indicates changes in submodules
+git -C dotbot submodule sync --quiet --recursive
+git submodule update --init --remote --recursive dotbot
+```
