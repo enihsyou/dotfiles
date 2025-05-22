@@ -1,4 +1,4 @@
 [submodule "dotbot"]
 	path = dotbot
-	url = https://github.com/anishathalye/dotbot
+	url = https://github.com/wfd3/dotbot-copy
 	ignore = dirty

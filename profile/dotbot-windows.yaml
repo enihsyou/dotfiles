@@ -1,0 +1,49 @@
+# dotbot configuration for Windows
+# docs: https://github.com/anishathalye/dotbot?tab=readme-ov-file#directives
+
+- defaults:
+    link:
+      create: true # create parent directories if they don't exist
+      relink: true # remove existing symlink before creating new one
+      # force: true # uncomment when needed
+    copy:
+      create: true # create parent directories if they don't exist
+      backup: true # backup existing files before overwriting
+      # overwrite: true # uncomment when needed
+    shell:
+      stdout: true # show output from stdout
+      stderr: true # show error output from stderr
+      quiet: true  # display command description rather than statement itself.
+
+- link:
+    ~/.bashrc: shell/bash/bashrc-msys2.sh
+
+    ~/.bunfig.toml: language/bun/bunfig-windows.toml
+    ~/AppData/Roaming/go/env: language/go/windows.env
+    ~/AppData/Roaming/uv/uv.toml: language/uv/uv-windows.toml
+    ~/AppData/Roaming/pip/pip.ini: language/pip/pip-windows.ini
+    ~/AppData/Roaming/NuGet/nuget.config: language/nuget/nuget-windows.config
+
+    ~/.editorconfig: .editorconfig
+
+    ~/.gitconfig: cli-app/git/gitconfig.ini
+    ~/.gitignore: cli-app/git/gitignore.ini
+    ~/.gitconfig-delta: cli-app/git/gitconfig-delta.ini
+    ~/.gitconfig-platform: cli-app/git/gitconfig-windows.ini
+    ~/AppData/Roaming/bat/config: cli-app/bat/config-dark.cfg
+    ~/.config/oh-my-posh/enihsyou.omp.toml: cli-app/oh-my-posh/enihsyou.omp.toml
+
+    ~/AppData/Roaming/AutoDarkMode/scripts.yaml: gui-app/AutoDarkMode/scripts.yaml
+
+- copy:
+    ~/.gitconfig-local: cli-app/git/gitconfig-local.example.ini
+    # 如果以符号链接引用，文件会被 npm 指令修改
+    ~/.npmrc: language/npm/npmrc-windows.ini
+
+# shell on Windows is Command Prompt (cmd), command is executed with subprocess.call(shell=True)
+# thus, command string must stay within the same line, I recommend use ">" for
+# no-indentation command, and use no indicators for command with indentation.
+- shell:
+  - description: Run the initial setup script for Windows
+    # powershell is Windows PowerShell 5.x, not pwsh for initinalization reasons
+    command: powershell -ExecutionPolicy Bypass -File system/Windows/initial-setup.ps1

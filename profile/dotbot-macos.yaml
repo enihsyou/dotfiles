@@ -1,0 +1,89 @@
+# dotbot configuration
+# docs: https://github.com/anishathalye/dotbot?tab=readme-ov-file#directives
+
+- defaults:
+    link:
+      create: true # create parent directories if they don't exist
+      relink: true # remove existing symlink before creating new one
+    shell:
+      stdout: true # show output from stdout
+      stderr: true # show error output from stderr
+      quiet: true  # display command description rather than statement itself.
+
+- link:
+    ~/.zshrc:
+      if: '[ `uname` = Darwin ]'
+      path: zsh/zshrc.symlink
+    ~/.bashrc: bash/bashrc.symlink
+    ~/.vimrc: vim/vimrc.symlink
+    ~/.gitconfig: git/gitconfig.symlink
+    ~/.gitignore: git/gitignore.symlink
+    ~/.config/proxy: zsh/shell-proxy
+    ~/.config/direnv/direnvrc: symlinks/direnvrc
+    ~/.ripgreprc: symlinks/ripgreprc.conf
+
+    ~/.config/starship.toml:
+      path: cli-app/starship-prompt/starship.toml
+    ~/.config/bat:
+      path: cli-app/bat
+    ~/.config/clash/config.yaml:
+      path: cli-app/clash/config.yaml
+    ~/.config/kitty:
+      if: '[ $(uname) = "Darwin" ]'
+      path: gui-app/kitty
+
+- shell:
+  - command: |-
+      if [ $(uname) != "Darwin" ]; then
+        return
+      fi
+
+      if ! [ -f ~/.bash_sessions_disable ]; then
+        touch ~/.bash_sessions_disable
+      fi
+
+      if ! grep --quiet --no-messages "SHELL_SESSIONS_DISABLE=1" ~/.zshenv; then
+        cat <<- EOF >> ~/.zshenv # please preserve tab when editing
+      # Disable session save/restore mechanism
+      # https://stackoverflow.com/questions/32418438/how-can-i-disable-bash-sessions-in-os-x-el-capitan
+      SHELL_SESSIONS_DISABLE=1
+      EOF
+      fi
+    description: Disable session save/restore mechanism
+
+  - command: |-
+      if ! command -v brew &> /dev/null; then
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+      fi
+    description: Install homebrew
+
+  - command: |-
+      if ! command -v starship &> /dev/null; then
+        brew install starship
+      fi
+    description: Install starship prompt
+
+  - command: |-
+      if ! command -v antidote &> /dev/null; then
+        brew install antidote
+        source $(brew --prefix antidote)/share/antidote/antidote.zsh
+        antidote bundle < ${DOTFILES:-$HOME/.dotfiles}/zsh/zsh_plugins.txt > $HOME/.zsh_plugins.zsh
+        source ~/.zshrc
+      fi
+    description: Install antidote
+
+  - command: |-
+      return
+      if ! [ -f ~/.vim_runtime/vimrcs/basic.vim ]; then
+        git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
+        sh ~/.vim_runtime/install_awesome_vimrc.sh
+      fi
+    description: Install awesome vimrcs
+
+  - command: |-
+      brew install tldr eza bat autojump
+    description: Install must have brew formulae
+
+  - command: |-
+      brew install jq hexyl mycli lnav httpie git-delta
+    description: Install optional brew formulae

@@ -1,0 +1,39 @@
+# EditorConfig is awesome: https://editorconfig.org
+# This file originate from https://github.com/enihsyou/shared-config/blob/main/packages/editorconfig/.editorconfig
+# code: language=editorconfig
+
+# top-most EditorConfig file
+root = true
+
+# 所有文件的通用设置
+[*]
+charset = utf-8                  # 使用UTF-8字符编码
+end_of_line = lf                 # 使用LF行尾（Unix风格）
+indent_size = 4                  # 除指定都使用4个空格缩进，适当加大缩进便于阅读
+indent_style = space             # 使用空格进行缩进
+insert_final_newline = true      # 文件末尾插入空行
+trim_trailing_whitespace = true  # 去除行尾空白字符
+
+# 特定文件类型的设置
+[Makefile]
+indent_style = tab               # 必须使用制表符
+
+[*.{bat,cmd}]
+end_of_line = crlf               # Windows批处理文件使用CRLF行尾
+
+[*.{yml,yaml}]
+indent_size = 2                  # 社区习惯
+
+[*.{html,xml,svg}]
+indent_size = 2                  # 常遇很长的行
+
+[{*json,*.json{5,c,l}}]
+indent_size = 2                  # 数据文件适当扩大内容显示范围
+
+[*.{md,markdown}]
+trim_trailing_whitespace = false # 保留行尾空白用于换行
+
+[*.reg]
+# https://gist.github.com/SalviaSage/8eba542dc27eea3379a1f7dad3f729a0
+charset = utf-16le
+end_of_line = crlf

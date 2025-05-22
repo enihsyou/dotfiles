@@ -11,9 +11,35 @@
 /* vscode/src/vs/editor/browser/widget/codeEditorWidget.ts */
 /* 由 microsoft/vscode#44141 引入的 no-repeat 设置
    让 hint 下划线只有第一个字符短短的一截
-   找不到这么设置的原因 (可能从visual studio继承来的吧) */
-/* 暂时禁用
+   是故意这么做的，避免 SpellChecker 的检测结果不要划地到处都是 */
+/* 回归默认，控制哪些被归类为 Info 级别，这效果可以减少编辑器里的提示噪音 */
+/*
 .monaco-workbench .squiggly-hint {
     background-repeat: repeat-x;
 }
 */
+
+/* vscode/src/vs/workbench/browser/media/style.css */
+/* 修改UI字体, Maple Mono 比较圆润可爱
+   但要应用起来比较麻烦，早年的 Custom UI 插件已经失效，2024 最新方法是
+   https://github.com/subframe7536/vscode-custom-ui-style
+   配合 Window Zoom Level >= 2.0 在 Windows LoDPI 屏幕上使用较好 */
+/* 已移动到插件 settings.json 中, 所以这段不再需要了
+   "custom-ui-style.font.monospace": "Maple Mono NF CN"
+   "custom-ui-style.font.sansSerif": "Maple UI" */
+/*
+.windows:lang(zh-Hans) {
+    font-family: "Segoe WPC", "Segoe UI", "Maple Mono NF CN", "Microsoft YaHei", sans-serif;
+}
+*/
+
+/* 调试菜单的弹出框里文字居然没有设置字体 */
+/*noinspection CssUnresolvedCustomProperty*/
+.debug-var-hover-pre {
+    font-family: var(--monaco-monospace-font), monospace;
+}
+
+/* 补充 Custom UI Style 字体设置 */
+.windows, .mac, .linux {
+    font-feature-settings: "'ss05'";
+}

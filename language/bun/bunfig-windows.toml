@@ -1,0 +1,17 @@
+# bun user config
+# filepath: ~/.bunfig.toml
+#:schema https://json.schemastore.org/bunfig.json
+
+# disable telemetry
+telemetry = false
+
+[install]
+# set default registry as a string
+registry = "https://registry.npmmirror.com"
+
+[install.cache]
+# the directory to use for the cache
+# current this setting is not awared, and 'cache' from .npmrc take effect
+# https://github.com/oven-sh/bun/issues/5636
+# set BUN_INSTALL_CACHE_DIR env instead to make hardlink on this drive possible
+dir = "G:/AppData/bun/install/cache"
