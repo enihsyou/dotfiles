@@ -34,10 +34,40 @@ api.map('J','B'); // tab向左
 api.map('K','F'); // tab向右
 
 // 在 GitHub 页面会存在冲突
-api.unmapAllExcept([], /github.com/i);
+api.unmapAllExcept(['E', 'R', 'J', 'K'], /github.com/i);
 
 // 内联翻译的透明度不能改，这里就不用了
 // api.Front.registerInlineQuery({});
+
+// 选词翻译 (cq)
+// https://github.com/brookhong/Surfingkeys/wiki/Register-inline-query
+api.Front.registerInlineQuery({
+    url: function(q) {
+        return `http://dict.youdao.com/w/eng/${q}/#keyfrom=dict2.index`;
+    },
+    parseResult: function(res) {
+        var parser = new DOMParser();
+        var doc = parser.parseFromString(res.text, "text/html");
+        var collinsResult = doc.querySelector("#collinsResult");
+        var authTransToggle = doc.querySelector("#authTransToggle");
+        var examplesToggle = doc.querySelector("#examplesToggle");
+        if (collinsResult) {
+            collinsResult.querySelectorAll("div>span.collinsOrder").forEach(function(span) {
+                span.nextElementSibling.prepend(span);
+            });
+            collinsResult.querySelectorAll("div.examples").forEach(function(div) {
+                div.innerHTML = div.innerHTML.replace(/<p/gi, "<span").replace(/<\/p>/gi, "</span>");
+            });
+            var exp = collinsResult.innerHTML;
+            return exp;
+        } else if (authTransToggle) {
+            authTransToggle.querySelector("div.via.ar").remove();
+            return authTransToggle.innerHTML;
+        } else if (examplesToggle) {
+            return examplesToggle.innerHTML;
+        }
+    }
+});
 
 // 颜色主题
 settings.theme = `
