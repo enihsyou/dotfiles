@@ -1,11 +1,21 @@
 #!/usr/bin/env bash
-return
+
+# If DOTFILES is not set, Use git repository for it
+if [ -z "$DOTFILES" ]; then
+    DOTFILES=$(git rev-parse --show-toplevel 2>/dev/null)
+fi
+if [ -z "$DOTFILES" ]; then
+    echo "DOTFILES environment variable is not set and cannot determine the git repository root."
+    exit 1
+fi
+
 # Disable session save/restore mechanism
 if ! [ -f ~/.bash_sessions_disable ]; then
     touch ~/.bash_sessions_disable
 fi
 if ! grep --quiet --no-messages "SHELL_SESSIONS_DISABLE=1" ~/.zshenv; then
-    cat <<-EOF >>~/.zshenv # please preserve tab when editing
+    # please preserve tab when editing
+    cat <<-EOF >>~/.zshenv
 # Disable session save/restore mechanism
 # https://stackoverflow.com/questions/32418438/how-can-i-disable-bash-sessions-in-os-x-el-capitan
 SHELL_SESSIONS_DISABLE=1
@@ -15,9 +25,11 @@ fi
 # Install antidote
 if ! command -v antidote &>/dev/null; then
     brew install antidote
-    source "$(brew --prefix antidote)/share/antidote/antidote.zsh"
-    antidote bundle < "${DOTFILES:-$HOME/.dotfiles}/zsh/zsh_plugins.txt" > "$HOME/.zsh_plugins.zsh"
-    source ~/.zshrc
+    zsh << EOF
+source $(brew --prefix antidote)/share/antidote/antidote.zsh
+antidote bundle <$DOTFILES/shell/zsh/zsh_plugins.txt >$HOME/.zsh_plugins.zsh
+antidote update
+EOF
 fi
 
 #  Install awesome vimrcs

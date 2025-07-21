@@ -37,10 +37,6 @@ export DOTFILES=$HOME/.dotfiles
 # Set ZSH_CACHE_DIR to the path where cache files should be created
 export ZSH_CACHE_DIR=$HOME/.cache/zsh
 
-# Loads antidote dynamically
-# source /usr/local/opt/antidote/share/antidote/antidote.zsh
-# antidote load
-
 # Add homebrew managed auto-complete functions to fpath before compinit
 # https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
 # FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:${FPATH}"
@@ -84,18 +80,23 @@ fi
 } ${ZDOTDIR:-$HOME}/.zcompdump(N.mh+24)
 
 # instead add 'robbyrussell/oh-my-zsh path:lib/theme-and-appearance.zsh'
-# to zsh_plugin.txt, we manually load colors here. 
+# to zsh_plugin.txt, we manually load colors here.
 # otherwise 'colored-man-pages' plugin won't work for some unknown reason.
 autoload -U colors && colors
 
-# Loads functions will be used in 
-for funcfile in $DOTFILES/functions/*.zsh; do
+# Loads functions will be used in
+for funcfile in $DOTFILES/shell/zsh/functions/*.zsh; do
 	source "$funcfile"
 done
 
+# Loads antidote dynamically
+# source $(brew --prefix antidote)/share/antidote/antidote.zsh
+# antidote load
+
 # Loads antidote bundles statically
 # use command below to generate static plugin file, and uncomment line with source.
-# antidote bundle < $DOTFILES/zsh/zsh_plugins.txt > $HOME/.zsh_plugins.zsh
+# antidote bundle <$DOTFILES/shell/zsh/zsh_plugins.txt >$HOME/.zsh_plugins.zsh
+# antidote update
 source $HOME/.zsh_plugins.zsh
 
 # Stash your environment variables in ~/.localrc. This means they'll stay out
@@ -118,5 +119,3 @@ unset -f __prof_func
 # code at current version, that was fixed), replace '[ checks ] && function'
 # with if statement will resolve this problem and no longer need this hack.
 # echo >/dev/null
-# source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
-
