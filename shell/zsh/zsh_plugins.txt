@@ -17,7 +17,7 @@ robbyrussell/oh-my-zsh path:plugins/cp
 robbyrussell/oh-my-zsh path:plugins/colored-man-pages
 robbyrussell/oh-my-zsh path:plugins/extract
 #robbyrussell/oh-my-zsh path:plugins/pip
-robbyrussell/oh-my-zsh path:plugins/docker
+#robbyrussell/oh-my-zsh path:plugins/docker
 robbyrussell/oh-my-zsh path:plugins/sudo
 # robbyrussell/oh-my-zsh path:plugins/autojump
 robbyrussell/oh-my-zsh path:plugins/httpie kind:fpath
@@ -46,10 +46,9 @@ zdharma-continuum/fast-syntax-highlighting kind:defer
 
 ###########################################################
 # Post configuration
-~/.dotfiles/python/
-~/.dotfiles/brew/
-~/.dotfiles/ssh/
-~/.dotfiles/jetbrains/
-~/.dotfiles/zsh/
-~/.dotfiles/zsh/plugins
-~/.dotfiles/zsh/themes/starship-prompt/
+~/.dotfiles/language/python/
+~/.dotfiles/cli-app/brew/
+~/.dotfiles/gui-app/jetbrains/
+~/.dotfiles/shell/zsh/includes
+~/.dotfiles/shell/zsh/plugins
+~/.dotfiles/shell/zsh/themes/starship-prompt/

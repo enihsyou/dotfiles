@@ -1,3 +1,3 @@
-
+#!/usr/bin/env bash
 # https://stackoverflow.com/q/55924761/5277711
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
