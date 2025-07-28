@@ -1,7 +1,12 @@
 ﻿# 本文件用于设置 PSReadLine 的选项和主题
 
 #------------------------------- Set Options OPEN -------------------------------
-Set-PSReadLineOption -EditMode Emacs
+
+if (-not ($env:TERM_PROGRAM -eq 'WarpTerminal' -and $env:PS_PROFILE_ASYNC -eq '1')) {
+    # WarpTerminal 和 ProfileAsync 有冲突，一旦设置了 EditMode 会把历史的最后一个命令
+    # 作为当前命令行的内容，以看不见的方式插入到命令行中，在 Enter 执行时才会发现
+    Set-PSReadLineOption -EditMode Emacs
+}
 Set-PSReadLineOption -HistorySearchCursorMovesToEnd
 Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineOption -TerminateOrphanedConsoleApps

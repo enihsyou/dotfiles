@@ -165,7 +165,11 @@ function Import-ProfileAsync
         # Runspace init is unsafe. Stack traces point to PSReadLine; not sure
         Start-Sleep -Milliseconds $Delay
 
+        # [enihsyou] Inform the script that it is running in an async environment
+        Set-Item -Path Env:PS_PROFILE_ASYNC -Value 1
         . $ScriptBlock
+        Remove-Item -Path Env:PS_PROFILE_ASYNC -ErrorAction Ignore
+
         # [enihsyou] 这段是把 $ScriptBlock 当作参数传给 {} 并在 $GlobalState 中执行
         # 这里不再需要 . $GlobalState 了? 自测直接 . $ScriptBlock 就能用
         # 似乎 New-BoundPowerShell 中的魔法已经设置好了 $ExecutionContext
@@ -205,6 +209,13 @@ function Import-ProfileAsync
             {
                 $_ | Out-String | Write-Host -ForegroundColor Red
             }
+
+            # [enihsyou] Pipeout the streams, but struggle with the fact that
+            # Write-Output is not working with dot source in ScriptBlock `{ . $Wrapper }`
+            # $Powershell.Streams.Warning | Write-Warning -WarningAction Continue
+            # $Powershell.Streams.Information | Write-Information -InformationAction Continue
+            # $Powershell.Streams.Debug | Write-Debug
+            # $Powershell.Streams.Verbose | Write-Verbose
 
             $Formats = $Powershell.Runspace.InitialSessionState.Formats
             $FormatFiles = $Formats.FileName | Where-Object {$_ -and (Test-Path $_)}
