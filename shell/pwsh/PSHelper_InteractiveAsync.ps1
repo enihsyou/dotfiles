@@ -10,6 +10,9 @@ Import-Module -Name Microsoft.WinGet.CommandNotFound
 # https://github.com/ajeetdsouza/zoxide
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
 
+# https://taskfile.dev/installation#setup-completions
+Invoke-Expression (& task --completion powershell | Out-String)
+
 # https://yazi-rs.github.io/docs/quick-start
 function y {
     $tmp = [System.IO.Path]::GetTempFileName()
