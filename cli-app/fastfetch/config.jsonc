@@ -1,0 +1,132 @@
+{
+  // 使用 `fastfetch --config all.jsonc --stat` 查看所有配置项以及耗时
+  // all.jsonc 从 git 仓库获取
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "none"
+  },
+  "display": {
+    "separator": "",
+    // Constants are reusable strings referenced by {$1}, {$2}, etc.
+    // These contain ANSI escape codes for cursor positioning
+    "constants": [
+      "─────────────────────────────" // {$1} - Horizontal line
+    ],
+    "brightColor": true,
+    "key": {
+      "type": "both",
+      "width": 20,
+      "paddingLeft": 2
+    },
+    "bar": {
+      "width": 12
+    },
+    "percent": {
+      "type": 3
+    }
+  },
+  "modules": [
+    {
+      "type": "title",
+      "format": "┌{$1} System Information {$1}┐"
+    },
+    {
+      "type": "title",
+      "key": "Host",
+      "keyColor": "blue",
+      "format": "{user-name-colored}{at-symbol-colored}{host-name-colored}"
+    },
+    {
+      "type": "os",
+      "key": "OS",
+      "keyColor": "blue"
+    },
+    {
+      "type": "uptime",
+      "key": "Uptime",
+      "keyColor": "blue"
+    },
+    {
+      "type": "loadavg",
+      "key": "Load Average",
+      "keyColor": "blue"
+    },
+    {
+      "type": "host",
+      "key": "Machine",
+      "keyColor": "cyan",
+      "format": "{name} {vendor}"
+    },
+    {
+      "type": "cpu",
+      "key": "CPU",
+      "keyColor": "cyan",
+      "showPeCoreCount": true,
+      "temp": true
+    },
+    {
+      "type": "gpu",
+      "key": "GPU",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "memory",
+      "key": "Memory",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "swap",
+      "key": "Swap",
+      "keyColor": "cyan"
+    },
+    // optimize for speed
+    // {
+    //   "type": "display",
+    //   "key": "Resolution",
+    //   "keyColor": "cyan"
+    // },
+    {
+      "type": "disk",
+      "key": "Disk ({mountpoint:3})",
+      "hideFolders": "M:\\;N:\\;G:\\;R:\\",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "wm",
+      "key": "WM",
+      "keyColor": "green"
+    },
+    {
+      "type": "shell",
+      "key": "Shell",
+      "keyColor": "green"
+    },
+    {
+      "type": "terminal",
+      "key": "Terminal",
+      "keyColor": "green"
+    },
+    // optimize for speed
+    // {
+    //   "type": "wifi",
+    //   "key": "Wi-Fi",
+    //   "keyColor": "red",
+    //   "format": "{ssid} - {protocol} {band} GHz - {security} {signal-quality}"
+    // },
+    {
+      "type": "localip",
+      "key": "IP ({ifname:9})",
+      "keyColor": "red",
+      "showIpv6": true
+    },
+    {
+      "type": "custom",
+      "format": "└{$1}────────────────────{$1}┘"
+    },
+    {
+      "type": "colors",
+      "paddingLeft": 32,
+      "symbol": "circle"
+    }
+  ]
+}

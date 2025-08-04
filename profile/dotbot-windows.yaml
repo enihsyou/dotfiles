@@ -32,6 +32,7 @@
     ~/.gitconfig-platform: cli-app/git/gitconfig-windows.ini
     ~/AppData/Roaming/bat/config: cli-app/bat/config-dark.cfg
     ~/.config/oh-my-posh/enihsyou.omp.toml: cli-app/oh-my-posh/enihsyou.omp.toml
+    ~/.config/fastfetch/config.jsonc: cli-app/fastfetch/config.jsonc
 
     ~/AppData/Roaming/AutoDarkMode/scripts.yaml: gui-app/AutoDarkMode/scripts.yaml
 
