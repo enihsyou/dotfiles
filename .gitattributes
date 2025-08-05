@@ -1,3 +1,4 @@
 # filepath: .gitattributes
 *.bat text eol=crlf
 *.reg text eol=crlf
+gui-app/MacType/*.ini text eol=crlf
