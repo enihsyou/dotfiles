@@ -13,6 +13,10 @@ Invoke-Expression (& { (zoxide init powershell | Out-String) })
 # https://taskfile.dev/installation#setup-completions
 Invoke-Expression (& task --completion powershell | Out-String)
 
+# [not working in async context] Bring autocomplete to Git
+# better do it manually when auto completion is needed.
+# Import-Module -Name posh-git
+
 # https://yazi-rs.github.io/docs/quick-start
 function y {
     $tmp = [System.IO.Path]::GetTempFileName()
