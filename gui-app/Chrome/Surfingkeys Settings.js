@@ -22,6 +22,10 @@ api.mapkey("r", "刷新推荐流", function () {
 // 视频组件网页全屏的插件
 api.unmap("w", /bilibili.com|youtube.com/i);
 
+// YouTube frequent used keyboard shortcuts
+// https://support.google.com/youtube/answer/7631406?hl=zh-Hans
+["<", ">"].forEach(k => api.unmap(k, /youtube.com/i));
+
 // 不要和浏览器的历史记录按键产生冲突
 api.unmap("<Ctrl-h>");
 

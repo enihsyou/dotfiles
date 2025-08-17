@@ -35,6 +35,7 @@ $env:PAGER = 'less.exe'
 $env:POSH_THEME = "$HOME\.config\oh-my-posh\enihsyou.omp.toml"
 . $env:DOTFILES\shell\pwsh\PSHelper_OhMyPosh.ps1
 
-if (Test-Path "$HOME\.x-cmd.root\local\data\pwsh\_index.ps1") {
-    . "$HOME\.x-cmd.root\local\data\pwsh\_index.ps1"
-}; # boot up x-cmd.
+# disabled due to its heavy loading time
+# if (Test-Path "$HOME\.x-cmd.root\local\data\pwsh\_index.ps1") {
+#     . "$HOME\.x-cmd.root\local\data\pwsh\_index.ps1"
+# }; # boot up x-cmd.
