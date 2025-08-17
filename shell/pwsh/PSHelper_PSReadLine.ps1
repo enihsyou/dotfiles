@@ -10,7 +10,8 @@ if (-not ($env:TERM_PROGRAM -eq 'WarpTerminal' -and $env:PS_PROFILE_ASYNC -eq '1
 Set-PSReadLineOption -HistorySearchCursorMovesToEnd
 Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineOption -TerminateOrphanedConsoleApps
-Set-PSReadLineOption -ViModeIndicator Prompt
+# 使用 Ctrl+x Ctrl+e 调用 ViEditVisually 在编辑器里使用 Vim 模式修改当前命令
+Set-PSReadLineOption -ViModeIndicator Cursor
 #------------------------------- Set Options OPEN -------------------------------
 
 

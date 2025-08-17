@@ -2,6 +2,8 @@
 
 $env:HF_ENDPOINT = "https://hf-mirror.com"
 
+$env:EDITOR = "vim"
+
 # 先禁用了看看哪里会出问题，或许是 git-delta
 #$env:PAGER = 'less.exe'
 
