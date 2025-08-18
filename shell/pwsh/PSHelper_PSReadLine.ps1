@@ -16,16 +16,43 @@ Set-PSReadLineOption -ViModeIndicator Cursor
 
 
 #------------------------------- Set Hot-keys OPEN -------------------------------
-# 设置向上键为后向搜索历史记录
-Set-PSReadLineKeyHandler -Chord UpArrow -Function HistorySearchBackward
-# 设置向下键为前向搜索历史记录
-Set-PSReadLineKeyHandler -Chord DownArrow -Function HistorySearchForward
-Set-PSReadLineKeyHandler -Chord Enter -Function ValidateAndAcceptLine
-# explicit set Ctrl+v (lowercase) to make paste in VSCode works without holding Shift
-Set-PSReadLineKeyHandler -Chord Ctrl+v -Function Paste
-# Provides intuitive, Windows like cursor actions.
-Set-PSReadLineKeyHandler -Chord Ctrl+LeftArrow -Function BackwardWord
-Set-PSReadLineKeyHandler -Chord Ctrl+RightArrow -Function ForwardWord
+# 注册 Emacs 键位绑定的函数
+# 修改 EditMode 会重置 KeyHandler，切换模式后记得调用
+function Register-PSReadLineEmacsKeyHandlers {
+    # 在 Emacs 模式下注册需要的键位绑定
+    # 设置向上键为后向搜索历史记录
+    Set-PSReadLineKeyHandler -Chord UpArrow -Function HistorySearchBackward
+    # 设置向下键为前向搜索历史记录
+    Set-PSReadLineKeyHandler -Chord DownArrow -Function HistorySearchForward
+    # 默认是 AcceptLine，这里加个验证再执行
+    Set-PSReadLineKeyHandler -Chord Enter -Function ValidateAndAcceptLine
+    # explicit set Ctrl+v (lowercase) to make paste in VSCode works without holding Shift
+    Set-PSReadLineKeyHandler -Chord Ctrl+v -Function Paste
+    # Provides intuitive, Windows like cursor actions.
+    Set-PSReadLineKeyHandler -Chord Ctrl+LeftArrow -Function BackwardWord
+    Set-PSReadLineKeyHandler -Chord Ctrl+RightArrow -Function ForwardWord
+}
+
+# 注册 Vi 键位绑定的函数
+function Register-PSReadLineViKeyHandlers {
+    # Vi 模式下的键位绑定预留（按需添加）
+    # 例如:
+    # Set-PSReadLineKeyHandler -Chord <...> -Function <...>
+}
+
+Register-PSReadLineEmacsKeyHandlers
+
+# 切换 EditMode
+Set-PSReadLineKeyHandler -Chord F5 -ScriptBlock {
+    $currentMode = (Get-PSReadLineOption).EditMode
+    if ($currentMode -eq 'Emacs') {
+        Set-PSReadLineOption -EditMode Vi
+        Register-PSReadLineViKeyHandlers
+    } else {
+        Set-PSReadLineOption -EditMode Emacs
+        Register-PSReadLineEmacsKeyHandlers
+    }
+}
 #------------------------------- Set Hot-keys DONE -------------------------------
 
 
