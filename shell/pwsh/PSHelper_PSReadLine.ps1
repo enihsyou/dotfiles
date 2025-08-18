@@ -77,7 +77,7 @@ if ($env:AUTODARKMODE -eq 'light') {
         Type                   = $PSStyle.Foreground.FromRGB(0x008080)
         Variable               = $PSStyle.Foreground.FromRGB(0x0818A8)
         ListPredictionSelected = $PSStyle.Background.FromRGB(0x93A1A1)
-        Selection              = $PSStyle.Background.FromRGB(0x275FE4)
+        Selection              = $PSStyle.Reverse # 让信息凸显，特别是与 carapace 配合
     }
     # $PSStyle.Formatting.FormatAccent       = $PSStyle.Foreground.FromRgb(0x00FF00)
     # $PSStyle.Formatting.TableHeader        = $PSStyle.Foreground.FromRgb(0x00FF00)
@@ -97,3 +97,10 @@ if ($env:AUTODARKMODE -eq 'light') {
     # $PSStyle.FileInfo.Extension['.psm1']   = $PSStyle.Foreground.FromRgb(0x00FFFF)
 }
 #------------------------------- Set Themes DONE -------------------------------
+
+
+#------------------------------- Set Completion OPEN ---------------------------
+#$env:CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense'
+# 使用 Ctrl+Spacebar (MenuComplete) 触发
+carapace _carapace | Out-String | Invoke-Expression
+#------------------------------- Set Completion DONE ---------------------------
