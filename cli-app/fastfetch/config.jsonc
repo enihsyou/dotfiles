@@ -101,11 +101,12 @@
       "key": "Shell",
       "keyColor": "green"
     },
-    {
-      "type": "terminal",
-      "key": "Terminal",
-      "keyColor": "green"
-    },
+    // Not applicable in non-terminal contexts
+    // {
+    //   "type": "terminal",
+    //   "key": "Terminal",
+    //   "keyColor": "green"
+    // },
     // optimize for speed
     // {
     //   "type": "wifi",
