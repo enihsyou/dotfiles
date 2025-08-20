@@ -15,3 +15,7 @@ cli-app/aria2/aria2.session
 gui-app/kitty/venv
 gui-app/kitty/macos-launch-services-cmdline
 cli-app/bat/config
+
+# private network
+**/dnsmasq.d/*.list
+**/dnsmasq.d/host.conf

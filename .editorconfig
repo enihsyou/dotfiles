@@ -1,5 +1,5 @@
 # EditorConfig is awesome: https://editorconfig.org
-# This file originate from https://github.com/enihsyou/shared-config/blob/main/packages/editorconfig/.editorconfig
+# This file originate from https://github.com/enihsyou/shared-config/blob/main/packages/editor-config/.editorconfig
 # code: language=editorconfig
 
 # top-most EditorConfig file
@@ -17,6 +17,12 @@ trim_trailing_whitespace = true  # 去除行尾空白字符
 # 特定文件类型的设置
 [Makefile]
 indent_style = tab               # 必须使用制表符
+
+[*.go]
+indent_style = tab               # Go 语言使用制表符
+
+[*.sh]
+indent_size = 2                  # https://google.github.io/styleguide/shellguide.html#indentation
 
 [*.{bat,cmd}]
 end_of_line = crlf               # Windows批处理文件使用CRLF行尾
@@ -37,3 +43,6 @@ trim_trailing_whitespace = false # 保留行尾空白用于换行
 # https://gist.github.com/SalviaSage/8eba542dc27eea3379a1f7dad3f729a0
 charset = utf-16le
 end_of_line = crlf
+
+[*.ps1]
+charset = utf-16le               # 带 BOM 支持旧的 Windows Powershell 5.1
