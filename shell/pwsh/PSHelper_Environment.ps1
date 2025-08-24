@@ -3,7 +3,8 @@
 $env:HF_ENDPOINT = "https://hf-mirror.com"
 
 $env:EDITOR = "vim"
-$env:VISUAL = "code"
+# vscode 的自动保存会影响 git rebase
+#$env:VISUAL = "code"
 
 # 先禁用了看看哪里会出问题，或许是 git-delta
 #$env:PAGER = 'less.exe'
