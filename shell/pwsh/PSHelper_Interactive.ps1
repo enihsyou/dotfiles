@@ -37,12 +37,15 @@ $local:__asyncScript = {
     . "$env:DOTFILES\shell\pwsh\PSHelper_InteractiveAsync.ps1"
 }
 
-if ($env:VSCODE_INJECTION) {
+if ($env:VSCODE_INJECTION -or $env:TERM_PROGRAM -eq 'WarpTerminal') {
     # VSCode shell integration 脚本会重写 PSConsoleHostReadLine
     # 其实其他任何重写了这个函数都会导致 ProfileAsync 执行在
     # 非 Global Scope 中。目前遇到这问题只有放弃异步加载
     # 而且改了 PSConsoleHostReadLine 会导致在 VSCode 以外的环境
     # 加载 shellIntegration.ps1 无限死循环打印 prompt
+    #
+    # Warp Terminal 会触发 System.InvalidOperationException: Stack empty.
+    # 错误瞬间暴毙
     . $__asyncScript
 } else {
     # 如果遇到 cmdlet not found 的错误，并且调大 Delay 也没有用
