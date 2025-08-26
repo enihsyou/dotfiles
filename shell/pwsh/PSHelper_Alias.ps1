@@ -45,6 +45,9 @@ Function bunx { bun x @args }
 # Since I always forget I am on Windows not macOS.
 Set-Alias -Name brew -Value winget -Description "Alias to winget, for macOS users"
 
+# HTTPie 启动耗时太慢，换成 Rust 版
+Set-Alias -Name http -Value xh -Description "a Rust version of HTTPie"
+
 # 删除默认指向 Where-Object 的别名，转而调用 where.exe
 Remove-Alias -Name where -Force -ErrorAction Ignore
 
