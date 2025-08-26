@@ -53,7 +53,7 @@ api.map("K", "F"); // tab向右
 // https://github.com/brookhong/Surfingkeys/wiki/Register-inline-query
 api.Front.registerInlineQuery({
     url: function (q) {
-        return `http://dict.youdao.com/w/eng/${q}/#keyfrom=dict2.index`;
+        return `https://dict.youdao.com/w/eng/${q}`;
     },
     parseResult: function (res) {
         var parser = new DOMParser();
@@ -84,6 +84,16 @@ api.Front.registerInlineQuery({
         }
     },
 });
+
+// 替换 DuckDuckGo 的键位为 Dictionary
+api.addSearchAlias(
+    "d",
+    "youdao",
+    "https://dict.youdao.com/w/eng/",
+    "s",
+    null,
+    null
+);
 
 // 使用 Google 子域名，其余部分来自
 // https://github.com/brookhong/Surfingkeys/blob/c8a5e153ccb4223b3eaa6faf1e5ab21d89a5b108/src/content_scripts/common/default.js#L701C1-L704C8
