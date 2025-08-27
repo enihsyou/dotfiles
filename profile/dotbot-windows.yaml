@@ -36,6 +36,8 @@
 
     ~/AppData/Roaming/AutoDarkMode/scripts.yaml: gui-app/AutoDarkMode/scripts.yaml
 
+    ~/.wslconfig: system/WSL2/.wslconfig
+
 - copy:
     ~/.gitconfig-local: cli-app/git/gitconfig-local.example.ini
     # 如果以符号链接引用，文件会被 npm 指令修改

@@ -1,0 +1,12 @@
+# code: language=ini
+[wsl2]
+swap = 0
+guiApplications=false
+dnsTunneling=false
+autoProxy=false
+dnsProxy=false
+networkingMode=Mirrored
+processors=12
+memory=25769803776
+[experimental]
+autoMemoryReclaim=gradual
