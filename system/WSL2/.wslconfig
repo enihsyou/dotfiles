@@ -9,4 +9,3 @@ networkingMode=Mirrored
 processors=12
 memory=25769803776
 [experimental]
-autoMemoryReclaim=gradual
