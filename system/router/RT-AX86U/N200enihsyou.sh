@@ -6,6 +6,7 @@ alias logme='logger "[enihsyou]:"'
 
 # register custom dnsmasq configs
 logme "link /jffs/configs/dnsmasq.d"
+# success only if empty
 rmdir /jffs/configs/dnsmasq.d
 mkdir -p /jffs/configs/dnsmasq.d
 for file in /jffs/.koolshare/enihsyou/dnsmasq.d/*.conf; do
@@ -73,7 +74,7 @@ add_iptables_rule() {
 
 # append homebridge-miio iptables rules
 logme "append homebridge-miio iptables rules"
-add_iptables_rule -t nat -C POSTROUTING -o br0 -p udp --dport 54321 -s 192.168.1.0/24 -m comment --comment "homebridge-miio" -j MASQUERADE
+add_iptables_rule -t nat -I POSTROUTING -o br0 -p udp --dport 54321 -s 192.168.1.0/24 -m comment --comment "homebridge-miio" -j MASQUERADE
 
 # bypass internal subnet from merlin clash
 logme "bypass internal subnet from merlin clash"
