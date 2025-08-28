@@ -15,3 +15,14 @@ tasks:
       - mkdir -p cli-app/aria2
       - mkcert -key-file cli-app/aria2/aria2.key.pem -cert-file cli-app/aria2/aria2.crt.pem {{.aria2_domain}} localhost 127.0.0.1 ::1
       - openssl pkcs12 -export -inkey cli-app/aria2/aria2.key.pem -in cli-app/aria2/aria2.crt.pem -out cli-app/aria2/aria2.pfx -passout "pass:"
+
+  deploy-rt-ax86u:
+    desc: "Deploy files to RT-AX86U Router"
+    dir: "system/router/"
+    cmds:
+      - scp -rpO RT-AX86U RT-AX86U-CE58:/jffs/.koolshare/enihsyou/
+
+  deploy-wsl2:
+    desc: "Deploy files to WSL2"
+    cmds:
+      - pwsh -c "cp shell/bash/bashrc-wsl2.sh //wsl.localhost/Ubuntu/home/enihsyou/.bashrc"
