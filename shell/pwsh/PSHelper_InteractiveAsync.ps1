@@ -10,9 +10,6 @@ Import-Module -Name Microsoft.WinGet.CommandNotFound
 # https://github.com/ajeetdsouza/zoxide
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
 
-# https://taskfile.dev/installation#setup-completions
-Invoke-Expression (& task --completion powershell | Out-String)
-
 # [not working in async context] Bring autocomplete to Git
 # better do it manually when auto completion is needed.
 # Import-Module -Name posh-git
@@ -28,7 +25,12 @@ function y {
     Remove-Item -Path $tmp
 }
 
-# https://cn.x-cmd.com/start/windows
-if (Test-Path "$Home\.x-cmd.root\local\data\pwsh\_index.ps1") {
-    . "$Home\.x-cmd.root\local\data\pwsh\_index.ps1"
-}; # boot up x-cmd.
+function x {
+    Write-Host "🚨 x not loaded! Loading now..."
+    Write-Host
+    Remove-Item -Path "Function:x"
+
+    Import-Module -Name "$env:DOTFILES\shell\pwsh\Modules\X-CMD.psm1" -Force -DisableNameChecking
+
+    x @args
+}

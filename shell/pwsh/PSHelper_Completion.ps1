@@ -2,5 +2,9 @@
 
 # GitHub CLI https://cli.github.com/manual/gh_completion
 Invoke-Expression (gh completion -s powershell | Out-String)
+
 # pnpm
 Invoke-Expression (pnpm completion pwsh | Out-String)
+
+# https://taskfile.dev/installation#setup-completions
+Invoke-Expression (& task --completion powershell | Out-String)

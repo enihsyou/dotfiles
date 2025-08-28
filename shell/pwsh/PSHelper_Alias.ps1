@@ -1,6 +1,9 @@
 ﻿Function which_GetCommand_SourceOnly {
     # similar to `which` in Linux
     param([string]$Name)
+    if ($null -eq $Name -or $Name -eq '') {
+        return 'Usage: which <command>'
+    }
     $command = Get-Command -Name $Name -ErrorAction SilentlyContinue
     if ($null -ne $command) {
         return $command.Source
@@ -53,7 +56,3 @@ Remove-Alias -Name where -Force -ErrorAction Ignore
 
 # rg with vscode hyperlink format
 function rgv { rg --hyperlink-format=vscode @args }
-
-function x-cmd {
-    . "$HOME\.x-cmd.root\local\data\pwsh\_index.ps1"
-}
