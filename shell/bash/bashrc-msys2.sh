@@ -47,4 +47,9 @@ fi
 # shortcut to this dotfiles path is $DOTFILES
 export DOTFILES="$HOME/.dotfiles"
 
-[ ! -f "$HOME/.x-cmd.root/X" ] || . "$HOME/.x-cmd.root/X" # boot up x-cmd.
+function x() {
+  echo "🚨 x not loaded! Loading now..." >&2
+  unset -f x
+  [ ! -f "$HOME/.x-cmd.root/X" ] || . "$HOME/.x-cmd.root/X" # boot up x-cmd.
+  x "$@" # invoke the real function now
+}
