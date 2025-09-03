@@ -7,20 +7,28 @@ tasks:
       - mkdir -p Windows
       - winget export --source winget --output Windows/winget-export.json
 
-  cli_app_aria2_pfx:
+  cli-app-aria2-pfx:
     desc: "Generate cli-app/aria2/aria2.pfx"
-    vars:
-      aria2_domain: enihsyou.synology.me
+    dir: cli-app/aria2
     cmds:
-      - mkdir -p cli-app/aria2
-      - mkcert -key-file cli-app/aria2/aria2.key.pem -cert-file cli-app/aria2/aria2.crt.pem {{.aria2_domain}} localhost 127.0.0.1 ::1
-      - openssl pkcs12 -export -inkey cli-app/aria2/aria2.key.pem -in cli-app/aria2/aria2.crt.pem -out cli-app/aria2/aria2.pfx -passout "pass:"
+      - step ca certificate aria2 aria2.crt.pem aria2.key.pem
+        --force --kty=RSA --size=2048
+        --san=localhost --san=127.0.0.1 --san=::1
+        --san=enihsyou.synology.me
+        --san=enihsyou-PC --san=enihsyou-PC.home.kokomi.site
+        --not-after=8640h
+      # aria2 不识别带证书链的 p12 证书，这个转换把链去掉
+      - openssl x509 -in aria2.crt.pem -out aria2.crt.pem
+      - step certificate p12 aria2.pfx aria2.crt.pem aria2.key.pem
+        --no-password --insecure --force
+      - rm aria2.crt.pem aria2.key.pem
 
   deploy-rt-ax86u:
     desc: "Deploy files to RT-AX86U Router"
     dir: "system/router/"
     cmds:
-      - scp -rpO RT-AX86U RT-AX86U-CE58:/jffs/.koolshare/enihsyou/
+
+      - scp -rO RT-AX86U/* RT-AX86U-CE58:/jffs/.koolshare/enihsyou/
 
   deploy-wsl2:
     desc: "Deploy files to WSL2"
