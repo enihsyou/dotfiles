@@ -16,5 +16,5 @@ gui-app/kitty/venv
 gui-app/kitty/macos-launch-services-cmdline
 
 # private network
-**/dnsmasq.d/*.list
-**/dnsmasq.d/host.conf
+system/router/RT-AX86U/dnsmasq.d/*.list
+system/router/RT-AX86U/dnsmasq.d/host.conf

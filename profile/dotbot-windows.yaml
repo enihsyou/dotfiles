@@ -30,7 +30,8 @@
     ~/.gitignore: cli-app/git/gitignore.ini
     ~/.gitconfig-delta: cli-app/git/gitconfig-delta.ini
     ~/.gitconfig-platform: cli-app/git/gitconfig-windows.ini
-    ~/AppData/Roaming/bat/config: cli-app/bat/config-dark.cfg
+    ~/AppData/Roaming/bat/config: cli-app/bat/config.cfg
+    ~/AppData/Roaming/yazi/config: cli-app/yazi
     ~/.config/oh-my-posh/enihsyou.omp.toml: cli-app/oh-my-posh/enihsyou.omp.toml
     ~/.config/fastfetch/config.jsonc: cli-app/fastfetch/config.jsonc
 
