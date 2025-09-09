@@ -3,7 +3,7 @@
 CONFIG=$1
 
 # shellcheck source=/dev/null
-. /koolshare/bin/helper.sh
+. /usr/sbin/helper.sh
 
 pc_delete "deny-interfaces" "$CONFIG"
 

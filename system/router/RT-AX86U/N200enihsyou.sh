@@ -2,7 +2,7 @@
 # please link me, I will run when nat-start event occur.
 # ln -s /jffs/.koolshare/enihsyou/N200enihsyou.sh /jffs/.koolshare/init.d/
 
-alias logme='logger "[enihsyou]:"'
+alias logme='echo "[enihsyou]:"'
 
 # register custom dnsmasq configs
 logme "link /jffs/configs/dnsmasq.d"
@@ -25,18 +25,24 @@ ipv6_hostname="$ipv6_hostname-IPv6"       # RT-AX86U-CE58-IPv6
   echo "interface-name=$ipv6_hostname,br0/6"
 } >/jffs/configs/dnsmasq.d/lan.conf
 
-# restart dnsmasq service to apply new configs
+echo "restart dnsmasq service"
 service restart_dnsmasq
 
-# link avahi-daemon.postconf
-if [ ! -e /jffs/scripts/avahi-daemon.postconf ]; then
-  if [ -f /jffs/.koolshare/enihsyou/avahi-daemon.postconf ]; then
-    logme "link /jffs/scripts/avahi-daemon.postconf"
-    ln -sf /jffs/.koolshare/enihsyou/avahi-daemon.postconf /jffs/scripts/avahi-daemon.postconf
+link_postconf() {
+  if [ ! -e "/jffs/scripts/$1" ]; then
+    if [ -f "/jffs/.koolshare/enihsyou/$1" ]; then
+      logme "link /jffs/scripts/$1"
+      ln -svf "/jffs/.koolshare/enihsyou/$1" "/jffs/scripts/$1"
+    else
+      logme "$1 not found, please check"
+    fi
   else
-    logme "avahi-daemon.postconf not found, please check"
+    logme "/jffs/scripts/$1 already exists, skip linking"
   fi
-fi
+}
+
+# link avahi-daemon.postconf
+link_postconf avahi-daemon.postconf
 
 add_iptables_rule() {
   # Initialize an empty string to build the arguments for the check command.
