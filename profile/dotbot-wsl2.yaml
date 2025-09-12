@@ -18,5 +18,7 @@
     ~/.gitconfig-delta: cli-app/git/gitconfig-delta.ini
     ~/.gitconfig-platform: cli-app/git/gitconfig-posix.ini
 
+    ~/.config/systemd: system/WSL2/systemd
+
 - copy:
     ~/.gitconfig-local: cli-app/git/gitconfig-local.example.ini

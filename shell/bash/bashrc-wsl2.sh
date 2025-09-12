@@ -114,6 +114,14 @@ fi
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
+export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR%/}/ssh/ssh-agent.sock"
+# agent setup, moved from dotbot to here to avoid sudo issues
+# source "$DOTFILES/system/WSL2/profile.d/wsl-ssh-agent.sh"
+# source "$DOTFILES/system/WSL2/profile.d/wsl-gpg-agent.sh"
+#
+# profile script is deprecated in favor of systemd user service
+# see system/WSL2/systemd/user/wsl-ssh-agent.service
+
 function x() {
   echo "🚨 x not loaded! Loading now..." >&2
   unset -f x

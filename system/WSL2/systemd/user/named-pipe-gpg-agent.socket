@@ -1,0 +1,21 @@
+# systemd socket unit for named-pipe-gpg-agent
+# which accept connections on a Unix socket
+# and forward them to the Cygwin GPG agent.
+#
+# enable with:
+#   systemctl --user daemon-reload
+#   systemctl --user enable named-pipe-gpg-agent.socket --now
+
+[Unit]
+Description=GPG Agent provided by Cygwin emulated unix domain socket
+Conflicts=gpg-agent.socket
+
+[Socket]
+ListenStream=%t/gnupg/S.gpg-agent
+FileDescriptorName=std
+SocketMode=0600
+DirectoryMode=0700
+Accept=yes
+
+[Install]
+WantedBy=sockets.target

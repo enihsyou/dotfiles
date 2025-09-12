@@ -1,0 +1,10 @@
+# systemd service unit for npiperelay-gpg-agent-ssh.socket
+# StandardInput can only handle one socket per service, thus multiple units.
+# each service spawn its own npiperelay instance to serve one socket.
+
+[Unit]
+Description=Proxy to Windows GPG Agent, which provides the standard named pipe (Cygwin/MSYS2, etc.)
+
+[Service]
+ExecStart=/mnt/c/Users/%u/AppData/Local/Microsoft/WinGet/Links/npiperelay.exe -ei -s -c "C:/Users/%u/.gnupg/S.gpg-agent.ssh"
+StandardInput=socket

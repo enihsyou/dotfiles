@@ -1,0 +1,8 @@
+# systemd service unit for npiperelay-ssh-agent.socket
+
+[Unit]
+Description=Proxy to Windows SSH Agent, which provides the standard named pipe (Win32-OpenSSH, 1Password, etc.)
+
+[Service]
+ExecStart=/mnt/c/Users/%u/AppData/Local/Microsoft/WinGet/Links/npiperelay.exe -ei -s '//./pipe/openssh-ssh-agent'
+StandardInput=socket

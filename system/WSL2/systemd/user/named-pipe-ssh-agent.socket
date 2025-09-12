@@ -1,0 +1,21 @@
+# systemd socket unit for named-pipe-ssh-agent
+# which accept connections on a Unix socket
+# and forward them to the Windows OpenSSH ssh-agent.
+# thanks to: https://sxda.io/posts/sharing-ssh-agent-wsl
+#
+# enable with:
+#   systemctl --user daemon-reload
+#   systemctl --user --now enable named-pipe-ssh-agent.socket
+
+[Unit]
+Description=SSH Agent provided by Windows named pipe
+
+[Socket]
+ListenStream=%t/ssh/ssh-agent.sock
+FileDescriptorName=ssh
+SocketMode=0600
+DirectoryMode=0700
+Accept=yes
+
+[Install]
+WantedBy=sockets.target

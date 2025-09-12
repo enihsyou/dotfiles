@@ -18,3 +18,6 @@ gui-app/kitty/macos-launch-services-cmdline
 # private network
 system/router/RT-AX86U/dnsmasq.d/*.list
 system/router/RT-AX86U/dnsmasq.d/host.conf
+
+# systemd runtime
+system/WSL2/systemd/**/*.wants/
