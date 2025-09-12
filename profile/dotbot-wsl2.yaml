@@ -1,0 +1,22 @@
+# dotbot configuration
+# docs: https://github.com/anishathalye/dotbot?tab=readme-ov-file#directives
+
+- defaults:
+    link:
+      create: true # create parent directories if they don't exist
+      relink: true # remove existing symlink before creating new one
+    shell:
+      stdout: true # show output from stdout
+      stderr: true # show error output from stderr
+      quiet: true  # display command description rather than statement itself.
+
+- link:
+    ~/.bashrc: shell/bash/bashrc-wsl2.sh
+
+    ~/.gitconfig: cli-app/git/gitconfig.ini
+    ~/.gitignore: cli-app/git/gitignore.ini
+    ~/.gitconfig-delta: cli-app/git/gitconfig-delta.ini
+    ~/.gitconfig-platform: cli-app/git/gitconfig-posix.ini
+
+- copy:
+    ~/.gitconfig-local: cli-app/git/gitconfig-local.example.ini

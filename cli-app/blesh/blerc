@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# ble.sh rc file
+
+## Exlucde WSL Windows mount points
+ble/path#remove-glob PATH '/mnt/*'
+

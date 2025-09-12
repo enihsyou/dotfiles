@@ -38,9 +38,14 @@ if [ $# -gt 0 ]; then
     done
 else
     # 无参时根据操作系统选择配置文件
-    case "$(uname -s)" in
-        Linux*)  add_profile "linux";;
-        Darwin*) add_profile "macos";;
+    case "$(uname -r)" in
+    *WSL2*) add_profile "wsl2" ;;
+    *)
+        case "$(uname -s)" in
+        Linux*) add_profile "linux" ;;
+        Darwin*) add_profile "macos" ;;
+        esac
+        ;;
     esac
 fi
 
