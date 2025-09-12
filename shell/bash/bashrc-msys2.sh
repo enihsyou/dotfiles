@@ -53,3 +53,14 @@ function x() {
   [ ! -f "$HOME/.x-cmd.root/X" ] || . "$HOME/.x-cmd.root/X" # boot up x-cmd.
   x "$@" # invoke the real function now
 }
+
+# If we're in MSYS2 (not Git-Bash)
+if [ -n "$MSYSTEM_PREFIX" ]; then
+  # add openssh to PATH if not already present
+  if [ -x "$PROGRAMFILES/OpenSSH/ssh-add.exe" ]; then
+    unix_path=$(cygpath -u "$PROGRAMFILES/OpenSSH")
+    if [[ ":$PATH:" != *":$unix_path:"* ]]; then
+      export PATH="$PATH:$unix_path"
+    fi
+  fi
+fi

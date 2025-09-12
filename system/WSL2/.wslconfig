@@ -5,4 +5,5 @@ dnsTunneling=false
 autoProxy=false
 dnsProxy=false
 networkingMode=Mirrored
+firewall=false
 [experimental]
