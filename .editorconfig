@@ -1,6 +1,5 @@
 # EditorConfig is awesome: https://editorconfig.org
 # This file originate from https://github.com/enihsyou/shared-config/blob/main/packages/editor-config/.editorconfig
-# code: language=editorconfig
 
 # top-most EditorConfig file
 root = true

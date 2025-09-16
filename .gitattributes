@@ -2,3 +2,6 @@
 *.bat text eol=crlf
 *.reg text eol=crlf
 gui-app/MacType/*.ini text eol=crlf
+# language detection corrections
+# see https://github.com/github-linguist/linguist/blob/main/docs/overrides.md
+system/WSL2/systemd/user/*.socket linguist-language=desktop

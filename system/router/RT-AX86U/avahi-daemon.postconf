@@ -1,5 +1,4 @@
 #!/bin/sh
-# code: language=bash
 CONFIG=$1
 
 # shellcheck source=/dev/null
