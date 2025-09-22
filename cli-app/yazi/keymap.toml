@@ -35,3 +35,13 @@ run = "plugin parent-arrow -1"
 [[mgr.prepend_keymap]]
 on  = "J"
 run = "plugin parent-arrow 1"
+
+# enihsyou custom
+[[mgr.prepend_keymap]]
+on = "?"
+run = "help"
+
+[[mgr.prepend_keymap]]
+on = ["R", "o"]
+desc = "sudo edit"
+run = 'shell --block -- sudo vim "$0"'
