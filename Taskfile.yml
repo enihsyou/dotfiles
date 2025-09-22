@@ -27,10 +27,16 @@ tasks:
     desc: "Deploy files to RT-AX86U Router"
     dir: "system/router/"
     cmds:
-
       - scp -rO RT-AX86U/* RT-AX86U-CE58:/jffs/.koolshare/enihsyou/
 
   deploy-wsl2:
     desc: "Deploy files to WSL2"
     cmds:
       - pwsh -c "cp shell/bash/bashrc-wsl2.sh //wsl.localhost/Ubuntu/home/enihsyou/.bashrc"
+
+  prepare-yazi:
+    desc: "Download yazi plugins"
+    cmds:
+      - ya pkg add yazi-rs/plugins:full-border
+      - ya pkg add yazi-rs/plugins:toggle-pane
+      - ya pack -a TD-Sky/sudo

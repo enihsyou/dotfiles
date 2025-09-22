@@ -17,6 +17,7 @@
     ~/.gitignore: cli-app/git/gitignore.ini
     ~/.gitconfig-delta: cli-app/git/gitconfig-delta.ini
     ~/.gitconfig-platform: cli-app/git/gitconfig-posix.ini
+    ~/.config/yazi: cli-app/yazi
 
     ~/.config/systemd: system/WSL2/systemd
 
