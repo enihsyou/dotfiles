@@ -18,6 +18,7 @@
     ~/.gitconfig-delta: cli-app/git/gitconfig-delta.ini
     ~/.gitconfig-platform: cli-app/git/gitconfig-posix.ini
     ~/.config/yazi: cli-app/yazi
+    ~/.config/pay-respects: cli-app/pay-respects
 
     ~/.config/systemd: system/WSL2/systemd
 
