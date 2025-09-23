@@ -29,7 +29,7 @@ Function msys2_launcher {
 Function msys2 { & msys2_launcher -Shell msys2 @args }
 Function ucrt64 { & msys2_launcher -Shell ucrt64 @args }
 Function clang64 { & msys2_launcher -Shell clang64 @args }
-Set-Alias -Name ucrt -Value ucrt64
+Set-Alias -Name msys -Value ucrt64
 
 # some linux like alias
 # which 和 touch 在 x-cmd 中有更好的实现，如果 source 了它会覆盖掉这里

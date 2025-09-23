@@ -63,4 +63,8 @@ if [ -n "$MSYSTEM_PREFIX" ]; then
       export PATH="$PATH:$unix_path"
     fi
   fi
+  # transfer some Windows PATHto MSYS2
+  export PATH="$PATH:$HOME/.local/bin"
+  export PATH="$PATH:$HOME/.cargo/bin"
+  export PATH="$PATH:$HOME/AppData/Local/Microsoft/WinGet/Links"
 fi
