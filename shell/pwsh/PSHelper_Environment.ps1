@@ -26,3 +26,8 @@ $env:YAZI_FILE_ONE = "C:\Program Files\Git\usr\bin\file.exe"
 $env:FZF_DEFAULT_COMMAND = "fd --type file --hidden --exclude .git"
 # AUTODARKMODE is set by gui-app/AutoDarkMode
 $env:FZF_DEFAULT_OPTS = "--color $env:AUTODARKMODE"
+
+# 极致加速 oh-my-posh 启动，依赖于魔改版的 go.exe，提速 20ms，见 Obsidian 笔记
+# 因为用了软链接而不是 shim，所以需要设置 GOROOT 才能让 go 正常运行
+# 终端上这里指向 vfox 管理的 golang 版本，它肯定存在；IDE 就自行管理。
+$env:GOROOT = "C:\Users\enihsyou\.version-fox\cache\golang\current"
