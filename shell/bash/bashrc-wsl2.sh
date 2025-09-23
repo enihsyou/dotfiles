@@ -5,8 +5,8 @@
 
 # If not running interactively, don't do anything
 case $- in
-    *i*) ;;
-      *) return;;
+*i*) ;;
+*) return ;;
 esac
 
 # Path shortcut to this dotfiles path is $DOTFILES
@@ -71,15 +71,15 @@ source "$BASH_IT"/bash_it.sh
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    # shellcheck disable=SC2015
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
+  # shellcheck disable=SC2015
+  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+  alias ls='ls --color=auto'
+  #alias dir='dir --color=auto'
+  #alias vdir='vdir --color=auto'
 
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+  alias grep='grep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias egrep='egrep --color=auto'
 fi
 
 # colored GCC warnings and errors
@@ -96,7 +96,7 @@ alias l='ls -CF'
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+  . ~/.bash_aliases
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -110,11 +110,46 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# 当前在 /etc/wsl.conf 设置了 appendWindowsPath=false，这个函数用来在必要时候
+# 手动添加 Windows 的 PATH 到 WSL2 的 PATH 里
+function win() {
+  # 列表手动同步吧
+  local win_path=(
+    "/mnt/c/Program Files/OpenSSH/"
+    "/mnt/c/WINDOWS/system32"
+    "/mnt/c/WINDOWS"
+    "/mnt/c/Program Files/dotnet/"
+    "/mnt/c/Program Files/Docker/Docker/resources/bin"
+    "/mnt/c/Program Files/Git/cmd"
+    "/mnt/c/Program Files/PowerShell/7"
+    "/mnt/c/Program Files/CMake/bin"
+    "/mnt/c/Users/enihsyou/.local/bin"
+    "/mnt/c/Users/enihsyou/.cargo/bin"
+    "/mnt/c/Users/enihsyou/.bun/bin"
+    "/mnt/c/Users/enihsyou/AppData/Local/pnpm"
+    "/mnt/c/Users/enihsyou/AppData/Local/npm"
+    "/mnt/c/Users/enihsyou/AppData/Local/go/bin"
+    "/mnt/c/Users/enihsyou/AppData/Local/Ruby/ruby34/bin"
+    "/mnt/c/Users/enihsyou/.version-fox/shims"
+    "/mnt/c/Users/enihsyou/AppData/Local/Microsoft/WinGet/Links"
+    "/mnt/c/Users/enihsyou/AppData/Local/JetBrains/Toolbox/scripts"
+    "/mnt/c/Users/enihsyou/AppData/Local/Microsoft/WindowsApps"
+    "/mnt/c/Users/enihsyou/AppData/Local/Programs/Microsoft VS Code/bin"
+    "/mnt/c/Users/enihsyou/.dotnet/tools"
+  )
+
+  for p in "${win_path[@]}"; do
+    if [ -d "$p" ] && [[ ":$PATH:" != *":$p:"* ]]; then
+      PATH="$PATH:$p"
+    fi
+  done
+  export PATH
+}
+
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR%/}/ssh/ssh-agent.sock"
 # agent setup, moved from dotbot to here to avoid sudo issues
 # source "$DOTFILES/system/WSL2/profile.d/wsl-ssh-agent.sh"
 # source "$DOTFILES/system/WSL2/profile.d/wsl-gpg-agent.sh"
@@ -126,13 +161,13 @@ function x() {
   echo "🚨 x not loaded! Loading now..." >&2
   unset -f x
   [ ! -f "$HOME/.x-cmd.root/X" ] || . "$HOME/.x-cmd.root/X" # boot up x-cmd.
-  x "$@" # invoke the real function now
+  x "$@"                                                    # invoke the real function now
 }
 
 function ble() {
-    # enable auto completion by execute `ble` on current shell.
-    # make sure to install before using:
-    # curl -L https://github.com/akinomyoga/ble.sh/releases/download/nightly/ble-nightly.tar.xz | tar xJf -
-    # bash ble-nightly/ble.sh --install ~/.local/share
-    [[ $- == *i* ]] && source -- "$HOME/.local/share/blesh/ble.sh" --rcfile "$DOTFILES/cli-app/blesh/blerc"
+  # enable auto completion by execute `ble` on current shell.
+  # make sure to install before using:
+  # curl -L https://github.com/akinomyoga/ble.sh/releases/download/nightly/ble-nightly.tar.xz | tar xJf -
+  # bash ble-nightly/ble.sh --install ~/.local/share
+  [[ $- == *i* ]] && source -- "$HOME/.local/share/blesh/ble.sh" --rcfile "$DOTFILES/cli-app/blesh/blerc"
 }

@@ -32,6 +32,11 @@
       "target": "$HOME/.local/bin/"
     },
     {
+      // iperf3 from winget
+      "source": "$USERPROFILE/AppData/Local/Microsoft/WinGet/Packages/ar51an.iPerf3_Microsoft.Winget.Source_8wekyb3d8bbwe/iperf3.exe",
+      "target": "$HOME/.local/bin/"
+    },
+    {
       // msys2 的 make 编译时启用了 --enable-nls，支持本地化
       "source": "C:/msys64/usr/bin/make.exe",
       "target": "$HOME/.local/bin/"
@@ -53,6 +58,7 @@
       "target": "$HOME/.local/bin/"
     },
     {
+      // msys2 packages
       "source": "C:/msys64/usr/bin/rsync.exe",
       "target": "$HOME/.local/bin/"
     },
@@ -78,6 +84,10 @@
       "source": "$HOME/.version-fox/cache/nodejs/current/node.exe",
       "target": "$HOME/.version-fox/shims/"
     },
+    {
+      "source": "C:/Users/enihsyou/AppData/Local/Keybase/",
+      "target": "$HOME/.local/bin/"
+    }
   ],
   "symbolic_links": [
     {
