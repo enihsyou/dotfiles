@@ -6,14 +6,13 @@
 # bootup oh-my-posh
 # https://ohmyposh.dev/docs/installation/prompt
 # 需要放在 PSReadLine 之后，才能启用 Transient Prompt
-# 添加 --print 参数直达最终要执行的表达式，让 proxy 能工作
-# Invoke-Expression $(oh-my-posh init pwsh --config "$HOME\.config\oh-my-posh\enihsyou.omp.toml" --print | Out-String)
-# 现在替换成精简版的初始化脚本
-# 下面的值被 PSHelper_OhMyPosh.ps1 直接引用
-$env:POSH_THEME = "$HOME\.dotfiles\cli-app\oh-my-posh\enihsyou.omp.toml"
-# . $env:DOTFILES\shell\pwsh\PSHelper_OhMyPosh.ps1
-# version 26.24.0 之后有缓存了，直接加载速度相差 10ms 也还行，使用这个测速
-# hyperfine 'pwsh -noprofile -c exit' 'pwsh -c exit'
+#
+# version 26.24.0 之后有缓存了，并且内部生成 POSH_SESSION_ID，之前的自建脚本方式失效了
+# 所以把魔改部分放在自己的 https://github.com/enihsyou/oh-my-posh/tree/fork 仓库，入口命令保持不变。
+# 使用这个测速 hyperfine 'pwsh -noprofile -c exit' 'pwsh -c exit'
+#
+# 转移到次要磁盘
+$env:OMP_CACHE_DIR = $env:TEMP
 oh-my-posh init pwsh --config "$HOME\.config\oh-my-posh\enihsyou.omp.toml" | Invoke-Expression
 
 # 初始化 vfox

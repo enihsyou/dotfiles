@@ -159,9 +159,10 @@ console_title_template = '{{.Folder}}{{if .Root}} :: root{{end}} :: {{.Shell}}'
         style      = 'plain'
 
 # 命令行包含语法错误时以红色显示
-[valid_line]
-    template   = '$ '
-    foreground = 'p:prompt'
-[error_line]
-    template   = '$ '
-    foreground = 'p:badprompt'
+# 但代价是 66ms 加载耗时
+# [valid_line]
+#     template   = '$ '
+#     foreground = 'p:prompt'
+# [error_line]
+#     template   = '$ '
+#     foreground = 'p:badprompt'
