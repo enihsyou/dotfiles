@@ -1,4 +1,4 @@
-﻿# 这个文件是 Oh-My-Posh 25.10.1 的 PowerShell 版本的初始化脚本
+﻿# 这个文件是 Oh-My-Posh 26.24.0 的 PowerShell 版本的初始化脚本
 # 通过这个命令生成: oh-my-posh init pwsh --print
 # 但是注释掉影响启动速度的部分，并且替换模板变量为环境变量
 # 带有 # [enihsyou] 相关的行是我修改的
@@ -81,7 +81,8 @@ New-Module -Name "oh-my-posh-core" -ScriptBlock {
             # ref-1: https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.processstartinfo.argumentlist?view=net-6.0
             # ref-2: https://docs.microsoft.com/en-us/powershell/scripting/whats-new/differences-from-windows-powershell?view=powershell-7.2#net-framework-vs-net-core
             $Arguments | ForEach-Object -Process { $StartInfo.ArgumentList.Add($_) }
-        } else {
+        }
+        else {
             # escape arguments manually in lower versions, refer to https://docs.microsoft.com/en-us/previous-versions/17w5ykft(v=vs.85)
             $escapedArgs = $Arguments | ForEach-Object {
                 # escape N consecutive backslash(es), which are followed by a double quote, to 2N consecutive ones
@@ -141,35 +142,15 @@ New-Module -Name "oh-my-posh-core" -ScriptBlock {
         $terminalWidth
     }
 
-    function Get-FileHyperlink {
-        param(
-            [Parameter(Mandatory, ValuefromPipeline = $True)]
-            [string]$Uri,
-            [Parameter(ValuefromPipeline = $True)]
-            [string]$Name
-        )
-
-        if (!$Name) {
-            # if name not set, uri is used as the name of the hyperlink
-            $Name = $Uri
-        }
-
-        if ($null -ne $env:WSL_DISTRO_NAME) {
-            # wsl conversion if needed
-            $Uri = &wslpath -m $Uri
-        }
-
-        # return an ANSI formatted hyperlink
-        return "`e]8;;file://$Uri`e\$Name`e]8;;`e\"
-    }
-
     function Set-TransientPrompt {
         $previousOutputEncoding = [Console]::OutputEncoding
         try {
             $script:TransientPrompt = $true
             [Console]::OutputEncoding = [Text.Encoding]::UTF8
             [Microsoft.PowerShell.PSConsoleReadLine]::InvokePrompt()
-        } finally {
+        }
+        catch [System.ArgumentOutOfRangeException] { }
+        finally {
             [Console]::OutputEncoding = $previousOutputEncoding
         }
     }
@@ -199,14 +180,16 @@ New-Module -Name "oh-my-posh-core" -ScriptBlock {
         if ($global:_ompAzure) {
             try {
                 $env:POSH_AZURE_SUBSCRIPTION = Get-AzContext | ConvertTo-Json
-            } catch {}
+            }
+            catch {}
         }
 
         if ($global:_ompPoshGit) {
             try {
                 $global:GitStatus = Get-GitStatus
                 $env:POSH_GIT_STATUS = $global:GitStatus | ConvertTo-Json
-            } catch {}
+            }
+            catch {}
         }
     }
 
@@ -231,7 +214,8 @@ New-Module -Name "oh-my-posh-core" -ScriptBlock {
         $invocationInfo = try {
             # retrieve info of the most recent error
             $global:Error | Where-Object { $_.GetType().Name -eq 'ErrorRecord' } | Select-Object -First 1 -ExpandProperty InvocationInfo
-        } catch { $null }
+        }
+        catch { $null }
 
         # Check if the error occurred in the current command scope
         if ($null -ne $invocationInfo -and
@@ -276,7 +260,8 @@ New-Module -Name "oh-my-posh-core" -ScriptBlock {
         if ($global:NVS_ORIGINAL_LASTEXECUTIONSTATUS -is [bool]) {
             # make it compatible with NVS auto-switching, if enabled
             $script:OriginalLastExecutionStatus = $global:NVS_ORIGINAL_LASTEXECUTIONSTATUS
-        } else {
+        }
+        else {
             $script:OriginalLastExecutionStatus = $?
         }
         # store the orignal last exit code
@@ -364,7 +349,8 @@ New-Module -Name "oh-my-posh-core" -ScriptBlock {
                 # Workaround to prevent the text after cursor from disappearing when the tooltip is printed.
                 [Microsoft.PowerShell.PSConsoleReadLine]::Insert(' ')
                 [Microsoft.PowerShell.PSConsoleReadLine]::Undo()
-            } finally {}
+            }
+            finally {}
         }
     }
 
@@ -373,36 +359,64 @@ New-Module -Name "oh-my-posh-core" -ScriptBlock {
             return
         }
 
-        Set-PSReadLineKeyHandler -Key Enter -BriefDescription 'OhMyPoshEnterKeyHandler' -ScriptBlock {
-            try {
-                $parseErrors = $null
-                [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$null, [ref]$null, [ref]$parseErrors, [ref]$null)
-                $executingCommand = $parseErrors.Count -eq 0
-                if ($executingCommand) {
-                    $script:TooltipCommand = ''
-                    Set-TransientPrompt
+        # Helper function to create Enter key handler script block
+        function New-EnterKeyHandler {
+            param(
+                [scriptblock]$AcceptLineFunction
+            )
+            return {
+                try {
+                    $parseErrors = $null
+                    [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$null, [ref]$null, [ref]$parseErrors, [ref]$null)
+                    $executingCommand = $parseErrors.Count -eq 0
+                    if ($executingCommand) {
+                        Set-Variable -Name TooltipCommand -Value '' -Scope Script
+                        Set-TransientPrompt
+                    }
                 }
-            } finally {
-                [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
-                if ($global:_ompFTCSMarks -and $executingCommand) {
-                    # Write FTCS_COMMAND_EXECUTED after accepting the input - it should still happen before execution
-                    Write-Host "$([char]27)]133;C$([char]7)" -NoNewline
+                finally {
+                    & $AcceptLineFunction
+                    if ($global:_ompFTCSMarks -and $executingCommand) {
+                        # Write FTCS_COMMAND_EXECUTED after accepting the input - it should still happen before execution
+                        Write-Host "$([char]27)]133;C$([char]7)" -NoNewline
+                    }
                 }
-            }
+            }.GetNewClosure()
         }
 
-        Set-PSReadLineKeyHandler -Key Ctrl+c -BriefDescription 'OhMyPoshCtrlCKeyHandler' -ScriptBlock {
-            try {
-                $start = $null
-                [Microsoft.PowerShell.PSConsoleReadLine]::GetSelectionState([ref]$start, [ref]$null)
-                # only render a transient prompt when no text is selected
-                if ($start -eq -1) {
-                    $script:TooltipCommand = ''
-                    Set-TransientPrompt
+        # Helper function to create Ctrl+C key handler script block
+        function New-CtrlCKeyHandler {
+            param(
+                [scriptblock]$CancelFunction
+            )
+            return {
+                try {
+                    $start = $null
+                    [Microsoft.PowerShell.PSConsoleReadLine]::GetSelectionState([ref]$start, [ref]$null)
+                    # only render a transient prompt when no text is selected
+                    if ($start -eq -1) {
+                        Set-Variable -Name TooltipCommand -Value '' -Scope Script
+                        Set-TransientPrompt
+                    }
                 }
-            } finally {
-                [Microsoft.PowerShell.PSConsoleReadLine]::CopyOrCancelLine()
-            }
+                finally {
+                    & $CancelFunction
+                }
+            }.GetNewClosure()
+        }
+
+        # Register Enter key handlers
+        Set-PSReadLineKeyHandler -Key Enter -BriefDescription 'OhMyPoshEnterKeyHandler' -ScriptBlock (New-EnterKeyHandler { [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine() })
+
+        if ((Get-PSReadLineOption).EditMode -eq "Vi") {
+            Set-PSReadLineKeyHandler -ViMode Command -Key Enter -BriefDescription 'OhMyPoshViEnterKeyHandler' -ScriptBlock (New-EnterKeyHandler { [Microsoft.PowerShell.PSConsoleReadLine]::ViAcceptLine() })
+        }
+
+        # Register Ctrl+C key handlers
+        Set-PSReadLineKeyHandler -Key Ctrl+c -BriefDescription 'OhMyPoshCtrlCKeyHandler' -ScriptBlock (New-CtrlCKeyHandler { [Microsoft.PowerShell.PSConsoleReadLine]::CopyOrCancelLine() })
+
+        if ((Get-PSReadLineOption).EditMode -eq "Vi") {
+            Set-PSReadLineKeyHandler -ViMode Command -Key Ctrl+c -BriefDescription 'OhMyPoshViCtrlCKeyHandler' -ScriptBlock (New-CtrlCKeyHandler { [Microsoft.PowerShell.PSConsoleReadLine]::CancelLine() })
         }
     }
 
@@ -416,7 +430,8 @@ New-Module -Name "oh-my-posh-core" -ScriptBlock {
     # perform cleanup on removal so a new initialization in current session works
     # if (!$script:ConstrainedLanguageMode) {
     #     $ExecutionContext.SessionState.Module.OnRemove += {
-    #         Remove-Item Function:Get-PoshStackCount
+    #         Remove-Item Function:Get-PoshStackCount -ErrorAction SilentlyContinue
+
     #         $Function:prompt = $script:OriginalPromptFunction
 
     #         (Get-PSReadLineOption).ContinuationPrompt = $script:OriginalContinuationPrompt
@@ -428,10 +443,16 @@ New-Module -Name "oh-my-posh-core" -ScriptBlock {
 
     #         if ((Get-PSReadLineKeyHandler Enter).Function -eq 'OhMyPoshEnterKeyHandler') {
     #             Set-PSReadLineKeyHandler Enter -Function AcceptLine
+    #             if ((Get-PSReadLineOption).EditMode -eq "Vi") {
+    #                 Set-PSReadLineKeyHandler -ViMode Command -Key Enter -Function ViAcceptLine
+    #             }
     #         }
 
     #         if ((Get-PSReadLineKeyHandler Ctrl+c).Function -eq 'OhMyPoshCtrlCKeyHandler') {
     #             Set-PSReadLineKeyHandler Ctrl+c -Function CopyOrCancelLine
+    #             if ((Get-PSReadLineOption).EditMode -eq "Vi") {
+    #                 Set-PSReadLineKeyHandler -ViMode Command -Key Ctrl+c -Function CancelLine
+    #             }
     #         }
     #     }
     # }
@@ -441,6 +462,7 @@ New-Module -Name "oh-my-posh-core" -ScriptBlock {
         "Enable-PoshTooltips"
         "Enable-PoshTransientPrompt"
         "Enable-PoshLineError"
+        "Set-TransientPrompt"
         "prompt"
     )
 } | Import-Module -Global

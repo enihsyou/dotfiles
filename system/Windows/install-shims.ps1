@@ -253,6 +253,43 @@ function Create-SymbolicLink {
     }
 }
 
+# 创建硬链接
+function Create-HardLink {
+    param(
+        [string]$Source,
+        [string]$Target
+    )
+
+    Write-Host
+    Write-Progress "正在创建硬链接: $Source"
+
+    # 创建目标目录
+    $targetDir = Split-Path -Parent $Target
+    if (-not (Test-Path $targetDir)) {
+        New-Item -ItemType Directory -Path $targetDir -Force | Out-Null
+    }
+
+    # 检查目标是否已存在
+    if (Test-Path $Target) {
+        # 检查是否已经是正确的链接
+        $existingLink = Get-Item $Target
+        if ($existingLink.LinkType -eq "HardLink" -and (Get-Item $Source).FullName -eq (Get-Item $Target).FullName) {
+            Write-Success "现有硬链接正确: $Target"
+            return
+        } else {
+            Write-Info "目标文件之前指向: $($existingLink.Target)"
+        }
+    }
+
+    # 创建硬链接
+    try {
+        New-Item -ItemType HardLink -Path $Target -Target $Source -Force | Out-Null
+        Write-Success "成功创建硬链接: $Target"
+    } catch {
+        Write-Error "创建硬链接失败: $_"
+    }
+}
+
 # 主函数
 function Install-Shims {
     # 读取配置文件
@@ -311,6 +348,19 @@ function Install-Shims {
         }
 
         Create-SymbolicLink -Source $source -Target $target
+    }
+
+    # 处理硬链接
+    foreach ($link in $config.hard_links) {
+        $source = Convert-ToWindowsPath (Expand-Variables $link.source)
+        $target = Convert-ToWindowsPath (Expand-Variables $link.target)
+
+        # 如果目标以斜杠结尾，添加源文件名
+        if ($target.EndsWith("\")) {
+            $target = Join-Path $target (Split-Path -Leaf $source)
+        }
+
+        Create-HardLink -Source $source -Target $target
     }
 }
 

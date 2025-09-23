@@ -38,15 +38,46 @@
     },
     {
       // 直接在命令行启动 git-bash
+      "source": "C:/Program Files/Git/bin/sh.exe",
+      "target": "$HOME/.local/bin/git-sh.exe"
+    },
+    {
+      // 在新窗口打开 git-bash
       "source": "C:/Program Files/Git/git-bash.exe",
-      "target": "$HOME/.local/bin/"
+      "target": "$HOME/.local/bin/git-bash.exe"
     },
     {
       // openssl from Git for Windows
       // Assume the default installation path
       "source": "C:/Program Files/Git/mingw64/bin/openssl.exe",
       "target": "$HOME/.local/bin/"
-    }
+    },
+    {
+      "source": "C:/msys64/usr/bin/rsync.exe",
+      "target": "$HOME/.local/bin/"
+    },
+    {
+      "source": "C:/Program Files/Vim/vim91/vim.exe",
+      "target": "$HOME/.local/bin/"
+    },
+    {
+      "source": "C:/Program Files/Vim/vim91/gvim.exe",
+      "target": "$HOME/.local/bin/"
+    },
+    {
+      "source": "D:/Program Files/imhex/imhex-gui.exe",
+      "target": "$HOME/.local/bin/"
+    },
+    {
+      // 省去在 PATH 中添加目录
+      "source": "C:/Program Files/Yubico/YubiKey Manager CLI/ykman.exe",
+      "target": "$HOME/.local/bin/"
+    },
+    {
+      // 使用我们的 shim 版本来替换 version-fox 生成的
+      "source": "$HOME/.version-fox/cache/nodejs/current/node.exe",
+      "target": "$HOME/.version-fox/shims/"
+    },
   ],
   "symbolic_links": [
     {
@@ -57,6 +88,16 @@
       // possibly a bug to investigate later.
       "source": "C:/Program Files (x86)/Microsoft Visual Studio/Installer/vswhere.exe",
       "target": "$HOME/.local/bin/"
+    },
+    {
+      "source": "C:/Program Files/7-Zip/7z.exe",
+      "target": "$HOME/.local/bin/"
+    },
+    {
+      // see shell/pwsh/PSHelper_Environment.ps1
+      "source": "$HOME/.version-fox/cache/golang/current/bin/go.exe",
+      "target": "$HOME/.version-fox/shims/"
     }
-  ]
+  ],
+  "hard_links": []
 }

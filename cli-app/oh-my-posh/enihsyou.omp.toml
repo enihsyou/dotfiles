@@ -20,138 +20,148 @@ console_title_template = '{{.Folder}}{{if .Root}} :: root{{end}} :: {{.Shell}}'
 #   foreground = 'p:prompt'
 #   template   = '$ '
 
+[upgrade]
+    notice = false
+
 # 自建主题，随意选的颜色
 [palette]
-prep          = '#A7C7E7' # 介词
-prompt        = '#00a0f0' # 正常提示符
-badprompt     = '#e00034' # 异常提示符
-os            = '#00BCD4' # Windows
-session       = '#0039a6' # 用户会话
-path          = '#e6994a' # 文件路径
-git           = '#93C572' # Git 相关
-executiontime = '#797EB5' # 执行时间
-exit          = '#d81b60' # 异常退出状态背景色
-badexit-bg    = '#f8bbd0' # 异常退出状态
-time          = '#84ADF0' # 时间显示
+    prep          = '#A7C7E7' # 介词
+    prompt        = '#00a0f0' # 正常提示符
+    badprompt     = '#e00034' # 异常提示符
+    os            = '#00BCD4' # Windows
+    session       = '#0039a6' # 用户会话
+    path          = '#e6994a' # 文件路径
+    git           = '#93C572' # Git 相关
+    executiontime = '#797EB5' # 执行时间
+    exit          = '#d81b60' # 异常退出状态背景色
+    badexit-bg    = '#f8bbd0' # 异常退出状态
+    time          = '#84ADF0' # 时间显示
 
 [palettes]
-# 环境变量来自 AutoDarkMode 应用的自定义脚本
-template = '{{ if eq .Env.AUTODARKMODE "light" }}light{{end}}'
+    # 环境变量来自 AutoDarkMode 应用的自定义脚本
+    template = '{{ if eq .Env.AUTODARKMODE "light" }}light{{end}}'
 
-[palettes.list.light]
-prep          = '#8b8c89' # 介词
-prompt        = '#005daf' # 正常提示符
-badprompt     = '#c00021' # 异常提示符
-os            = '#007A89' # Windows  #26C6DA is too bright
-session       = '#2667ff' # 用户会话
-path          = '#d58936' # 文件路径
-git           = '#4c956c' # Git 相关
-executiontime = '#274c77' # 执行时间
-exit          = '#c9184a' # 异常退出状态背景色
-badexit-bg    = '#ffccd5' # 异常退出状态
-time          = '#414833' # 时间显示
-
-[[blocks]]
-type      = 'prompt'
-alignment = 'left'
-
-[[blocks.segments]]
-template   = '{{ if .WSL }}WSL at {{ end }}{{.Icon}} '
-foreground = 'p:os'
-type       = 'os'
-style      = 'plain'
-
-[blocks.segments.properties]
-windows             = ''
-display_distro_name = true
-
-# 在当前设备运行的用户是固定的
-# [[blocks.segments]]
-#   template   = '{{ .UserName }}{{ if .SSHSession }}@{{ .HostName }}{{ end }} '
-#   foreground = 'p:session'
-#   type       = 'session'
-#   style      = 'plain'
-
-[[blocks.segments]]
-template   = '<p:prep>in</> {{ .Path }} '
-foreground = 'p:path'
-type       = 'path'
-style      = 'plain'
-
-[blocks.segments.properties]
-# style           = 'mixed'
-style           = 'full'
-mixed_threshold = 10
-
-[[blocks.segments]]
-template   = '<p:prep>on</> {{ .HEAD }} '
-foreground = 'p:git'
-type       = 'git'
-style      = 'plain'
-
-[blocks.segments.properties]
-branch_icon      = ' '
-cherry_pick_icon = ' '
-commit_icon      = ' '
-merge_icon       = ' '
-no_commits_icon  = ' '
-rebase_icon      = ' '
-revert_icon      = ' '
-tag_icon         = ' '
-
-[[blocks.segments]]
-type       = 'python'
-style      = 'plain'
-foreground = '#5A7E4F'
-template   = ' {{ coalesce .Full "???" }} '
-
-[[blocks.segments]]
-type       = 'node'
-style      = 'plain'
-foreground = '#407E37'
-fetch_package_manager = true
-template   = ' {{ coalesce .Full "???" }} '
-[[blocks]]
-type      = 'prompt'
-alignment = 'right'
-
-[[blocks.segments]]
-template   = ' {{ .FormattedMs }} '
-foreground = 'p:executiontime'
-type       = 'executiontime'
-style      = 'plain'
-
-[blocks.segments.properties]
-threshold = 1
-
-[[blocks.segments]]
-template             = ' {{ .Meaning }} '
-foreground           = 'p:exit'
-type                 = 'exit'
-style                = 'plain'
-background_templates = ['{{ if gt .Code 0 }}p:badexit-bg{{ end }}']
-
-[[blocks.segments]]
-template   = '| {{ .CurrentDate | date .Format }}'
-foreground = 'p:time'
-style      = 'plain'
-type       = 'time'
+    [palettes.list.light]
+        prep          = '#8b8c89' # 介词
+        prompt        = '#005daf' # 正常提示符
+        badprompt     = '#c00021' # 异常提示符
+        os            = '#007A89' # Windows  #26C6DA is too bright
+        session       = '#2667ff' # 用户会话
+        path          = '#d58936' # 文件路径
+        git           = '#4c956c' # Git 相关
+        executiontime = '#274c77' # 执行时间
+        exit          = '#c9184a' # 异常退出状态背景色
+        badexit-bg    = '#ffccd5' # 异常退出状态
+        time          = '#414833' # 时间显示
 
 [[blocks]]
-type      = 'prompt'
-alignment = 'left'
-newline   = true
+    type      = 'prompt'
+    alignment = 'left'
 
-[[blocks.segments]]
-template   = '$ '
-foreground = 'p:prompt'
-type       = 'text'
-style      = 'plain'
+    [[blocks.segments]]
+        template   = '{{ if .WSL }}WSL at {{ end }}{{.Icon}} '
+        foreground = 'p:os'
+        type       = 'os'
+        style      = 'plain'
+
+        [blocks.segments.properties]
+            windows             = ''
+            display_distro_name = true
+
+            # 在当前设备运行的用户是固定的
+            # [[blocks.segments]]
+            #   template   = '{{ .UserName }}{{ if .SSHSession }}@{{ .HostName }}{{ end }} '
+            #   foreground = 'p:session'
+            #   type       = 'session'
+            #   style      = 'plain'
+
+    [[blocks.segments]]
+        template   = '<p:prep>in</> {{ .Path }} '
+        foreground = 'p:path'
+        type       = 'path'
+        style      = 'plain'
+
+        [blocks.segments.properties]
+            # style           = 'mixed'
+            style           = 'full'
+            mixed_threshold = 10
+
+    [[blocks.segments]]
+        template   = '<p:prep>on</> {{ .HEAD }} '
+        foreground = 'p:git'
+        type       = 'git'
+        style      = 'plain'
+
+        [blocks.segments.properties]
+            branch_icon      = ' '
+            cherry_pick_icon = ' '
+            commit_icon      = ' '
+            merge_icon       = ' '
+            no_commits_icon  = ' '
+            rebase_icon      = ' '
+            revert_icon      = ' '
+            tag_icon         = ' '
+
+    [[blocks.segments]]
+        type       = 'python'
+        style      = 'plain'
+        foreground = '#5A7E4F'
+        template   = ' {{ coalesce .Full "???" }} '
+
+    [[blocks.segments]]
+        type                  = 'node'
+        style                 = 'plain'
+        foreground            = '#407E37'
+        fetch_package_manager = true
+        template              = '{{ if .PackageManagerIcon }}{{ .PackageManagerIcon }}{{ else }}{{ end }} {{ coalesce .Full "???" }} '
+
+    [[blocks.segments]]
+        type       = 'go'
+        style      = 'plain'
+        foreground = '#00A7D0'
+        template   = " {{ .Full }} "
+
+[[blocks]]
+    type      = 'prompt'
+    alignment = 'right'
+
+    [[blocks.segments]]
+        template   = ' {{ .FormattedMs }} '
+        foreground = 'p:executiontime'
+        type       = 'executiontime'
+        style      = 'plain'
+
+        [blocks.segments.properties]
+            threshold = 1
+
+    [[blocks.segments]]
+        template             = ' {{ .Meaning }} '
+        foreground           = 'p:exit'
+        type                 = 'status'
+        style                = 'plain'
+        background_templates = ['{{ if gt .Code 0 }}p:badexit-bg{{ end }}']
+
+    [[blocks.segments]]
+        template   = '| {{ .CurrentDate | date .Format }}'
+        foreground = 'p:time'
+        style      = 'plain'
+        type       = 'time'
+
+[[blocks]]
+    type      = 'prompt'
+    alignment = 'left'
+    newline   = true
+
+    [[blocks.segments]]
+        template   = '$ '
+        foreground = 'p:prompt'
+        type       = 'text'
+        style      = 'plain'
 
 # 命令行包含语法错误时以红色显示
 [valid_line]
-template   = '$ '
-foreground = 'p:prompt'
+    template   = '$ '
+    foreground = 'p:prompt'
 [error_line]
-template   = '$ '
-foreground = 'p:badprompt'
+    template   = '$ '
+    foreground = 'p:badprompt'

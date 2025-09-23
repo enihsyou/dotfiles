@@ -10,8 +10,11 @@
 # Invoke-Expression $(oh-my-posh init pwsh --config "$HOME\.config\oh-my-posh\enihsyou.omp.toml" --print | Out-String)
 # 现在替换成精简版的初始化脚本
 # 下面的值被 PSHelper_OhMyPosh.ps1 直接引用
-$env:POSH_THEME = "$HOME\.config\oh-my-posh\enihsyou.omp.toml"
-. $env:DOTFILES\shell\pwsh\PSHelper_OhMyPosh.ps1
+$env:POSH_THEME = "$HOME\.dotfiles\cli-app\oh-my-posh\enihsyou.omp.toml"
+# . $env:DOTFILES\shell\pwsh\PSHelper_OhMyPosh.ps1
+# version 26.24.0 之后有缓存了，直接加载速度相差 10ms 也还行，使用这个测速
+# hyperfine 'pwsh -noprofile -c exit' 'pwsh -c exit'
+oh-my-posh init pwsh --config "$HOME\.config\oh-my-posh\enihsyou.omp.toml" | Invoke-Expression
 
 # 初始化 vfox
 # https://vfox.dev/zh-hans/guides/quick-start.html
@@ -47,7 +50,8 @@ if ($env:VSCODE_INJECTION -or $env:TERM_PROGRAM -eq 'WarpTerminal') {
     # Warp Terminal 会触发 System.InvalidOperationException: Stack empty.
     # 错误瞬间暴毙
     . $__asyncScript
-} else {
+}
+else {
     # 如果遇到 cmdlet not found 的错误，并且调大 Delay 也没有用
     # 比如如果不加载 oh-my-posh, 会提示 Get-Location 找不到
     # 那就在 Async 之前 Import-Module / 调用 cmdlet 来触发模块加载
