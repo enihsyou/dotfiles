@@ -28,6 +28,7 @@ tasks:
     dir: "system/router/"
     cmds:
       - scp -rO RT-AX86U/* RT-AX86U-CE58:/jffs/.koolshare/enihsyou/
+      - ssh RT-AX86U-CE58 "sh /jffs/.koolshare/enihsyou/N200enihsyou.sh"
 
   deploy-wsl2:
     desc: "Deploy files to WSL2"
