@@ -15,7 +15,7 @@ tasks:
         --force --kty=RSA --size=2048
         --san=localhost --san=127.0.0.1 --san=::1
         --san=enihsyou.synology.me
-        --san=enihsyou-PC --san=enihsyou-PC.home.kokomi.site
+        --san=enihsyou-PC --san=enihsyou-PC.lan.kokomi.site
         --not-after=8640h
       # aria2 不识别带证书链的 p12 证书，这个转换把链去掉
       - openssl x509 -in aria2.crt.pem -out aria2.crt.pem
