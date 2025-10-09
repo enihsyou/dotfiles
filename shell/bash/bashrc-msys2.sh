@@ -54,17 +54,6 @@ function x() {
   x "$@" # invoke the real function now
 }
 
-# If we're in MSYS2 (not Git-Bash)
-if [ -n "$MSYSTEM_PREFIX" ]; then
-  # add openssh to PATH if not already present
-  if [ -x "$PROGRAMFILES/OpenSSH/ssh-add.exe" ]; then
-    unix_path=$(cygpath -u "$PROGRAMFILES/OpenSSH")
-    if [[ ":$PATH:" != *":$unix_path:"* ]]; then
-      export PATH="$PATH:$unix_path"
-    fi
-  fi
-  # transfer some Windows PATHto MSYS2
-  export PATH="$PATH:$HOME/.local/bin"
-  export PATH="$PATH:$HOME/.cargo/bin"
-  export PATH="$PATH:$HOME/AppData/Local/Microsoft/WinGet/Links"
-fi
+##
+## PATH related settings had moved to profile-msys2.sh
+##

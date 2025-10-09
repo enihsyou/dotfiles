@@ -17,6 +17,7 @@
 
 - link:
     ~/.bashrc: shell/bash/bashrc-msys2.sh
+    ~/.profile: shell/bash/profile-msys2.sh
 
     ~/.bunfig.toml: language/bun/bunfig-windows.toml
     ~/AppData/Roaming/go/env: language/go/windows.env

@@ -66,7 +66,7 @@ if (-not $PYTHON) {
 
 # 初始化 dotbot
 Set-Location $BASEDIR
-git -C $DOTBOT_DIR submodule sync --quiet --recursive
+git -C $DOTBOT_DIR submodule sync --recursive
 git submodule update --init --remote --recursive $DOTBOT_DIR
 
 # 依照选定的配置文件运行
