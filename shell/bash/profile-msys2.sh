@@ -17,3 +17,5 @@ if [ -n "$MSYSTEM_PREFIX" ]; then
   export PATH="$PATH:$HOME/.cargo/bin"
   export PATH="$PATH:$HOME/AppData/Local/Microsoft/WinGet/Links"
 fi
+
+source $HOME/.dotfiles/system/MSYS2/profile.d/msys2-ssh-agent.sh

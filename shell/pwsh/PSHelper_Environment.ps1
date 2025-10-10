@@ -31,3 +31,7 @@ $env:FZF_DEFAULT_OPTS = "--color $env:AUTODARKMODE"
 # 因为用了软链接而不是 shim，所以需要设置 GOROOT 才能让 go 正常运行
 # 终端上这里指向 vfox 管理的 golang 版本，它肯定存在；IDE 就自行管理。
 $env:GOROOT = "C:\Users\enihsyou\.version-fox\cache\golang\current"
+
+# 使用类似 Linux 的命令行参数传递方式，避免传递给 .cmd 脚本用引号包起来的参数被解引号
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVarsMoreThanAssignments', '', Scope='Function')]
+$PSNativeCommandArgumentPassing = "Standard"

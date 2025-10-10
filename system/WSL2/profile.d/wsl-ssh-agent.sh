@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-# Expose Win32-OpenSSH Agent to WSL/MSYS2 environments
+# Expose Win32-OpenSSH Agent to WSL environments
 # source: https://github.com/microsoft/WSL/issues/11207#issuecomment-2921237689
 #
 # This script targets the native Windows SSH implementation,
@@ -9,6 +9,7 @@
 # - nieperelay    https://github.com/jstarks/npiperelayWindows
 #
 # Note that use of systemd unit files is recommended in WSL2 environments.
+# For MSYS2, see system/MSYS2/profile.d/msys2-ssh-agent.sh in this repo.
 
 runtime_dir="${XDG_RUNTIME_DIR:-/tmp/run/$UID/}"
 export SSH_AUTH_SOCK="${runtime_dir%/}/ssh/ssh-agent.sock"
