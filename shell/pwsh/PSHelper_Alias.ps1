@@ -60,3 +60,7 @@ Remove-Alias -Name where -Force -ErrorAction Ignore
 
 # rg with vscode hyperlink format
 function rgv { rg --hyperlink-format=vscode @args }
+
+# rsync from MSYS2 will need '-e /usr/bin/ssh' to specify ssh client within MSYS2
+# to function correctly.
+function rsync { rsync.exe -e /usr/bin/ssh @args }
