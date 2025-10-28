@@ -31,9 +31,8 @@ $env:DOTFILES = "$env:USERPROFILE\.dotfiles"
 $env:HF_ENDPOINT = "https://hf-mirror.com"
 $env:PAGER = 'less.exe'
 
-# oh-my-posh init pwsh --config "$HOME/.config/oh-my-posh/enihsyou.omp.toml" | Invoke-Expression
-$env:POSH_THEME = "$HOME\.config\oh-my-posh\enihsyou.omp.toml"
-. $env:DOTFILES\shell\pwsh\PSHelper_OhMyPosh.ps1
+$env:OMP_CACHE_DIR = $env:TEMP
+oh-my-posh init pwsh --config "$HOME\.config\oh-my-posh\enihsyou.omp.toml" | Invoke-Expression
 
 # disabled due to its heavy loading time
 # if (Test-Path "$HOME\.x-cmd.root\local\data\pwsh\_index.ps1") {

@@ -1,0 +1,33 @@
+# enable borders
+set drawbox
+
+# mkdir command. See wiki if you want it to select created dir
+map a :push %mkdir<space>
+
+# use '<delete>' key for 'delete' command
+map <delete> delete
+
+# https://github.com/gokcehan/lf/wiki/Tips#edit-and-reload-config-file
+cmd edit-config ${{
+    $EDITOR ~/.config/lf/lfrc
+    lf -remote "send $id source ~/.config/lf/lfrc"
+}}
+map C edit-config
+
+# https://github.com/gokcehan/lf/wiki/Tips#toggling-the-preview-column
+cmd toggle-preview %{{
+    if [ "$lf_preview" = true ]; then
+        lf -remote "send $id :set preview false; set ratios 1:5"
+    else
+        lf -remote "send $id :set preview true; set ratios 1:2:3"
+    fi
+}}
+map zp toggle-preview
+
+# https://github.com/gokcehan/lf/wiki/Tips#move-updown-in-the-parent-directory
+cmd move-parent &{{
+    dironly="setlocal \"$(dirname -- "$PWD" | sed 's/\\/\\\\/g;s/"/\\"/g')\" dironly"
+    lf -remote "send $id :updir; $dironly true; $1; $dironly false; open"
+}}
+map J move-parent down
+map K move-parent up

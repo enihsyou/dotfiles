@@ -9,6 +9,9 @@ telemetry = false
 # set default registry as a string
 registry = "https://registry.npmmirror.com"
 
+# default for Workspaces starts from 1.3. Make individual project also use it.
+linker = "isolated"
+
 [install.cache]
 # the directory to use for the cache
 # current this setting is not awared, and 'cache' from .npmrc take effect
