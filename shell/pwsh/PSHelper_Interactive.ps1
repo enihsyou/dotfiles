@@ -1,4 +1,4 @@
-﻿# 本文件只在交互式 shell 中加载，向当前的 shell 环境中添加功能
+# 本文件只在交互式 shell 中加载，向当前的 shell 环境中添加功能
 
 # PoweShell 默认已经加载过了
 # Import-Module -Name PSReadLine

@@ -1,4 +1,4 @@
-﻿# Deprecated: 建议使用 Install-Module Profiler, PSProfiler, hyperfine
+# Deprecated: 建议使用 Install-Module Profiler, PSProfiler, hyperfine
 # https://blog.danskingdom.com/Easily-profile-your-PowerShell-code-with-the-Profiler-module/
 # https://devblogs.microsoft.com/powershell/optimizing-your-profile/
 

@@ -1,4 +1,4 @@
-﻿# A simple module that only do dot source.
+# A simple module that only do dot source.
 # By Import-Module this, all functions in the module will be available in the global scope.
 # https://www.reddit.com/r/PowerShell/comments/1dz56cx/question_about_dot_sourcing_inside_functions/
 

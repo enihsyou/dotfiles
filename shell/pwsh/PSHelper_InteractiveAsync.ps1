@@ -1,4 +1,4 @@
-﻿. $env:DOTFILES\shell\pwsh\PSHelper_Alias.ps1
+. $env:DOTFILES\shell\pwsh\PSHelper_Alias.ps1
 . $env:DOTFILES\shell\pwsh\PSHelper_Completion.ps1
 . $env:DOTFILES\shell\pwsh\PSHelper_PSReadLine.ps1
 

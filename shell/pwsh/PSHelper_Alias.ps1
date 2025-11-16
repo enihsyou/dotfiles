@@ -1,4 +1,4 @@
-﻿Function which_GetCommand_SourceOnly {
+Function which_GetCommand_SourceOnly {
     # similar to `which` in Linux
     param([string]$Name)
     if ($null -eq $Name -or $Name -eq '') {

@@ -1,4 +1,4 @@
-﻿# 给 Windows Terminal 写的 PowerShell 配置文件
+# 给 Windows Terminal 写的 PowerShell 配置文件
 # 适合 PowerShell 7.0 以上版本
 # filepath: $([Environment]::GetFolderPath('MyDocuments'))\PowerShell\Microsoft.PowerShell_profile.ps1
 

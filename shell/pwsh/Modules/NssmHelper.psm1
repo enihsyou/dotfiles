@@ -1,4 +1,4 @@
-﻿# PowerShell 模块：NssmHelper.psm1
+# PowerShell 模块：NssmHelper.psm1
 # 这个模块用于在其他脚本中操作 NSSM (Non-Sucking Service Manager) 服务。
 
 # 函数：检查命令是否可用
