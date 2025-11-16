@@ -1,0 +1,413 @@
+{
+    "$help": "https://aka.ms/terminal-documentation",
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+    "actions":
+    [
+        {
+            "command":
+            {
+                "action": "movePane",
+                "window": "new"
+            },
+            "id": "User.movePane.591AF2E0"
+        },
+        {
+            "command":
+            {
+                "action": "globalSummon"
+            },
+            "id": "User.MyGlobalSummon"
+        },
+        {
+            "command":
+            {
+                "action": "scrollToMark",
+                "direction": "previous"
+            },
+            "id": "User.scrollToMark.D3F0B923"
+        },
+        {
+            "command":
+            {
+                "action": "showSuggestions",
+                "source": "commandHistory"
+            },
+            "id": "User.showSuggestions"
+        },
+        {
+            "command": "find",
+            "id": "User.find"
+        },
+        {
+            "command":
+            {
+                "action": "moveFocus",
+                "direction": "nextInOrder"
+            },
+            "id": "User.moveFocus.D7681B66"
+        },
+        {
+            "command": "toggleFocusMode",
+            "id": "User.toggleFocusMode"
+        },
+        {
+            "command":
+            {
+                "action": "splitPane",
+                "split": "auto",
+                "splitMode": "duplicate"
+            },
+            "id": "User.splitPane.A6751878"
+        },
+        {
+            "command": "openTabRenamer",
+            "id": "User.openTabRenamer"
+        },
+        {
+            "command": "selectAll",
+            "id": "User.selectAll"
+        },
+        {
+            "command":
+            {
+                "action": "selectOutput"
+            },
+            "id": "User.selectOutput.D3F0B923"
+        },
+        {
+            "command":
+            {
+                "action": "clearBuffer",
+                "clear": "all"
+            },
+            "id": "User.clearBuffer.87C324ED"
+        },
+        {
+            "command":
+            {
+                "action": "selectCommand"
+            },
+            "id": "User.selectCommand.D3F0B923"
+        },
+        {
+            "command":
+            {
+                "action": "copy",
+                "singleLine": false,
+                "withControlSequences": true
+            },
+            "id": "User.copy.224984B4"
+        }
+    ],
+    "alwaysOnTop": false,
+    "alwaysShowNotificationIcon": false,
+    "autoHideWindow": false,
+    "centerOnLaunch": false,
+    "compatibility.allowHeadless": true,
+    "copyFormatting": "all",
+    "copyOnSelect": false,
+    "defaultInputScope": "alphanumericHalfWidth",
+    "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+    "disableAnimations": false,
+    "disabledProfileSources":
+    [
+        "Windows.Terminal.Azure"
+    ],
+    "experimental.enableColorSelection": false,
+    "firstWindowPreference": "defaultProfile",
+    "keybindings":
+    [
+        {
+            "id": "User.MyGlobalSummon",
+            "keys": "win+`"
+        },
+        {
+            "id": "User.movePane.591AF2E0",
+            "keys": "ctrl+alt+shift+m"
+        },
+        {
+            "id": "User.scrollToMark.D3F0B923",
+            "keys": "ctrl+s"
+        },
+        {
+            "id": "User.splitPane.A6751878",
+            "keys": "alt+shift+d"
+        },
+        {
+            "id": "User.selectCommand.D3F0B923",
+            "keys": "ctrl+g"
+        },
+        {
+            "id": "User.showSuggestions",
+            "keys": "ctrl+shift+r"
+        },
+        {
+            "id": "User.openTabRenamer",
+            "keys": "shift+f2"
+        },
+        {
+            "id": "User.find",
+            "keys": "ctrl+f"
+        },
+        {
+            "id": "User.toggleFocusMode",
+            "keys": "ctrl+f12"
+        },
+        {
+            "id": "User.clearBuffer.87C324ED",
+            "keys": "ctrl+shift+k"
+        },
+        {
+            "id": "User.selectOutput.D3F0B923",
+            "keys": "ctrl+shift+g"
+        },
+        {
+            "id": "User.scrollToMark.D3F0B923",
+            "keys": "ctrl+up"
+        },
+        {
+            "id": "User.moveFocus.D7681B66",
+            "keys": "ctrl+`"
+        },
+        {
+            "id": "User.copy.224984B4",
+            "keys": "ctrl+shift+c"
+        }
+    ],
+    "launchMode": "focus",
+    "newTabMenu":
+    [
+        {
+            "type": "remainingProfiles"
+        },
+        {
+            "allowEmpty": false,
+            "entries":
+            [
+                {
+                    "icon": null,
+                    "profile": "{00a6539d-8e00-588a-a3c2-cc1468a3c4f7}",
+                    "type": "profile"
+                },
+                {
+                    "icon": null,
+                    "profile": "{38299360-4b66-5637-b2d8-9f9e49c97b21}",
+                    "type": "profile"
+                }
+            ],
+            "icon": null,
+            "inline": "never",
+            "name": "Visual Studio",
+            "type": "folder"
+        }
+    ],
+    "profiles":
+    {
+        "defaults":
+        {
+            "adjustIndistinguishableColors": "indexed",
+            "autoMarkPrompts": true,
+            "colorScheme":
+            {
+                "dark": "Catppuccin Mocha",
+                "light": "Catppuccin Latte"
+            },
+            "compatibility.allowDECRQCRA": true,
+            "compatibility.input.forceVT": false,
+            "cursorShape": "vintage",
+            "experimental.rainbowSuggestions": true,
+            "experimental.repositionCursorWithMouse": false,
+            "font":
+            {
+                "face": "Maple Mono Normal NF CN",
+                "features":
+                {
+                    "calt": 1
+                },
+                "size": 13
+            },
+            "intenseTextStyle": "all",
+            "opacity": 75,
+            "rightClickContextMenu": false,
+            "showMarksOnScrollbar": true,
+            "useAcrylic": true
+        },
+        "list":
+        [
+            {
+                "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+                "hidden": false,
+                "name": "PowerShell",
+                "source": "Windows.Terminal.PowershellCore"
+            },
+            {
+                "cursorShape": "bar",
+                "guid": "{51855cb2-8cce-5362-8f54-464b92b32386}",
+                "hidden": false,
+                "name": "Ubuntu",
+                "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc"
+            },
+            {
+                "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
+                "hidden": false,
+                "name": "Git Bash",
+                "pathTranslationStyle": "msys2",
+                "source": "Git"
+            },
+            {
+                "closeOnExit": "graceful",
+                "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -ucrt64",
+                "guid": "{a718a3d5-9e77-4d0d-b7b6-69ec3d190206}",
+                "hidden": false,
+                "icon": "C:/msys64/ucrt64.ico",
+                "name": "MSYS2: ucrt64",
+                "pathTranslationStyle": "msys2",
+                "startingDirectory": "%USERPROFILE%"
+            },
+            {
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "hidden": false,
+                "name": "Windows PowerShell"
+            },
+            {
+                "commandline": "%SystemRoot%\\System32\\cmd.exe",
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "hidden": false,
+                "name": "\u547d\u4ee4\u63d0\u793a\u7b26"
+            },
+            {
+                "guid": "{38299360-4b66-5637-b2d8-9f9e49c97b21}",
+                "hidden": false,
+                "name": "Developer Command Prompt for VS 2022",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{00a6539d-8e00-588a-a3c2-cc1468a3c4f7}",
+                "hidden": false,
+                "name": "Developer PowerShell for VS 2022",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -msys2",
+                "guid": "{6f0ee3d1-ac4f-48ca-bcf5-a9795f9942d2}",
+                "hidden": true,
+                "icon": "C:/msys64/msys2.ico",
+                "name": "MSYS2: msys2",
+                "pathTranslationStyle": "msys2",
+                "startingDirectory": "%USERPROFILE%"
+            },
+            {
+                "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -mingw64",
+                "guid": "{aef16ae0-7dd1-4ac7-abd8-60a646abb9ca}",
+                "hidden": true,
+                "icon": "C:/msys64/mingw64.ico",
+                "name": "MSYS2: mingw64",
+                "pathTranslationStyle": "msys2",
+                "startingDirectory": "%USERPROFILE%"
+            }
+        ]
+    },
+    "schemes":
+    [
+        {
+            "background": "#EFF1F5",
+            "black": "#5C5F77",
+            "blue": "#1E66F5",
+            "brightBlack": "#ACB0BE",
+            "brightBlue": "#1E66F5",
+            "brightCyan": "#179299",
+            "brightGreen": "#40A02B",
+            "brightPurple": "#EA76CB",
+            "brightRed": "#D20F39",
+            "brightWhite": "#BCC0CC",
+            "brightYellow": "#DF8E1D",
+            "cursorColor": "#DC8A78",
+            "cyan": "#179299",
+            "foreground": "#4C4F69",
+            "green": "#40A02B",
+            "name": "Catppuccin Latte",
+            "purple": "#EA76CB",
+            "red": "#D20F39",
+            "selectionBackground": "#ACB0BE",
+            "white": "#ACB0BE",
+            "yellow": "#DF8E1D"
+        },
+        {
+            "background": "#1E1E2E",
+            "black": "#45475A",
+            "blue": "#89B4FA",
+            "brightBlack": "#585B70",
+            "brightBlue": "#89B4FA",
+            "brightCyan": "#94E2D5",
+            "brightGreen": "#A6E3A1",
+            "brightPurple": "#F5C2E7",
+            "brightRed": "#F38BA8",
+            "brightWhite": "#A6ADC8",
+            "brightYellow": "#F9E2AF",
+            "cursorColor": "#F5E0DC",
+            "cyan": "#94E2D5",
+            "foreground": "#CDD6F4",
+            "green": "#A6E3A1",
+            "name": "Catppuccin Mocha",
+            "purple": "#F5C2E7",
+            "red": "#F38BA8",
+            "selectionBackground": "#585B70",
+            "white": "#BAC2DE",
+            "yellow": "#F9E2AF"
+        }
+    ],
+    "searchWebDefaultQueryUrl": "https://www.google.com.hk/search?q=%22%s%22",
+    "tabSwitcherMode": "mru",
+    "tabWidthMode": "equal",
+    "theme": "system",
+    "themes":
+    [
+        {
+            "name": "Catppuccin Latte",
+            "tab":
+            {
+                "background": "#EFF1F5FF",
+                "iconStyle": "default",
+                "showCloseButton": "always",
+                "unfocusedBackground": null
+            },
+            "tabRow":
+            {
+                "background": "#E6E9EFFF",
+                "unfocusedBackground": "#DCE0E8FF"
+            },
+            "window":
+            {
+                "applicationTheme": "light",
+                "experimental.rainbowFrame": true,
+                "frame": null,
+                "unfocusedFrame": null,
+                "useMica": true
+            }
+        },
+        {
+            "name": "Catppuccin Mocha",
+            "tab":
+            {
+                "background": "#1E1E2EFF",
+                "iconStyle": "default",
+                "showCloseButton": "always",
+                "unfocusedBackground": null
+            },
+            "tabRow":
+            {
+                "background": "#181825FF",
+                "unfocusedBackground": "#11111BFF"
+            },
+            "window":
+            {
+                "applicationTheme": "dark",
+                "experimental.rainbowFrame": true,
+                "frame": null,
+                "unfocusedFrame": null,
+                "useMica": true
+            }
+        }
+    ],
+    "useAcrylicInTabRow": true
+}

@@ -31,6 +31,9 @@ api.unmap("w", /bilibili.com|youtube.com/i);
 // https://support.google.com/youtube/answer/7631406?hl=zh-Hans
 ["<", ">"].forEach((k) => api.unmap(k, /youtube.com/i));
 
+// Pin 为桌面应用网站不要因为误触而关闭
+api.unmap("x", /gemini.google.com/i);
+
 // 不要和浏览器的历史记录按键产生冲突
 api.unmap("<Ctrl-h>");
 

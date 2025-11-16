@@ -1,0 +1,11 @@
+version: '3'
+
+tasks:
+  preview:
+    desc: Preview DNS changes
+    cmds:
+      - dnscontrol preview
+  push:
+    desc: Commit changes to DNS providers
+    cmds:
+      - dnscontrol push -notify
