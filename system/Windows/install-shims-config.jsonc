@@ -37,6 +37,11 @@
       "target": "$HOME/.local/bin/"
     },
     {
+      // jadx-gui from winget
+      "source": "$USERPROFILE/AppData/Local/Microsoft/WinGet/Packages/Skylot.jadx_Microsoft.Winget.Source_8wekyb3d8bbwe/jadx-gui-1.5.3.exe",
+      "target": "$HOME/.local/bin/"
+    },
+    {
       // msys2 的 make 编译时启用了 --enable-nls，支持本地化
       "source": "C:/msys64/usr/bin/make.exe",
       "target": "$HOME/.local/bin/"

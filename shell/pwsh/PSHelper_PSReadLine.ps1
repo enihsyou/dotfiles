@@ -2,7 +2,8 @@
 
 #------------------------------- Set Options OPEN -------------------------------
 
-if (-not ($env:TERM_PROGRAM -eq 'WarpTerminal' -and $env:PS_PROFILE_ASYNC -eq '1')) {
+if (-not ($env:TERM_PROGRAM -eq 'WarpTerminal' -and $env:PS_PROFILE_ASYNC -eq '1'))
+{
     # WarpTerminal 和 ProfileAsync 有冲突，一旦设置了 EditMode 会把历史的最后一个命令
     # 作为当前命令行的内容，以看不见的方式插入到命令行中，在 Enter 执行时才会发现
     Set-PSReadLineOption -EditMode Emacs
@@ -18,7 +19,8 @@ Set-PSReadLineOption -ViModeIndicator Cursor
 #------------------------------- Set Hot-keys OPEN -------------------------------
 # 注册 Emacs 键位绑定的函数
 # 修改 EditMode 会重置 KeyHandler，切换模式后记得调用
-function Register-PSReadLineEmacsKeyHandlers {
+function Register-PSReadLineEmacsKeyHandlers
+{
     # 在 Emacs 模式下注册需要的键位绑定
     # 设置向上键为后向搜索历史记录
     Set-PSReadLineKeyHandler -Chord UpArrow -Function HistorySearchBackward
@@ -31,25 +33,30 @@ function Register-PSReadLineEmacsKeyHandlers {
     # Provides intuitive, Windows like cursor actions.
     Set-PSReadLineKeyHandler -Chord Ctrl+LeftArrow -Function BackwardWord
     Set-PSReadLineKeyHandler -Chord Ctrl+RightArrow -Function ForwardWord
+    Set-PSReadLineKeyHandler -Chord F5 -ScriptBlock { Switch-PSReadLineEditMode }
 }
 
 # 注册 Vi 键位绑定的函数
-function Register-PSReadLineViKeyHandlers {
+function Register-PSReadLineViKeyHandlers
+{
     # Vi 模式下的键位绑定预留（按需添加）
     # 例如:
     # Set-PSReadLineKeyHandler -Chord <...> -Function <...>
+    Set-PSReadLineKeyHandler -Chord F5 -ScriptBlock { Switch-PSReadLineEditMode }
 }
 
 Register-PSReadLineEmacsKeyHandlers
 
 # 切换 EditMode
-Set-PSReadLineKeyHandler -Chord F5 -ScriptBlock {
+function Switch-PSReadLineEditMode
+{
     $currentMode = (Get-PSReadLineOption).EditMode
-    if ($currentMode -eq 'Emacs') {
+    if ($currentMode -eq 'Emacs')
+    {
         Set-PSReadLineOption -EditMode Vi
         Register-PSReadLineViKeyHandlers
-    }
-    else {
+    } else
+    {
         Set-PSReadLineOption -EditMode Emacs
         Register-PSReadLineEmacsKeyHandlers
     }
@@ -59,7 +66,8 @@ Set-PSReadLineKeyHandler -Chord F5 -ScriptBlock {
 
 #------------------------------- Set Themes OPEN -------------------------------
 # 环境变量来自 AutoDarkMode 应用的自定义脚本
-if ($env:AUTODARKMODE -eq 'light') {
+if ($env:AUTODARKMODE -eq 'light')
+{
     Set-PSReadLineOption -Colors @{
         #     Command                  = $PSStyle.Foreground.FromRGB(0x23974A)
         #     Comment                  = $PSStyle.Foreground.FromRGB(0x006400)
