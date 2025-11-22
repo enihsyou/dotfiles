@@ -98,11 +98,3 @@ if ($env:AUTODARKMODE -eq 'light') {
     # $PSStyle.FileInfo.Extension['.psm1']   = $PSStyle.Foreground.FromRgb(0x00FFFF)
 }
 #------------------------------- Set Themes DONE -------------------------------
-
-
-#------------------------------- Set Completion OPEN ---------------------------
-#$env:CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense'
-# 使用 Ctrl+Spacebar (MenuComplete) 触发
-# 跳过设置 PATH 的第一行，它的生成了错误的内容，没有指向 winget 目录
-carapace _carapace | Select-Object -Skip 1 | Out-String | Invoke-Expression
-#------------------------------- Set Completion DONE ---------------------------
