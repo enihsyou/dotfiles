@@ -1,0 +1,3 @@
+[settings.url_replacements]
+"https://github.com" = "https://wget.la/github.com"
+"https://dl.google.com/go" = "https://mirrors.cernet.edu.cn/golang"

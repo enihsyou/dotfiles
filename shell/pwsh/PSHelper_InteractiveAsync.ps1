@@ -14,6 +14,11 @@ Invoke-Expression (& { (zoxide init powershell | Out-String) })
 # better do it manually when auto completion is needed.
 # Import-Module -Name posh-git
 
+# Reverse Search Through PSReadline History
+Import-Module PSFzf
+Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' `
+                -PSReadlineChordReverseHistory 'Ctrl+r'
+
 # https://yazi-rs.github.io/docs/quick-start
 function y {
     $tmp = [System.IO.Path]::GetTempFileName()
