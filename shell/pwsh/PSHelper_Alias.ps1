@@ -39,7 +39,18 @@ Set-Alias -Name help -Value help_ShowWindow
 Set-Alias -Name open -Value explorer
 
 # findstr 不好用，既然要换就换好的
-Set-Alias -Name grep -Value rg
+# https://github.com/BurntSushi/ripgrep/blob/master/FAQ.md#how-do-i-create-an-alias-for-ripgrep-on-windows
+function grep {
+    $count = @($input).Count
+    $input.Reset()
+
+    if ($count) {
+        $input | rg.exe --hidden $args
+    }
+    else {
+        rg.exe --hidden $args
+    }
+}
 
 # pnpm alias
 Set-Alias -Name np -Value pnpm
