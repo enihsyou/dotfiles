@@ -1,21 +1,5 @@
 # 本文件用于设置 PSReadLine 的选项和主题
 
-#------------------------------- Set Options OPEN -------------------------------
-
-if (-not ($env:TERM_PROGRAM -eq 'WarpTerminal' -and $env:PS_PROFILE_ASYNC -eq '1'))
-{
-    # WarpTerminal 和 ProfileAsync 有冲突，一旦设置了 EditMode 会把历史的最后一个命令
-    # 作为当前命令行的内容，以看不见的方式插入到命令行中，在 Enter 执行时才会发现
-    Set-PSReadLineOption -EditMode Emacs
-}
-Set-PSReadLineOption -HistorySearchCursorMovesToEnd
-Set-PSReadLineOption -PredictionViewStyle ListView
-Set-PSReadLineOption -TerminateOrphanedConsoleApps
-# 使用 Ctrl+x Ctrl+e 调用 ViEditVisually 在编辑器里使用 Vim 模式修改当前命令
-Set-PSReadLineOption -ViModeIndicator Cursor
-#------------------------------- Set Options OPEN -------------------------------
-
-
 #------------------------------- Set Hot-keys OPEN -------------------------------
 # 注册 Emacs 键位绑定的函数
 # 修改 EditMode 会重置 KeyHandler，切换模式后记得调用
@@ -34,6 +18,9 @@ function Register-PSReadLineEmacsKeyHandlers
     Set-PSReadLineKeyHandler -Chord Ctrl+LeftArrow -Function BackwardWord
     Set-PSReadLineKeyHandler -Chord Ctrl+RightArrow -Function ForwardWord
     Set-PSReadLineKeyHandler -Chord F5 -ScriptBlock { Switch-PSReadLineEditMode }
+    # when carapace is enabled, Tab should bind to MenuComplete instead of Complete
+    # https://github.com/carapace-sh/carapace/issues/997
+    Set-PSReadLineKeyHandler -Chord Tab -Function MenuComplete
 }
 
 # 注册 Vi 键位绑定的函数
@@ -45,24 +32,46 @@ function Register-PSReadLineViKeyHandlers
     Set-PSReadLineKeyHandler -Chord F5 -ScriptBlock { Switch-PSReadLineEditMode }
 }
 
-Register-PSReadLineEmacsKeyHandlers
-
 # 切换 EditMode
 function Switch-PSReadLineEditMode
 {
     $currentMode = (Get-PSReadLineOption).EditMode
     if ($currentMode -eq 'Emacs')
     {
-        Set-PSReadLineOption -EditMode Vi
-        Register-PSReadLineViKeyHandlers
+        Enter-PSReadLineEmacsMode
     } else
     {
-        Set-PSReadLineOption -EditMode Emacs
-        Register-PSReadLineEmacsKeyHandlers
+        Enter-PSReadLineViMode
     }
 }
 #------------------------------- Set Hot-keys DONE -------------------------------
 
+#------------------------------- Set Options OPEN -------------------------------
+
+function Enter-PSReadLineEmacsMode
+{
+    Set-PSReadLineOption -EditMode Emacs
+    Register-PSReadLineEmacsKeyHandlers
+}
+
+function Enter-PSReadLineViMode
+{
+    Set-PSReadLineOption -EditMode Vi
+    Register-PSReadLineViKeyHandlers
+}
+
+if (-not ($env:TERM_PROGRAM -eq 'WarpTerminal' -and $env:PS_PROFILE_ASYNC -eq '1'))
+{
+    # WarpTerminal 和 ProfileAsync 有冲突，一旦设置了 EditMode 会把历史的最后一个命令
+    # 作为当前命令行的内容，以看不见的方式插入到命令行中，在 Enter 执行时才会发现
+    Enter-PSReadLineEmacsMode
+}
+Set-PSReadLineOption -HistorySearchCursorMovesToEnd
+Set-PSReadLineOption -PredictionViewStyle ListView
+Set-PSReadLineOption -TerminateOrphanedConsoleApps
+# 使用 Ctrl+x Ctrl+e 调用 ViEditVisually 在编辑器里使用 Vim 模式修改当前命令
+Set-PSReadLineOption -ViModeIndicator Cursor
+#------------------------------- Set Options OPEN -------------------------------
 
 #------------------------------- Set Themes OPEN -------------------------------
 
