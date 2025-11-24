@@ -15,9 +15,16 @@ Invoke-Expression (& { (zoxide init powershell | Out-String) })
 # Import-Module -Name posh-git
 
 # Reverse Search Through PSReadline History
-Import-Module PSFzf
-Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' `
-                -PSReadlineChordReverseHistory 'Ctrl+r'
+Set-PSReadlineKeyHandler -Key 'Ctrl+r' -ScriptBlock {
+    Write-Host "🚨 PSFzf not loaded! Loading now..."
+    # 不兼容 ProfileAsync.psm1 的异步上下文，选用按需加载
+    # 否则会有错误 Object reference not set to an instance of an object.
+    Import-Module PSFzf
+    # 会替换当前的 Ctrl+r 绑定
+    Set-PsFzfOption -PSReadlineChordReverseHistory 'Ctrl+r'
+    # 触发当前的调用
+    Invoke-FuzzyHistory
+}
 
 # https://yazi-rs.github.io/docs/quick-start
 function y {
