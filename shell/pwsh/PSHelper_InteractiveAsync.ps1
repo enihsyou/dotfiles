@@ -23,7 +23,8 @@ Set-PSReadlineKeyHandler -Key 'Ctrl+r' -ScriptBlock {
     # 会替换当前的 Ctrl+r 绑定
     Set-PsFzfOption -PSReadlineChordReverseHistory 'Ctrl+r'
     # 触发当前的调用
-    Invoke-FuzzyHistory
+    # 使用这个而不是 Invoke-History 以避免首次调用时无法触发执行动作
+    Invoke-FzfPsReadlineHandlerHistory
 }
 
 # https://yazi-rs.github.io/docs/quick-start
