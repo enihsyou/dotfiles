@@ -70,6 +70,9 @@ Set-Alias -Name http -Value xh -Description "a Rust version of HTTPie"
 # 删除默认指向 Where-Object 的别名，转而调用 where.exe
 Remove-Alias -Name where -Force -ErrorAction Ignore
 
+# dig as DNS client on Windows
+function dig { doggo --strategy=random --time @args }
+
 # rg with vscode hyperlink format
 function rgv { rg --hyperlink-format=vscode @args }
 
