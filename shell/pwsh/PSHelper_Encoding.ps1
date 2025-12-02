@@ -38,3 +38,8 @@
 # 但这样做会导致兼容性问题 比如 AIDA64 显示错误, 所以这里还是用老办法
 # https://ohmyposh.dev/docs/faq#powershell-the-term-oh-my-poshexe-is-not-recognized-as-a-name-of-a-cmdlet
 # 对应 chcp 65001
+
+# 切换到 UTF-8 输出编码，避免 pipeline 乱码
+function utf8 {
+    [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+}

@@ -40,6 +40,7 @@ Set-Alias -Name open -Value explorer
 
 # findstr 不好用，既然要换就换好的
 # https://github.com/BurntSushi/ripgrep/blob/master/FAQ.md#how-do-i-create-an-alias-for-ripgrep-on-windows
+# 若遭遇输出编码，需调用 utf8 函数切换编码
 function grep {
     $count = @($input).Count
     $input.Reset()
