@@ -2,4 +2,4 @@
     throw 'Environment variable $env:DOTFILES is not set'
 }
 
-& $env:DOTFILES\system\Windows\install-shims.ps1
+& python $env:DOTFILES\system\Windows\install-shims.py
