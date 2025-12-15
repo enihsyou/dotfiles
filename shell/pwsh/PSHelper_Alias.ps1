@@ -79,3 +79,6 @@ function rgv { rg --hyperlink-format=vscode @args }
 # rsync from MSYS2 will need '-e /usr/bin/ssh' to specify ssh client within MSYS2
 # to function correctly.
 function rsync { rsync.exe -e /usr/bin/ssh @args }
+
+# ls 继续保持使用 Get-ChildItem
+function ll { eza --lone --icons @args }

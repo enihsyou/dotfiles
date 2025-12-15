@@ -6,10 +6,6 @@
     }
   },
   "experimental": false,
-  "registry-mirrors": [
-    "https://docker.1ms.run",
-    "https://docker.gh-proxy.com",
-    "https://docker-mirror.kokomi.site",
-    "https://docker.xuanyuan.me"
-  ]
+  "log-driver": "local",
+  "registry-mirrors": ["https://docker.m.ixdev.cn"]
 }
