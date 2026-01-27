@@ -81,4 +81,4 @@ function rgv { rg --hyperlink-format=vscode @args }
 function rsync { rsync.exe -e /usr/bin/ssh @args }
 
 # ls 继续保持使用 Get-ChildItem
-function ll { eza --lone --icons @args }
+function ll { eza --long --icons @args }

@@ -29,6 +29,8 @@ sources = [
   "C:/msys64/usr/bin/make.exe",
   # msys2 packages
   "C:/msys64/usr/bin/rsync.exe",
+  "C:/msys64/usr/bin/telnet.exe",
+  "C:/msys64/ucrt64/bin/virsh.exe",
   # vfox from winget - 从系统级别的环境变量降级到这里
   "C:/Program Files/vfox/vfox.exe",
   # GitHub CLI from winget - 从系统级别的环境变量降级到这里
@@ -43,6 +45,7 @@ sources = [
   # qemu
   "C:/Program Files/qemu/qemu-system-x86_64.exe",
   "C:/Program Files/qemu/qemu-img.exe",
+  "C:/Program Files/qemu/qemu-ga.exe",
 ]
 
 [[shim_groups]]
