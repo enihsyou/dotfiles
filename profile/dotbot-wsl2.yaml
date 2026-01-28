@@ -20,6 +20,8 @@
     ~/.config/yazi: cli-app/yazi
     ~/.config/pay-respects: cli-app/pay-respects
 
+    ~/.bunfig.toml: language/bun/bunfig-wsl2.toml
+
     ~/.config/systemd: system/WSL2/systemd
 
 - copy:

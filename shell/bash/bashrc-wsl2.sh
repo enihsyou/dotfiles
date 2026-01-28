@@ -150,6 +150,10 @@ function win() {
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
+# version-fox
+export PATH="$PATH:$HOME/.version-fox/sdks/nodejs/bin"
+export PATH="$PATH:$HOME/.version-fox/sdks/golang/bin"
+
 # agent setup, moved from dotbot to here to avoid sudo issues
 # source "$DOTFILES/system/WSL2/profile.d/wsl-ssh-agent.sh"
 # source "$DOTFILES/system/WSL2/profile.d/wsl-gpg-agent.sh"

@@ -21,3 +21,5 @@ system/router/RT-AX86U/dnsmasq.d/host.conf
 
 # systemd runtime
 system/WSL2/systemd/**/*.wants/
+# programmatically generated service files
+system/WSL2/systemd/user/clawdbot-gateway.service
