@@ -16,7 +16,7 @@
     ~/.gitconfig: cli-app/git/gitconfig.ini
     ~/.gitignore: cli-app/git/gitignore.ini
     ~/.gitconfig-delta: cli-app/git/gitconfig-delta.ini
-    ~/.gitconfig-platform: cli-app/git/gitconfig-posix.ini
+    ~/.gitconfig-platform: cli-app/git/gitconfig-wsl2.ini
     ~/.config/yazi: cli-app/yazi
     ~/.config/pay-respects: cli-app/pay-respects
 
