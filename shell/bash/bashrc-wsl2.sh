@@ -160,6 +160,8 @@ export PATH="$PATH:$HOME/.version-fox/sdks/golang/bin"
 #
 # profile script is deprecated in favor of systemd user service
 # see system/WSL2/systemd/user/wsl-ssh-agent.service
+# the only nessesary step now is to set environment variable
+export SSH_AUTH_SOCK="${SSH_AUTH_SOCK:-${XDG_RUNTIME_DIR%/}/ssh/ssh-agent.sock}"
 
 function x() {
   echo "🚨 x not loaded! Loading now..." >&2

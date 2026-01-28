@@ -6,6 +6,9 @@
 # enable with:
 #   systemctl --user daemon-reload
 #   systemctl --user --now enable named-pipe-ssh-agent.socket
+# also make sure $SSH_AUTH_SOCK is set to
+#   $XDG_RUNTIME_DIR/ssh/ssh-agent.sock
+
 
 [Unit]
 Description=SSH Agent provided by Windows named pipe
