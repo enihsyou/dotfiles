@@ -35,3 +35,7 @@ $env:GOROOT = "C:\Users\enihsyou\.version-fox\cache\golang\current"
 # 使用类似 Linux 的命令行参数传递方式，避免传递给 .cmd 脚本用引号包起来的参数被解引号
 [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVarsMoreThanAssignments', '', Scope='Function')]
 $PSNativeCommandArgumentPassing = "Standard"
+
+# Rust 镜像设置，参考 https://rsproxy.cn/
+$env:RUSTUP_DIST_SERVER="https://rsproxy.cn"
+$env:RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
