@@ -7,22 +7,6 @@ tasks:
       - mkdir -p Windows
       - winget export --source winget --output Windows/winget-export.json
 
-  cli-app-aria2-pfx:
-    desc: "Generate cli-app/aria2/aria2.pfx"
-    dir: cli-app/aria2
-    cmds:
-      - step ca certificate aria2 aria2.crt.pem aria2.key.pem
-        --force --kty=RSA --size=2048
-        --san=localhost --san=127.0.0.1 --san=::1
-        --san=enihsyou.synology.me
-        --san=enihsyou-PC --san=enihsyou-PC.lan.kokomi.site
-        --not-after=8640h
-      # aria2 不识别带证书链的 p12 证书，这个转换把链去掉
-      - openssl x509 -in aria2.crt.pem -out aria2.crt.pem
-      - step certificate p12 aria2.pfx aria2.crt.pem aria2.key.pem
-        --no-password --insecure --force
-      - rm aria2.crt.pem aria2.key.pem
-
   deploy-wsl2:
     desc: "Deploy files to WSL2"
     cmds:

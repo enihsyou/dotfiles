@@ -1,0 +1,36 @@
+version: 3
+
+tasks:
+  self-sign-pfx:
+    desc: Generate aria2.pfx
+    cmds:
+      - step ca certificate aria2 aria2.crt.pem aria2.key.pem
+        --force --kty=RSA --size=2048
+        --san=localhost --san=127.0.0.1 --san=::1
+        --san=amd-9700x-lan --san=amd-9700x-lan.lan.kokomi.site
+        --not-after=8640h
+      # aria2 不识别带证书链的 p12 证书，这个转换把链去掉
+      - openssl x509 -in aria2.crt.pem -out aria2.crt.pem
+      - step certificate p12 aria2.pfx aria2.crt.pem aria2.key.pem
+        --no-password --insecure --force
+      - rm aria2.crt.pem aria2.key.pem
+
+  letsencrypt-cert:
+    desc: Generate certs with Let's Encrypt
+    cmds:
+      - |
+        wsl --user root -- << EOF
+          certbot certonly --dns-cloudflare --dns-cloudflare-credentials ~/.secrets/certbot/cloudflare.ini -d amd-9700x-lan.lan.kokomi.site
+        EOF
+
+  letsencrypt-renew:
+    desc: Renew certs with Let's Encrypt
+    cmds:
+      - |
+        wsl --user root -- << EOF
+          certbot renew --dns-cloudflare-propagation-seconds=30
+          openssl pkcs12 -export -passout pass: \
+            -out /mnt/c/Users/enihsyou/.dotfiles/cli-app/aria2/aria2.pfx \
+            -in /etc/letsencrypt/live/amd-9700x-lan.lan.kokomi.site/cert.pem \
+            -inkey /etc/letsencrypt/live/amd-9700x-lan.lan.kokomi.site/privkey.pem
+        EOF
