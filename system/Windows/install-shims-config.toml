@@ -29,6 +29,7 @@ sources = [
   "C:/msys64/usr/bin/make.exe",
   # msys2 packages
   "C:/msys64/usr/bin/rsync.exe",
+  "C:/msys64/usr/bin/socat.exe",
   "C:/msys64/usr/bin/telnet.exe",
   "C:/msys64/ucrt64/bin/virsh.exe",
   # vfox from winget - 从系统级别的环境变量降级到这里
@@ -40,6 +41,7 @@ sources = [
   "C:/Program Files/Vim/vim91/vim.exe",
   "C:/Program Files/Vim/vim91/gvim.exe",
   "D:/Program Files/imhex/imhex-gui.exe",
+  "C:/Program Files/Graphviz/bin/dot.exe",
   # YubiKey Manager CLI - 省去在 PATH 中添加目录
   "C:/Program Files/Yubico/YubiKey Manager CLI/ykman.exe",
   # qemu
