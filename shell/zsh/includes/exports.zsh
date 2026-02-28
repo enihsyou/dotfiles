@@ -22,3 +22,6 @@ export SSH_KEY_PATH="$HOME/.ssh/id_rsa"
 # explict disable compaudit check in order to boot startup time.
 # this have moved to .zshrc
 #export ZSH_DISABLE_COMPFIX=true
+
+# hide kernel processes in `ps` output
+export LIBPROC_HIDE_KERNEL=1

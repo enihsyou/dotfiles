@@ -163,6 +163,9 @@ export PATH="$PATH:$HOME/.version-fox/sdks/golang/bin"
 # the only nessesary step now is to set environment variable
 export SSH_AUTH_SOCK="${SSH_AUTH_SOCK:-${XDG_RUNTIME_DIR%/}/ssh/ssh-agent.sock}"
 
+# hide kernel processes in `ps` output
+export LIBPROC_HIDE_KERNEL=1
+
 function x() {
   echo "🚨 x not loaded! Loading now..." >&2
   unset -f x
