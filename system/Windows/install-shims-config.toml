@@ -25,7 +25,7 @@ sources = [
   "~/AppData/Local/Microsoft/WinGet/Packages/Skylot.jadx_Microsoft.Winget.Source_8wekyb3d8bbwe/jadx-gui-1.5.3.exe",
   # hurl from winget - 从系统级别的环境变量降级到这里
   "~/AppData/Local/Programs/hurl/hurl.exe",
-  # msys2 的 make 编译时启用了 --enable-nls，支持本地化
+  # msys2 的 make 编译时启用了 --enable-nls，相比 ezwinports.make 额外支持本地化, 但同时也会将默认 shell 从 cmd 改为 sh
   "C:/msys64/usr/bin/make.exe",
   # msys2 packages
   "C:/msys64/usr/bin/rsync.exe",

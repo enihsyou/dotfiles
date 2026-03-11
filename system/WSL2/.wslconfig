@@ -1,5 +1,6 @@
 # code: language=ini
 [wsl2]
+swap=0
 guiApplications=false
 dnsTunneling=false
 autoProxy=false
