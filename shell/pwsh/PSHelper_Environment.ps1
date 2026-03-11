@@ -39,3 +39,10 @@ $PSNativeCommandArgumentPassing = "Standard"
 # Rust 镜像设置，参考 https://rsproxy.cn/
 $env:RUSTUP_DIST_SERVER="https://rsproxy.cn"
 $env:RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
+
+# pprof 临时文件目录，远离系统盘
+$env:PPROF_TMPDIR = "$env:TEMP/pprof"
+
+# 检测当前 Windows 系统是否处于浅色模式
+$themeRegistryPath = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize"
+$env:AppUseLightTheme = ( Get-ItemProperty -Path $themeRegistryPath -ErrorAction SilentlyContinue ).AppsUseLightTheme ?? 0

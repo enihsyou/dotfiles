@@ -28,6 +28,7 @@ Function msys2_launcher {
 }
 Function msys2 { & msys2_launcher -Shell msys2 @args }
 Function ucrt64 { & msys2_launcher -Shell ucrt64 @args }
+Function mingw64 { & msys2_launcher -Shell mingw64 @args }
 Function clang64 { & msys2_launcher -Shell clang64 @args }
 Set-Alias -Name msys -Value ucrt64
 

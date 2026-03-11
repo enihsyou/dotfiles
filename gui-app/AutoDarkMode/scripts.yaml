@@ -1,3 +1,5 @@
+# deprecated: 主题模式切换功能已迁移到 PowerToys，环境变量也由 PSHelper_Environment.ps1 设置
+#
 # place at %USERPROFILE%\AppData\Roaming\AutoDarkMode\scripts.yaml
 Enabled: true
 Component:

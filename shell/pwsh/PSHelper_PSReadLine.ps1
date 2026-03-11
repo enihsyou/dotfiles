@@ -75,29 +75,8 @@ Set-PSReadLineOption -ViModeIndicator Cursor
 
 #------------------------------- Set Themes OPEN -------------------------------
 
-function Test-IsSystemLightTheme {
-    <#
-    .SYNOPSIS
-        检测当前 Windows 系统是否处于“浅色应用模式”。
-    .DESCRIPTION
-        读取注册表 AppsUseLightTheme 键值。
-        返回 $true 代表亮色模式，返回 $false 代表暗色模式（或检测失败）。
-    #>
-    try {
-        $themePath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"
-        # ErrorAction Stop 确保如果键值不存在直接跳到 catch
-        $themeData = Get-ItemProperty -Path $themePath -Name "AppsUseLightTheme" -ErrorAction Stop
-
-        # 1 代表亮色，0 代表暗色
-        return $themeData.AppsUseLightTheme -eq 1
-    } catch {
-        # 如果读取失败（例如键值不存在），为了保护眼睛，默认认为不是亮色模式
-        return $false
-    }
-}
-
-# 环境变量来自 AutoDarkMode 应用的自定义脚本
-if (Test-IsSystemLightTheme)
+# 环境变量来自 PSHelper_Environment.ps1 自定义脚本
+if ($env:AppUseLightTheme -eq "1")
 {
     Set-PSReadLineOption -Colors @{
         #     Command                  = $PSStyle.Foreground.FromRGB(0x23974A)

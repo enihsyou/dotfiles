@@ -38,8 +38,8 @@ console_title_template = '{{.Folder}}{{if .Root}} :: root{{end}} :: {{.Shell}}'
     time          = '#84ADF0' # 时间显示
 
 [palettes]
-    # 环境变量来自 AutoDarkMode 应用的自定义脚本
-    template = '{{ if eq .Env.AUTODARKMODE "light" }}light{{end}}'
+    # 环境变量来自 PSHelper_Environment.ps1 自定义脚本
+    template = '{{ if eq .Env.AppUseLightTheme "1" }}light{{end}}'
 
     [palettes.list.light]
         prep          = '#8b8c89' # 介词
