@@ -52,6 +52,10 @@ api.map("K", "F"); // tab向右
 // 内联翻译的透明度不能改，这里就不用了
 // api.Front.registerInlineQuery({});
 
+// Disable PDF viewer
+// https://github.com/brookhong/Surfingkeys/issues/1724
+api.RUNTIME('updateSettings', {settings: {"noPdfViewer": 1}});
+
 // 选词翻译 (cq)
 // https://github.com/brookhong/Surfingkeys/wiki/Register-inline-query
 api.Front.registerInlineQuery({
