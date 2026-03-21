@@ -130,7 +130,9 @@ function win() {
     "/mnt/c/Users/enihsyou/AppData/Local/npm"
     "/mnt/c/Users/enihsyou/AppData/Local/go/bin"
     "/mnt/c/Users/enihsyou/AppData/Local/Ruby/ruby34/bin"
-    "/mnt/c/Users/enihsyou/.version-fox/shims"
+    "/mnt/c/Users/enihsyou/.vfox/sdks/nodejs/bin"
+    "/mnt/c/Users/enihsyou/.vfox/sdks/python"
+    "/mnt/c/Users/enihsyou/.vfox/sdks/golang/bin"
     "/mnt/c/Users/enihsyou/AppData/Local/Microsoft/WinGet/Links"
     "/mnt/c/Users/enihsyou/AppData/Local/JetBrains/Toolbox/scripts"
     "/mnt/c/Users/enihsyou/AppData/Local/Microsoft/WindowsApps"
@@ -151,8 +153,8 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 # version-fox
-export PATH="$PATH:$HOME/.version-fox/sdks/nodejs/bin"
-export PATH="$PATH:$HOME/.version-fox/sdks/golang/bin"
+export PATH="$PATH:$HOME/.vfox/sdks/nodejs/bin"
+export PATH="$PATH:$HOME/.vfox/sdks/golang/bin"
 
 # agent setup, moved from dotbot to here to avoid sudo issues
 # source "$DOTFILES/system/WSL2/profile.d/wsl-ssh-agent.sh"

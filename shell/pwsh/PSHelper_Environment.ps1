@@ -9,15 +9,15 @@ $env:EDITOR = "vim"
 # 先禁用了看看哪里会出问题，或许是 git-delta
 #$env:PAGER = 'less.exe'
 
-# enable goup functionality on shell
-# https://github.com/owenthereal/goup/
-# 因为由 vfox 管理，所以禁用了
-#$env:PATH += ";$HOME\.go\current\bin"
-
 # redirect fnm_multishell directory
 # https://github.com/Schniz/fnm/issues/696#issuecomment-2768555244
 # 因为切换到 vfox，所以禁用了
 #$env:XDG_RUNTIME_DIR = "$env:TEMP"
+
+# version-fox
+$env:VFOX_GOLANG_MIRROR = "https://mirrors.aliyun.com/golang/"
+$env:VFOX_PYTHON_MIRROR = "https://mirrors.aliyun.com/python-release/"
+$env:VFOX_NODEJS_MIRROR = "https://mirrors.aliyun.com/nodejs-release/"
 
 # https://yazi-rs.github.io/docs/installation/#windows
 $env:YAZI_FILE_ONE = "C:\Program Files\Git\usr\bin\file.exe"
@@ -30,7 +30,8 @@ $env:FZF_DEFAULT_OPTS = "--color $env:AUTODARKMODE"
 # 极致加速 oh-my-posh 启动，依赖于魔改版的 go.exe，提速 20ms，见 Obsidian 笔记
 # 因为用了软链接而不是 shim，所以需要设置 GOROOT 才能让 go 正常运行
 # 终端上这里指向 vfox 管理的 golang 版本，它肯定存在；IDE 就自行管理。
-$env:GOROOT = "C:\Users\enihsyou\.version-fox\cache\golang\current"
+# 已经又 vfox 自动添加到系统环境变量上了，这里不再需要由脚本设置
+# $env:GOROOT = "C:\Users\enihsyou\.vfox\cache\golang\current"
 
 # 使用类似 Linux 的命令行参数传递方式，避免传递给 .cmd 脚本用引号包起来的参数被解引号
 [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVarsMoreThanAssignments', '', Scope='Function')]

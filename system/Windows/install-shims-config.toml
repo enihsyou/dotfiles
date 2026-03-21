@@ -50,13 +50,6 @@ sources = [
   "C:/Program Files/qemu/qemu-ga.exe",
 ]
 
-[[shim_groups]]
-target = "~/.version-fox/shims/"
-sources = [
-  # 使用我们的 shim 版本来替换 version-fox 生成的，启动速度更快
-  "~/.version-fox/cache/nodejs/current/node.exe",
-]
-
 # ==============================================================================
 # Individual Shims (with unique targets or properties)
 # ==============================================================================
@@ -88,8 +81,3 @@ sources = [
 # ==============================================================================
 # Individual Symbolic Links
 # ==============================================================================
-
-[[symbolic_links]]
-# see shell/pwsh/PSHelper_Environment.ps1
-source = "~/.version-fox/cache/golang/current/bin/go.exe"
-target = "~/.version-fox/shims/"
