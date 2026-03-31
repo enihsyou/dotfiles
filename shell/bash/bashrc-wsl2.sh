@@ -182,3 +182,5 @@ function ble() {
   # bash ble-nightly/ble.sh --install ~/.local/share
   [[ $- == *i* ]] && source -- "$HOME/.local/share/blesh/ble.sh" --rcfile "$DOTFILES/cli-app/blesh/blerc"
 }
+
+command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init bash)"

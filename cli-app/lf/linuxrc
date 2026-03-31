@@ -1,6 +1,12 @@
 # enable borders
 set drawbox
 
+# show hidden files
+set hidden
+
+# list of information to show at the right side of the pane
+set info size:ctime
+
 # mkdir command. See wiki if you want it to select created dir
 map a :push %mkdir<space>
 
