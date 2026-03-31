@@ -141,6 +141,9 @@ def create_hard_link(source, target):
         os.link(source, target)
         write_success(f"成功创建硬链接: {target}")
     except Exception as e:
+        if isinstance(e, PermissionError):
+            write_error(f"需要硬链接源的写入权限: {e}")
+            return
         write_error(f"创建硬链接时发生未知错误: {e}")
 
 
@@ -172,7 +175,7 @@ def process_groups(groups, creation_func, **extra_args):
         for source_str in group["sources"]:
             individuals.append({
                 "source": source_str,
-                "target": group["target"]
+                "target": group["target_folder"]
             })
     process_individuals(individuals, creation_func, **extra_args)
 

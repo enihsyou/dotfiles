@@ -13,7 +13,7 @@ shim_repository = "enihsyou/shim_exectuable"
 # ==============================================================================
 
 [[shim_groups]]
-target = "~/.local/bin/"
+target_folder = "~/.local/bin/"
 sources = [
   # jq from winget
   # since jq is installed as a portable binary, winget will add its installation folder to PATH,
@@ -21,8 +21,6 @@ sources = [
   "~/AppData/Local/Microsoft/WinGet/Packages/jqlang.jq_Microsoft.Winget.Source_8wekyb3d8bbwe/jq.exe",
   # iperf3 from winget
   "~/AppData/Local/Microsoft/WinGet/Packages/ar51an.iPerf3_Microsoft.Winget.Source_8wekyb3d8bbwe/iperf3.exe",
-  # jadx-gui from winget
-  "~/AppData/Local/Microsoft/WinGet/Packages/Skylot.jadx_Microsoft.Winget.Source_8wekyb3d8bbwe/jadx-gui-1.5.3.exe",
   # hurl from winget - 从系统级别的环境变量降级到这里
   "~/AppData/Local/Programs/hurl/hurl.exe",
   # msys2 的 make 编译时启用了 --enable-nls，相比 ezwinports.make 额外支持本地化, 但同时也会将默认 shell 从 cmd 改为 sh
@@ -38,8 +36,8 @@ sources = [
   "C:/Program Files/GitHub CLI/gh.exe",
   # openssl from Git for Windows
   "C:/Program Files/Git/mingw64/bin/openssl.exe",
-  "C:/Program Files/Vim/vim91/vim.exe",
-  "C:/Program Files/Vim/vim91/gvim.exe",
+  "C:/Program Files/Vim/vim92/vim.exe",
+  "C:/Program Files/Vim/vim92/gvim.exe",
   "D:/Program Files/imhex/imhex-gui.exe",
   "C:/Program Files/Graphviz/bin/dot.exe",
   # YubiKey Manager CLI - 省去在 PATH 中添加目录
@@ -64,12 +62,17 @@ target = "~/.local/bin/git-sh.exe"
 source = "C:/Program Files/Git/git-bash.exe"
 target = "~/.local/bin/git-bash.exe"
 
+[[shims]]
+# jadx-gui from winget
+source = "~/AppData/Local/Microsoft/WinGet/Packages/Skylot.jadx_Microsoft.Winget.Source_8wekyb3d8bbwe/jadx-gui-1.5.5.exe"
+target = "~/.local/bin/jadx-gui.exe"
+
 # ==============================================================================
 # Symbolic Link Groups
 # ==============================================================================
 
 [[symbolic_link_groups]]
-target = "~/.local/bin/"
+target_folder = "~/.local/bin/"
 sources = [
   # Helper to locate Visual Studio installations
   # Some Makefile (like gnu make.git) depends on this to locate the compiler
@@ -81,3 +84,12 @@ sources = [
 # ==============================================================================
 # Individual Symbolic Links
 # ==============================================================================
+
+# ==============================================================================
+# Hard Link Groups
+# ==============================================================================
+
+[[hard_link_groups]]
+target_folder = "~/.local/bin/"
+sources = [
+]

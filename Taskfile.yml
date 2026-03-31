@@ -18,3 +18,8 @@ tasks:
       - ya pkg add yazi-rs/plugins:full-border
       - ya pkg add yazi-rs/plugins:toggle-pane
       - ya pack -a TD-Sky/sudo
+
+  windows-shims:
+    desc: "Generate shims on Windows"
+    cmds:
+      - python system/Windows/install_shims.py
