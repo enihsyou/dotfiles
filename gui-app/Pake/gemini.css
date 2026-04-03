@@ -1,0 +1,9 @@
+/* 默认的 monospace 字体在 Windows 上会回退到不支持 CJK 文本的宋体 */
+code-block>div.code-block div.formatted-code-block-internal-container pre>code.code-container {
+    font-family: "Google Sans Code", "Maple Mono Normal NF CN", monospace !important;
+}
+
+/* 移除提示升级到 Ultra Subscription 的巨大显眼按钮 */
+.adv-upsell {
+    display: none !important;
+}

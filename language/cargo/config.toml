@@ -1,0 +1,7 @@
+[source.crates-io]
+replace-with = 'mirror'
+
+[source.mirror]
+registry = "sparse+https://mirrors.cernet.edu.cn/crates.io-index/"
+
+# then create junction link to move .cargo/registry to DevDrive
