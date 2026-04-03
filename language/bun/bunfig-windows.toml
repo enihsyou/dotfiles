@@ -10,7 +10,8 @@ telemetry = false
 registry = "https://registry.npmmirror.com"
 
 # default for Workspaces starts from 1.3. Make individual project also use it.
-linker = "isolated"
+# [260402] Enabling this will prevent global installs from being placed into the globalBinDir
+#linker = "isolated"
 
 [install.cache]
 # the directory to use for the cache
