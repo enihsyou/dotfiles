@@ -1,0 +1,5 @@
+/* 默认的 monospace 字体在 Windows 上会回退到不支持 CJK 文本的宋体 */
+span.\!font-mono,
+pre.shiki>code span {
+    font-family: "IBM Plex Mono", "Maple Mono Normal NF CN", monospace !important
+}

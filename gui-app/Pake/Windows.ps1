@@ -3,3 +3,7 @@ pake https://gemini.google.com/ --name Gemini --width 959 --height 1280 `
   --enable-drag-drop --installer-language zh-CN `
   --activation-shortcut "Super+Alt+C" `
   --inject ./gemini.css
+
+pake https://grok.com/ --name Grok --width 1024 --height 1280 `
+  --enable-drag-drop --installer-language zh-CN `
+  --inject ./grok.css
