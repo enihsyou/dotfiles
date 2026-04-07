@@ -31,6 +31,7 @@
     ~/.gitignore: cli-app/git/gitignore.ini
     ~/.gitconfig-delta: cli-app/git/gitconfig-delta.ini
     ~/.gitconfig-platform: cli-app/git/gitconfig-windows.ini
+    ~/.vimrc: cli-app/vim/windows.vimrc
     ~/AppData/Roaming/bat/config: cli-app/bat/config.cfg
     ~/AppData/Roaming/yazi/config: cli-app/yazi
     ~/.config/oh-my-posh/enihsyou.omp.toml: cli-app/oh-my-posh/enihsyou.omp.toml
