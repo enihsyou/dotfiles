@@ -6,7 +6,7 @@ Function which_GetCommand_SourceOnly {
     }
     $command = Get-Command -Name $Name -ErrorAction SilentlyContinue
     if ($null -ne $command) {
-        return $command.Source
+        return $command.Source.Replace('\','/')
     }
     return ''
 }
@@ -83,3 +83,25 @@ function rsync { rsync.exe -e /usr/bin/ssh @args }
 
 # ls 继续保持使用 Get-ChildItem
 function ll { eza --long --icons @args }
+
+# 切换电源模式
+function powermode {
+    param([string]$Mode)
+
+    if ([string]::IsNullOrWhiteSpace($Mode)) {
+        Write-Host 'Usage: powermode <1|2|3>'
+        Write-Host '  1 = 节能'
+        Write-Host '  2 = 平衡'
+        Write-Host '  3 = 高性能'
+        return
+    }
+
+    $guids = @{
+        '1' = 'a1841308-3541-4fab-bc81-f71556f20b4a' # 节能
+        '2' = '381b4222-f694-41f0-9685-ff5bb260df2e' # 平衡
+        '3' = '8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c' # 高性能
+    }
+
+    powercfg /s $guids[$Mode]
+    powercfg /l
+}
