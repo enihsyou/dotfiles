@@ -15,37 +15,37 @@ shim_repository = "enihsyou/shim_exectuable"
 [[shim_groups]]
 target_folder = "~/.local/bin/"
 sources = [
-  # jq from winget
-  # since jq is installed as a portable binary, winget will add its installation folder to PATH,
-  # which bloats the PATH once more, so we shim it, and another entry from PATH is removed.
-  "~/AppData/Local/Microsoft/WinGet/Packages/jqlang.jq_Microsoft.Winget.Source_8wekyb3d8bbwe/jq.exe",
-  # iperf3 from winget
-  "~/AppData/Local/Microsoft/WinGet/Packages/ar51an.iPerf3_Microsoft.Winget.Source_8wekyb3d8bbwe/iperf3.exe",
-  # hurl from winget - 从系统级别的环境变量降级到这里
-  "~/AppData/Local/Programs/hurl/hurl.exe",
-  # msys2 的 make 编译时启用了 --enable-nls，相比 ezwinports.make 额外支持本地化, 但同时也会将默认 shell 从 cmd 改为 sh
-  "C:/msys64/usr/bin/make.exe",
-  # msys2 packages
-  "C:/msys64/usr/bin/rsync.exe",
-  "C:/msys64/usr/bin/socat.exe",
-  "C:/msys64/usr/bin/telnet.exe",
-  "C:/msys64/ucrt64/bin/virsh.exe",
-  # vfox from winget - 从系统级别的环境变量降级到这里
-  "C:/Program Files/vfox/vfox.exe",
-  # GitHub CLI from winget - 从系统级别的环境变量降级到这里
-  "C:/Program Files/GitHub CLI/gh.exe",
-  # openssl from Git for Windows
-  "C:/Program Files/Git/mingw64/bin/openssl.exe",
-  "C:/Program Files/Vim/vim92/vim.exe",
-  "C:/Program Files/Vim/vim92/gvim.exe",
-  "D:/Program Files/imhex/imhex-gui.exe",
-  "C:/Program Files/Graphviz/bin/dot.exe",
-  # YubiKey Manager CLI - 省去在 PATH 中添加目录
-  "C:/Program Files/Yubico/YubiKey Manager CLI/ykman.exe",
-  # qemu
-  "C:/Program Files/qemu/qemu-system-x86_64.exe",
-  "C:/Program Files/qemu/qemu-img.exe",
-  "C:/Program Files/qemu/qemu-ga.exe",
+    # jq from winget
+    # since jq is installed as a portable binary, winget will add its installation folder to PATH,
+    # which bloats the PATH once more, so we shim it, and another entry from PATH is removed.
+    "~/AppData/Local/Microsoft/WinGet/Packages/jqlang.jq_Microsoft.Winget.Source_8wekyb3d8bbwe/jq.exe",
+    # iperf3 from winget
+    "~/AppData/Local/Microsoft/WinGet/Packages/ar51an.iPerf3_Microsoft.Winget.Source_8wekyb3d8bbwe/iperf3.exe",
+    # hurl from winget - 从系统级别的环境变量降级到这里
+    "~/AppData/Local/Programs/hurl/hurl.exe",
+    # msys2 的 make 编译时启用了 --enable-nls，相比 ezwinports.make 额外支持本地化, 但同时也会将默认 shell 从 cmd 改为 sh
+    "C:/msys64/usr/bin/make.exe",
+    # msys2 packages
+    "C:/msys64/usr/bin/rsync.exe",
+    "C:/msys64/usr/bin/socat.exe",
+    "C:/msys64/usr/bin/telnet.exe",
+    "C:/msys64/ucrt64/bin/virsh.exe",
+    # vfox from winget - 从系统级别的环境变量降级到这里
+    "C:/Program Files/vfox/vfox.exe",
+    # GitHub CLI from winget - 从系统级别的环境变量降级到这里
+    "C:/Program Files/GitHub CLI/gh.exe",
+    # openssl from Git for Windows
+    "C:/Program Files/Git/mingw64/bin/openssl.exe",
+    "C:/Program Files/Vim/vim92/vim.exe",
+    "C:/Program Files/Vim/vim92/gvim.exe",
+    "D:/Program Files/imhex/imhex-gui.exe",
+    "C:/Program Files/Graphviz/bin/dot.exe",
+    # YubiKey Manager CLI - 省去在 PATH 中添加目录
+    "C:/Program Files/Yubico/YubiKey Manager CLI/ykman.exe",
+    # qemu
+    "C:/Program Files/qemu/qemu-system-x86_64.exe",
+    "C:/Program Files/qemu/qemu-img.exe",
+    "C:/Program Files/qemu/qemu-ga.exe",
 ]
 
 # ==============================================================================
@@ -74,11 +74,11 @@ target = "~/.local/bin/jadx-gui.exe"
 [[symbolic_link_groups]]
 target_folder = "~/.local/bin/"
 sources = [
-  # Helper to locate Visual Studio installations
-  # Some Makefile (like gnu make.git) depends on this to locate the compiler
-  # can't be shimmed, since shim created by my shim_exec requires admin permission to run
-  "C:/Program Files (x86)/Microsoft Visual Studio/Installer/vswhere.exe",
-  "C:/Program Files/7-Zip/7z.exe",
+    # Helper to locate Visual Studio installations
+    # Some Makefile (like gnu make.git) depends on this to locate the compiler
+    # can't be shimmed, since shim created by my shim_exec requires admin permission to run
+    "C:/Program Files (x86)/Microsoft Visual Studio/Installer/vswhere.exe",
+    "C:/Program Files/7-Zip/7z.exe",
 ]
 
 # ==============================================================================
@@ -91,5 +91,4 @@ sources = [
 
 [[hard_link_groups]]
 target_folder = "~/.local/bin/"
-sources = [
-]
+sources       = []

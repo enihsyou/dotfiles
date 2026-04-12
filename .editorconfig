@@ -58,5 +58,6 @@ charset = utf-16le
 end_of_line = crlf
 
 [*.ps1]
-charset = utf-16le
 # 带 BOM 支持旧的 Windows Powershell 5.1
+# 但是会导致新的 PowerShell 7.x 版本上出现乱码
+# charset = utf-16le

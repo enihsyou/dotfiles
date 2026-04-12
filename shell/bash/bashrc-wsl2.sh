@@ -155,6 +155,9 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # version-fox
 export PATH="$PATH:$HOME/.vfox/sdks/nodejs/bin"
 export PATH="$PATH:$HOME/.vfox/sdks/golang/bin"
+export VFOX_GOLANG_MIRROR="https://mirrors.aliyun.com/golang/"
+export VFOX_PYTHON_MIRROR="https://mirrors.aliyun.com/python-release/"
+export VFOX_NODEJS_MIRROR="https://mirrors.aliyun.com/nodejs-release/"
 
 # agent setup, moved from dotbot to here to avoid sudo issues
 # source "$DOTFILES/system/WSL2/profile.d/wsl-ssh-agent.sh"

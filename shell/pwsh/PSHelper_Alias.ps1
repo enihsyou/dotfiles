@@ -93,6 +93,7 @@ function powermode {
         Write-Host '  1 = 节能'
         Write-Host '  2 = 平衡'
         Write-Host '  3 = 高性能'
+        powercfg /l
         return
     }
 
