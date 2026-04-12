@@ -106,6 +106,7 @@
     "compatibility.allowHeadless": true,
     "copyFormatting": "all",
     "copyOnSelect": false,
+    "debugFeatures": true,
     "defaultInputScope": "alphanumericHalfWidth",
     "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
     "disableAnimations": false,
@@ -113,8 +114,10 @@
     [
         "Windows.Terminal.Azure"
     ],
+    "experimental.detectURLs": true,
     "experimental.enableColorSelection": false,
     "firstWindowPreference": "defaultProfile",
+    "focusFollowMouse": false,
     "keybindings":
     [
         {
@@ -304,6 +307,12 @@
                 "name": "MSYS2: mingw64",
                 "pathTranslationStyle": "msys2",
                 "startingDirectory": "%USERPROFILE%"
+            },
+            {
+                "guid": "{868f9309-da49-5a1a-bd96-f16fd72d3e4f}",
+                "hidden": false,
+                "name": "lfs",
+                "source": "Microsoft.WSL"
             }
         ]
     },
@@ -357,6 +366,7 @@
         }
     ],
     "searchWebDefaultQueryUrl": "https://www.google.com.hk/search?q=%22%s%22",
+    "showTabsInTitlebar": true,
     "tabSwitcherMode": "mru",
     "tabWidthMode": "equal",
     "theme": "system",
@@ -409,5 +419,6 @@
             }
         }
     ],
+    "trimPaste": true,
     "useAcrylicInTabRow": true
 }

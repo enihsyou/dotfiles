@@ -49,3 +49,8 @@ if (&term =~ 'xterm' || &term == 'win32') && &t_Co > 16
     let &t_ti ..= "\e[2 q"  " cursor when vim starts
     let &t_te ..= "\e[0 q"  " cursor when vim exits
 endif
+
+" 环境变量来自 PSHelper_Environment.ps1 自定义脚本
+if $AppUseLightTheme == '1'
+    set background=light
+endif

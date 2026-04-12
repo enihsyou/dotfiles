@@ -9,6 +9,11 @@ $env:EDITOR = "vim"
 # 先禁用了看看哪里会出问题，或许是 git-delta
 #$env:PAGER = 'less.exe'
 
+# 检测当前 Windows 系统是否处于浅色模式
+$themeRegistryPath = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize"
+$env:AppUseLightTheme = ( Get-ItemProperty -Path $themeRegistryPath -ErrorAction SilentlyContinue ).AppsUseLightTheme ?? 0
+[Environment]::SetEnvironmentVariable('AppUseLightTheme', $env:AppUseLightTheme, 'User')
+
 # redirect fnm_multishell directory
 # https://github.com/Schniz/fnm/issues/696#issuecomment-2768555244
 # 因为切换到 vfox，所以禁用了
@@ -24,8 +29,7 @@ $env:YAZI_FILE_ONE = "C:\Program Files\Git\usr\bin\file.exe"
 
 # FZF settings
 $env:FZF_DEFAULT_COMMAND = "fd --type file --hidden --exclude .git"
-# AUTODARKMODE is set by gui-app/AutoDarkMode
-$env:FZF_DEFAULT_OPTS = "--color $env:AUTODARKMODE"
+$env:FZF_DEFAULT_OPTS = "--color $( $env:AppUseLightTheme -eq '1' ? 'light' : 'dark' )"
 
 # 极致加速 oh-my-posh 启动，依赖于魔改版的 go.exe，提速 20ms，见 Obsidian 笔记
 # 因为用了软链接而不是 shim，所以需要设置 GOROOT 才能让 go 正常运行
@@ -43,7 +47,3 @@ $env:RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
 
 # pprof 临时文件目录，远离系统盘
 $env:PPROF_TMPDIR = "$env:TEMP/pprof"
-
-# 检测当前 Windows 系统是否处于浅色模式
-$themeRegistryPath = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize"
-$env:AppUseLightTheme = ( Get-ItemProperty -Path $themeRegistryPath -ErrorAction SilentlyContinue ).AppsUseLightTheme ?? 0

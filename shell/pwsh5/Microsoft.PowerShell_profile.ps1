@@ -12,8 +12,8 @@ Set-PSReadLineKeyHandler -Chord Ctrl+v -Function Paste
 Set-PSReadLineKeyHandler -Chord Ctrl+LeftArrow -Function BackwardWord
 Set-PSReadLineKeyHandler -Chord Ctrl+RightArrow -Function ForwardWord
 
-# 环境变量来自 AutoDarkMode 应用的自定义脚本
-if ($env:AUTODARKMODE -eq 'light') {
+# 环境变量来自 PSHelper_Environment.ps1 自定义脚本
+if ($env:AppUseLightTheme -eq '1') {
     Set-PSReadLineOption -Colors @{
         ContinuationPrompt = "#0000FF"
         Default            = "#383A42"
