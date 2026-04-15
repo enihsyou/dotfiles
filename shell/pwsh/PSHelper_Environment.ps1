@@ -12,7 +12,13 @@ $env:EDITOR = "vim"
 # 检测当前 Windows 系统是否处于浅色模式
 $themeRegistryPath = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize"
 $env:AppUseLightTheme = ( Get-ItemProperty -Path $themeRegistryPath -ErrorAction SilentlyContinue ).AppsUseLightTheme ?? 0
-[Environment]::SetEnvironmentVariable('AppUseLightTheme', $env:AppUseLightTheme, 'User')
+try {
+    [Environment]::SetEnvironmentVariable('AppUseLightTheme', $env:AppUseLightTheme, 'User')
+}
+catch {
+    # 在 Codex unelevated sandbox 中有 ACL 限制无法写到用户级别，那么改当前进程就足够了
+    [Environment]::SetEnvironmentVariable('AppUseLightTheme', $env:AppUseLightTheme)
+}
 
 # redirect fnm_multishell directory
 # https://github.com/Schniz/fnm/issues/696#issuecomment-2768555244
@@ -38,12 +44,12 @@ $env:FZF_DEFAULT_OPTS = "--color $( $env:AppUseLightTheme -eq '1' ? 'light' : 'd
 # $env:GOROOT = "C:\Users\enihsyou\.vfox\cache\golang\current"
 
 # 使用类似 Linux 的命令行参数传递方式，避免传递给 .cmd 脚本用引号包起来的参数被解引号
-[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVarsMoreThanAssignments', '', Scope='Function')]
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVarsMoreThanAssignments', '', Scope = 'Function')]
 $PSNativeCommandArgumentPassing = "Standard"
 
 # Rust 镜像设置，参考 https://rsproxy.cn/
-$env:RUSTUP_DIST_SERVER="https://rsproxy.cn"
-$env:RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
+$env:RUSTUP_DIST_SERVER = "https://rsproxy.cn"
+$env:RUSTUP_UPDATE_ROOT = "https://rsproxy.cn/rustup"
 
 # pprof 临时文件目录，远离系统盘
 $env:PPROF_TMPDIR = "$env:TEMP/pprof"

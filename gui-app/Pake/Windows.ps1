@@ -7,3 +7,7 @@ pake https://gemini.google.com/ --name Gemini --width 959 --height 1280 `
 pake https://grok.com/ --name Grok --width 1024 --height 1280 `
   --enable-drag-drop --installer-language zh-CN `
   --inject ./grok.css
+
+pake https://www.qianwen.com/chat/ --name Qwen --width 1024 --height 1280 `
+  --enable-drag-drop --installer-language zh-CN `
+  --inject ./Qwen.css

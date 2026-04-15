@@ -1,0 +1,7 @@
+/* 默认的 monospace 字体在 Windows 上会回退到不支持 CJK 文本的宋体 */
+#qk-markdown-react kbd,
+#qk-markdown-react samp,
+#qk-markdown-react pre,
+#qk-markdown-react code {
+    font-family: "Maple Mono Normal NF CN", monospace
+}
