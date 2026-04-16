@@ -11,13 +11,12 @@ $env:EDITOR = "vim"
 
 # 检测当前 Windows 系统是否处于浅色模式
 $themeRegistryPath = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize"
-$env:AppUseLightTheme = ( Get-ItemProperty -Path $themeRegistryPath -ErrorAction SilentlyContinue ).AppsUseLightTheme ?? 0
-try {
-    [Environment]::SetEnvironmentVariable('AppUseLightTheme', $env:AppUseLightTheme, 'User')
-}
-catch {
+$AppUseLightTheme = ( Get-ItemProperty -Path $themeRegistryPath -ErrorAction SilentlyContinue ).AppsUseLightTheme ?? 0
+if ($env:AppUseLightTheme -ne $AppUseLightTheme) {
+    $env:AppUseLightTheme = $AppUseLightTheme
     # 在 Codex unelevated sandbox 中有 ACL 限制无法写到用户级别，那么改当前进程就足够了
-    [Environment]::SetEnvironmentVariable('AppUseLightTheme', $env:AppUseLightTheme)
+    # 使用 [Environment]::SetEnvironmentVariable 修改 User 级别的动作单次耗时可能超过 8000ms，这里用非广播的方式
+    Set-ItemProperty -Path "HKCU:\Environment" -Name "AppUseLightTheme" -Value $AppUseLightTheme -ErrorAction SilentlyContinue
 }
 
 # redirect fnm_multishell directory
