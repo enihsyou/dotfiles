@@ -1,5 +1,6 @@
-# NOTE: 这个文件是给 Windows Powershell 5.1 用的，PowerShell 7+ 不需要这个
+﻿# NOTE: 这个文件是给 Windows Powershell 5.1 用的，PowerShell 7+ 不需要这个
 # 只包含 PowerShell 7+ 中在 Windows PowerShell 5.1 中的配置，所以没什么注释
+# 需要以 UTF-8 with BOM 格式保存，否则 PowerShell 5.1 无法正确加载这个文件
 # filepath: $([Environment]::GetFolderPath('MyDocuments'))\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
 
 Set-PSReadLineOption -EditMode Emacs
@@ -31,8 +32,9 @@ $env:DOTFILES = "$env:USERPROFILE\.dotfiles"
 $env:HF_ENDPOINT = "https://hf-mirror.com"
 $env:PAGER = 'less.exe'
 
-$env:OMP_CACHE_DIR = $env:TEMP
-oh-my-posh init pwsh --config "$HOME\.config\oh-my-posh\enihsyou.omp.toml" | Invoke-Expression
+# disabled for speed
+# $env:OMP_CACHE_DIR = $env:TEMP
+# oh-my-posh init pwsh --config "$HOME\.config\oh-my-posh\enihsyou.omp.toml" | Invoke-Expression
 
 # disabled due to its heavy loading time
 # if (Test-Path "$HOME\.x-cmd.root\local\data\pwsh\_index.ps1") {
