@@ -1,0 +1,4 @@
+.md-code-block>pre,
+.ds-markdown code {
+    font-family: "Cascadia Code", "Maple Mono Normal NF CN", monospace !important;
+}

@@ -11,3 +11,7 @@ pake https://grok.com/ --name Grok --width 1024 --height 1280 `
 pake https://www.qianwen.com/chat/ --name Qwen --width 1024 --height 1280 `
   --enable-drag-drop --installer-language zh-CN `
   --inject ./Qwen.css
+
+pake https://chat.deepseek.com/ --name DeepSeek --width 1024 --height 1280 `
+  --enable-drag-drop --installer-language zh-CN `
+  --inject ./deepseek.css
