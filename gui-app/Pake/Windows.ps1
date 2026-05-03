@@ -15,3 +15,10 @@ pake https://www.qianwen.com/chat/ --name Qwen --width 1024 --height 1280 `
 pake https://chat.deepseek.com/ --name DeepSeek --width 1024 --height 1280 `
   --enable-drag-drop --installer-language zh-CN `
   --inject ./deepseek.css
+
+wget https://copilot.microsoft.com/static/cmc/favicon.svg -O copilot-favicon.svg
+magick -density 256x256 -background transparent copilot-favicon.svg -define icon:auto-resize -colors 256 copilot-favicon.ico
+pake https://copilot.microsoft.com/ --name Copilot --width 1024 --height 1280 `
+  --icon copilot-favicon.ico `
+  --enable-drag-drop --installer-language zh-CN `
+  --inject ./copilot.css
