@@ -83,6 +83,7 @@ function rsync { rsync.exe -e /usr/bin/ssh @args }
 
 # ls 继续保持使用 Get-ChildItem
 function ll { eza --long --icons @args }
+Set-Alias -Name lss -Value eza -Description "a modern replacement for ls"
 
 # 切换电源模式
 function powermode {

@@ -13,6 +13,7 @@ syntax on
 set nocompatible        " use vim defaults
 set scrolloff=3         " keep 3 lines when scrolling
 set ai                  " set auto-indenting on for programming
+set nofixendofline      " do not add eol to binary file
 
 set showcmd             " display incomplete commands
 set nobackup            " do not keep a backup file

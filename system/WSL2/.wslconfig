@@ -8,3 +8,5 @@ dnsProxy=false
 networkingMode=Mirrored
 firewall=false
 [experimental]
+
+autoMemoryReclaim=Gradual
