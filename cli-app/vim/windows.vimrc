@@ -1,5 +1,6 @@
 " 标准字体渲染地太粗了
 set guifont=Maple_Mono_NF_CN:h12:cANSI:qDRAFT
+set guioptions-=T       " 隐藏工具栏
 
 set renderoptions=type:directx,gamma:1.0,geom:1,renmode:5,taamode:2
 
@@ -12,7 +13,7 @@ syntax on
 
 set nocompatible        " use vim defaults
 set scrolloff=3         " keep 3 lines when scrolling
-set ai                  " set auto-indenting on for programming
+set autoindent          " set auto-indenting on for programming
 set nofixendofline      " do not add eol to binary file
 
 set showcmd             " display incomplete commands
@@ -20,6 +21,7 @@ set nobackup            " do not keep a backup file
 set number              " show line numbers
 set relativenumber      " show relative line numbers
 set ruler               " show the current row and column
+set cursorline          " highlight current line
 
 augroup numbertoggle
     autocmd!
