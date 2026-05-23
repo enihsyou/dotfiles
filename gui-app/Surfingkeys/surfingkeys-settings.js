@@ -40,10 +40,13 @@ api.unmap("<Ctrl-h>");
 // 不要和浏览器的下载列表按键产生冲突
 api.unmap("<Ctrl-j>");
 
-api.map("H", "S"); // 历史后退
-api.map("L", "D"); // 历史前进
-api.map("J", "B"); // tab向左
-api.map("K", "F"); // tab向右
+// 不需要 emoji 输入
+api.iunmap(":");
+
+// api.map("H", "S"); // 历史后退
+// api.map("L", "D"); // 历史前进 (之前是 Regional Hints mode)
+// api.map("J", "B"); // tab向左
+// api.map("K", "F"); // tab向右
 
 // 在 GitHub 页面会存在冲突
 // api.unmapAllExcept(['E', 'R', 'J', 'K', 'j', 'k', 'd', 'e'], /github.com/i);
@@ -115,6 +118,9 @@ api.addSearchAlias(
         return res[1];
     }
 );
+
+// "手气不错" 跳转到第一个结果
+api.addSearchAlias('f', 'feelinglucky', 'https://duckduckgo.com/?q=%5C');
 
 // 颜色主题
 settings.theme = `
