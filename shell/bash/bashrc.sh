@@ -123,3 +123,6 @@ function x() {
   [ ! -f "$HOME/.x-cmd.root/X" ] || . "$HOME/.x-cmd.root/X" # boot up x-cmd.
   x "$@" # invoke the real function now
 }
+
+# hide kernel processes from `ps` and `top` to make it easier to find user processes.
+export LIBPROC_HIDE_KERNEL=1

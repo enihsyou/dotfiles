@@ -57,3 +57,6 @@ function x() {
 ##
 ## PATH related settings had moved to profile-msys2.sh
 ##
+
+# hide kernel processes from `ps` and `top` to make it easier to find user processes.
+export LIBPROC_HIDE_KERNEL=1

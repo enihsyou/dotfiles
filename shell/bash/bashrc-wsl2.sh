@@ -187,3 +187,6 @@ function ble() {
 }
 
 command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init bash)"
+
+# hide kernel processes from `ps` and `top` to make it easier to find user processes.
+export LIBPROC_HIDE_KERNEL=1
