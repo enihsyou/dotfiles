@@ -1,0 +1,16 @@
+# pnpm user config
+# filepath: ~/AppData/Local/pnpm/config/rc
+# https://pnpm.io/10.x/settings
+# code: language=ini
+
+# Windows Dev Drive
+state-dir=G:\AppData\pnpm-state
+store-dir=G:\AppData\pnpm-store
+cache-dir=G:\AppData\pnpm-cache
+
+# 全局安装包的路径，详情见 npmrc
+# 路径匹配文档默认值，需同步修改 $env:PATH
+global-dir=${HOME}\AppData\Local\pnpm\global
+global-bin-dir=${HOME}\AppData\Local\pnpm
+
+# Other configurations are inherited from C:/Users/enihsyou/.npmrc

@@ -22,6 +22,7 @@
     ~/.bunfig.toml: language/bun/bunfig-windows.toml
     ~/AppData/Roaming/go/env: language/go/windows.env
     ~/AppData/Roaming/uv/uv.toml: language/uv/uv-windows.toml
+    ~/AppData/Local/pnpm/config/config.yaml: language/pnpm/config-windows.yaml
     ~/AppData/Roaming/pip/pip.ini: language/pip/pip-windows.ini
     ~/AppData/Roaming/NuGet/nuget.config: language/nuget/nuget-windows.config
 

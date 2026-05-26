@@ -1,0 +1,12 @@
+# pnpm user config
+# filepath: ~/AppData/Local/pnpm/config/config.yaml
+# https://pnpm.io/11.x/settings
+
+# Windows Dev Drive
+stateDir: G:\AppData\pnpm-state
+storeDir: G:\AppData\pnpm-store
+cacheDir: G:\AppData\pnpm-cache
+
+# Disable update notifications, since v10 to v11 have lots of breaking changes
+# and future updates may also break things
+updateNotifier: false
