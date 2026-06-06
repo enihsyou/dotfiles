@@ -12,12 +12,9 @@
 /* 由 microsoft/vscode#44141 引入的 no-repeat 设置
    让 hint 下划线只有第一个字符短短的一截
    是故意这么做的，避免 SpellChecker 的检测结果不要划地到处都是 */
-/* 回归默认，控制哪些被归类为 Info 级别，这效果可以减少编辑器里的提示噪音 */
-/*
 .monaco-workbench .squiggly-hint {
     background-repeat: repeat-x;
 }
-*/
 
 /* vscode/src/vs/workbench/browser/media/style.css */
 /* 修改UI字体, Maple Mono 比较圆润可爱
@@ -40,6 +37,9 @@
 }
 
 /* 补充 Custom UI Style 字体设置 */
+/* 现在是 Maple Mono Normal NF CN，不再需要这个 */
+/*
 .windows, .mac, .linux {
     font-feature-settings: "'ss05'";
 }
+*/
