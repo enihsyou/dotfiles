@@ -24,5 +24,7 @@
 
     ~/.config/systemd: system/WSL2/systemd
 
-- copy:
-    ~/.gitconfig-local: cli-app/git/gitconfig-local.example.ini
+- shell:
+  - description: Link file with copy
+    command: |
+      [ -f "$HOME/.gitconfig-local" ] || cp "cli-app/git/gitconfig-local.example.ini" "$HOME/.gitconfig-local"

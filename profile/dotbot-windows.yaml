@@ -42,15 +42,15 @@
 
     ~/.wslconfig: system/WSL2/.wslconfig
 
-- copy:
-    ~/.gitconfig-local: cli-app/git/gitconfig-local.example.ini
-    # 如果以符号链接引用，文件会被 npm 指令修改
-    ~/.npmrc: language/npm/npmrc-windows.ini
-
 # shell on Windows is Command Prompt (cmd), command is executed with subprocess.call(shell=True)
 # thus, command string must stay within the same line, I recommend use ">" for
 # no-indentation command, and use no indicators for command with indentation.
 - shell:
+  - description: Link file with copy
+    # 如果 .npmrc 以符号链接引用，文件会被 npm 指令修改
+    command: >
+      if not exist "%USERPROFILE%\.gitconfig-local" copy "cli-app\git\gitconfig-local.example.ini" "%USERPROFILE%\.gitconfig-local" &
+      if not exist "%USERPROFILE%\.npmrc"           copy "language\npm\npmrc-windows.ini" "%USERPROFILE%\.npmrc"
   - description: Run the initial setup script for Windows
     # powershell is Windows PowerShell 5.x, not pwsh for initinalization reasons
     command: powershell -ExecutionPolicy Bypass -File system/Windows/initial-setup.ps1
