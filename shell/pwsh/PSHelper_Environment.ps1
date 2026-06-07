@@ -26,7 +26,7 @@ if ($env:AppUseLightTheme -ne $AppUseLightTheme) {
 
 # version-fox
 $env:VFOX_GOLANG_MIRROR = "https://mirrors.aliyun.com/golang/"
-$env:VFOX_PYTHON_MIRROR = "https://mirrors.aliyun.com/python-release/"
+$env:VFOX_PYTHON_MIRROR = "https://mirrors.huaweicloud.com/python/"
 $env:VFOX_NODEJS_MIRROR = "https://mirrors.aliyun.com/nodejs-release/"
 
 # https://yazi-rs.github.io/docs/installation/#windows
