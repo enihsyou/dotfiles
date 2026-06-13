@@ -25,7 +25,7 @@ api.mapkey(
 );
 
 // 视频组件网页全屏的插件
-api.unmap("w", /bilibili.com|youtube.com/i);
+api.unmap("W", /bilibili.com|youtube.com/i);
 
 // YouTube frequent used keyboard shortcuts
 // https://support.google.com/youtube/answer/7631406?hl=zh-Hans
