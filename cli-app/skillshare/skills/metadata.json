@@ -1,0 +1,248 @@
+{
+  "version": 1,
+  "entries": {
+    "ai-commit": {
+      "source": "https://github.com/enihsyou/dotfiles/skills/ai-commit",
+      "type": "github-subdir",
+      "installed_at": "2026-06-17T16:41:43.9861134+08:00",
+      "repo_url": "https://github.com/enihsyou/dotfiles.git",
+      "subdir": "skills/ai-commit",
+      "version": "37220f5",
+      "tree_hash": "40180b74ce1b87adaafd2d42f5ad0f6deadeaece",
+      "file_hashes": {
+        "SKILL.md": "sha256:ed2b92730407dc34e86e7c120975129228dcd90408c54f40de484d31ed7e0dd6"
+      }
+    },
+    "bilibili-cli": {
+      "source": "github.com/jackwener/bilibili-cli",
+      "type": "github",
+      "installed_at": "2026-06-17T16:44:12.4129819+08:00",
+      "repo_url": "https://github.com/jackwener/bilibili-cli.git",
+      "version": "dbe2855",
+      "file_hashes": {
+        ".github/ISSUE_TEMPLATE/bug_report.yml": "sha256:070d0233cfa4dd32b2017b6df2fef4ee18e047ce3c27ec6b09c68f6c8e194c11",
+        ".github/ISSUE_TEMPLATE/feature_request.yml": "sha256:a5a8529b81f5e0ad0c48290e5950571e1938700a500f6e4fdf3d98c645de7721",
+        ".github/workflows/ci.yml": "sha256:e194d9e02c4cf4a250b65b1e7153244cfb0a5b88d14154c733176267b1f67ebb",
+        ".github/workflows/publish.yml": "sha256:3de200208574fb7f0329f864e7856f2ef6741d4d582a289d0fe1affa8f878929",
+        ".gitignore": "sha256:7e78f3cfb372760e9a771be30ae451ba662b0aaca62e85905d1a275f6a5ef578",
+        "CHANGELOG.md": "sha256:8270ade6b24892e69f5669b541fcd78374ec4383e67c8c54e160e04c2ccdc764",
+        "LICENSE": "sha256:6f6f5c994967f3bfbe09ae0bdbbc8d26886e7265b985fc98d43748e6f9fe31e5",
+        "README.md": "sha256:0adf4cc788a262c2e1b19cbaf68839bb93722c3fd8e7af59331d97ed2816fe0f",
+        "SCHEMA.md": "sha256:2281291a03824cb7f6586b61e8ef37520a6ac5e576052f9e3fbf2cd5e8e033fc",
+        "SKILL.md": "sha256:46df4bff309ee22b9caae0c4921a9cb44492a3719b2f433cc788dad67add77f1",
+        "bili_cli/__init__.py": "sha256:857304b882a58abf98caaed81f09db7692e957c4d063f15de546be91d7987905",
+        "bili_cli/auth.py": "sha256:eab5e26eb1796316e9c7ee7b99cf3a7d905d762b7d245b02adcc3b7d9877f7d3",
+        "bili_cli/cli.py": "sha256:0a8a3f30d55b49eeb58a6aab6ef7c0765e5ffcd3b7a073c157f4578936613e2d",
+        "bili_cli/client.py": "sha256:8a94c6144b9b1c7b00a4d3c34d3659ba4c6be1e112045125732181782cbcf243",
+        "bili_cli/commands/__init__.py": "sha256:810ead9d4d11be6d3e11258550153e28397976934ea544c6e74f615ce4108f06",
+        "bili_cli/commands/account.py": "sha256:0ea501646b4a1f13de40bf781239fdf450ccdb076c91eaef5c80c0a7b6dd2183",
+        "bili_cli/commands/audio.py": "sha256:809fae1de722eb287c7ad078540160c7b623683a0c30a719b2d1f9a3695954a9",
+        "bili_cli/commands/collections.py": "sha256:112b2a113005f7a2d25d7eee956abdeddfc46e5c16002b6d6e904d47d60ecf8f",
+        "bili_cli/commands/common.py": "sha256:a069078ab351f764949b71577cf2aedcee75f99c4e6dbbc6ba1d28693ce33286",
+        "bili_cli/commands/discovery.py": "sha256:373c6b3a32b39ce4dc1094bc05ebe3edb8d5529e10b5d60c822c79e60f8a22a4",
+        "bili_cli/commands/interactions.py": "sha256:61efacf0d73c04ecd5bb1dc555a14601136ad210d690638ced278beb4528340b",
+        "bili_cli/commands/user_search.py": "sha256:c957e2d35848df8d19023fa62b0c3a52ec7ef7748b0ed58eb347b0cf68ac1e48",
+        "bili_cli/commands/video.py": "sha256:eb830bedbbf7941609872a7e88f6a131c5b75832e7fab97e4e37fd6f1f133167",
+        "bili_cli/exceptions.py": "sha256:80b5fd9de203b2544718ab5dda7364a6591ad05165d665a3df7a96148efa1452",
+        "bili_cli/formatter.py": "sha256:05d11d563cdb95b820ced96157caaccc97945f21733236aee720befb5f70ee8b",
+        "bili_cli/payloads.py": "sha256:6e07af1b11fd80b28bff8014a32568bb0b0b2bf6ebc35f7e8cd9686123253bc0",
+        "pyproject.toml": "sha256:547a0880a9d6cde0a1437d2b6f631b99cea6cafcad5e0eb3a972e3a28ee6e9f0",
+        "tests/conftest.py": "sha256:882a49253b390a85c1187d740d6c1795c5654164a35109b73d9b13fee67f1797",
+        "tests/test_audio.py": "sha256:4905c09a3d2882e60d414ea8eaf6f7f80530a0c55cf7cbd75d80f4548c0a5fb6",
+        "tests/test_auth.py": "sha256:183006507032814a6e6a1c0f3f8efb3685be9322236813ae3a3b65f8066fba4f",
+        "tests/test_cli.py": "sha256:142f35b9973d55e124f7d2a7293b2c6db19c0adf176dab67285ff81bc9f32549",
+        "tests/test_client.py": "sha256:ef43995f7630db44d13a72dc43c4fb06029372c367425474768e391aa9596710",
+        "tests/test_helpers.py": "sha256:bc30a28e8b0aed698da45c1bb37535c6499653e7b74889706e41c5cc5cad9dfb",
+        "tests/test_smoke.py": "sha256:81e8f2b171de6587d791524dcc0f9f63f9ef9518a91a0fc343d6595a1872e161",
+        "tests/test_subtitle.py": "sha256:02b25fdd61713550746377c55331ecf44edcd4ff649e34fb6701eea5275dd384",
+        "uv.lock": "sha256:eb987218315487709faf1ff08ab5638f6fe757dd84a1cdcd96db260cf4e394a4"
+      }
+    },
+    "gh-apps": {
+      "source": "https://github.com/fairchild/dotclaude/blob/main/skills/gh-apps/SKILL.md",
+      "type": "github-subdir",
+      "installed_at": "2026-06-17T14:18:13.368065+08:00",
+      "repo_url": "https://github.com/fairchild/dotclaude.git",
+      "subdir": "skills/gh-apps",
+      "version": "56f95aa",
+      "tree_hash": "9d95042577abb1b6536a2715e6a5cecb9a867860",
+      "file_hashes": {
+        "README.md": "sha256:2f721d0c083fe29ef4461892fae2226b14e5b133b6c0da0bb020bbee159cc098",
+        "SKILL.md": "sha256:cc582520ae39ca6ee97d3694c40db0464b150e7c9f0effbbea816e96663dc2db",
+        "references/api-endpoints.md": "sha256:f7f29088b22aea03e5c224f70b133b11ed54b05eceb5ba1a33b01dbdb86403b8",
+        "references/manifest-schema.md": "sha256:dcec5061f36f2f9f452e2d112d2d200e78539438d910a862c763f0a3b2171c1f",
+        "references/permissions-guide.md": "sha256:6ab1e468eabf6459188d027eb6e892f94053825dc90a0f93fabbeee6aad6b1ce",
+        "scripts/gh-apps.py": "sha256:358186dd5b2b0116f116a1f7d857063afda3c05c81bb2d78d7f28ce94b5bc3a1",
+        "scripts/test_gh_apps.py": "sha256:68ef7de605566f9f2257c79afa41e73ae36a8115b3627cc553e80a526ef3659a"
+      }
+    },
+    "mmx-cli": {
+      "source": "https://github.com/minimax-ai/cli/skill",
+      "type": "github-subdir",
+      "installed_at": "2026-06-17T14:24:30.7990587+08:00",
+      "repo_url": "https://github.com/minimax-ai/cli.git",
+      "subdir": "skill",
+      "version": "5f13ef5",
+      "tree_hash": "dc9128e7a79e896a31fe3e5a1acb0f0434879a5a",
+      "file_hashes": {
+        "SKILL.md": "sha256:f9abafc4616df74f7235ae49c616e6a470c41cb47c5208c0227bab9c28e26e1b"
+      }
+    },
+    "skillshare": {
+      "source": "https://github.com/runkids/skillshare/tree/main/skills/skillshare",
+      "type": "github-subdir",
+      "installed_at": "2026-06-17T14:19:45.3009862+08:00",
+      "repo_url": "https://github.com/runkids/skillshare.git",
+      "subdir": "skills/skillshare",
+      "version": "c09968d",
+      "tree_hash": "fc99e0babe3eb47d72c477b3d447ea8a2730dc76",
+      "file_hashes": {
+        "SKILL.md": "sha256:801eb3df30d35e7f6d83c40e9189c41df5683bddf75522a086e6384826936043",
+        "references/TROUBLESHOOTING.md": "sha256:14855dbd2f20ad7042941959f257c79f768d103e89e55d74d8c3b3d38f9ff5ee",
+        "references/audit.md": "sha256:85a31c32f17f39ce2baa5189a8004c6adec506e5fcf7d20378caa103b015fd5d",
+        "references/backup.md": "sha256:96e2e8d5e2d7cfb8765c2eebb4e6d733b79258de8b3d974fca8972557f7326a6",
+        "references/extras.md": "sha256:27529c7fba6335efabb38a2a5dac1c0e4a0b79d16d0188d3f98dad2068ec4bdf",
+        "references/init.md": "sha256:41d99a2a49f576e1a2354312856ccf730f8d19d4c8d35c592585d40bc2d14d82",
+        "references/install.md": "sha256:2b444bfcd211fae59421631ecd49331b4de287c311354f8ed3ca19f204d223db",
+        "references/log.md": "sha256:406e85525f53f4deaa0f48bf8b3b53db3e032b99f5a0e926c84542d51b3a3625",
+        "references/status.md": "sha256:0143c8250ecbedfa14607b82cbfb23107294b6c1e053b5726629556b7a47412c",
+        "references/sync.md": "sha256:75577dce829fda6050b3b761915b70d9aef0d6bdb3c010d2fef7b7b22e226a8e",
+        "references/targets.md": "sha256:130b0b07b17a88d4bc09af0262a6b161421946f5442295dc5bc828f95226763e",
+        "references/trash.md": "sha256:fb94aa6b71d469fa8f6b5e728fcab531b6eb010a2092389b02eaaadf3ebc98cf",
+        "scripts/run.sh": "sha256:e434ebdb7d3ae0b37c00ddc36687bc975da9e766b8cb863f9aed9a624ebbdfa9"
+      }
+    },
+    "tavily-cli": {
+      "source": "github.com/tavily-ai/skills/skills/tavily-cli",
+      "type": "github-subdir",
+      "installed_at": "2026-06-17T13:57:35.8566722+08:00",
+      "repo_url": "https://github.com/tavily-ai/skills.git",
+      "subdir": "skills/tavily-cli",
+      "version": "ea5e820",
+      "tree_hash": "6717ea654907d29e696c68fec83bd0548d93371a",
+      "file_hashes": {
+        "SKILL.md": "sha256:aa8cee0e8dbf3bb98d2281b1874c7431de880c5c6ff6a3ca8cb346ac3f513f36"
+      }
+    },
+    "tavily-crawl": {
+      "source": "github.com/tavily-ai/skills/skills/tavily-crawl",
+      "type": "github-subdir",
+      "installed_at": "2026-06-17T13:57:35.9002189+08:00",
+      "repo_url": "https://github.com/tavily-ai/skills.git",
+      "subdir": "skills/tavily-crawl",
+      "version": "ea5e820",
+      "tree_hash": "c61d2277d4279fc44c5dcb50d2e8801ce2e16f1f",
+      "file_hashes": {
+        "SKILL.md": "sha256:5ed61112f6dfd9f06341ab0de91a65db423e240dde0b5b56036cdb4ee4e720d4"
+      }
+    },
+    "tavily-dynamic-search": {
+      "source": "github.com/tavily-ai/skills/skills/tavily-dynamic-search",
+      "type": "github-subdir",
+      "installed_at": "2026-06-17T13:57:35.9356609+08:00",
+      "repo_url": "https://github.com/tavily-ai/skills.git",
+      "subdir": "skills/tavily-dynamic-search",
+      "version": "ea5e820",
+      "tree_hash": "41c64e339c7480409424a7a6f15fc1cc7c9a1c37",
+      "file_hashes": {
+        "SKILL.md": "sha256:63c6ca34a2fd7bfd0b9a4d794755eea22f8dc7abd0de24f6683a38ed66781b6d"
+      }
+    },
+    "tavily-extract": {
+      "source": "github.com/tavily-ai/skills/skills/tavily-extract",
+      "type": "github-subdir",
+      "installed_at": "2026-06-17T13:57:35.9647917+08:00",
+      "repo_url": "https://github.com/tavily-ai/skills.git",
+      "subdir": "skills/tavily-extract",
+      "version": "ea5e820",
+      "tree_hash": "5de24876e7faa5789ba64c4c07ed32e4bcfe2f4b",
+      "file_hashes": {
+        "SKILL.md": "sha256:127bc8470090b2a8b43d3556e539c6c65a24ad3e87c1539a0d792c4d3b644ceb"
+      }
+    },
+    "tavily-search": {
+      "source": "github.com/tavily-ai/skills/skills/tavily-search",
+      "type": "github-subdir",
+      "installed_at": "2026-06-17T13:57:35.9946739+08:00",
+      "repo_url": "https://github.com/tavily-ai/skills.git",
+      "subdir": "skills/tavily-search",
+      "version": "ea5e820",
+      "tree_hash": "74e6f8996fa49a3ebe8aa8f3dbddc4a2c2b5e5e4",
+      "file_hashes": {
+        "SKILL.md": "sha256:83679ae2adac1c0dfdfba52ca12117d386c3238865b5b35cfa4eab9a6617322d"
+      }
+    },
+    "xiaohongshu-cli": {
+      "source": "github.com/jackwener/xiaohongshu-cli",
+      "type": "github",
+      "installed_at": "2026-06-17T16:44:34.6096532+08:00",
+      "repo_url": "https://github.com/jackwener/xiaohongshu-cli.git",
+      "version": "4d63f3c",
+      "file_hashes": {
+        ".github/ISSUE_TEMPLATE/bug_report.yml": "sha256:4ed33bc68be0bbaf96be53c7e8ceb04ccf29d074930a7396ef11d3e1f077438d",
+        ".github/ISSUE_TEMPLATE/feature_request.yml": "sha256:0d12996f877d38db0a6800ae928fa4c629662cfc10d2129e27c535768878d953",
+        ".github/workflows/ci.yml": "sha256:bd51af1b7a1683ac65681dc00e63c0b1cd8d16d6bd9740ce096bde1c6cbb05fc",
+        ".github/workflows/publish.yml": "sha256:4baa8dbc2a9e6bbacb9b4545552ac43323f16e24805458b42159b19c4ab3bc3a",
+        ".gitignore": "sha256:a042cd03462f9d1d554369f9a62f01e74fd5996b4f366f7a090d73a45cb56bf6",
+        "README.md": "sha256:fec57cc0ab64ac5be65954aef54be9dd4adb47db9f56de4a5c91dbafb91a848c",
+        "SCHEMA.md": "sha256:ce1b957a55d99812cdc69aa02ebb1ffdc1a9efdbffa15c82c85068433fb90231",
+        "SKILL.md": "sha256:f51686b47d7196c604c12d201fecf9c97161d6599bf77fa721fedda99c6e8cf6",
+        "pyproject.toml": "sha256:36d8d6b6b5dd4963298c487e29071b654b1544075a188528a7ac47cbf2c8757d",
+        "tests/__init__.py": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "tests/conftest.py": "sha256:c39c977cd12f6e36409cc3f609267cf54dacb019694bef5e253ca68a10be49aa",
+        "tests/test_anti_detection.py": "sha256:7c90e1392537c6124d1ea43803dcf742f6ae149e97f62a0341989c2857f10f72",
+        "tests/test_cli.py": "sha256:130d857a5079cf264f3f7252f16ee42f17b3dbdd3c71c4e653945da3334786e8",
+        "tests/test_client.py": "sha256:c0de36f0a63ce53f2206badf253e62295f92a9ff838b17c151833c0e86ecf29a",
+        "tests/test_cookies.py": "sha256:0af7d2f26bd414aa7e05acab1d86b1ff211c714c90ff9dfa79a63a0f4e6cd4a7",
+        "tests/test_creator.py": "sha256:016dcfc849c19b36e1c33caa3abc2d32dcc0a740574a8c6ba96ca37f02a3808c",
+        "tests/test_creator_signing.py": "sha256:35a6586463e5de60c275eb64726b981e7f8fc562f9d0543595a9af351279b56c",
+        "tests/test_formatter.py": "sha256:c306439f0d356cac670f3634d56540b4dff171b328cc0d8be1cb48f73a9efe3c",
+        "tests/test_integration.py": "sha256:db821f23f90290760b6a1fa3ec27519070ce39563b8788c90020870293932a7e",
+        "tests/test_qr_login.py": "sha256:94e5841cee8543def64af9b15e64cdcb81f1d497755a84fecaefc78928ba3315",
+        "tests/test_signing.py": "sha256:fcc925c3ad30ecc55c02bc36fef86cadf1043dc809b413238a7cd209246094d0",
+        "tests/test_smoke.py": "sha256:2e7852b21b9074f0fd89fd9dff5645a4957d9afb35a5a7d258d3156c382d4564",
+        "uv.lock": "sha256:0ee8eef2bf187e6a2ac346e2934e96ff4a133b2702910018c4a72d26772729b2",
+        "xhs_cli/__init__.py": "sha256:fc338d0b6ba3f704aa9209c2a429d00ce3d20861a24d006fdc2f20e76a0df354",
+        "xhs_cli/__main__.py": "sha256:6504c13077f09f10fc4cd1c23c25d782c548fe504287c58be42d98d38440c602",
+        "xhs_cli/cli.py": "sha256:e0f0fa7b9e4fe6a4ba3a4bbfb4966a53c985134a67ca1c5c63ac27033603f770",
+        "xhs_cli/client.py": "sha256:8e66dbfd84f5ee7ee57245ed51196c406f1b0d992acd7e2b9b868b1248d37f9a",
+        "xhs_cli/client_mixins.py": "sha256:c98eeae05799071b6beac4fda2b15917f0e2a6ec8f0ce025021386182c612312",
+        "xhs_cli/command_normalizers.py": "sha256:d96672ce1d7435c02e1bb1ac10db95224b706430301268765b198e04b0829528",
+        "xhs_cli/commands/__init__.py": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "xhs_cli/commands/_common.py": "sha256:a2ddb5dc0c4a7cc217e66fd16725857aff5d470e3dd8b3659a2154ffde554940",
+        "xhs_cli/commands/auth.py": "sha256:100b9505e5eb10b2bbcbf01fe331ab6d410a8b9d23c796b8d2d573c9edaf1eb1",
+        "xhs_cli/commands/creator.py": "sha256:82a00efcab3817698f8341fb8e6e88c47abeb831e6500776baac435283fc2357",
+        "xhs_cli/commands/interactions.py": "sha256:2755c7c8ff5dd35870804873d5398e06e8fbdab6b229a78fc20bd3f6698fe4ba",
+        "xhs_cli/commands/notifications.py": "sha256:063778ad4d70821f684669c87a000c45423add15fd8ad35e88355499ff36fe87",
+        "xhs_cli/commands/reading.py": "sha256:2fa2283dee252669c28524018f15b61bb285e203644d643f07296d7109319648",
+        "xhs_cli/commands/social.py": "sha256:86ebff10da340db0a5293b9115a671ef07a3185649c0f7db1e11766be599c927",
+        "xhs_cli/constants.py": "sha256:be7c3652c1964ff8ca3b79fb226c400d16f8d6481fdfd657c6575a18718c62ed",
+        "xhs_cli/cookies.py": "sha256:c55c08bd24abde586c10e0fa4d77221fb5230778a65a72d46737ff4a8bf8de2c",
+        "xhs_cli/creator_signing.py": "sha256:39a5843ec00cf2063e8e329a19ee8a92d95f37d771dbeda186626f234cc072de",
+        "xhs_cli/error_codes.py": "sha256:8acce43b7afa6e89ad719e49bd01514924e58a13008a25a82190f623fad59360",
+        "xhs_cli/exceptions.py": "sha256:b2526a00fcf500405c1e28d32c37f25135c6e2ed0aaaaea4fd79bcb92479b667",
+        "xhs_cli/formatter.py": "sha256:17fcbbab8de291e9809719f37bbef71ac25775fdbb605aefd5751fe1e59592fd",
+        "xhs_cli/formatter_normalizers.py": "sha256:7fd85ef9d879c980e8157fb2c5f6b0b6d10e73fc23e97632b0752b3bb6fe96ef",
+        "xhs_cli/formatter_renderers.py": "sha256:617077c939a07c34d93b7a269558885e6f31b5ac25ae30b4a1abebb4db05d5dd",
+        "xhs_cli/formatter_utils.py": "sha256:e696289a7e2426ab48a6a900d26cb51df4a5bf2968f8ef2e0fdef4595bcf9a0d",
+        "xhs_cli/html_parser.py": "sha256:7b1e3a9aa33fe641303ca89634081943be8f0e87415ac02618ab966d978c25da",
+        "xhs_cli/note_refs.py": "sha256:79ac28d65f2915a9ee1fac8a431a71d5aa6278ddcd8f5313f9bdb07da23621c3",
+        "xhs_cli/py.typed": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "xhs_cli/qr_login.py": "sha256:c5506236b8ed45fc167032d56245bd440bc6233c50c55bd2bfc4d55d0231fed2",
+        "xhs_cli/signing.py": "sha256:8a4cc5c7ee3d4597ddd1d1e2184a922c49f365d08b238a3a648bc5e23ec30cfa"
+      }
+    },
+    "zread-skill": {
+      "source": "https://github.com/ZreadAI/zread-skill",
+      "type": "github",
+      "installed_at": "2026-06-17T15:07:25.8772528+08:00",
+      "repo_url": "https://github.com/ZreadAI/zread-skill.git",
+      "version": "9b96f04",
+      "file_hashes": {
+        "README.md": "sha256:0f7960af5f933d66a68d8d0d15fdf1a165f897476e9969324032e399753c4259",
+        "SKILL.md": "sha256:533da42675cd21b4716ad8f2bacce9717b74026827ad4628d8327a657310437c",
+        "references/stdio-protocol.md": "sha256:6f446d5c9349c9fa2900645c7c06c80865d2d9042359a96896c475c3f67f1285"
+      }
+    }
+  }
+}

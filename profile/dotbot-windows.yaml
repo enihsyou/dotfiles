@@ -35,6 +35,7 @@
     ~/.vimrc: cli-app/vim/windows.vimrc
     ~/AppData/Roaming/bat/config: cli-app/bat/config.cfg
     ~/AppData/Roaming/yazi/config: cli-app/yazi
+    ~/AppData/Roaming/skillshare/skills/.metadata.json: cli-app/skillshare/skills/metadata.json
     ~/.config/oh-my-posh/enihsyou.omp.toml: cli-app/oh-my-posh/enihsyou.omp.toml
     ~/.config/fastfetch/config.jsonc: cli-app/fastfetch/config.jsonc
 
