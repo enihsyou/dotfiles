@@ -1,0 +1,8 @@
+version-check.json
+.DS_Store
+agents/*/
+skills/*/
+backups/
+logs/
+trash/
+ui/

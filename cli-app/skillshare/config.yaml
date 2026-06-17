@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/runkids/skillshare/main/schemas/config.schema.json
+sources:
+  skills: ~/.dotfiles/cli-app/skillshare/skills
+  agents: ~/.dotfiles/cli-app/skillshare/agents
+git_root: root
+mode: merge
+targets:
+  universal:
+    skills:
+      path: ~/.agents/skills
+ignore:
+  - "**/node_modules/**"
+  - '**/.DS_Store'
+  - '**/.git/**'
+audit:
+  block_threshold: CRITICAL
+preserve_tilde_on_save: true
