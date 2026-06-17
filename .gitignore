@@ -4,7 +4,6 @@
 .vscode/
 
 # aria2 certs
-cli-app/aria2/aria2.crt-chain.pem
 cli-app/aria2/aria2.crt.pem
 cli-app/aria2/aria2.key.pem
 cli-app/aria2/aria2.pfx

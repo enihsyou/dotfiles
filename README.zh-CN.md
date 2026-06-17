@@ -30,7 +30,7 @@ powershell -ExecutionPolicy Bypass -File install.ps1
 ## 如何开发
 
 - 多数配置假设本项目放在 `~/.dotfiles` 目录下，纯文本的配置文件不一定能访问环境变量，所以最好遵守这个约定
-- 一些文件由 `Makefile` 生成，并加入手动编辑
+- 一些文件由 `Taskfile.yml` 生成, 请勿手动编辑
 
 ## 背景信息
 
