@@ -1,9 +1,10 @@
 ## 如何在另一个设备上使用 skillshare
 
 ```bash
-skillshare init --remote https://github.com/enihsyou/dotfiles.git --subdir cli-app/skillshare/s
-kills --no-targets --no-copy --mode merge --git-root skills
+skillshare init --no-git --no-copy --no-skill --targets universal --mode merge --source ~/.config/skillshare/skills --subdir '.'
 
-cd ~/.config/skillshare/skills/cli-app/skillshare/skills
+wget https://github.com/enihsyou/dotfiles/raw/refs/heads/Windows/cli-app/skillshare/skills/metadata.json -O ~/.config/skillshare/skills/.metadata.json
+
 skillshare install
+skillshare sync
 ```
