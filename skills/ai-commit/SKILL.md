@@ -45,7 +45,7 @@ pass `--no-gpg-sign` to disable GPG signing, as the bot won't have access to the
 ## Full Command Example
 
 ```bash
-git -c user.name="MiMo V2.5 - Claude Code" -c user.email="292837902+arapacati[bot]@users.noreply.github.com" --trailer "Co-Authored-By: 九条涼果 <enihsyou@gmail.com>" commit --no-gpg-sign -m "Your commit message here"
+git -c user.name="MiMo V2.5 - Claude Code" -c user.email="292837902+arapacati[bot]@users.noreply.github.com" commit --no-gpg-sign --trailer="Co-Authored-By: 九条涼果 <enihsyou@gmail.com>" -m "Your commit message here"
 ```
 
 ## Push
