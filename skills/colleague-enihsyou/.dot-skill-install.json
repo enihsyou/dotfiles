@@ -1,0 +1,10 @@
+{
+  "host": "claude-code",
+  "command_name": "colleague-enihsyou",
+  "character": "colleague",
+  "slug": "enihsyou",
+  "version": "v2",
+  "source_skill_dir": "/home/hermes/workspace/dot-skills/skills/colleague/enihsyou",
+  "source_artifact": "SKILL.md",
+  "installed_at": "2026-06-22T17:19:30.845883+00:00"
+}
