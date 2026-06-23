@@ -23,3 +23,9 @@ tasks:
     desc: "Generate shims on Windows"
     cmds:
       - python system/Windows/install_shims.py
+
+  sync-skillshare-metadata:
+    desc: "Pull skillshare metadata from hermes.lan.kokomi.site into the repo"
+    cmds:
+      - mkdir -p cli-app/skillshare/skills
+      - scp hermes.pve.kokomi.site:/home/hermes/.config/skillshare/skills/.metadata.json cli-app/skillshare/skills/metadata.json

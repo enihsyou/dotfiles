@@ -1,6 +1,37 @@
 {
   "version": 1,
   "entries": {
+    "agent-browser": {
+      "source": "github.com/vercel-labs/agent-browser/skills/agent-browser",
+      "type": "github-subdir",
+      "installed_at": "2026-06-21T01:03:27.824809238+08:00",
+      "repo_url": "https://github.com/vercel-labs/agent-browser.git",
+      "subdir": "skills/agent-browser",
+      "version": "6323df5",
+      "tree_hash": "c1470a475a0472fceda2401ea6763708a91680a8",
+      "file_hashes": {
+        "SKILL.md": "sha256:00709861067d0cbb634609778b1be0469de6d6cef5293fcd24cbd469faaae42c"
+      }
+    },
+    "agent-reach": {
+      "source": "https://github.com/Panniantong/Agent-Reach/tree/main/agent_reach/skill",
+      "type": "github-subdir",
+      "installed_at": "2026-06-22T20:23:03.497635573+08:00",
+      "repo_url": "https://github.com/Panniantong/Agent-Reach.git",
+      "subdir": "agent_reach/skill",
+      "version": "22d7f03",
+      "tree_hash": "81a7b428ccf789b6ea71e83be8855fde4a6ffd37",
+      "file_hashes": {
+        "SKILL.md": "sha256:a9a3ffa3efe24f0d2f52595de2fb1d9d0bea3e36a6caea58eb4e7f752186c8d2",
+        "SKILL_en.md": "sha256:4055eaef1f60f5accb8b53622f25507616185ae03a973992de6ee4c14fdc4e07",
+        "references/career.md": "sha256:e70badf6c860a55cc049c15cc5cef31ca0fa2a2ae9ae1f72ade24b91844c1a2f",
+        "references/dev.md": "sha256:f6f91107557eacf1d28a023d597eb5a61353a8a6ede286c3c0a4888d274df9fe",
+        "references/search.md": "sha256:8eabfb645505148ea32e22e372c6d5a48615fba2e2f00eb8590e07464833851b",
+        "references/social.md": "sha256:4226d43a3c1b3d6c9ab312e86d08b93da4493cc6232ffacc308596582a0abc48",
+        "references/video.md": "sha256:f4b58c88f877b53e259fecbedc5ac5e111dd3403afebd1f86c45027af3fe099f",
+        "references/web.md": "sha256:2495c2e290508b5b98337db679d5b2ff30314aa5b20243c7ff44486a72c3eff2"
+      }
+    },
     "ai-commit": {
       "source": "https://github.com/enihsyou/dotfiles/skills/ai-commit",
       "type": "github-subdir",
@@ -16,6 +47,8 @@
     "bilibili-cli": {
       "source": "github.com/jackwener/bilibili-cli",
       "type": "github",
+      "tracked": true,
+      "branch": "main",
       "installed_at": "2026-06-17T16:44:12.4129819+08:00",
       "repo_url": "https://github.com/jackwener/bilibili-cli.git",
       "version": "dbe2855",
@@ -58,6 +91,135 @@
         "uv.lock": "sha256:eb987218315487709faf1ff08ab5638f6fe757dd84a1cdcd96db260cf4e394a4"
       }
     },
+    "colleague-skill": {
+      "source": "https://github.com/titanwings/colleague-skill",
+      "type": "github",
+      "installed_at": "2026-06-22T21:31:13.133033455+08:00",
+      "repo_url": "https://github.com/titanwings/colleague-skill.git",
+      "version": "47039d0",
+      "file_hashes": {
+        ".github/ISSUE_TEMPLATE/bug_report.md": "sha256:2d62a5b137ecc423b37cb39ad7b359a973713eb6be1808b971490ba1d3b7ebef",
+        ".github/ISSUE_TEMPLATE/config.yml": "sha256:d3db6658691ed5dc02b0cc40eb32f0468a6584983a0904467d7da745813e1b4b",
+        ".github/ISSUE_TEMPLATE/feature_request.md": "sha256:5819573f552407f3848c951993f47bc3d3c115fd7f53d6b6d2aa2c92187084e2",
+        ".github/ISSUE_TEMPLATE/question.md": "sha256:fcadf11b7f4e953639ef14b41229e96e6d8788a2ec7b605f68b4ceffc1050ad9",
+        ".github/PULL_REQUEST_TEMPLATE.md": "sha256:adc78025ff14101d6888f121dea747016fcd889d8c6f733e4e18ebc7117b09d9",
+        ".github/workflows/ci.yml": "sha256:41a21840404bd269a4b986d0bd41904302511d23479d4daced4547b71bbbd67c",
+        ".gitignore": "sha256:f5482bdc93438cbe849651a56659eabe2644fed2ffc3c367186de33f0b937fb6",
+        "CITATION.cff": "sha256:d5ad7580e968eac5d697548b1a204d9b1fef93aa3cebc15b2fd4ebd485e6075c",
+        "CONTRIBUTING.md": "sha256:0468d39c1204e9b231b707c9c0c0eec9a97a7b9d9122796e0b8f90ccb3f5ab66",
+        "INSTALL.md": "sha256:8f82f38d58dedd55df5548a3623d9bb2816fb4a25ad330cb2bb9d6a39c80f582",
+        "LICENSE": "sha256:4364a2b804d4c6e6c1ab47226c7b48b7364701e1827b83c600d0c4ba46d009ec",
+        "README.md": "sha256:a264e195d569f8e7b6a531b7c176cb2a985b37615a6f657eb5725287c2e15756",
+        "ROADMAP.md": "sha256:181ee6e90c613197d2b74576b4a4ae823183830608d7c6a289869f441ae9e209",
+        "SKILL.md": "sha256:d10a308e9980a09b3b480f594d579e7df343969250a08451afe26addf896ba46",
+        "colleague_skill.pdf": "sha256:b748a078404345546599b57f0139d1a00eaad814ccbc22ab21dac0013a7ce6da",
+        "docs/PRD.md": "sha256:6187817aa1c22a7de976bcd6ab1b0fb5dc6d8be9be507e8e5f716697a0d6d89d",
+        "docs/SKILL_TYPE_ABSTRACTION_DESIGN.md": "sha256:577892b74561d5602c7c31162939691757d5a6b285952ef978fc09772a95fedd",
+        "docs/SKILL_TYPE_ABSTRACTION_DESIGN_ZH.md": "sha256:75087306aeba50f78fce0220d126c8f3cb2d7e2e88234f2a5663d50925b0efac",
+        "docs/assets/wechat-group-qr-10.png": "sha256:89f63d4958880925765f1df9e0fc3e8171c2338c70f344ab88f189026269275a",
+        "docs/assets/wechat-group-qr-11.png": "sha256:5897b6550f37d51b8ec5222d081766b4053e4b946a41a70ad05b07ba6158071b",
+        "docs/assets/wechat-group-qr-12.png": "sha256:3dbb03d20a23492e17425eab309a60a00f90c5940eca77a5e5645216eae07f8f",
+        "docs/assets/wechat-group-qr-3.png": "sha256:5e9dab835e7b72950cc0b685516649c6c92b50306abf3706aed92113a9cb89cf",
+        "docs/assets/wechat-group-qr-5.png": "sha256:82da7e769f45da4cd240313c9d364e4079e4768cdbca24414e263ac1285717a3",
+        "docs/assets/wechat-group-qr-6.png": "sha256:272fd6c4102b32659c67ad8a7874888e11b4c7437d6619ff017374855d6015dc",
+        "docs/assets/wechat-group-qr-7.png": "sha256:9b203a68b20970d503f63efb15fca0f7f6d5f0d634dc718c6cd6752dc533e669",
+        "docs/assets/wechat-group-qr-8.png": "sha256:9ae7693db2aaf7413a999b37736e43c8722f4d8071d4f28a87382568f6696711",
+        "docs/assets/wechat-group-qr-9.png": "sha256:deb21a4e2dfd55ff50c16f69acbf389056223add0bd6940c8cb0c3c4abf58dfb",
+        "docs/lang/README_DE.md": "sha256:c3e7f73480d7ae375093bdddc5317557261937d73d3306b42e49c2277bcfe769",
+        "docs/lang/README_EN.md": "sha256:4460cd9392897bd7a716fe73edc043cd2702c26ebb06ead572a03f7a02661e4e",
+        "docs/lang/README_ES.md": "sha256:7054c228daa21a2d613c60b936b100c3e9185bb7456667ad2e5490b086fa7eba",
+        "docs/lang/README_JA.md": "sha256:824ec925afb263ce91de69f122500cac55fe15a2495dce64e928928c5cb6dffe",
+        "docs/lang/README_KO.md": "sha256:135eaee7ad4d8132f1a724d168f713fcf3e0fd355789629e983b01d7d5d4566d",
+        "docs/lang/README_PT.md": "sha256:8fffb79e4de7d3ef233d23be3f74f3178815d618ed6b5f545039ad6880ff0e2e",
+        "docs/lang/README_RU.md": "sha256:3c01fdc3b0c904fd3ed80b62d150bcbd4fdecf7e978866c01066078369b2ebb2",
+        "docs/lang/README_ZH.md": "sha256:a18cec351634206ce00dd45c6050758822aa52e3c9ab79f2aab188dee134d4b8",
+        "docs/lang/ROADMAP_DE.md": "sha256:f2865e0178b7085d96a510618a3ac9e2b7cc3bc6d5231f8c2faa9b29ad7e731e",
+        "docs/lang/ROADMAP_ES.md": "sha256:75157b1c9a49b04dccf9b3df02ac6a94f6f9906eb3b946bd66894286be6d3947",
+        "docs/lang/ROADMAP_JA.md": "sha256:1d185565219022a8ba20a5fc49ac4450591b6b10bfcbc1f831086b96ee6cbd20",
+        "docs/lang/ROADMAP_KO.md": "sha256:0c7544d117d996aa801c908a1001351cd24af758dfd4c2e0a3b82fd484db23d2",
+        "docs/lang/ROADMAP_PT.md": "sha256:e0c27f4164bf69dfbf8cd363b54c09c59b8f4adbc137a1ff7d3318a731a37874",
+        "docs/lang/ROADMAP_RU.md": "sha256:e65fed65db197fc1f83eff5264b72a6974dba6ca4e889eb283f38be8aa213566",
+        "docs/lang/ROADMAP_ZH.md": "sha256:9b37f602fc996172369035daa88b486a4ccd335e06367eb98c6bac5bb7b5763f",
+        "openarena-claim.txt": "sha256:fe2f47689097e05f7dbc98ad3dc68c7345a25a021a6e54c151bc98ce8c445c36",
+        "prompts/celebrity/budget_unfriendly/audit.md": "sha256:8c97a9f934ad95747f73a9dad0e0ad75e8851a268befaa3bdda7163585d91e81",
+        "prompts/celebrity/budget_unfriendly/persona_analyzer.md": "sha256:af6e63c89db946b2be18898cbc3d245f89806f9babeed7062a9608e20d975d2e",
+        "prompts/celebrity/budget_unfriendly/persona_builder.md": "sha256:db6a6c71e1c357fc31fe0a7cf20783f8013a768e7e16e89d499fa1ed263b2869",
+        "prompts/celebrity/budget_unfriendly/research.md": "sha256:ac493bf3f846ce57654c014b6281babe9b0a945fa371f4308cf882e9b15f6b5e",
+        "prompts/celebrity/budget_unfriendly/synthesis.md": "sha256:1a229d89a408f2cbd3c3541a598092bcb099c25f8d3201c26d760e6625e15c8a",
+        "prompts/celebrity/budget_unfriendly/validation.md": "sha256:1950582a19f5030e4e6bab0361c2a1cd7aee34519b7a742720dda6dae122435b",
+        "prompts/celebrity/intake.md": "sha256:d6a1df80b29b43438aa4fa144870eaf63673591d53bb42a8bbe013906b2d6aa4",
+        "prompts/celebrity/merger.md": "sha256:162a439816278f11fb968d14d2dc47ab3e362f7bd2ea9a9bbda1db2a7404a453",
+        "prompts/celebrity/persona_analyzer.md": "sha256:e01432e9decfe67c5104573a8d89982cca0ad080d23ba30c80b8c1445f52185e",
+        "prompts/celebrity/persona_builder.md": "sha256:f0f0cd9f6b4877a99684191ea8782cb6cd2f41363f89a2f49f39a4e5ca7911e6",
+        "prompts/celebrity/research.md": "sha256:e3b478fe0a6250b766c1d9c12b3073a17ebf8aa14ca20e2aff24baf65e1ca991",
+        "prompts/correction_handler.md": "sha256:1f99d3441a748b61a1cfde998dd7ba0ca9b105fda3763ebc2b6ac397153fcefd",
+        "prompts/intake.md": "sha256:5f354f22a1c39009b8de7e9ade48f42ffc7c753568663f9a780dd13f54742066",
+        "prompts/merger.md": "sha256:fc1800ecfee397056aba2b3e47ae862e9b3e3e09344081005303a5a7d61ec5e3",
+        "prompts/persona_analyzer.md": "sha256:1ed2bbc7d101f25bf4a7d20c2ff4e8dcfc95dd3122a0cf3ab96e9c3c8310d083",
+        "prompts/persona_builder.md": "sha256:1823c73dbd718a35900f11016cc92edca6b0d91add9f2495f9f895a0019f7f7d",
+        "prompts/relationship/intake.md": "sha256:11ed01ad302e2d7f66936e2120bb5baf4647574f2b5433bc2a7e30591f94c070",
+        "prompts/relationship/merger.md": "sha256:f5c1828fe2f7031819bb0b3fced724a39be58ac2fb09fd2aa9394c428e33dbe5",
+        "prompts/relationship/persona_analyzer.md": "sha256:5f130ba5dfb51e630b9cfa270d9494ab882edbc3f7581654c5865fb89e4c7905",
+        "prompts/relationship/persona_builder.md": "sha256:e6c3a989c2165635bf0de30b051f4fd0099e3635d8d04332a6382d7cd810f38d",
+        "prompts/work_analyzer.md": "sha256:3429e688fbba0269fc3b43c5d66ea06cbfcd187015c8653a26a4c6f52080e92d",
+        "prompts/work_builder.md": "sha256:46727ad0fcafd287c961c40fb7fbbd627bd9977a88fd463a3e503e7794c1f434",
+        "references/celebrity_budget_unfriendly_framework.md": "sha256:0a72c1feda96f832384cc7eb10742de825e71331291d66f1c1662d4d6843f82e",
+        "references/celebrity_budget_unfriendly_template.md": "sha256:9b95e03f65d8745b42c8518f24ce62d7100d35fa36f2e4a1289f5dbb5d5ddc97",
+        "requirements.txt": "sha256:f76fd3ba34bed66e0577bff06b39a54e8e105e44bb2d270f3bb720535912c878",
+        "skills/colleague/example_jiaxiu/meta.json": "sha256:ed0d81017169e2b06d32529e8e08950c8013fc2add54e6779b8b59079b4b6ac2",
+        "skills/colleague/example_jiaxiu/persona.md": "sha256:882067cb6d35cc0edbdb411053fd6e447e192e84abeb15c8f70ac8bd3234dd20",
+        "skills/colleague/example_jiaxiu/work.md": "sha256:5eb0ee3fca68a12cc93b569cf609f8244f41acdbdcb7151c0436746edba1b60d",
+        "skills/colleague/example_tianyi/meta.json": "sha256:8b0de07f3f734946a06b6f7deb8b99fd6b73cbb3938185acb1e4fd41f507687d",
+        "skills/colleague/example_tianyi/persona.md": "sha256:2836acf105aa753e88ed5efccc657131875b58e160fa7ea2f8d8048f99739bc0",
+        "skills/colleague/example_tianyi/work.md": "sha256:944a1fe77b7e71395bd8cb969d7d540679c40ee8d198ddc6ff3ffb8ef466d6b9",
+        "skills/colleague/example_zhangsan/meta.json": "sha256:fc0ec381133466371ef0811c8760d5b9e830d5846937728f5d637acda1c21c0d",
+        "skills/colleague/example_zhangsan/persona.md": "sha256:9331ac4574cac394c0ee41e9d50d581b753fb7bc79c72e01269fa5a0af07adbf",
+        "skills/colleague/example_zhangsan/work.md": "sha256:2e3b3af8b7b404130e10d89934a0102758f4205f6a66a13e27959a237e895e09",
+        "tests/test_cli_lifecycle.py": "sha256:92395a3ea666e836d482c105933d8a97d41f35be8095a178792cd39ec952af03",
+        "tests/test_install_claude_generated_skill.py": "sha256:0e600273e8699855077bd95434db43c7ff837973479a80cbea34312bd9812946",
+        "tests/test_install_hermes_skill.py": "sha256:00e1f7e1aa2bdaf427c75f4efccb12bfc9aa660b78a4b97760438f43c68e72f6",
+        "tests/test_install_openclaw_and_codex.py": "sha256:724bb62c64ec6b44b08ec5888c8a1f897d29199f58c1f55c2334daa9b1652268",
+        "tests/test_research_tools.py": "sha256:cadedbf34efe0ebe9657a8d94983b472380011e2d003b21940e7890106aa25c2",
+        "tests/test_skill_entrypoint_docs.py": "sha256:d96142813f0e11c5d8cbba76db618ed125da17ee5065a838869dcd44fa630c2c",
+        "tests/test_skill_writer.py": "sha256:7c1633e3fe4e2de6d911c1933ad73594821b06d43a74008fe3053b27bb7f1de2",
+        "tools/dingtalk_auto_collector.py": "sha256:0ff3406b4391c873fa0db37e7057a684c2a298da5daf4e0b780ccfd7f99e45df",
+        "tools/email_parser.py": "sha256:abe095688bfd0cddd66e9fa9c6f070360d26ba456e91a6e00dfc45444ecb632c",
+        "tools/feishu_auto_collector.py": "sha256:279f8279b7e7c989f9090263bcd4a33d44b3ac58cc85bc230a820151125d426c",
+        "tools/feishu_browser.py": "sha256:1b0827bbefacedcd6d490c59a0e3ea51048a7e49750228bfa873ca34719d4998",
+        "tools/feishu_mcp_client.py": "sha256:37065a8a8767b9d46ddd41f117dab79b04a69056a046d3366e52a4a70238f1c5",
+        "tools/feishu_parser.py": "sha256:92df525cf66fa3e11422508abf67ad4c306d3cf07622eb027ce12a095d5a230e",
+        "tools/install_claude_generated_skill.py": "sha256:c66f1aa8a0a9587a590ea6f140bab97efa00f19d9338ab5ba0fc257b1b07e6de",
+        "tools/install_codex_generated_skill.py": "sha256:bd38d3b6ed7a158fa7c7b61569a30469f06445782c46bfef5569a918c50b9b0e",
+        "tools/install_codex_skill.py": "sha256:3ce3e3357edff0707b8346ebb1c62cbb0f5be31a861fc2c2b8639fb0f3fc5a1e",
+        "tools/install_generated_skill_common.py": "sha256:cdfe72b1036407d7eaa2511522ce5c9b50acc7b29341674083ad47b0faeed8da",
+        "tools/install_hermes_skill.py": "sha256:a40ff1b727d66890b6b0406f5d546c47eb0121d0ae031376aea4082f1423d3d8",
+        "tools/install_openclaw_generated_skill.py": "sha256:e93321780e77dd04db406461e5467cf62ace585e3a1bd1a3f84c98117d0fbad1",
+        "tools/install_openclaw_skill.py": "sha256:c654771e5a0051fa47ab3bc7339767cdfbdee6590e7cce23c91b114196693e9e",
+        "tools/research/__init__.py": "sha256:093815a5bbb26f7ae67a70bf1c94c967b6f9b426e9c4909d5c3d12987ac8008f",
+        "tools/research/download_subtitles.sh": "sha256:cf73e689e5c0215a2e4e7d455e699a810cb0165540a5ee5c01360fe07be0408e",
+        "tools/research/merge_research.py": "sha256:8a5e95e4a79c0ab4110660a5e441427e96b5cd7d111bf1f06b22d856d3d0de06",
+        "tools/research/quality_check.py": "sha256:8c543e463dc01f5950319ce582a4a5ce7dea0073c65d0e3c23908d57b12b8866",
+        "tools/research/srt_to_transcript.py": "sha256:14886d9362c799088f8cf7cd57c1a3677a5649d6408136d7d2a058f2ab21a310",
+        "tools/research/transcribe_audio.py": "sha256:2449a643d289a5ff1428fb3264109e63d10ae7311c880cc98653e19bceca1139",
+        "tools/skill_presets.py": "sha256:7b8b7a3e80658d52302429c47cb65fedf7da382441994def85d0d8d237cf7dcc",
+        "tools/skill_schema.py": "sha256:955b7708d017cb5893914b18a4c8b2c2292f3a09c858196730ea882d4bb82df3",
+        "tools/skill_writer.py": "sha256:72a1a7a515f2f5d62e536bcf0d3c46585b0ccfdb9a6608a1b536b168501baca0",
+        "tools/slack_auto_collector.py": "sha256:3f53a685d5fa354d0a3b50dc30d081ff0e497ad221836175bf870978b8ae5e2a",
+        "tools/version_manager.py": "sha256:19f4d813b575674da8f69c21aa03884c98fdd63e530b2b15de6bc4ea0217ba65"
+      }
+    },
+    "gh": {
+      "source": "https://github.com/cli/cli/blob/trunk/skills/gh/SKILL.md",
+      "type": "github-subdir",
+      "installed_at": "2026-06-20T17:07:38.601438759+08:00",
+      "repo_url": "https://github.com/cli/cli.git",
+      "subdir": "skills/gh",
+      "version": "0274077",
+      "tree_hash": "cc6ec4740cd90d35fdec0bb125ccbd5ad38e98e0",
+      "file_hashes": {
+        "SKILL.md": "sha256:7ed50736f6954da4cd73f9b7a5b1f004ae12c31ba437f78c160c40ceecf84f8f"
+      }
+    },
     "gh-apps": {
       "source": "https://github.com/fairchild/dotclaude/blob/main/skills/gh-apps/SKILL.md",
       "type": "github-subdir",
@@ -88,20 +250,71 @@
         "SKILL.md": "sha256:f9abafc4616df74f7235ae49c616e6a470c41cb47c5208c0227bab9c28e26e1b"
       }
     },
-    "skillshare": {
-      "source": "https://github.com/runkids/skillshare/tree/main/skills/skillshare",
+    "obsidian-markdown": {
+      "source": "https://github.com/kepano/obsidian-skills/blob/main/skills/obsidian-markdown/",
       "type": "github-subdir",
-      "installed_at": "2026-06-17T14:19:45.3009862+08:00",
+      "installed_at": "2026-06-18T23:28:59.812419014+08:00",
+      "repo_url": "https://github.com/kepano/obsidian-skills.git",
+      "subdir": "skills/obsidian-markdown/",
+      "version": "a1dc48e",
+      "tree_hash": "4723197c6dc59abc29819da87863b1ac20b96095",
+      "file_hashes": {
+        "SKILL.md": "sha256:7ad72e1f0a9081ed325e76b6402ad5de50a00e63e2341fd403a92f147234a007",
+        "references/CALLOUTS.md": "sha256:9912ec2e3f8711f65b8ceb82cc19cbffc5e6f8ccf2ab627e18926c522c383d8b",
+        "references/EMBEDS.md": "sha256:63b6205507e28fb58cf200bc348a2b139e50ae739743e2e6316732148973cb7a",
+        "references/PROPERTIES.md": "sha256:392953b5838c3ab3df135b5a914f100ae7b95e4501b6a2e5c8dc63da3ac7558b"
+      }
+    },
+    "opencli-autofix": {
+      "source": "github.com/jackwener/opencli/skills/opencli-autofix",
+      "type": "github-subdir",
+      "installed_at": "2026-06-22T18:52:12.86316098+08:00",
+      "repo_url": "https://github.com/jackwener/opencli.git",
+      "subdir": "skills/opencli-autofix",
+      "version": "e5bbce4",
+      "tree_hash": "1f9cc52aa2fb2d927b5585de7ae649556f3b683b",
+      "file_hashes": {
+        "SKILL.md": "sha256:5799561d917650a6204f248d684e2d2695dc3787fffeebb6649b57d8f9264855"
+      }
+    },
+    "opencli-browser": {
+      "source": "github.com/jackwener/opencli/skills/opencli-browser",
+      "type": "github-subdir",
+      "installed_at": "2026-06-22T18:52:13.007571495+08:00",
+      "repo_url": "https://github.com/jackwener/opencli.git",
+      "subdir": "skills/opencli-browser",
+      "version": "e5bbce4",
+      "tree_hash": "e803d201073f077e0a542d21336cc104a9cd4120",
+      "file_hashes": {
+        "SKILL.md": "sha256:c51aaa1695d529fc4479788088ab0054642fa0f1f902ecb58867dd0b8418a7b0"
+      }
+    },
+    "opencli-usage": {
+      "source": "github.com/jackwener/opencli/skills/opencli-usage",
+      "type": "github-subdir",
+      "installed_at": "2026-06-22T18:52:13.029599314+08:00",
+      "repo_url": "https://github.com/jackwener/opencli.git",
+      "subdir": "skills/opencli-usage",
+      "version": "e5bbce4",
+      "tree_hash": "03df6b2a0e2e7ef187b62d5e1471b85a92e34f48",
+      "file_hashes": {
+        "SKILL.md": "sha256:12385878029824ae2ea2d06d5d6edf4a4e55aea0703226424ac85f0b0e5274eb"
+      }
+    },
+    "skillshare": {
+      "source": "github.com/runkids/skillshare/skills/skillshare",
+      "type": "github-subdir",
+      "installed_at": "2026-06-20T17:10:04.579576848+08:00",
       "repo_url": "https://github.com/runkids/skillshare.git",
       "subdir": "skills/skillshare",
-      "version": "c09968d",
-      "tree_hash": "fc99e0babe3eb47d72c477b3d447ea8a2730dc76",
+      "version": "dd7f14c",
+      "tree_hash": "aefeaaaf79e8b92e66cf3baf1f891177533b098e",
       "file_hashes": {
-        "SKILL.md": "sha256:801eb3df30d35e7f6d83c40e9189c41df5683bddf75522a086e6384826936043",
+        "SKILL.md": "sha256:22a2ee8dfed03a66ceb0341b5a178f3eeb8ea3cb27424347298821cb07b0d1a6",
         "references/TROUBLESHOOTING.md": "sha256:14855dbd2f20ad7042941959f257c79f768d103e89e55d74d8c3b3d38f9ff5ee",
         "references/audit.md": "sha256:85a31c32f17f39ce2baa5189a8004c6adec506e5fcf7d20378caa103b015fd5d",
         "references/backup.md": "sha256:96e2e8d5e2d7cfb8765c2eebb4e6d733b79258de8b3d974fca8972557f7326a6",
-        "references/extras.md": "sha256:27529c7fba6335efabb38a2a5dac1c0e4a0b79d16d0188d3f98dad2068ec4bdf",
+        "references/extras.md": "sha256:c133ccb6a2da342fbf05919c27855cb1de124042f8654396e50ee82a2b7e40e1",
         "references/init.md": "sha256:41d99a2a49f576e1a2354312856ccf730f8d19d4c8d35c592585d40bc2d14d82",
         "references/install.md": "sha256:2b444bfcd211fae59421631ecd49331b4de287c311354f8ed3ca19f204d223db",
         "references/log.md": "sha256:406e85525f53f4deaa0f48bf8b3b53db3e032b99f5a0e926c84542d51b3a3625",
@@ -110,6 +323,26 @@
         "references/targets.md": "sha256:130b0b07b17a88d4bc09af0262a6b161421946f5442295dc5bc828f95226763e",
         "references/trash.md": "sha256:fb94aa6b71d469fa8f6b5e728fcab531b6eb010a2092389b02eaaadf3ebc98cf",
         "scripts/run.sh": "sha256:e434ebdb7d3ae0b37c00ddc36687bc975da9e766b8cb863f9aed9a624ebbdfa9"
+      }
+    },
+    "smart-search": {
+      "source": "github.com/jackwener/opencli/skills/smart-search",
+      "type": "github-subdir",
+      "installed_at": "2026-06-22T18:52:13.04611341+08:00",
+      "repo_url": "https://github.com/jackwener/opencli.git",
+      "subdir": "skills/smart-search",
+      "version": "e5bbce4",
+      "tree_hash": "2d42a77425f4d8b740610e6d91c670ae76f5c47f",
+      "file_hashes": {
+        "SKILL.md": "sha256:0aa29dfe8c17816f00022047eab3121e646f60f31a671b0765fd01f8c26c0f01",
+        "references/sources-ai.md": "sha256:5344850a64d59fe2321cf5874c0025552ec0e19a22f16c5aefb9b73d58ea978c",
+        "references/sources-info.md": "sha256:ca547f784c68254cf650ee335ae036f5b4a60bf5ce85b03ad3bc40aab09a4376",
+        "references/sources-media.md": "sha256:09edcc8183de16a73d55569f08634c970f54470455378d8047e16d2e926f15f5",
+        "references/sources-other.md": "sha256:f77710ec37d07cbe63283741502f4449b9df256486e5235ff27380895129aa9c",
+        "references/sources-shopping.md": "sha256:e597974beb33e3149a6abf8b2143bdc3fa3e5ab7e800f56f2583c6185ff810aa",
+        "references/sources-social.md": "sha256:195a41e3eb4fb72358de2c2b5106c3333ca95264cee1f42419b89188febbe45d",
+        "references/sources-tech.md": "sha256:543c5d1d5b43289fd292d832ce0e13914ece587643ce94c5ea9b667665385650",
+        "references/sources-travel.md": "sha256:ba3b28ed9d75e7d4dffeff977a6e66ca51c704bec3fb75b1ff1493b4d35ed840"
       }
     },
     "tavily-cli": {
@@ -175,6 +408,8 @@
     "xiaohongshu-cli": {
       "source": "github.com/jackwener/xiaohongshu-cli",
       "type": "github",
+      "tracked": true,
+      "branch": "main",
       "installed_at": "2026-06-17T16:44:34.6096532+08:00",
       "repo_url": "https://github.com/jackwener/xiaohongshu-cli.git",
       "version": "4d63f3c",
@@ -232,9 +467,23 @@
         "xhs_cli/signing.py": "sha256:8a4cc5c7ee3d4597ddd1d1e2184a922c49f365d08b238a3a648bc5e23ec30cfa"
       }
     },
+    "zhihu-cli": {
+      "source": "https://github.com/BAIGUANGMEI/zhihu-cli/skill",
+      "type": "github-subdir",
+      "installed_at": "2026-06-19T00:27:02.390001554+08:00",
+      "repo_url": "https://github.com/BAIGUANGMEI/zhihu-cli.git",
+      "subdir": "skill",
+      "version": "8e32b99",
+      "tree_hash": "eb314ba6e4daa0eb6fab1ba49d6b1cfb5c1a946f",
+      "file_hashes": {
+        "SKILL.md": "sha256:9bb56218ec49483af276f4f1ae1d5fba8b3fa9b0f3695bf94b62dfa2cede3842"
+      }
+    },
     "zread-skill": {
       "source": "https://github.com/ZreadAI/zread-skill",
       "type": "github",
+      "tracked": true,
+      "branch": "main",
       "installed_at": "2026-06-17T15:07:25.8772528+08:00",
       "repo_url": "https://github.com/ZreadAI/zread-skill.git",
       "version": "9b96f04",

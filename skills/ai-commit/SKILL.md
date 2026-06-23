@@ -30,6 +30,11 @@ user.name use the actual model and harness tool in use, for examples:
 - `GPT-4o - Cursor`
 - `Gemini 2.5 Pro - Windsurf`
 
+**Model name normalization:** strip any bracketed suffixes like `[1m]` or
+`(latest)` that some hosts append to the model id (e.g. `MiniMax-M3[1m]`
+must become `MiniMax-M3`). The author name should be the bare model id
+plus `- ` plus the harness name — nothing else.
+
 ### 2. Add Co-Author Trailer
 
 Append the real user as co-author:
