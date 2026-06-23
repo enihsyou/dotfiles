@@ -47,6 +47,10 @@ Append the real user as co-author:
 
 pass `--no-gpg-sign` to disable GPG signing, as the bot won't have access to the user's GPG keys.
 
+> **Note:** `--trailer` 是 `git commit` 自带的参数（语法：`--trailer "<token>[(=|:)<value>]"`），
+> 用来追加尾注（如 `Co-Authored-By:`），不需要把 trailer 塞进 `-m` 消息体里。
+> 用 `git commit -h | grep -i trailer` 可快速确认。
+
 ## Full Command Example
 
 ```bash
