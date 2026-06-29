@@ -2,7 +2,9 @@ version: 3
 
 tasks:
   self-sign-pfx:
-    desc: Generate aria2.pfx
+    desc: |
+      Generate aria2.pfx
+      [DEPRECATED] Use `letsencrypt-renew` instead.
     cmds:
       - step ca certificate aria2 aria2.crt.pem aria2.key.pem
         --force --kty=RSA --size=2048
@@ -34,3 +36,9 @@ tasks:
             -in /etc/letsencrypt/live/amd-9700x-lan.lan.kokomi.site/cert.pem \
             -inkey /etc/letsencrypt/live/amd-9700x-lan.lan.kokomi.site/privkey.pem
         EOF
+      - task: restart-aria2
+
+  restart-aria2:
+    desc: Restart aria2 service
+    cmds:
+      - sudo nssm restart aria2
