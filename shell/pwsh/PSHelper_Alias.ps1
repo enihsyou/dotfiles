@@ -10,11 +10,6 @@ Function which_GetCommand_SourceOnly {
     }
     return ''
 }
-Function help_ShowWindow {
-    # I'd like to see help content in a separate window
-    param([string]$Name)
-    Get-Help -ShowWindow -Name $Name
-}
 
 # msys2 alias
 Function msys2_launcher {
@@ -36,7 +31,6 @@ Set-Alias -Name msys -Value ucrt64
 # which 和 touch 在 x-cmd 中有更好的实现，如果 source 了它会覆盖掉这里
 Set-Alias -Name which -Value which_GetCommand_SourceOnly
 Set-Alias -Name touch -Value New-Item
-Set-Alias -Name help -Value help_ShowWindow
 Set-Alias -Name open -Value explorer
 
 # findstr 不好用，既然要换就换好的

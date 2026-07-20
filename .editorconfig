@@ -52,6 +52,9 @@ indent_size = 2
 # 保留行尾空白用于换行
 trim_trailing_whitespace = false
 
+[Caddyfile,*.caddyfile]
+indent_size = 8
+
 [*.reg]
 # https://gist.github.com/SalviaSage/8eba542dc27eea3379a1f7dad3f729a0
 charset = utf-16le
