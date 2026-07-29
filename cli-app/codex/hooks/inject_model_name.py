@@ -8,28 +8,9 @@ import sys
 from collections.abc import Mapping
 from typing import Any
 
+import model_catalog
+
 _MAX_MODEL_LEN = 256
-_MODEL_BRAND_NAMES = {
-    "gpt-4": "GPT-4",
-    "gpt-4o": "GPT-4o",
-    "gpt-4o-mini": "GPT-4o Mini",
-    "gpt-4.1": "GPT-4.1",
-    "gpt-4.1-mini": "GPT-4.1 Mini",
-    "gpt-4.1-nano": "GPT-4.1 Nano",
-    "gpt-4.5": "GPT-4.5",
-    "gpt-5": "GPT-5",
-    "gpt-5-mini": "GPT-5 Mini",
-    "gpt-5-nano": "GPT-5 Nano",
-    "gpt-5.1": "GPT-5.1",
-    "gpt-5.1-codex": "GPT-5.1 Codex",
-    "gpt-5.2": "GPT-5.2",
-    "gpt-5.2-codex": "GPT-5.2 Codex",
-    "gpt-5.3-codex": "GPT-5.3 Codex",
-    "gpt-5.4": "GPT-5.4",
-    "gpt-5.4-codex": "GPT-5.4 Codex",
-    "gpt-5.6-luna": "GPT-5.6 Luna",
-    "gpt-5.6-sol": "GPT-5.6 Sol",
-}
 
 
 def _read_stdin() -> str:
@@ -66,7 +47,7 @@ def _extract_model(payload: Mapping[str, Any]) -> str | None:
 
 def _model_brand_name(model: str) -> str:
     """Convert a model slug to its stable brand name when known."""
-    return _MODEL_BRAND_NAMES.get(model.casefold(), model)
+    return model_catalog.model_brand_name(model)
 
 
 def _emit(output: Mapping[str, Any]) -> None:

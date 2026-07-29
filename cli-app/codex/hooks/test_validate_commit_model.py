@@ -10,6 +10,7 @@ from contextlib import redirect_stdout
 from typing import Any
 from unittest.mock import patch
 
+import model_catalog
 import validate_commit_model
 
 BOT_EMAIL = "292837902+arapacati[bot]@users.noreply.github.com"
@@ -17,6 +18,16 @@ BOT_EMAIL = "292837902+arapacati[bot]@users.noreply.github.com"
 
 class ValidateCommitModelHookTests(unittest.TestCase):
     """Verify commit identity matching and denial behavior."""
+
+    def setUp(self) -> None:
+        """Keep hook tests offline and provide a deterministic catalog fallback."""
+        self.online_catalog = patch.object(
+            model_catalog,
+            "_load_online_model_names",
+            return_value={},
+        )
+        self.online_catalog.start()
+        self.addCleanup(self.online_catalog.stop)
 
     def _run_hook(
         self,
@@ -48,6 +59,15 @@ class ValidateCommitModelHookTests(unittest.TestCase):
     def test_slug_matches_known_model(self) -> None:
         """The raw slug remains accepted for compatibility with existing commits."""
         self.assertIsNone(self._run_hook("gpt-5.6-sol", "gpt-5.6-sol - Codex"))
+
+    def test_online_catalog_name_is_used_for_validation(self) -> None:
+        """The validator should accept the display name supplied by the catalog."""
+        with patch.object(
+            model_catalog,
+            "_load_online_model_names",
+            return_value={"gpt-5.6-sol": "Online Sol"},
+        ):
+            self.assertIsNone(self._run_hook("gpt-5.6-sol", "Online Sol - Codex"))
 
     def test_mismatched_model_is_denied(self) -> None:
         """A different model in user.name should produce a denial response."""
