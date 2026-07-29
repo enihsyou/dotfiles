@@ -27,13 +27,16 @@ Commit code using GitHub App **Arapacati** identity with proper attribution.
 user.name use the actual model and harness tool in use, for examples:
 - `MiMo V2.5 - Claude Code`
 - `Claude Opus 4.8 - OpenCode`
-- `GPT-4o - Cursor`
+- `GPT-5.6 Sol - Codex`
 - `Gemini 2.5 Pro - Windsurf`
 
 **Model name normalization:** strip any bracketed suffixes like `[1m]` or
 `(latest)` that some hosts append to the model id (e.g. `MiniMax-M3[1m]`
 must become `MiniMax-M3`). The author name should be the bare model id
 plus `- ` plus the harness name — nothing else.
+
+If model name is dashed-lowercase e.g. `gpt-5.6-luna`, guess the model brand name from context appropriately.
+For example, GPT series use `GPT-<version> <codename>` format. So `gpt-5.6-luna` becomes `GPT-5.6 Luna`. Fallback to what you know exactly about the name if uncertain.
 
 ### 2. Add Co-Author Trailer
 

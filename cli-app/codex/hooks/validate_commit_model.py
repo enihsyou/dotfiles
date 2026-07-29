@@ -12,6 +12,27 @@ from collections.abc import Iterator, Mapping
 from typing import Any, NoReturn
 
 _BOT_EMAIL_RE = re.compile(r"(?i)^.*\[bot\]@users\.noreply\.github\.com$")
+_MODEL_BRAND_NAMES = {
+    "gpt-4": "GPT-4",
+    "gpt-4o": "GPT-4o",
+    "gpt-4o-mini": "GPT-4o Mini",
+    "gpt-4.1": "GPT-4.1",
+    "gpt-4.1-mini": "GPT-4.1 Mini",
+    "gpt-4.1-nano": "GPT-4.1 Nano",
+    "gpt-4.5": "GPT-4.5",
+    "gpt-5": "GPT-5",
+    "gpt-5-mini": "GPT-5 Mini",
+    "gpt-5-nano": "GPT-5 Nano",
+    "gpt-5.1": "GPT-5.1",
+    "gpt-5.1-codex": "GPT-5.1 Codex",
+    "gpt-5.2": "GPT-5.2",
+    "gpt-5.2-codex": "GPT-5.2 Codex",
+    "gpt-5.3-codex": "GPT-5.3 Codex",
+    "gpt-5.4": "GPT-5.4",
+    "gpt-5.4-codex": "GPT-5.4 Codex",
+    "gpt-5.6-luna": "GPT-5.6 Luna",
+    "gpt-5.6-sol": "GPT-5.6 Sol",
+}
 
 
 class _ArgumentParser(argparse.ArgumentParser):
@@ -57,6 +78,11 @@ def _extract_model(payload: Mapping[str, Any]) -> str | None:
     if not isinstance(model, str) or not model.strip():
         return None
     return model.strip()
+
+
+def _model_brand_name(model: str) -> str:
+    """Convert a model slug to its stable brand name when known."""
+    return _MODEL_BRAND_NAMES.get(model.casefold(), model)
 
 
 def _split_commands(command: str) -> Iterator[str]:
@@ -169,13 +195,17 @@ def main() -> int:
     if identity is None:
         return 0
 
-    actual_model = _extract_model(payload)
-    if actual_model is None:
+    actual_slug = _extract_model(payload)
+    if actual_slug is None:
         _deny("Commit denied: the current model name is unavailable in the hook input.")
         return 0
 
+    actual_model = _model_brand_name(actual_slug)
     claimed_model = _attributed_model(identity[0])
-    if claimed_model is None or _normalize_model(claimed_model) != _normalize_model(actual_model):
+    if claimed_model is None or _normalize_model(claimed_model) not in {
+        _normalize_model(actual_slug),
+        _normalize_model(actual_model),
+    }:
         _deny(
             f"Commit denied: the current model is {actual_model}; "
             f"user.name claims {claimed_model or identity[0]}."
