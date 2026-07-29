@@ -36,8 +36,7 @@ $Env:PSModulePath=@(
 ) -Join ';'
 
 # 设置终端字符集
-# 文件目前没内容，注释掉少加载一个文件节约 2ms
-#. $env:DOTFILES\shell\pwsh\PSHelper_Encoding.ps1
+. $env:DOTFILES\shell\pwsh\PSHelper_Encoding.ps1
 # 注入环境变量
 . $env:DOTFILES\shell\pwsh\PSHelper_Environment.ps1
 #------------------------------- Setup Runtime DONE -------------------------------
