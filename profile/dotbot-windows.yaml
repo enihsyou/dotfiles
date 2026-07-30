@@ -38,6 +38,7 @@
     ~/AppData/Roaming/skillshare/skills/.metadata.json: cli-app/skillshare/skills/metadata.json
     ~/.config/oh-my-posh/enihsyou.omp.toml: cli-app/oh-my-posh/enihsyou.omp.toml
     ~/.config/fastfetch/config.jsonc: cli-app/fastfetch/config.jsonc
+    ~/.codex/agents: cli-app/codex/agents
     ~/.codex/hooks: cli-app/codex/hooks
 
     ~/AppData/Roaming/AutoDarkMode/scripts.yaml: gui-app/AutoDarkMode/scripts.yaml
