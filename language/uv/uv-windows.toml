@@ -3,8 +3,8 @@ python-install-mirror = "https://mirror.nju.edu.cn/github-release/indygreg/pytho
 cache-dir = "G:/AppData/uv/cache"
 
 [[index]]
+name = "aliyun"
 url = "https://mirrors.cernet.edu.cn/pypi/web/simple"
 default = true
-
-[[index]]
-url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
+# 否则会遇到 missing an upload date 错误并无法拉取包
+exclude-newer = false

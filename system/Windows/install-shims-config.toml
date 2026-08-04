@@ -36,8 +36,8 @@ sources = [
     "C:/Program Files/GitHub CLI/gh.exe",
     # openssl from Git for Windows
     "C:/Program Files/Git/mingw64/bin/openssl.exe",
-    "C:/Program Files/Vim/vim92/vim.exe",
-    "C:/Program Files/Vim/vim92/gvim.exe",
+    "C:/Program Files/Vim/vim.exe",
+    "C:/Program Files/Vim/gvim.exe",
     "D:/Program Files/imhex/imhex-gui.exe",
     "C:/Program Files/Graphviz/bin/dot.exe",
     # YubiKey Manager CLI - 省去在 PATH 中添加目录
