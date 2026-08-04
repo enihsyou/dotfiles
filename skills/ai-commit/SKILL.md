@@ -64,13 +64,15 @@ git -c user.name="MiMo V2.5 - Claude Code" -c user.email="292837902+arapacati[bo
 
 Only when the user asks the AI Agent to perform `git push` against a GitHub remote, authenticate with the Arapacati installation access token embedded in the URL. This bypasses Git Credential Manager prompts that hang on Windows.
 
+Important: complete the token generation and git push in one command using command substitution, otherwise the token will be visible to the outside.
+
 ### 1. Get Installation Token
 
 ```bash
 python <skill_base_dir>/../gh-apps/scripts/gh-apps.py --app arapacati token
 ```
 
-Resolves to `~/.agents/skills/gh-apps/scripts/gh-apps.py` — see the `gh-apps` skill.
+Normally, it resolves to `~/.agents/skills/gh-apps/scripts/gh-apps.py`, try it first — see the `gh-apps` skill.
 
 ### 2. Replace TOKEN in the URL
 
