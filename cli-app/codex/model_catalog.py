@@ -29,6 +29,7 @@ MODEL_BRAND_NAMES = {
     "gpt-5.2": "GPT-5.2",
     "gpt-5.2-codex": "GPT-5.2 Codex",
     "gpt-5.3-codex": "GPT-5.3 Codex",
+    "gpt-5.3-codex-spark": "GPT-5.3 Codex Spark",
     "gpt-5.4": "GPT-5.4",
     "gpt-5.4-codex": "GPT-5.4 Codex",
     "gpt-5.6-luna": "GPT-5.6 Luna",
