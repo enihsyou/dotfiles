@@ -1,0 +1,35 @@
+prefix_rule(
+    pattern = ["git", "fetch"],
+    decision = "allow",
+)
+
+prefix_rule(
+    pattern = ["git", "commit"],
+    decision = "allow",
+    justification = "Allow creating commits from any repository",
+)
+
+prefix_rule(
+    pattern = ["git", "add", "--"],
+    decision = "allow",
+)
+
+prefix_rule(
+    pattern = [
+        "git",
+        "-c",
+        [
+            "user.name=GPT-5.6 Sol - Codex",
+            "user.name=GPT-5.6 Terra - Codex",
+            "user.name=GPT-5.6 Luna - Codex",
+        ],
+        "-c",
+        "user.email=292837902+arapacati[bot]@users.noreply.github.com",
+        "commit",
+        "--no-gpg-sign",
+        "--trailer=Co-Authored-By: 九条涼果 <enihsyou@gmail.com>",
+        "-m",
+    ],
+    decision = "allow",
+    justification = "Allow GPT-5.6 Codex models to create commits",
+)

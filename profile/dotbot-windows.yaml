@@ -40,6 +40,7 @@
     ~/.config/fastfetch/config.jsonc: cli-app/fastfetch/config.jsonc
     ~/.codex/agents: cli-app/codex/agents
     ~/.codex/hooks: cli-app/codex/hooks
+    ~/.codex/rules: cli-app/codex/rules
 
     ~/AppData/Roaming/AutoDarkMode/scripts.yaml: gui-app/AutoDarkMode/scripts.yaml
 
