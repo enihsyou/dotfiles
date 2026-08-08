@@ -83,21 +83,29 @@ Set-Alias -Name lss -Value eza -Description "a modern replacement for ls"
 function powermode {
     param([string]$Mode)
 
-    if ([string]::IsNullOrWhiteSpace($Mode)) {
+    $powerModes = @{
+        '1' = @{ Guid = 'a1841308-3541-4fab-bc81-f71556f20b4a'; GpuTask = 'GPU-PowerMode-Eco' } # 节能
+        '2' = @{ Guid = '381b4222-f694-41f0-9685-ff5bb260df2e'; GpuTask = 'GPU-PowerMode-Normal' } # 平衡
+        '3' = @{ Guid = '8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c'; GpuTask = 'GPU-PowerMode-Performance' } # 高性能
+    }
+
+    if ([string]::IsNullOrWhiteSpace($Mode) -or -not $powerModes.ContainsKey($Mode)) {
         Write-Host 'Usage: powermode <1|2|3>'
-        Write-Host '  1 = 节能'
-        Write-Host '  2 = 平衡'
-        Write-Host '  3 = 高性能'
+        Write-Host '  1 = Windows 节能计划 + GPU 100W'
+        Write-Host '  2 = Windows 平衡计划 + GPU 默认功耗'
+        Write-Host '  3 = Windows 高性能计划 + GPU 默认功耗的 105%'
         powercfg /l
         return
     }
 
-    $guids = @{
-        '1' = 'a1841308-3541-4fab-bc81-f71556f20b4a' # 节能
-        '2' = '381b4222-f694-41f0-9685-ff5bb260df2e' # 平衡
-        '3' = '8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c' # 高性能
+    $selectedMode = $powerModes[$Mode]
+    powercfg /s $selectedMode.Guid
+    schtasks.exe /run /tn $selectedMode.GpuTask | Out-Null
+    if ($LASTEXITCODE -ne 0) {
+        schtasks.exe /query /tn $selectedMode.GpuTask *> $null
+        if ($LASTEXITCODE -ne 0) {
+            Write-Host '找不到 GPU PowerMode 计划任务，请运行 register-gpu-powermode-tasks.ps1 注册。'
+        }
     }
-
-    powercfg /s $guids[$Mode]
     powercfg /l
 }
