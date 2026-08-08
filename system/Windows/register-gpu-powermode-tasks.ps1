@@ -83,14 +83,8 @@ function Register-GpuPowerTask {
 Assert-Administrator
 Write-RegistrationProgress '开始注册 GPU PowerMode 计划任务。'
 
-if ($PSVersionTable.PSEdition -eq 'Core') {
-    Write-RegistrationProgress '加载 Windows 计划任务模块。'
-    Import-Module ScheduledTasks -UseWindowsPowerShell
-}
-else {
-    Write-RegistrationProgress '加载 Windows 计划任务模块。'
-    Import-Module ScheduledTasks
-}
+Write-RegistrationProgress '加载 Windows 计划任务模块。'
+Import-Module ScheduledTasks
 
 Write-RegistrationProgress '读取 GPU 的 VBIOS 功耗范围。'
 $nvidiaSmi = (Get-Command nvidia-smi.exe -ErrorAction Stop).Source
@@ -110,14 +104,16 @@ foreach ($taskName in $taskNames) {
 }
 Write-Host
 
-$performanceLimit = [Math]::Min($limits.Maximum, [Math]::Round($limits.Default * 1.05, 0))
+$ecoLimit = $limits.Minimum
+$normalLimit = [Math]::Round($limits.Default * 0.75, 0)
+$performanceLimit = $limits.Default
 
 Write-Host "[$(Get-Date -Format 'HH:mm:ss')] 创建新计划任务" -NoNewline
-Register-GpuPowerTask -TaskName 'GPU-PowerMode-Eco' -NvidiaSmi $nvidiaSmi -Index $GpuIndex -PowerLimit $limits.Minimum
+Register-GpuPowerTask -TaskName 'GPU-PowerMode-Eco' -NvidiaSmi $nvidiaSmi -Index $GpuIndex -PowerLimit $ecoLimit
 Write-Host '.' -NoNewline
-Register-GpuPowerTask -TaskName 'GPU-PowerMode-Normal' -NvidiaSmi $nvidiaSmi -Index $GpuIndex -PowerLimit $limits.Default
+Register-GpuPowerTask -TaskName 'GPU-PowerMode-Normal' -NvidiaSmi $nvidiaSmi -Index $GpuIndex -PowerLimit $normalLimit
 Write-Host '.' -NoNewline
 Register-GpuPowerTask -TaskName 'GPU-PowerMode-Performance' -NvidiaSmi $nvidiaSmi -Index $GpuIndex -PowerLimit $performanceLimit
 Write-Host '.'
 
-Write-RegistrationProgress "已创建 GPU 计划任务：节能 $($limits.Minimum)W，默认 $($limits.Default)W，高性能 $performanceLimit W。"
+Write-RegistrationProgress "已创建 GPU 计划任务：节能 $($ecoLimit)W，默认 $($normalLimit)W，高性能 $($performanceLimit)W。"

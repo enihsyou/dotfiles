@@ -91,9 +91,9 @@ function powermode {
 
     if ([string]::IsNullOrWhiteSpace($Mode) -or -not $powerModes.ContainsKey($Mode)) {
         Write-Host 'Usage: powermode <1|2|3>'
-        Write-Host '  1 = Windows 节能计划 + GPU 100W'
-        Write-Host '  2 = Windows 平衡计划 + GPU 默认功耗'
-        Write-Host '  3 = Windows 高性能计划 + GPU 默认功耗的 105%'
+        Write-Host '  1 = CPU 节能降频 + GPU 50% 功耗'
+        Write-Host '  2 = CPU 基准频率 + GPU 70% 功耗'
+        Write-Host '  3 = CPU 自动睿频 + GPU 100% 功耗'
         powercfg /l
         return
     }
