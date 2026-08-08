@@ -2,9 +2,11 @@ python-downloads = "manual"
 python-install-mirror = "https://mirror.nju.edu.cn/github-release/indygreg/python-build-standalone/"
 cache-dir = "G:/AppData/uv/cache"
 
+preview-features = ["index-exclude-newer"]
+
 [[index]]
 name = "aliyun"
-url = "https://mirrors.cernet.edu.cn/pypi/web/simple"
+url = "https://mirrors.aliyun.com/pypi/simple"
 default = true
 # 否则会遇到 missing an upload date 错误并无法拉取包
 exclude-newer = false
