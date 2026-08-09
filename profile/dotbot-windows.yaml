@@ -41,6 +41,7 @@
     ~/.codex/agents: cli-app/codex/agents
     ~/.codex/hooks: cli-app/codex/hooks
     ~/.codex/rules: cli-app/codex/rules
+    ~/.codex/AGENTS.md: cli-app/codex/AGENTS.md
 
     ~/AppData/Roaming/AutoDarkMode/scripts.yaml: gui-app/AutoDarkMode/scripts.yaml
 
