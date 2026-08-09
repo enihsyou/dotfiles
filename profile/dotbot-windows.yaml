@@ -5,7 +5,7 @@
     link:
       create: true # create parent directories if they don't exist
       relink: true # remove existing symlink before creating new one
-      # force: true # uncomment when needed
+      force: true # uncomment when needed
     copy:
       create: true # create parent directories if they don't exist
       backup: true # backup existing files before overwriting
@@ -47,8 +47,9 @@
 
     ~/.wslconfig: system/WSL2/.wslconfig
 
-    ~/AppData/Roaming/skillshare/skills/ai-commit: skills/ai-commit
-    ~/AppData/Roaming/skillshare/skills/colleague-enihsyou: skills/colleague-enihsyou
+    ~/.agents/skills/ai-commit: skills/ai-commit
+    ~/.agents/skills/ai-push: skills/ai-push
+    ~/.agents/skills/colleague-enihsyou: skills/colleague-enihsyou
 
 # shell on Windows is Command Prompt (cmd), command is executed with subprocess.call(shell=True)
 # thus, command string must stay within the same line, I recommend use ">" for
