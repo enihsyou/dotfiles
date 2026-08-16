@@ -30,3 +30,4 @@ Report findings directly and technically. Include the evidence (addresses, funct
 # codex plugin add ida-pro-mcp@mrexodia
 command = 'C:\\Users\\enihsyou\\.codex\\plugins\\cache\\mrexodia\\ida-pro-mcp\\0.1.0\\.venv\\Scripts\\idalib-mcp.exe'
 args = ["--stdio"]
+default_tools_approval_mode = "approve"

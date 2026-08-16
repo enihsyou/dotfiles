@@ -1,23 +1,19 @@
 #!/usr/bin/env python3
-"""Build Codex's local model catalog with precise model identities."""
+"""Add precise model identities to Codex's cached system prompts."""
 
 from __future__ import annotations
 
 import json
 import re
 import shutil
-import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
 import model_catalog
-import tomllib
 
 CODEX_HOME = Path.home() / ".codex"
-SOURCE_CATALOG = CODEX_HOME / "models_cache.json"
-TARGET_CATALOG = CODEX_HOME / "models_better.json"
-CONFIG_PATH = CODEX_HOME / "config.toml"
+MODEL_CACHE = CODEX_HOME / "models_cache.json"
 IDENTITY_PATTERN = re.compile(
     r"^(You are Codex, (?:an |a coding )?agent based on )GPT-5(?:\.\d+(?:-\w+)*)?\."
 )
@@ -33,11 +29,11 @@ def backup(path: Path, timestamp: str) -> Path | None:
 
 
 def load_catalog(path: Path) -> dict[str, Any]:
-    """Load the upstream cache and validate the model list shape."""
+    """Load the upstream cache and validate its top-level object shape."""
     with path.open(encoding="utf-8") as file:
         catalog = json.load(file)
-    if not isinstance(catalog, dict) or not isinstance(catalog.get("models"), list):
-        raise TypeError(f"{path} does not contain a models list")
+    if not isinstance(catalog, dict):
+        raise TypeError(f"{path} does not contain a catalog object")
     return catalog
 
 
@@ -51,84 +47,44 @@ def update_instruction(slug: str, instruction: str) -> str:
 
 
 def update_identity(model: dict[str, Any]) -> None:
-    """Replace generic identities in both model instruction fields."""
+    """Replace the generic identity in the model message instruction template."""
     slug = model.get("slug")
-    base_instructions = model.get("base_instructions")
+    if not isinstance(slug, str):
+        raise TypeError("each model needs a string slug field")
     model_messages = model.get("model_messages")
-    if not isinstance(slug, str) or not isinstance(base_instructions, str):
-        raise TypeError("each model needs string slug and base_instructions fields")
     if not isinstance(model_messages, dict):
         raise TypeError("each model needs an object model_messages field")
     template = model_messages.get("instructions_template")
     if not isinstance(template, str):
         raise TypeError("each model needs string model_messages.instructions_template")
-    model["base_instructions"] = update_instruction(slug, base_instructions)
     model_messages["instructions_template"] = update_instruction(slug, template)
-    if slug == "gpt-5.6-luna":
-        model["multi_agent_version"] = "v2"
 
 
 def build_catalog(catalog: dict[str, Any]) -> dict[str, Any]:
-    """Apply model identities and Luna's multi-agent-version change."""
-    for model in catalog["models"]:
+    """Add each model's identity to its system prompt."""
+    models = catalog.get("models")
+    if not isinstance(models, list):
+        raise TypeError("catalog does not contain a models list")
+    for model in models:
         if not isinstance(model, dict):
             raise TypeError("models list contains a non-object entry")
         update_identity(model)
     return catalog
 
 
-def set_root_string_key(content: str, key: str, value: str) -> str:
-    """Set one root TOML string key while preserving all tables and comments."""
-    lines = content.splitlines(keepends=True)
-    root_end = next(
-        (index for index, line in enumerate(lines) if line.lstrip().startswith("[")),
-        len(lines),
-    )
-    new_line = f'{key} = "{value}"\n'
-    for index, line in enumerate(lines[:root_end]):
-        name, separator, _ = line.partition("=")
-        if separator and name.strip() == key:
-            lines[index] = new_line
-            return "".join(lines)
-    lines.insert(root_end, new_line)
-    return "".join(lines)
-
-
-def update_config() -> None:
-    """Validate the TOML and set model_catalog_json without changing hook blocks."""
-    content = CONFIG_PATH.read_text(encoding="utf-8")
-    tomllib.loads(content)
-    updated = set_root_string_key(content, "model_catalog_json", TARGET_CATALOG.as_posix())
-    tomllib.loads(updated)
-    CONFIG_PATH.write_text(updated, encoding="utf-8", newline="\n")
-
-
-def show_catalog_diff() -> None:
-    """Display the source and generated model-catalog difference with delta."""
-    try:
-        subprocess.run(["delta", str(SOURCE_CATALOG), str(TARGET_CATALOG)], check=False)
-    except OSError as error:
-        print(f"Unable to run delta: {error}")
-
-
 def main() -> int:
-    """Back up replaceable files, then write the catalog and its Codex setting."""
+    """Back up the model cache, then update it in place."""
     timestamp = datetime.now(timezone.utc).strftime("%Y%m%d-%H%M%S")
-    catalog = build_catalog(load_catalog(SOURCE_CATALOG))
-    catalog_backup = backup(TARGET_CATALOG, timestamp)
-    config_backup = backup(CONFIG_PATH, timestamp)
-    TARGET_CATALOG.write_text(
+    catalog = build_catalog(load_catalog(MODEL_CACHE))
+    cache_backup = backup(MODEL_CACHE, timestamp)
+    MODEL_CACHE.write_text(
         json.dumps(catalog, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
         newline="\n",
     )
-    update_config()
-    for item in (catalog_backup, config_backup):
-        if item is not None:
-            print(f"Backed up {item}")
-    print(f"Wrote {TARGET_CATALOG}")
-    print(f"Updated {CONFIG_PATH}")
-    show_catalog_diff()
+    if cache_backup is not None:
+        print(f"Backed up {cache_backup}")
+    print(f"Updated {MODEL_CACHE}")
     return 0
 
 
