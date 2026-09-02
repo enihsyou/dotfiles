@@ -44,6 +44,15 @@ function git-bot-commit {
         [string[]]$CommitArguments
     )
 
+    $userNameAliases = @{
+        'sol'   = 'GPT-5.6 Sol - Codex'
+        'terra' = 'GPT-5.6 Terra - Codex'
+        'luna'  = 'GPT-5.6 Luna - Codex'
+    }
+    if ($userNameAliases.ContainsKey($UserName)) {
+        $UserName = $userNameAliases[$UserName]
+    }
+
     $gitArguments = @(
         '-c'
         "user.name=$UserName"
