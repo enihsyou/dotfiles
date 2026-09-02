@@ -52,3 +52,6 @@ $env:RUSTUP_UPDATE_ROOT = "https://rsproxy.cn/rustup"
 
 # pprof 临时文件目录，远离系统盘
 $env:PPROF_TMPDIR = "$env:TEMP/pprof"
+
+# 禁止生成 __pycache__
+$env:PYTHONDONTWRITEBYTECODE = 1

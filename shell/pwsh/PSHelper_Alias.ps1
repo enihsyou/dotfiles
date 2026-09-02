@@ -33,6 +33,30 @@ Set-Alias -Name which -Value which_GetCommand_SourceOnly
 Set-Alias -Name touch -Value New-Item
 Set-Alias -Name open -Value explorer
 
+# 使用指定的 bot 身份创建 Git 提交
+function git-bot-commit {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory = $true, Position = 0)]
+        [string]$UserName,
+
+        [Parameter(Position = 1, ValueFromRemainingArguments = $true)]
+        [string[]]$CommitArguments
+    )
+
+    $gitArguments = @(
+        '-c'
+        "user.name=$UserName"
+        '-c'
+        'user.email=292837902+arapacati[bot]@users.noreply.github.com'
+        'commit'
+        '--no-gpg-sign'
+        '--trailer=Co-Authored-By: 九条涼果 <enihsyou@gmail.com>'
+    ) + $CommitArguments
+
+    & git @gitArguments
+}
+
 # findstr 不好用，既然要换就换好的
 # https://github.com/BurntSushi/ripgrep/blob/master/FAQ.md#how-do-i-create-an-alias-for-ripgrep-on-windows
 # 若遭遇输出编码，需调用 utf8 函数切换编码
