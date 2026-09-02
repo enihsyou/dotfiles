@@ -46,6 +46,7 @@ sources = [
     "C:/Program Files/qemu/qemu-system-x86_64.exe",
     "C:/Program Files/qemu/qemu-img.exe",
     "C:/Program Files/qemu/qemu-ga.exe",
+    "D:/Program Files/IDA Professional 9.3/ida.exe",
 ]
 
 # ==============================================================================

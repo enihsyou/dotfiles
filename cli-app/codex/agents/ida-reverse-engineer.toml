@@ -28,6 +28,13 @@ Report findings directly and technically. Include the evidence (addresses, funct
 # Install the ida-pro-mcp plugin from the Codex marketplace for headless MCP.
 # codex plugin marketplace add mrexodia/codex-marketplace
 # codex plugin add ida-pro-mcp@mrexodia
-command = 'C:\\Users\\enihsyou\\.codex\\plugins\\cache\\mrexodia\\ida-pro-mcp\\0.1.0\\.venv\\Scripts\\idalib-mcp.exe'
-args = ["--stdio"]
+command = "uv"
+args = [
+    "run",
+    "--project",
+    "~/.agents/mcp/ida-pro-mcp",
+    "idalib-mcp",
+    "--stdio",
+    "--max-workers=4",
+]
 default_tools_approval_mode = "approve"

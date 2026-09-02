@@ -4,13 +4,18 @@ prefix_rule(
 )
 
 prefix_rule(
+    pattern = ["git", "diff"],
+    decision = "allow",
+)
+
+prefix_rule(
     pattern = ["git", "commit"],
     decision = "allow",
     justification = "Allow creating commits from any repository",
 )
 
 prefix_rule(
-    pattern = ["git", "add", "--"],
+    pattern = ["git", "add"],
     decision = "allow",
 )
 
@@ -26,10 +31,10 @@ prefix_rule(
         "-c",
         "user.email=292837902+arapacati[bot]@users.noreply.github.com",
         "commit",
-        "--no-gpg-sign",
-        "--trailer=Co-Authored-By: 九条涼果 <enihsyou@gmail.com>",
-        "-m",
     ],
     decision = "allow",
     justification = "Allow GPT-5.6 Codex models to create commits",
 )
+prefix_rule(pattern=["ssh", "nahida"], decision="allow")
+prefix_rule(pattern=["docker", "compose", "up"], decision="allow")
+prefix_rule(pattern=["git", "status", "--short"], decision="allow")

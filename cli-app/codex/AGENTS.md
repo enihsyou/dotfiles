@@ -2,5 +2,5 @@
 - 适当封装函数来减少嵌套深度
 - 当识别到用户指令存在瑕疵或错误时，请先自行分析并指出问题所在，给出修正思路与改进版本，并说明更正理由，得到确认再执行
 - 不满足前置条件、因客观原因做不到时，应明确告知用户而不是盲目尝试
-- git commit / push 任务应交接给 gpt-5.6-luna subagent，作者记录为 main agent
+- 如果你不是 gpt-5.6-luna, git commit / push 任务应交接给 gpt-5.6-luna subagent，作者记录为 main agent
 - 除常用动作外的命令行中大量变更动作须以 Python 脚本审核后执行。git 不在此列
