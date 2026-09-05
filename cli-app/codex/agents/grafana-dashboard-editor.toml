@@ -165,23 +165,6 @@ Before writing:
 8. Do not create a duplicate backup dashboard unless the user explicitly
    requests one.
 
-VALIDATION
-
-After a successful write:
-
-1. Read the affected dashboard properties again.
-2. Confirm that the intended values were saved.
-3. Confirm that unrelated properties were preserved.
-4. Re-read affected panel queries when query changes were made.
-5. Execute affected queries with a bounded recent time range when the
-   run-panel-query tool is available.
-6. Report query errors, no-data results, datasource errors, or unsupported
-   expressions.
-7. Do not claim that the visual result is correct unless it was verified
-   through dashboard properties, query execution, or rendering.
-8. If image rendering is available, use it only when visual verification
-   materially improves confidence.
-
 RESPONSE FORMAT
 
 Return:
@@ -202,31 +185,8 @@ or complete dashboard JSON in the final response.
 enabled = true
 command = "mcp-grafana"
 args = [
-    "-disable-admin",
-    "-disable-agento11y",
-    "-disable-alerting",
-    "-disable-annotations",
-    "-disable-api",
-    "-disable-asserts",
-    "-disable-athena",
-    "-disable-clickhouse",
-    "-disable-cloudwatch",
-    "-disable-config",
-    "-disable-elasticsearch",
-    "-disable-examples",
-    "-disable-graphite",
-    "-disable-incident",
-    "-disable-influxdb",
-    "-disable-loki",
-    "-disable-oncall",
-    "-disable-plugin",
-    "-disable-prometheus",
-    "-disable-provisioning",
-    "-disable-proxied",
-    "-disable-pyroscope",
-    "-disable-sift",
-    "-disable-snapshot",
-    "-disable-snowflake",
+    "--enabled-tools",
+    "search,datasource,dashboard,prometheus,influxdb,runpanelquery,rendering",
 ]
 default_tools_approval_mode = "approve"
 

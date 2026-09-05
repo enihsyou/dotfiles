@@ -15,7 +15,7 @@ import model_catalog
 CODEX_HOME = Path.home() / ".codex"
 MODEL_CACHE = CODEX_HOME / "models_cache.json"
 IDENTITY_PATTERN = re.compile(
-    r"^(You are Codex, (?:an |a coding )?agent based on )GPT-5(?:\.\d+(?:-\w+)*)?\."
+    r"^(You are Codex, .+?based on )GPT(?:[-\.\d]+)?\."
 )
 
 
@@ -51,6 +51,8 @@ def update_identity(model: dict[str, Any]) -> None:
     slug = model.get("slug")
     if not isinstance(slug, str):
         raise TypeError("each model needs a string slug field")
+    if slug in ("gpt-reserve",):
+        return
     model_messages = model.get("model_messages")
     if not isinstance(model_messages, dict):
         raise TypeError("each model needs an object model_messages field")

@@ -38,3 +38,5 @@ prefix_rule(
 prefix_rule(pattern=["ssh", "nahida"], decision="allow")
 prefix_rule(pattern=["docker", "compose", "up"], decision="allow")
 prefix_rule(pattern=["git", "status", "--short"], decision="allow")
+prefix_rule(pattern=["docker", "image", "inspect", "kazu:latest", "--format", "{{.Id}}"], decision="allow")
+prefix_rule(pattern=["task", "up"], decision="allow")

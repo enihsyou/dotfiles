@@ -10,7 +10,7 @@ from collections.abc import Mapping
 from pathlib import Path
 
 CATALOG_URL = "https://models.dev/models.json"
-CATALOG_TTL_SECONDS = 7 * 24 * 60 * 60
+CATALOG_TTL_SECONDS = 24 * 60 * 60
 DOWNLOAD_TIMEOUT_SECONDS = 3
 
 MODEL_BRAND_NAMES = {
@@ -35,6 +35,7 @@ MODEL_BRAND_NAMES = {
     "gpt-5.6-luna": "GPT-5.6 Luna",
     "gpt-5.6-sol": "GPT-5.6 Sol",
     "gpt-5.6-terra": "GPT-5.6 Terra",
+    "gpt-6-astra": "GPT-6 Astra",
 }
 
 
