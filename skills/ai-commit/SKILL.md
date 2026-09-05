@@ -17,14 +17,16 @@ Commit code using GitHub App **Arapacati** identity with proper attribution.
 
 ## Steps
 
-### 1. Set Author Identity
+### 1. Set Commit Author
 
 | Field | Value |
 |-------|-------|
-| user.name | `<Model Name> - <Harness Name>` |
-| user.email | `<bot_user_id>+<bot_name>[bot]@users.noreply.github.com` |
+| author name | `<Model Name> - <Harness Name>` |
+| author email | `<bot_user_id>+<bot_name>[bot]@users.noreply.github.com` |
 
-user.name use the actual model and harness tool in use, for examples:
+Pass the complete identity with `git commit --author`
+
+Use the actual model and harness tool for the author name, for examples:
 - `MiMo V2.5 - Claude Code`
 - `Claude Opus 4.8 - OpenCode`
 - `GPT-5.6 Sol - Codex`
@@ -57,5 +59,5 @@ pass `--no-gpg-sign` to disable GPG signing, as the bot won't have access to the
 ## Full Command Example
 
 ```bash
-git -c user.name="MiMo V2.5 - Claude Code" -c user.email="292837902+arapacati[bot]@users.noreply.github.com" commit --no-gpg-sign --trailer="Co-Authored-By: 九条涼果 <enihsyou@gmail.com>" -m "Your commit message here"
+git commit --author="MiMo V2.5 - Claude Code <292837902+arapacati[bot]@users.noreply.github.com>" --no-gpg-sign --trailer="Co-Authored-By: 九条涼果 <enihsyou@gmail.com>" -m "Your commit message here"
 ```

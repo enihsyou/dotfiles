@@ -48,19 +48,17 @@ function git-bot-commit {
         'sol'   = 'GPT-5.6 Sol - Codex'
         'terra' = 'GPT-5.6 Terra - Codex'
         'luna'  = 'GPT-5.6 Luna - Codex'
+        'astra' = 'GPT-6 Astra - Codex'
     }
     if ($userNameAliases.ContainsKey($UserName)) {
         $UserName = $userNameAliases[$UserName]
     }
 
     $gitArguments = @(
-        '-c'
-        "user.name=$UserName"
-        '-c'
-        'user.email=292837902+arapacati[bot]@users.noreply.github.com'
         'commit'
         '--no-gpg-sign'
         '--trailer=Co-Authored-By: 九条涼果 <enihsyou@gmail.com>'
+        "--author=$UserName <292837902+arapacati[bot]@users.noreply.github.com>"
     ) + $CommitArguments
 
     & git @gitArguments
