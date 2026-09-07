@@ -1,63 +1,68 @@
 ---
 name: ai-commit
-description: Git commit with proper attribution using GitHub App Arapacati. Use when creating commits as an AI assistant.
+description: Create a Git commit as an AI assistant using the Arapacati identity and the real user as co-author.
 ---
 
-# AI Agent Git Commit
+# AI Commit
 
-Commit code using GitHub App **Arapacati** identity with proper attribution.
+Create the requested commit only. Do not push unless the user explicitly asks.
 
-## App Details
+## Identity
 
-| Field | Value |
-|---|---|
-| App Name | Arapacati |
-| App ID | 4029389 |
-| App Email | `292837902+arapacati[bot]@users.noreply.github.com` |
+- Author email: `292837902+arapacati[bot]@users.noreply.github.com`
+- Author name: `<Model Name> - <Harness Name>`
+- Co-author: the repository's `git config user.name` and `git config user.email`
+- Always pass `--no-gpg-sign`
 
-## Steps
+Normalize the model name by removing host suffixes such as `[1m]` or
+`(latest)`. Convert known dashed model IDs to their display names, for example
+`gpt-5.6-luna` to `GPT-5.6 Luna`. Do not invent extra identity text.
 
-### 1. Set Commit Author
+## Minimal workflow
 
-| Field | Value |
-|-------|-------|
-| author name | `<Model Name> - <Harness Name>` |
-| author email | `<bot_user_id>+<bot_name>[bot]@users.noreply.github.com` |
+For a straightforward commit, use at most three command invocations:
 
-Pass the complete identity with `git commit --author`
+1. **Preflight:** in one invocation, read `git status --short`, the relevant
+   diff, and `git config user.name` / `git config user.email`. Determine the
+   commit message from the diff unless the user supplied one.
+2. **Commit:** stage only when the request includes unstaged paths that must be
+   committed, then commit. Staging and committing may share one invocation once
+   the exact path scope is known. If the user asks to commit the current staged
+   changes, do not run `git add`.
+3. **Result:** in one invocation, read the new commit's hash, subject, author,
+   trailer, committed path list, and current short status. Report these
+   concisely.
 
-Use the actual model and harness tool for the author name, for examples:
-- `MiMo V2.5 - Claude Code`
-- `Claude Opus 4.8 - OpenCode`
-- `GPT-5.6 Sol - Codex`
-- `Gemini 2.5 Pro - Windsurf`
+Do not split independent read-only Git queries into separate tool calls. Do not
+repeat the same status, diff, path list, or metadata check unless an earlier
+command failed or changed the relevant state.
 
-**Model name normalization:** strip any bracketed suffixes like `[1m]` or
-`(latest)` that some hosts append to the model id (e.g. `MiniMax-M3[1m]`
-must become `MiniMax-M3`). The author name should be the bare model id
-plus `- ` plus the harness name — nothing else.
+## Scope and safety
 
-If model name is dashed-lowercase e.g. `gpt-5.6-luna`, guess the model brand name from context appropriately.
-For example, GPT series use `GPT-<version> <codename>` format. So `gpt-5.6-luna` becomes `GPT-5.6 Luna`. Fallback to what you know exactly about the name if uncertain.
+- Preserve unrelated worktree and staged changes.
+- Before committing, inspect the actual content being committed, not only file
+  names.
+- If the requested scope and the staged scope differ, resolve that mismatch
+  before committing. Use pathspecs for an explicit file set.
+- Run `git diff --cached --check` when staging files or when whitespace risk is
+  apparent. It is optional for an already-staged, clearly scoped, low-risk
+  commit.
+- Do not run `git commit -h` to discover `--trailer`; it is a supported option.
+- Add extra diagnostics only after a failure or when scope, identity, or message
+  is ambiguous.
 
-### 2. Add Co-Author Trailer
+## Commit command
 
-Append the real user as co-author:
-
-```bash
---trailer "Co-Authored-By: $(git config user.name) <$(git config user.email)>"
-```
-
-### 3. Skip GPG Sign
-
-pass `--no-gpg-sign` to disable GPG signing, as the bot won't have access to the user's GPG keys.
-
-> **Note:** `--trailer` 是 `git commit` 自带的参数（语法：`--trailer "<token>[(=|:)<value>]"`），
-> 用来追加尾注（如 `Co-Authored-By:`），不需要把 trailer 塞进 `-m` 消息体里。
-> 用 `git commit -h | grep -i trailer` 可快速确认。
-
-## Full Command Example
+Use explicit resolved values rather than shell substitution in the final
+command:
 
 ```bash
-git commit --author="MiMo V2.5 - Claude Code <292837902+arapacati[bot]@users.noreply.github.com>" --no-gpg-sign --trailer="Co-Authored-By: 九条涼果 <enihsyou@gmail.com>" -m "Your commit message here"
+git commit --author="GPT-5.6 Luna - Codex <292837902+arapacati[bot]@users.noreply.github.com>" --no-gpg-sign --trailer="Co-Authored-By: User Name <user@example.com>" -m "Commit subject"
 ```
+
+## Response style
+
+Keep progress narration to one short preflight update and, if useful, one short
+pre-commit update. The final response normally needs only the commit hash,
+subject, committed scope, and whether it was pushed. Mention exceptional
+conditions only when they occurred.
