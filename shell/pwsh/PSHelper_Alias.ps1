@@ -93,6 +93,60 @@ Set-Alias -Name brew -Value winget -Description "Alias to winget, for macOS user
 # HTTPie 启动耗时太慢，换成 Rust 版
 Set-Alias -Name http -Value xh -Description "a Rust version of HTTPie"
 
+# 从镜像注册表镜像站拉取镜像
+function ConvertTo-DockerMirrorImage {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$Image
+    )
+
+    $registry = 'docker.io'
+    $imagePath = $Image
+    if ($Image -match '^(?<firstComponent>[^/]+)/(?<path>.+)$') {
+        $firstComponent = $Matches.firstComponent
+        if ($firstComponent -eq 'localhost' -or $firstComponent.Contains('.') -or $firstComponent.Contains(':')) {
+            $registry = $firstComponent
+            $imagePath = $Matches.path
+        }
+    }
+
+    $mirrorImage = switch ($registry.ToLowerInvariant()) {
+        'ghcr.io' {
+            "ghcr.nju.edu.cn/$imagePath"
+            break
+        }
+        'docker.io' {
+            if ($imagePath.StartsWith('library/')) {
+                $imagePath = $imagePath.Substring('library/'.Length)
+            }
+            "wget.la/$imagePath"
+            break
+        }
+        default {
+            $Image
+        }
+    }
+
+    return $mirrorImage
+}
+
+function docker-pull-mirror {
+    [CmdletBinding()]
+    param(
+        [Parameter(Position = 0)]
+        [string]$Image
+    )
+
+    if ([string]::IsNullOrWhiteSpace($Image)) {
+        throw 'Usage: docker-pull-mirror <image>'
+    }
+
+    $mirrorImage = ConvertTo-DockerMirrorImage -Image $Image
+
+    & docker pull $mirrorImage
+}
+
 # 删除默认指向 Where-Object 的别名，转而调用 where.exe
 Remove-Alias -Name where -Force -ErrorAction Ignore
 
