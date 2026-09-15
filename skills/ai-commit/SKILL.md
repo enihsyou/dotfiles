@@ -18,6 +18,30 @@ Normalize the model name by removing host suffixes such as `[1m]` or
 `(latest)`. Convert known dashed model IDs to their display names, for example
 `gpt-5.6-luna` to `GPT-5.6 Luna`. Do not invent extra identity text.
 
+### Codex model discovery
+
+If running as a Codex Agent and the exact model ID is not present in the
+context, determine it from the local Codex session:
+
+1. Take the final directory name from the writable visualization path
+   `~/.codex/visualizations/YYYY/MM/DD/<session-id>` as the candidate session
+   ID.
+2. Locate
+   `~/.codex/sessions/YYYY/MM/DD/rollout-*-<session-id>.jsonl`. If the filename
+   is not found, search `~/.codex/session_index.jsonl` and
+   `~/.codex/sessions` for that exact ID.
+3. Parse the rollout with `jq` and read the last `turn_context` directly:
+
+   ```bash
+   jq -sr 'map(select(.type == "turn_context")) | last | [.payload.model, .payload.effort] | @tsv' <rollout-file>
+   ```
+
+   The first output field is the current model ID; the second is its reasoning
+   effort.
+4. Use that model ID for the author name after applying the normalization rules
+   above. Do not infer the model from `model_provider`, base instructions, or
+   earlier turns.
+
 ## Minimal workflow
 
 For a straightforward commit, use at most three command invocations:
