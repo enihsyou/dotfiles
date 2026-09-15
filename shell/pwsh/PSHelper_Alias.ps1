@@ -94,6 +94,11 @@ Set-Alias -Name brew -Value winget -Description "Alias to winget, for macOS user
 Set-Alias -Name http -Value xh -Description "a Rust version of HTTPie"
 
 # 从镜像注册表镜像站拉取镜像
+# 会话级统计：记录每个镜像代理在本会话内的成功次数，以便优先使用曾经成功的代理
+if (-not (Get-Variable -Name DockerMirrorSuccess -Scope Script -ErrorAction Ignore)) {
+    $script:DockerMirrorSuccess = @{}
+}
+
 function ConvertTo-DockerMirrorImage {
     [CmdletBinding()]
     param(
@@ -111,24 +116,59 @@ function ConvertTo-DockerMirrorImage {
         }
     }
 
-    $mirrorImage = switch ($registry.ToLowerInvariant()) {
+    # 每个镜像仓库提供多个候选代理。前面的优先级更高。
+    # 成功的代理会被 docker-pull-mirror 记录到 $script:DockerMirrorSuccess，
+    # 下一次调用时会按成功次数重新排序。
+    $proxyTemplates = switch ($registry.ToLowerInvariant()) {
         'ghcr.io' {
-            "ghcr.nju.edu.cn/$imagePath"
+            @('ghcr.nju.edu.cn', 'wget.la/ghcr.io')
+            break
+        }
+        'quay.io' {
+            @('quay.nju.edu.cn', 'wget.la/quay.io')
+            break
+        }
+        'gcr.io' {
+            @('gcr.nju.edu.cn')
+            break
+        }
+        'registry.k8s.io' {
+            @('k8s.nju.edu.cn', 'wget.la/registry.k8s.io')
+            break
+        }
+        'nvcr.io' {
+            @('nvcr.nju.edu.cn', 'ngc.nju.edu.cn')
+            break
+        }
+        'registry.gitlab.com' {
+            @('glcr.nju.edu.cn')
             break
         }
         'docker.io' {
             if ($imagePath.StartsWith('library/')) {
                 $imagePath = $imagePath.Substring('library/'.Length)
             }
-            "wget.la/$imagePath"
+            @('wget.la', 'gh-proxy.com', 'm.daocloud.io/docker.io', 'docker.m.daocloud.io')
             break
         }
         default {
-            $Image
+            @()
         }
     }
 
-    return $mirrorImage
+    $mirrors = foreach ($tpl in $proxyTemplates) { "$tpl/$imagePath" }
+
+    # 按本会话的成功次数降序排序（成功的代理优先）
+    if ($mirrors -and $script:DockerMirrorSuccess.Count -gt 0) {
+        $mirrors = @($mirrors | Sort-Object -Property {
+            $proxyHost = ($_ -split '/', 2)[0]
+            if ($script:DockerMirrorSuccess.ContainsKey($proxyHost)) {
+                $script:DockerMirrorSuccess[$proxyHost]
+            } else { 0 }
+        } -Descending)
+    }
+
+    return @($mirrors)
 }
 
 function docker-pull-mirror {
@@ -142,9 +182,41 @@ function docker-pull-mirror {
         throw 'Usage: docker-pull-mirror <image>'
     }
 
-    $mirrorImage = ConvertTo-DockerMirrorImage -Image $Image
+    $mirrors = @(ConvertTo-DockerMirrorImage -Image $Image)
+    $proxyUsed = $null
 
-    & docker pull $mirrorImage
+    if ($mirrors.Count -gt 0) {
+        foreach ($mirror in $mirrors) {
+            Write-Host "==> Trying mirror: $mirror"
+            & docker pull $mirror
+            if ($LASTEXITCODE -eq 0) {
+                $proxyUsed = $mirror
+                # 记录本次成功的代理，下次优先使用
+                $proxyHost = ($mirror -split '/', 2)[0]
+                if (-not $script:DockerMirrorSuccess.ContainsKey($proxyHost)) {
+                    $script:DockerMirrorSuccess[$proxyHost] = 0
+                }
+                $script:DockerMirrorSuccess[$proxyHost]++
+                break
+            }
+        }
+    }
+
+    # 无论是否从代理拉取成功，都再从源仓库拉取一次。
+    # Docker 按 manifest digest 去重，第二次 pull 不会再下载层，但本地会同时存在
+    # 两个引用（代理镜像名和源镜像名），后续 `docker compose pull` 或 `docker run`
+    # 命中源镜像时可以直接复用已下载的层。
+    Write-Host "==> Pulling from source to alias manifest: $Image"
+    & docker pull $Image
+    if ($LASTEXITCODE -ne 0) {
+        if ($null -eq $proxyUsed) {
+            throw "Failed to pull $Image from any mirror and from source."
+        }
+        # 源仓库不可达（典型情况：Docker Hub 受限），将代理镜像打上规范名称的 tag，
+        # 使 `docker compose` 等下游消费者仍能以原镜像名解析到本地镜像。
+        Write-Host "==> Source unreachable; tagging $proxyUsed as $Image"
+        & docker tag $proxyUsed $Image
+    }
 }
 
 # 删除默认指向 Where-Object 的别名，转而调用 where.exe
@@ -193,4 +265,9 @@ function powermode {
         }
     }
     powercfg /l
+}
+
+# 当 Tmux 意外退出而没有恢复终端状态时，可以硬重置中断状态
+function Reset-Terminal {
+    [Console]::Write("`ec")
 }
