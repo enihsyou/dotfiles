@@ -14,7 +14,7 @@ Create the requested commit only. Do not push unless the user explicitly asks.
 - Co-author: the repository's `git config user.name` and `git config user.email`
 - Always pass `--no-gpg-sign`
 
-Normalize the model name by removing host suffixes such as `[1m]` or
+Normalize the model name by removing suffixes such as `[1m]` or
 `(latest)`. Convert known dashed model IDs to their display names, for example
 `gpt-5.6-luna` to `GPT-5.6 Luna`. Do not invent extra identity text.
 
