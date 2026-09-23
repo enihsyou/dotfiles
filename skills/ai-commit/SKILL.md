@@ -15,8 +15,9 @@ Create the requested commit only. Do not push unless the user explicitly asks.
 - Always pass `--no-gpg-sign`
 
 Normalize the model name by removing suffixes such as `[1m]` or
-`(latest)`. Convert known dashed model IDs to their display names, for example
-`gpt-5.6-luna` to `GPT-5.6 Luna`. Do not invent extra identity text.
+`(latest)`. Convert known dashed model IDs to their display names, including
+`gpt-5.6-luna` to `GPT-5.6 Luna` and `gpt-6-luna` to `GPT-6 Luna`. Do not
+invent extra identity text.
 
 ### Codex model discovery
 
@@ -81,7 +82,7 @@ Use explicit resolved values rather than shell substitution in the final
 command:
 
 ```bash
-git commit --author="GPT-5.6 Luna - Codex <292837902+arapacati[bot]@users.noreply.github.com>" --no-gpg-sign --trailer="Co-Authored-By: User Name <user@example.com>" -m "Commit subject"
+git commit --author="GPT-6 Luna - Codex <292837902+arapacati[bot]@users.noreply.github.com>" --no-gpg-sign --trailer="Co-Authored-By: User Name <user@example.com>" -m "Commit subject"
 ```
 
 ## Response style
