@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Add precise model identities to Codex's cached system prompts."""
+"""DEPRECATED: Codex replaces this local catalog with the latest online version.
+
+Local changes made by this updater are overwritten, so they do not take effect.
+"""
 
 from __future__ import annotations
 
@@ -38,11 +41,16 @@ def load_catalog(path: Path) -> dict[str, Any]:
 
 
 def update_instruction(slug: str, instruction: str) -> str:
-    """Replace one generic Codex identity line with the readable model name."""
-    replacement = rf"\1{model_catalog.model_brand_name(slug)}."
+    """Replace a generic identity line, skipping instructions already updated."""
+    brand_name = model_catalog.model_brand_name(slug)
+    replacement = rf"\1{brand_name}."
     updated, count = IDENTITY_PATTERN.subn(replacement, instruction, count=1)
-    if count != 1:
-        raise ValueError(f"{slug}: expected one generic Codex identity line, found {count}")
+    if count == 0:
+        if brand_name in instruction:
+            print(f"{slug} => {brand_name} (already processed; skipped)")
+            return instruction
+        raise ValueError(f"{slug}: expected one generic Codex identity line, found 0")
+    print(f"{slug} => {brand_name}")
     return updated
 
 

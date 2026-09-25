@@ -13,32 +13,6 @@ CATALOG_URL = "https://models.dev/models.json"
 CATALOG_TTL_SECONDS = 24 * 60 * 60
 DOWNLOAD_TIMEOUT_SECONDS = 3
 
-MODEL_BRAND_NAMES = {
-    "gpt-4": "GPT-4",
-    "gpt-4o": "GPT-4o",
-    "gpt-4o-mini": "GPT-4o Mini",
-    "gpt-4.1": "GPT-4.1",
-    "gpt-4.1-mini": "GPT-4.1 Mini",
-    "gpt-4.1-nano": "GPT-4.1 Nano",
-    "gpt-4.5": "GPT-4.5",
-    "gpt-5": "GPT-5",
-    "gpt-5-mini": "GPT-5 Mini",
-    "gpt-5-nano": "GPT-5 Nano",
-    "gpt-5.1": "GPT-5.1",
-    "gpt-5.1-codex": "GPT-5.1 Codex",
-    "gpt-5.2": "GPT-5.2",
-    "gpt-5.2-codex": "GPT-5.2 Codex",
-    "gpt-5.3-codex": "GPT-5.3 Codex",
-    "gpt-5.3-codex-spark": "GPT-5.3 Codex Spark",
-    "gpt-5.4": "GPT-5.4",
-    "gpt-5.4-codex": "GPT-5.4 Codex",
-    "gpt-5.6-luna": "GPT-5.6 Luna",
-    "gpt-5.6-sol": "GPT-5.6 Sol",
-    "gpt-5.6-terra": "GPT-5.6 Terra",
-    "gpt-6-astra": "GPT-6 Astra",
-}
-
-
 def _cache_path() -> Path:
     """Return the persistent cache path in the system temporary directory."""
     return Path(tempfile.gettempdir()) / "codex-models.dev-models.json"
@@ -105,8 +79,6 @@ def _load_online_model_names() -> dict[str, str] | None:
 
 
 def model_brand_name(model: str) -> str:
-    """Resolve a slug through online, hardcoded, and raw-name fallbacks."""
+    """Resolve a slug through the online catalog, falling back to the slug."""
     online_names = _load_online_model_names()
-    return (online_names or {}).get(model.casefold()) or MODEL_BRAND_NAMES.get(
-        model.casefold(), model
-    )
+    return (online_names or {}).get(model.casefold()) or model
