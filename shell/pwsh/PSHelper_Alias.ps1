@@ -6,7 +6,7 @@ Function which_GetCommand_SourceOnly {
     }
     $command = Get-Command -Name $Name -ErrorAction SilentlyContinue
     if ($null -ne $command) {
-        return $command.Source.Replace('\','/')
+        return $command.Source.Replace('\', '/')
     }
     return ''
 }
@@ -17,7 +17,8 @@ Function msys2_launcher {
     param([string]$Shell)
     if ($args.Count -eq 0) {
         & "C:\msys64\msys2_shell.cmd" -defterm -here -no-start -$Shell
-    } else {
+    }
+    else {
         & "C:\msys64\msys2_shell.cmd" -defterm -here -no-start -$Shell -c "$args"
     }
 }
@@ -45,12 +46,22 @@ function git-bot-commit {
     )
 
     $userNameAliases = @{
-        'sol'   = 'GPT-5.6 Sol - Codex'
-        'terra' = 'GPT-5.6 Terra - Codex'
-        'luna'  = 'GPT-5.6 Luna - Codex'
-        'astra' = 'GPT-6 Astra - Codex'
-        'm3'    = 'MiniMax-M3 - Claude Code'
+        'sol-6'    = 'GPT-6 Sol - Codex'
+        'sol-5.6'  = 'GPT-5.6 Sol - Codex'
+        'terra'    = 'GPT-5.6 Terra - Codex'
+        'luna-6'   = 'GPT-6 Luna - Codex'
+        'luna-5.6' = 'GPT-5.6 Luna - Codex'
+        'astra'    = 'GPT-6 Astra - Codex'
+        'm3'       = 'MiniMax-M3 - Claude Code'
     }
+    $shortcuts = @{
+        'sol'  = 'sol-6'
+        'luna' = 'luna-6'
+    }
+    foreach ($shortcut in $shortcuts.GetEnumerator()) {
+        $userNameAliases[$shortcut.Key] = $userNameAliases[$shortcut.Value]
+    }
+
     if ($userNameAliases.ContainsKey($UserName)) {
         $UserName = $userNameAliases[$UserName]
     }
@@ -175,7 +186,8 @@ function docker-pull-mirror {
             try {
                 Write-Host "==> Trying mirror: $mirror"
                 & docker pull $mirror
-            } catch [System.Management.Automation.PipelineStoppedException] {
+            }
+            catch [System.Management.Automation.PipelineStoppedException] {
                 # Ctrl+C 中断当前代理的拉取，尝试下一个而不是停下
                 $interrupted = $true
                 Write-Host "==> Interrupted, skipping to next mirror"
@@ -256,4 +268,25 @@ function powermode {
 # 当 Tmux 意外退出而没有恢复终端状态时，可以硬重置中断状态
 function Reset-Terminal {
     [Console]::Write("`ec")
+}
+
+function ask {
+    param(
+        [switch]$Here,
+        [Parameter(ValueFromRemainingArguments = $true)]
+        [string[]]$Question
+    )
+
+    $q = $Question -join ' '
+
+    codex exec `
+        --skip-git-repo-check `
+        --sandbox read-only `
+        --search `
+        --disable hooks `
+        --disable shell_tool `
+        --disable unified_exec `
+        -m 'gpt-6-luna' `
+        -c 'model_reasoning_effort="high"' `
+        $q
 }
