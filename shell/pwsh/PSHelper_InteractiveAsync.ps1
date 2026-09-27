@@ -7,11 +7,6 @@
 . $env:DOTFILES\shell\pwsh\PSHelper_Completion.ps1
 . $env:DOTFILES\shell\pwsh\PSHelper_PSReadLine.ps1
 
-# 会在创建 System.Management.Automation.PowerShell 时间接创建一个未关闭的 Runspace
-# #f45873b3-b655-43a6-b217-97c00aa0db58 PowerToys CommandNotFound module
-Import-Module -Name Microsoft.WinGet.CommandNotFound
-# #f45873b3-b655-43a6-b217-97c00aa0db58
-
 # https://github.com/ajeetdsouza/zoxide
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
 
@@ -31,3 +26,8 @@ Set-PSReadlineKeyHandler -Key 'Ctrl+r' -ScriptBlock {
     # 使用这个而不是 Invoke-History 以避免首次调用时无法触发执行动作
     Invoke-FzfPsReadlineHandlerHistory
 }
+
+# 会在创建 System.Management.Automation.PowerShell 时间接创建一个未关闭的 Runspace
+# #f45873b3-b655-43a6-b217-97c00aa0db58 PowerToys CommandNotFound module
+Import-Module -Name Microsoft.WinGet.CommandNotFound
+# #f45873b3-b655-43a6-b217-97c00aa0db58

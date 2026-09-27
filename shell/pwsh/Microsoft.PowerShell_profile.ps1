@@ -18,6 +18,23 @@
 # 三项依次测量无 profile、默认非交互分支、用 cmd 的 set 强制加载交互配置分支。
 # 这里测的是整个子进程耗时；强制加载不会让 -Command 会话变成真正的交互终端，
 # 因而不包含交互终端预加载 PSReadLine、绘制提示符等耗时；异步脚本也可能尚未执行完。
+# 2026-09-27 hyperfine 结果（依次对应上面三条命令；耗时单位 ms）：
+#   路径               平均值 ± 标准差     最小值–最大值     次数    CPU User/System
+#   无 profile         214.9 ± 8.0       209.0–233.3        13      178.7/119.8
+#   默认非交互分支     375.3 ± 9.7       366.3–398.1        10      317.5/168.8
+#   强制交互配置分支   727.3 ± 8.3       710.6–734.2        10      545.6/301.6
+# 无 profile 分别比默认非交互分支、强制交互配置分支快 1.75 ± 0.08、3.38 ± 0.13 倍。
+#
+# 2026-09-27 交互式 pwsh 分段计时（PowerShell 7.6.6，伪终端，Stopwatch.GetTimestamp）：
+# 临时将同一批模块改为同步加载时，profile 结束耗时 665–680 ms；
+# 使用 ProfileAsync 时为 346–364 ms，同步阻塞缩短约 301–334 ms（约 45–49%）。
+# 异步模块全部完成发生在 profile 开始后 923–941 ms，其中包含 200 ms 异步延迟。
+# 异步路径各阶段耗时（ms，取多次启动的范围）：
+#   profile 前段（含 PSModulePath 过滤）44–52；环境设置 10–12；oh-my-posh 197–217；
+#   ProfileAsync 导入及派发 83–86；Encoding/Function/Helper/Loader/Enhancement/Alias 合计 35–38；
+#   Carapace 158–162；PSReadLine 设置 24–26；zoxide 29–30；
+#   Microsoft.WinGet.CommandNotFound 118–123。
+# 上述计时始于 profile 脚本内，不包含进程创建和首个提示符绘制；异步阶段可与终端使用重叠。
 
 #------------------------------- Setup Early Exit OPEN -------------------------------
 # 这里是特殊运行环境跳过加载的设置
@@ -44,10 +61,7 @@ if (-not (Test-Path Variable:Global:__DotfilesOriginalPSModulePath)) {
     $global:__DotfilesOriginalPSModulePath = $Env:PSModulePath
 }
 
-$Env:PSModulePath=@(
-    $Env:PSModulePath -split ';' |
-    Where-Object { $_ -notmatch 'WindowsPowerShell' }
-) -Join ';'
+$Env:PSModulePath = ($Env:PSModulePath -split ';').Where({ $_ -notmatch 'WindowsPowerShell' }) -join ';'
 
 # 注入环境变量
 . $env:DOTFILES\shell\pwsh\PSHelper_Environment.ps1
