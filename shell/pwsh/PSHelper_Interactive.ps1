@@ -9,7 +9,6 @@
 #
 # version 26.24.0 之后有缓存了，并且内部生成 POSH_SESSION_ID，之前的自建脚本方式失效了
 # 所以把魔改部分放在自己的 https://github.com/enihsyou/oh-my-posh/tree/fork 仓库，入口命令保持不变。
-# 使用这个测速 hyperfine 'pwsh -noprofile -c exit' 'pwsh -c exit'
 #
 # 转移到次要磁盘
 $env:OMP_CACHE_DIR = $env:TEMP

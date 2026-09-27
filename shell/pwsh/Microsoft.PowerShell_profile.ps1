@@ -9,6 +9,15 @@
 # https://www.reddit.com/r/PowerShell/comments/180cp1y/how_i_got_my_profile_to_load_in_100ms_with/
 # 教你使用 Profiler 来分析瓶颈点
 # https://blog.danskingdom.com/Easily-profile-your-PowerShell-code-with-the-Profiler-module/
+#
+# 性能测速：在未设置 PWSH_PROFILE_FORCE_INTERACTIVE 的 PowerShell 中运行。
+# hyperfine --warmup=5 `
+#   'pwsh -NoLogo -NonInteractive -NoProfile -Command exit' `
+#   'pwsh -NoLogo -NonInteractive -Command exit' `
+#   'set PWSH_PROFILE_FORCE_INTERACTIVE=1&&pwsh -NoLogo -NonInteractive -Command exit'
+# 三项依次测量无 profile、默认非交互分支、用 cmd 的 set 强制加载交互配置分支。
+# 这里测的是整个子进程耗时；强制加载不会让 -Command 会话变成真正的交互终端，
+# 因而不包含交互终端预加载 PSReadLine、绘制提示符等耗时；异步脚本也可能尚未执行完。
 
 #------------------------------- Setup Early Exit OPEN -------------------------------
 # 这里是特殊运行环境跳过加载的设置
@@ -52,7 +61,8 @@ $Env:PSModulePath=@(
 # 只要自己不再加载一遍，就可以根据模块情况来确定是可交互终端
 # 相比修改 global:prompt , 与 VSCode shell integration 兼容性更好
 # 判断条件部分归功于 https://github.com/MatejKafka/PowerShellProfile
-if ([runspace]::DefaultRunspace.InitialSessionState.Modules) {
+# 测速时可用环境变量强制非交互命令加载此分支
+if ([runspace]::DefaultRunspace.InitialSessionState.Modules -or $env:PWSH_PROFILE_FORCE_INTERACTIVE -eq '1') {
     # 初始化交互终端用到的模块
     . $env:DOTFILES\shell\pwsh\PSHelper_Interactive.ps1
 }
