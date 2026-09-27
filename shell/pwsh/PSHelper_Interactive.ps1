@@ -15,25 +15,6 @@
 $env:OMP_CACHE_DIR = $env:TEMP
 oh-my-posh init pwsh --config "$HOME\.config\oh-my-posh\enihsyou.omp.toml" | Invoke-Expression
 
-# 初始化 vfox
-# https://vfox.dev/zh-hans/guides/quick-start.html
-# 但是 '回滚' 脚本中对终端编码的修改
-# https://github.com/version-fox/vfox/pull/117
-# 暂时禁用，只用 vfox 的 shims 层
-# try {
-#     $origInputEncoding = [Console]::InputEncoding
-#     $origOutputEncoding = [Console]::OutputEncoding
-#     if (-not $env:__VFOX_PID) {
-#         Invoke-Expression (vfox activate pwsh | Out-String)
-#     }
-# }
-# finally {
-#     [Console]::InputEncoding = $origInputEncoding
-#     [Console]::OutputEncoding = $origOutputEncoding
-#     Remove-Variable -Name origInputEncoding, origOutputEncoding
-#     Remove-Variable -Name OutputEncoding -ErrorAction Ignore
-# }
-
 # 使用异步加载模块的方式来加速启动
 $local:__asyncScript = {
     . "$env:DOTFILES\shell\pwsh\PSHelper_InteractiveAsync.ps1"

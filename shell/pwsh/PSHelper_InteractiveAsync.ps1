@@ -1,3 +1,8 @@
+. $env:DOTFILES\shell\pwsh\PSHelper_Encoding.ps1
+. $env:DOTFILES\shell\pwsh\PSHelper_Function.ps1
+. $env:DOTFILES\shell\pwsh\PSHelper_Helper.ps1
+. $env:DOTFILES\shell\pwsh\PSHelper_Loader.ps1
+. $env:DOTFILES\shell\pwsh\PSHelper_Enhancement.ps1
 . $env:DOTFILES\shell\pwsh\PSHelper_Alias.ps1
 . $env:DOTFILES\shell\pwsh\PSHelper_Completion.ps1
 . $env:DOTFILES\shell\pwsh\PSHelper_PSReadLine.ps1
@@ -25,47 +30,4 @@ Set-PSReadlineKeyHandler -Key 'Ctrl+r' -ScriptBlock {
     # 触发当前的调用
     # 使用这个而不是 Invoke-History 以避免首次调用时无法触发执行动作
     Invoke-FzfPsReadlineHandlerHistory
-}
-
-# https://yazi-rs.github.io/docs/quick-start
-function y {
-    $tmp = [System.IO.Path]::GetTempFileName()
-    yazi $args --cwd-file="$tmp"
-    $cwd = Get-Content -Path $tmp -Encoding UTF8
-    if (-not [String]::IsNullOrEmpty($cwd) -and $cwd -ne $PWD.Path) {
-        Set-Location -LiteralPath ([System.IO.Path]::GetFullPath($cwd))
-    }
-    Remove-Item -Path $tmp
-}
-
-function x {
-    Write-Host "🚨 x not loaded! Loading now..."
-    Write-Host
-    Remove-Item -Path "Function:x"
-
-    Import-Module -Name "$env:DOTFILES\shell\pwsh\Modules\X-CMD.psm1" -Force -DisableNameChecking
-
-    x @args
-}
-
-function vfox {
-    Write-Host "🚨 vfox not loaded! Loading now..."
-    Write-Host
-
-    $bin = (Get-Command "vfox" -CommandType Application -TotalCount 1).Path
-
-    # 绕过 vfox activate pwsh 对 prompt 的修改, 因为在 Async 加载中不生效
-    $env:__VFOX_INITIALIZED = '1'
-    Invoke-Expression "$(& $bin activate pwsh)"
-
-    $script:vfoxEnvWrapper = {
-        & $bin @args
-        # 替代 vfox 手动注入环境变量
-        if ($args.Count -gt 0 -and $args[0] -match '^(use)$') {
-            Invoke-Expression "$(& $bin env -s pwsh)"
-        }
-    }.GetNewClosure()
-
-    Set-Item -Path "Function:vfox" -Value $script:vfoxEnvWrapper
-    & $script:vfoxEnvWrapper @args
 }

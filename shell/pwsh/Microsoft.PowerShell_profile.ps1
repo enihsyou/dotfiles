@@ -31,7 +31,7 @@ $env:DOTFILES = "$HOME\.dotfiles"
 # 去掉由 WindowsPowerShell 在系统环境变量种加入的模块路径，pwsh7 用不上这些，节约 16ms
 # 如果实在需要可以单独启动 WindowsPowerShell 去使用那些列在这里的功能 https://learn.microsoft.com/en-us/powershell/windows/get-started
 # 只在首次加载 profile 时保存，避免重复加载时把已经过滤过的值覆盖掉
-if (-not (Get-Variable -Name __DotfilesOriginalPSModulePath -Scope Global -ErrorAction SilentlyContinue)) {
+if (-not (Test-Path Variable:Global:__DotfilesOriginalPSModulePath)) {
     $global:__DotfilesOriginalPSModulePath = $Env:PSModulePath
 }
 
@@ -40,12 +40,8 @@ $Env:PSModulePath=@(
     Where-Object { $_ -notmatch 'WindowsPowerShell' }
 ) -Join ';'
 
-# 设置终端字符集
-. $env:DOTFILES\shell\pwsh\PSHelper_Encoding.ps1
 # 注入环境变量
 . $env:DOTFILES\shell\pwsh\PSHelper_Environment.ps1
-# 加载用户常用函数
-. $env:DOTFILES\shell\pwsh\PSHelper_Function.ps1
 #------------------------------- Setup Runtime DONE -------------------------------
 
 

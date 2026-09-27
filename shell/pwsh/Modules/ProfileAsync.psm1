@@ -166,9 +166,23 @@ function Import-ProfileAsync
         Start-Sleep -Milliseconds $Delay
 
         # [enihsyou] Inform the script that it is running in an async environment
+        $PreviousProfileAsync = $env:PS_PROFILE_ASYNC
         Set-Item -Path Env:PS_PROFILE_ASYNC -Value 1
-        . $ScriptBlock
-        Remove-Item -Path Env:PS_PROFILE_ASYNC -ErrorAction Ignore
+        try
+        {
+            . $ScriptBlock
+        }
+        finally
+        {
+            if ($null -eq $PreviousProfileAsync)
+            {
+                Remove-Item -Path Env:PS_PROFILE_ASYNC -ErrorAction Ignore
+            }
+            else
+            {
+                Set-Item -Path Env:PS_PROFILE_ASYNC -Value $PreviousProfileAsync
+            }
+        }
 
         # [enihsyou] 这段是把 $ScriptBlock 当作参数传给 {} 并在 $GlobalState 中执行
         # 这里不再需要 . $GlobalState 了? 自测直接 . $ScriptBlock 就能用

@@ -38,10 +38,10 @@ function Switch-PSReadLineEditMode
     $currentMode = (Get-PSReadLineOption).EditMode
     if ($currentMode -eq 'Emacs')
     {
-        Enter-PSReadLineEmacsMode
+        Enter-PSReadLineViMode
     } else
     {
-        Enter-PSReadLineViMode
+        Enter-PSReadLineEmacsMode
     }
 }
 #------------------------------- Set Hot-keys DONE -------------------------------

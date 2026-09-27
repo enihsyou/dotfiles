@@ -138,3 +138,11 @@ function Remove-ExistingService {
         exit 1
     }
 }
+
+Export-ModuleMember -Function @(
+    'Assert-CommandExists'
+    'Assert-FileExists'
+    'Get-CommandPath'
+    'Remove-ExistingService'
+    'Require-Sudo'
+)

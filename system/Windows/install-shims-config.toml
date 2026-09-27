@@ -26,6 +26,7 @@ sources = [
     # msys2 的 make 编译时启用了 --enable-nls，相比 ezwinports.make 额外支持本地化, 但同时也会将默认 shell 从 cmd 改为 sh
     "C:/msys64/usr/bin/make.exe",
     # msys2 packages
+    "C:/msys64/usr/bin/cygpath.exe",
     "C:/msys64/usr/bin/rsync.exe",
     "C:/msys64/usr/bin/socat.exe",
     "C:/msys64/usr/bin/telnet.exe",
