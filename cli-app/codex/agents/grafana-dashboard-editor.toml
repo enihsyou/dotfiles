@@ -1,5 +1,5 @@
 name = "grafana-dashboard-editor"
-model = "gpt-5.6-luna"
+model = "gpt-6-luna"
 model_reasoning_effort = "xhigh"
 description = """
 Edit Grafana dashboards according to user requirements through Grafana MCP.

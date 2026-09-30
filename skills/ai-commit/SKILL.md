@@ -21,27 +21,55 @@ invent extra identity text.
 
 ### Codex model discovery
 
-If running as a Codex Agent and the exact model ID is not present in the
-context, determine it from the local Codex session:
+Commit attribution always uses the main/root agent's model, even when a
+subagent performs the commit. The hook's `Model` value describes the current
+agent: it is the main model in the root agent and the subagent model in a
+subagent.
 
-1. Take the final directory name from the writable visualization path
-   `~/.codex/visualizations/YYYY/MM/DD/<session-id>` as the candidate session
-   ID.
-2. Locate
-   `~/.codex/sessions/YYYY/MM/DD/rollout-*-<session-id>.jsonl`. If the filename
-   is not found, search `~/.codex/session_index.jsonl` and
-   `~/.codex/sessions` for that exact ID.
-3. Parse the rollout with `jq` and read the last `turn_context` directly:
+Resolve the author model using this decision flow:
+
+```text
+model = missing
+rollout = missing
+
+if context contains Root/current rollout:
+    current_agent = main
+else if context contains both Root rollout and Current rollout:
+    current_agent = subagent
+else:
+    current_agent = unknown
+
+if current_agent is main:
+    model = injected Model, unless it is "unavailable"
+    rollout = injected Root/current rollout
+else if current_agent is subagent:
+    ignore injected Model  # it identifies the subagent's model
+    rollout = injected Root rollout
+    model = last_turn_context(rollout).model, if available
+
+if model is missing:
+    if rollout is missing or unusable:
+        session_id = final directory name of the writable visualization path
+                     ~/.codex/visualizations/YYYY/MM/DD/<session-id>
+        rollout = locate rollout-*-<session_id>.jsonl under ~/.codex/sessions
+        if not found, search ~/.codex/session_index.jsonl and ~/.codex/sessions
+    model = last_turn_context(rollout).model, if available
+
+if model is still missing:
+    make no more tool calls solely to identify it
+    use the best author model guess from existing context
+    disclose in the final response that author information may be inaccurate
+```
+
+When reading a rollout, use the main agent's file and its final `turn_context`:
 
    ```bash
-   jq -sr 'map(select(.type == "turn_context")) | last | [.payload.model, .payload.effort] | @tsv' <rollout-file>
+   jq -sr 'map(select(.type == "turn_context")) | last | .payload.model' <rollout-file>
    ```
 
-   The first output field is the current model ID; the second is its reasoning
-   effort.
-4. Use that model ID for the author name after applying the normalization rules
-   above. Do not infer the model from `model_provider`, base instructions, or
-   earlier turns.
+Use the resulting model ID for the author name after applying the normalization
+rules above. Prefer the final `turn_context` over `model_provider`, base
+instructions, or earlier turns whenever a rollout is available.
 
 ## Minimal workflow
 
