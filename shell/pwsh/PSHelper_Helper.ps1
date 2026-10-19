@@ -33,7 +33,7 @@ function ConvertTo-DockerMirrorImage {
     # 每个镜像仓库提供多个候选代理。前面的优先级更高。
     $proxyTemplates = switch ($registry.ToLowerInvariant()) {
         'ghcr.io' {
-            @('ghcr.nju.edu.cn', 'wget.la/ghcr.io')
+            @('ghcr.nju.edu.cn', 'ghcr.1ms.run', 'wget.la/ghcr.io')
             break
         }
         'quay.io' {
@@ -60,7 +60,8 @@ function ConvertTo-DockerMirrorImage {
             if ($imagePath.StartsWith('library/')) {
                 $imagePath = $imagePath.Substring('library/'.Length)
             }
-            @('wget.la', 'gh-proxy.com', 'm.daocloud.io/docker.io', 'docker.m.daocloud.io')
+            # https://status.anye.xyz/
+            @('hub.rat.dev', 'docker.sparkcr.cn', 'wget.la', 'gh-proxy.com')
             break
         }
         default {
