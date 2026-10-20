@@ -5,32 +5,12 @@ description: Push Git commits to a GitHub remote with the Arapacati installation
 
 # AI Agent Git Push
 
-Push code to a GitHub remote using the GitHub App **Arapacati** installation token.
-
-## Authentication
-
-Only perform this workflow when the user explicitly asks the AI Agent to run `git push` against a GitHub remote. Embed the short-lived Arapacati installation access token in the remote URL to bypass Git Credential Manager prompts that can hang on Windows.
-
-Generate the token and run `git push` in one command using command substitution. Do not expose the token by generating it in a separate command or storing it in the shell history.
-
-### 1. Get Installation Token
+Only push when the user explicitly asks for it. Run the bundled script from the repository directory instead of assembling authentication or Git commands:
 
 ```bash
-python <skill_base_dir>/../gh-apps/scripts/gh-apps.py --app arapacati token
+python <skill_base_dir>/scripts/git-push.py origin HEAD
 ```
 
-Normally, `<skill_base_dir>` resolves to `~/.agents/skills/ai-push`; try the shared `gh-apps` skill path first when available.
+`<skill_base_dir>` normally resolves to `~/.agents/skills/ai-push`. Use `--repo PATH` to select another repository. The first positional argument is the remote name (default: `origin`); remaining positional arguments are refspecs (default: `HEAD`). Add `--set-upstream` or `--force-with-lease` only when appropriate for the authorized push.
 
-### 2. Push with the Token
-
-Replace `TOKEN` with the command substitution that generates the installation token:
-
-```bash
-git -c credential.helper= push https://x-access-token:TOKEN@github.com/owner/repo.git branch
-```
-
-Disable the credential helper (`-c credential.helper=`) so it cannot intercept the URL and hang on a prompt.
-
-### 3. Skip Submodules
-
-Pass `--no-recurse-submodules` to avoid failures from submodules (for example, a detached HEAD). Submodule state is independent of the main repository commit and normally does not need to be pushed together.
+The script obtains an Arapacati token through `~/.agents/skills/gh-apps/scripts/gh-apps.py`, supplies temporary HTTPS authentication, disables credential helpers and prompts, and skips submodules. It accepts GitHub HTTPS and SSH remotes without changing repository configuration. Do not obtain, print, or embed the token yourself. If the script fails, report the failure and stop rather than retrying with another identity.
